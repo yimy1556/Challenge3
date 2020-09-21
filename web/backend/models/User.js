@@ -13,17 +13,12 @@ const userSchema = new mongoose.Schema({
 	mail: {
 		type: String,
 		required: true,
-        trim: true,
-        unique: true
-    },
+		trim: true,
+		unique: true
+	},
 	pass: {
 		type: String,
 		required: true
-	},
-	urlPic: {
-		type: String,
-		default: false,
-		trim: true
 	},
 	direction: {
 		type: Array,
@@ -32,5 +27,5 @@ const userSchema = new mongoose.Schema({
 })
 
 const User = mongoose.model('user', userSchema);
-userSchema.plugin(uniqueValidator,{ message: 'email esta en uso'});
+userSchema.plugin(uniqueValidator, { message: 'email esta en uso' });
 module.exports = User;

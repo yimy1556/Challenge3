@@ -5,12 +5,12 @@ const User = require('../models/User')
 
 module.exports = passport.use(new jwtStrategy({
 	jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-	secretOrKey: process.env.SECRET_KEY
-},(payload, done)=>{
+	secretOrKey: 'RLYEHHACKLAB'
+}, (payload, done) => {
 	User.findById(payload._doc._id)
-	.then(user => {
-		if(!user) return done(null, false)
-		return done(null, user)
-	})
-	.catch(err => done(err, false))
+		.then(user => {
+			if (!user) return done(null, false)
+			return done(null, user)
+		})
+		.catch(err => done(err, false))
 }))
