@@ -1,5 +1,8 @@
 import { GoogleLogin } from 'react-google-login';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import authActions from '../redux/actions/authActions'
+import { connect } from 'react-redux'
+
 
 
 
@@ -24,12 +27,12 @@ const LogIn = props => {
         await props.logUser(ingresoUsuario)
     }
 
-    useEffect(()=>{
-        if(props.success){
-            alert("Welcome")
-           props.history.push("/home")  
-        }
-    },[props.success]) 
+   // useEffect(()=>{
+  //      if(props.success){
+  //          alert("Welcome")
+  //         props.history.push("/home")  
+  //      }
+  //  },[props.success]) 
 
     const responseGoogle = respuesta => {
         props.loguearUsuario({
@@ -38,8 +41,6 @@ const LogIn = props => {
         props.history.push("/home")  
     }
 
-    
-   
     
 
         return (   
@@ -72,14 +73,10 @@ const LogIn = props => {
     
 }
 
-const mapStateToProps = state => {
-    return{
-        success: state.usuarios.success
-    }
-}
+
 
 const mapDispatchToProps = {
-    logUser: usuariosActions.logUser,
+    logUser: authActions.logUser,
  }
 
-export default connect(mapStateToProps, mapDispatchToProps) (LogIn)
+export default connect(null, mapDispatchToProps) (LogIn)
