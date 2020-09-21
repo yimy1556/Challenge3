@@ -20,9 +20,9 @@ const userController = {
 			res.json({
 				success: true,
 				token,
-				username: user.username,
-				urlPic: user.urlPic,
-				likes: user.likes,
+				firstName: user.firstName,
+                mail: user.mail,
+                lastName: user.lastName
 			})
 		})
 		.catch(err => res.json({ success: "false", error: err }))
@@ -41,15 +41,14 @@ const userController = {
 		res.json({
 			success: true,
 			token,
-			username: userExists.username,
-			urlPic: userExists.urlPic,
-			likes: userExists.likes,
-			id: userExists._id,
+			firstName: userExists.firstName,
+            mail: userExists.mail,
+            lastName : userExists.lastName
 		})
 	},
 	getUser: (req, res) => {
-		const { urlPic, username, likes } = req.user
-		res.json({urlPic, username, likes,})
+		const {firstName,lastName, mail} = req.user
+		res.json({firstName,lastName, mail})
     }
 }
 
