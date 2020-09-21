@@ -6,25 +6,53 @@ import About from './pages/About';
 import Shop from './pages/Shop';
 import Header from './components/Header';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import authActions from './redux/actions/authActions'
+import { connect } from 'react-redux'
 import './styles/styles.css'
 
 
-function App() {
+function App(props) {
+
+  if (props.token || localStorage.getItem('token')) {
+    var myRoutes =
+      (<Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/shop" component={Shop} />
+        <Redirect to="/" />
+      </Switch>
+      )
+  } else {
+    var myRoutes = (<Switch>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/register" component={Register} />
+      <Route exact path="/login" component={LogIn} />
+      <Route exact path="/about" component={About} />
+      <Route exact path="/shop" component={Shop} />
+      <Redirect to="/" />
+    </Switch>
+    )
+  }
+  console.log(props.token)
   return (
     <>
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={LogIn} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/shop" component={Shop} />
-          <Redirect to="/" />
+          {myRoutes}
         </Switch>
       </BrowserRouter>
     </>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    token: state.authReducer.token
+  }
+}
+const mapDispatchToProps = {
+  forcedLogIn: authActions.forcedLogIn
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
