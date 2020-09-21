@@ -1,0 +1,27 @@
+html * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+header{
+    width: 100vw;
+    background-color: rgb(80, 98, 255);
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh 5vw;
+}
+a{
+    color: whitesmoke;
+    justify-content: space-between;
+    text-decoration: none;
+    padding: 1vw;
+    font-size: 1.3em;
+}
+
+#brand{
+    font-size: 1em;
+}
