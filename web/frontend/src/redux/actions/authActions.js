@@ -6,7 +6,7 @@ const authActions = {
 
     newUser: newUser => {
         return async(dispatch, getState) => {
-            const response = await axios.post(path+`/nombreBackend`, newUser)
+            const response = await axios.post(path+`/user/register`, newUser)
             if(!response.data.success) {
                 alert('Something went wrong')
             } else {
@@ -20,7 +20,7 @@ const authActions = {
 
     logUser: logUser => {
         return async(dispatch, getState) => {
-            const response = await axios.post(path+`/nombreBackend`, logUser)
+            const response = await axios.post(path+`/user/login`, logUser)
             if(!response.data.success) {
                 alert('Something went wrong')
             } else {
@@ -34,7 +34,7 @@ const authActions = {
 
     newUserGoogle: newUser => {
         return async (dispatch, getState) => {
-            const response = await axios.post(path+`/nombreBackend`, newUser)
+            const response = await axios.post(path+`/user/register`, newUser)
             if(!response.data.success) {
                 alert('Something went wrong')
             } else {
@@ -48,7 +48,7 @@ const authActions = {
 
     forcedLogIn: tokenLS => {
         return async (dispatch, getState) => {
-            const response = await axios.get(path+`/nombreBackend`, {
+            const response = await axios.get(path+`/user/login`, {
                 headers: {
                     Authorization: `Bearer ${tokenLS}`
                 }
