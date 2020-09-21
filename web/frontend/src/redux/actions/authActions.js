@@ -12,7 +12,7 @@ const authActions = {
             } else {
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data., lastName: response.data., email: response.data., token: response.data. }
+                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token }
                 })
             }
         }
@@ -26,7 +26,7 @@ const authActions = {
             } else {
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data., lastName: response.data., email: response.data., token: response.data. }
+                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token }
                 })
             }
         }
@@ -40,7 +40,7 @@ const authActions = {
             } else {
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data., lastName: response.data., email: response.data., token: response.data. }
+                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token }
                 })
             }
         }
@@ -55,7 +55,7 @@ const authActions = {
             })
             dispatch({
                 type: 'LOG_USER',
-                payload: { firstName: response.data., lastName: response.data., email: response.data., token: tokenLS }
+                payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token }
             })
 
         }
