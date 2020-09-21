@@ -56,10 +56,9 @@ const Register = (props) => {
         // pass validation
         } else if (user.pass.length < 5){
             alert ("Your password must contain at least 5 characters")
-        }else if (!reMail.test(user.pass)){
+        }else if (!rePass.test(user.pass)){
             alert ("Your Password must include at least one uppercase letter, at least one lowercase letter, and at least one number. ")
-        
-        
+       
         } else{
            // await props.nuevoUsuarios(user)
           //  if(this.props.success){
@@ -70,17 +69,14 @@ const Register = (props) => {
     }
 
    const responseGoogle = respuesta => {
-        this.props.nuevoUsuarios({
-            nombre: respuesta.profileObj.givenName,
-            apellido: respuesta.profileObj.familyName,
-            password:respuesta.profileObj.googleId,
-            usuario:respuesta.profileObj.email,
+        props.createUser({
+            name: respuesta.profileObj.givenName,
+            surname: respuesta.profileObj.familyName,
             mail:respuesta.profileObj.email,
-            foto:respuesta.profileObj.imageUrl,
-            pais:"Argentina"
+            pass:respuesta.profileObj.googleId,
         })
         alert("Thank you for signing up")
-        this.props.history.push("/home")  
+        props.history.push("/home")  
     }
 
 
