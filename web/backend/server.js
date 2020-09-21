@@ -11,7 +11,7 @@ app.use(cors())
 
 app.use('/api', router)
 
-const port = process.env.PORT
+const port = process.env.PORT 
 const host = process.env.HOST || '0.0.0.0'
 
 app.listen(port, host, () => console.log("Server listening on port " + port))
