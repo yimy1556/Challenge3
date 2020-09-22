@@ -5,6 +5,7 @@ var path = 'http://localhost:4000/api'
 const authActions = {
 
     newUser: newUser => {
+        console.log(newUser);
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/register`, newUser)
             if (!response.data.success) {
@@ -48,7 +49,6 @@ const authActions = {
 
     forcedLogIn: tokenLS => {
         return async (dispatch, getState) => {
-            console.log(tokenLS)
             const response = await axios.get(path + `/user/login`, {
                 headers: {
                     Authorization: `Bearer ${tokenLS}`
