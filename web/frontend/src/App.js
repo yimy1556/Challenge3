@@ -4,6 +4,7 @@ import LogIn from './pages/LogIn';
 import Register from './pages/Register';
 import About from './pages/About';
 import Shop from './pages/Shop';
+import AddItem from './pages/AddItem';
 import Header from './components/Header';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import authActions from './redux/actions/authActions'
@@ -14,8 +15,22 @@ import LogOut from './components/LogOut';
 
 
 function App(props) {
-  console.log(localStorage.getItem('token'))
-  if (props.token || localStorage.getItem('token')) {
+  console.log(props.rol)
+  if (localStorage.getItem('token') && props.token === "") {
+    props.forcedLogIn(localStorage.getItem('token'))
+  }
+  if (props.rol === "admin") {
+    var myRoutes =
+      (<Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/shop" component={Shop} />
+        <Route exact path="/admin" component={AddItem} />
+        <Route path="/logOut" component={LogOut} />
+        <Redirect to="/admin" />
+      </Switch>
+      )
+  } else if (props.token || localStorage.getItem('token')) {
     var myRoutes =
       (<Switch>
         <Route exact path="/" component={Home} />
@@ -25,7 +40,8 @@ function App(props) {
         <Redirect to="/" />
       </Switch>
       )
-  } else {
+  }
+  else {
     var myRoutes = (<Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/register" component={Register} />
@@ -50,7 +66,8 @@ function App(props) {
 
 const mapStateToProps = (state) => {
   return {
-    token: state.authReducer.token
+    token: state.authReducer.token,
+    rol: state.authReducer.rol
   }
 }
 const mapDispatchToProps = {

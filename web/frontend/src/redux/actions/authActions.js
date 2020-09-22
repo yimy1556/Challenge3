@@ -26,7 +26,7 @@ const authActions = {
             } else {
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token }
+                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol }
                 })
             }
         }
@@ -40,7 +40,7 @@ const authActions = {
             } else {
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token }
+                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol }
                 })
             }
         }
@@ -48,6 +48,7 @@ const authActions = {
 
     forcedLogIn: tokenLS => {
         return async (dispatch, getState) => {
+            console.log(tokenLS)
             const response = await axios.get(path + `/user/login`, {
                 headers: {
                     Authorization: `Bearer ${tokenLS}`
@@ -55,8 +56,9 @@ const authActions = {
             })
             dispatch({
                 type: 'LOG_USER',
-                payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token }
+                payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: tokenLS, rol: response.data.rol }
             })
+
 
         }
     },

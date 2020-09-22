@@ -10,22 +10,23 @@ const userController = {
 		newUser.pass = bcrypt.hashSync(pass.trim(), 10)
 		console.log(newUser)
 		newUser.save()
-		.then(user => {
-			const token = jwt.sign({ ...user }, process.env.SECRET_KEY, {})
-			if (!token)
-				return res.json({
-					success: false,
-					error: "Error al crear el usuario",
+			.then(user => {
+				const token = jwt.sign({ ...user }, process.env.SECRET_KEY, {})
+				if (!token)
+					return res.json({
+						success: false,
+						error: "Error al crear el usuario",
+					})
+				res.json({
+					success: true,
+					token,
+					firstName: user.firstName,
+					mail: user.mail,
+					lastName: user.lastName,
+					rol: user.rol
 				})
-			res.json({
-				success: true,
-				token,
-				firstName: user.firstName,
-                mail: user.mail,
-                lastName: user.lastName
 			})
-		})
-		.catch(err => res.json({ success: "false", error: err }))
+			.catch(err => res.json({ success: "false", error: err }))
 	},
 	loginUser: async (req, res) => {
 		const { mail, pass } = req.body
@@ -34,7 +35,7 @@ const userController = {
 		if (!userExists) return res.json({ success: false, error: message })
 		const passwordMatches = bcrypt.compareSync(pass, userExists.pass)
 
-        if (!passwordMatches) return res.json({ success: false, error: message })
+		if (!passwordMatches) return res.json({ success: false, error: message })
 		const token = jwt.sign({ ...userExists }, process.env.SECRET_KEY, {})
 		if (!token) return res.json({ success: false, error })
 
@@ -42,14 +43,16 @@ const userController = {
 			success: true,
 			token,
 			firstName: userExists.firstName,
-            mail: userExists.mail,
-            lastName : userExists.lastName
+			mail: userExists.mail,
+			lastName: userExists.lastName,
+			rol: userExists.rol
 		})
 	},
 	getUser: (req, res) => {
-		const {firstName,lastName, mail} = req.user
-		res.json({firstName,lastName, mail})
-    }
+		console.log('este es el forcedLogin')
+		const { firstName, lastName, mail, rol } = req.user
+		res.json({ firstName, lastName, mail, rol })
+	}
 }
 
 module.exports = userController

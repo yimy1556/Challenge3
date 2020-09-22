@@ -3,6 +3,7 @@ const initialState = {
     lastName: '',
     mail: '',
     token: '',
+    rol: ''
 }
 
 const authReducer = (state = initialState, action) => {
@@ -14,7 +15,8 @@ const authReducer = (state = initialState, action) => {
                 firstName: action.payload.firstName,
                 lastName: action.payload.lastName,
                 mail: action.payload.mail,
-                token: action.payload.token
+                token: action.payload.token,
+                rol: action.payload.rol
             }
         case 'LOGOUT_USER':
             localStorage.clear()
