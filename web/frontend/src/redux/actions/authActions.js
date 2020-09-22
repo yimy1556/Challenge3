@@ -27,7 +27,7 @@ const authActions = {
             } else {
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol }
+                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol, success: response.data.success }
                 })
             }
         }
@@ -41,7 +41,7 @@ const authActions = {
             } else {
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol }
+                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol, success: response.data.success }
                 })
             }
         }

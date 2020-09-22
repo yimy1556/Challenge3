@@ -25,16 +25,17 @@ const LogIn = props => {
     const enviarInfo = async e => {
         console.log(ingresoUsuario)
         e.preventDefault()
-        await props.logUser(ingresoUsuario)
+        await props.logUser(ingresoUsuario)       
     }
 
-    // useEffect(()=>{
-    //      if(props.success){
-    //          alert("Welcome")
-    //         props.history.push("/home")  
-    //      }
-    //  },[props.success]) 
+    useEffect(()=>{
+         if(props.success){
+           alert("Welcome")
+            props.history.push("/home")  
+         }
+      },[props.success]) 
 
+      
     const responseGoogle = response => {
         props.logUser({
             mail: response.profileObj.email,
@@ -79,10 +80,14 @@ const LogIn = props => {
 
 }
 
-
+const mapStateToProps = (state) => {
+    return {
+        Success: state.authReducer.Success
+    }
+}
 
 const mapDispatchToProps = {
     logUser: authActions.logUser,
 }
 
-export default connect(null, mapDispatchToProps)(LogIn)
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn)
