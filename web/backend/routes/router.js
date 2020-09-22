@@ -13,7 +13,7 @@ router.route("/user/login")
     .post(userController.loginUser)
 
 router.route("/product/addProduct")
-.post(productController.addProduct)
+    .post(productController.addProduct)
 
 
 

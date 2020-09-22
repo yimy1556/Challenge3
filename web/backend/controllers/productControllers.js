@@ -2,16 +2,19 @@ const Product = require('../models/Product');
 
 const productController = {
     addProduct: (req, res) => {
-        console.log('hola')
+
         const { title, description, price, stock, type } = req.body
-        console.log(req.files)
+        console.log(req.body);
         const archivo = req.files.photo
-        archivo.mv(`uploads/${title}`)
+        const nombreArchivo = req.body.title
+        const serverURL = `uploads/${nombreArchivo}`
+        const photo = `http://localhost:4000/uploads/${nombreArchivo}`
+        archivo.mv(serverURL)
         const newProduct = new Product({
             title,
             description, price,
             stock, type,
-            photo: `http://localhost:4000/uploads/${nombreArchivo}`
+            photo: photo
         })
         newProduct.save()
             .then(() => res.json({ success: true, message: 'product added successfully' }))
