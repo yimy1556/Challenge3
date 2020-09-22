@@ -5,6 +5,7 @@ import Register from './pages/Register';
 import About from './pages/About';
 import Shop from './pages/Shop';
 import Header from './components/Header';
+import AddItem from './pages/AddItem'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import authActions from './redux/actions/authActions'
 import { connect } from 'react-redux'
@@ -21,6 +22,7 @@ function App(props) {
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
         <Route exact path="/shop" component={Shop} />
+        <Route exact path="/additem" component={AddItem} />
         <Route path="/logOut" component={LogOut} />
         <Redirect to="/" />
       </Switch>
@@ -32,6 +34,7 @@ function App(props) {
       <Route exact path="/login" component={LogIn} />
       <Route exact path="/about" component={About} />
       <Route exact path="/shop" component={Shop} />
+      <Route exact path="/additem" component={AddItem} />
       <Redirect to="/" />
     </Switch>
     )
