@@ -1,0 +1,68 @@
+#divFormulario{
+    display: flex;
+    justify-content: center;
+
+}
+
+#divFormulario form{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 2vh 2vw;
+}
+
+#divFormulario h3{
+    margin-bottom: 5vh;
+    color: rgb(80, 98, 255);
+    margin-top: 10vh;
+}
+
+#divFormulario div{
+    margin-bottom: 2vh;
+}
+
+#divFormulario label{
+    margin-right: 2vw;
+}
+#divFormulario input, select{
+    width: 50vw;
+    height: 7vh;
+    padding: 0vh 1vw;
+}
+
+
+
+#divFormulario button{
+    margin-bottom: 4vh;
+    font-weight: bold;
+    color: black;
+    background-color: white;
+    padding: 1vh 1vw;
+}
+    
+
+
+
+#divFormulario button span  {
+margin-top: -1vh;
+padding-bottom: -1vh;
+}
+
+#divFormulario button svg  {
+    margin-top: 1.4vh;
+    margin-right: -1vw;
+}
+
+
+
+#HaveAccount{
+    display: flex;
+    align-items: center;
+}
+
+#HaveAccount button{
+    border: none;
+    margin-top: 3.8vh;
+    color: rgb(80, 98, 255);
+}
