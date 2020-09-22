@@ -34,10 +34,10 @@ const LogIn = props => {
     //      }
     //  },[props.success]) 
 
-    const responseGoogle = respuesta => {
+    const responseGoogle = response => {
         props.logUser({
-            mail: respuesta.profileObj.email,
-            pass: respuesta.profileObj.googleId
+            mail: response.profileObj.email,
+            pass: response.profileObj.googleId
         })
         props.history.push("/home")
     }

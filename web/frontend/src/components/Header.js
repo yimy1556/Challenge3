@@ -17,8 +17,8 @@ const Header = (props) => {
                             <NavLink to="/about">About</NavLink>
                             <NavLink to="/shop">Shop</NavLink>
                             <NavLink to="/logOut">Logout</NavLink>
-                            <NavLink to="">
-                                logged in as {props.userlogged.firstName}</NavLink>
+                            <h1>
+                                logged in as {props.userlogged.firstName}</h1>
                         </>
                         :
                         <>
