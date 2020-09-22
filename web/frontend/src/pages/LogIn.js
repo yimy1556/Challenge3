@@ -23,6 +23,7 @@ const LogIn = props => {
     }
 
     const enviarInfo = async e => {
+        console.log(ingresoUsuario)
         e.preventDefault()
         await props.logUser(ingresoUsuario)
     }
