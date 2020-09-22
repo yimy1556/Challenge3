@@ -23,6 +23,7 @@ const LogIn = props => {
     }
 
     const enviarInfo = async e => {
+        console.log(ingresoUsuario)
         e.preventDefault()
         await props.logUser(ingresoUsuario)
     }
@@ -64,6 +65,10 @@ const LogIn = props => {
                     </div>
                     <div id="divContraseña">
                         <input onChange={leerImput} type="password" id="pass" name="pass" placeholder="Write your password here"></input>
+                    </div>
+                    <div id="HaveAccount">
+                       <p>Don't have an account?</p>
+                       <button> Sign up</button>
                     </div>
                     <button onClick={enviarInfo}>Log in</button>
                 </form>
