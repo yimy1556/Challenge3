@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 
+
 const Header = (props) => {
 
     console.log(props)
@@ -15,8 +16,9 @@ const Header = (props) => {
                         <>
                             <NavLink to="/about">About</NavLink>
                             <NavLink to="/shop">Shop</NavLink>
-                            <NavLink to="">
-                                logged in as {props.userlogged.firstName}</NavLink>
+                            <NavLink to="/logOut">Logout</NavLink>
+                            <h1>
+                                logged in as {props.userlogged.firstName}</h1>
                         </>
                         :
                         <>

@@ -66,12 +66,12 @@ const Register = (props) => {
         }
     }
 
-    const responseGoogle = respuesta => {
+    const responseGoogle = response => {
         props.newUser({
-            firstName: respuesta.profileObj.givenName,
-            lastName: respuesta.profileObj.familyName,
-            mail: respuesta.profileObj.email,
-            pass: respuesta.profileObj.googleId,
+            firstName: response.profileObj.givenName,
+            lastName: response.profileObj.familyName,
+            mail: response.profileObj.email,
+            pass: response.profileObj.googleId,
         })
         alert("Thank you for signing up")
 
