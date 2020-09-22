@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 
 const Header = (props) => {
 
-    console.log(props)
     return (
         <>
             <header>

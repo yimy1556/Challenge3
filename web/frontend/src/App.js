@@ -11,6 +11,7 @@ import { connect } from 'react-redux'
 import './styles/styles.css'
 import './styles/RegisterLogIn.css'
 import LogOut from './components/LogOut';
+import Footer from './components/Footer';
 
 
 function App(props) {
@@ -43,6 +44,7 @@ function App(props) {
         <Switch>
           {myRoutes}
         </Switch>
+        <Footer/>
       </BrowserRouter>
     </>
   );
