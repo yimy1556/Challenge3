@@ -12,7 +12,7 @@ import './styles/styles.css'
 
 
 function App(props) {
-
+  console.log(localStorage.getItem('token'))
   if (props.token || localStorage.getItem('token')) {
     var myRoutes =
       (<Switch>
@@ -33,7 +33,6 @@ function App(props) {
     </Switch>
     )
   }
-  console.log(props.token)
   return (
     <>
       <BrowserRouter>

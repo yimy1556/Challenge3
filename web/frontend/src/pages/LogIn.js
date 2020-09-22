@@ -27,6 +27,12 @@ const LogIn = props => {
         await props.logUser(ingresoUsuario)
     }
 
+    // useEffect(()=>{
+    //      if(props.success){
+    //          alert("Welcome")
+    //         props.history.push("/home")  
+    //      }
+    //  },[props.success]) 
 
     const responseGoogle = respuesta => {
         props.logUser({
@@ -47,7 +53,7 @@ const LogIn = props => {
 
                     <GoogleLogin id="GoogleLogin"
                         clientId="83311303903-d8eviki4j9rvmabuc0ceg0c5im70b2ab.apps.googleusercontent.com"
-                        buttonText="Crear cuenta con google"
+                        buttonText="Log in with google"
                         onSuccess={responseGoogle}
                         onFailure={responseGoogle}
                         cookiePolicy={'single_host_origin'}

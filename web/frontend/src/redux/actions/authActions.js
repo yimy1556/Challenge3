@@ -5,9 +5,9 @@ var path = 'http://localhost:4000/api'
 const authActions = {
 
     newUser: newUser => {
-        return async(dispatch, getState) => {
-            const response = await axios.post(path+`/user/register`, newUser)
-            if(!response.data.success) {
+        return async (dispatch, getState) => {
+            const response = await axios.post(path + `/user/register`, newUser)
+            if (!response.data.success) {
                 alert('Something went wrong')
             } else {
                 dispatch({
@@ -19,9 +19,9 @@ const authActions = {
     },
 
     logUser: logUser => {
-        return async(dispatch, getState) => {
-            const response = await axios.post(path+`/user/login`, logUser)
-            if(!response.data.success) {
+        return async (dispatch, getState) => {
+            const response = await axios.post(path + `/user/login`, logUser)
+            if (!response.data.success) {
                 alert('Something went wrong')
             } else {
                 dispatch({
@@ -34,8 +34,8 @@ const authActions = {
 
     newUserGoogle: newUser => {
         return async (dispatch, getState) => {
-            const response = await axios.post(path+`/user/register`, newUser)
-            if(!response.data.success) {
+            const response = await axios.post(path + `/user/register`, newUser)
+            if (!response.data.success) {
                 alert('Something went wrong')
             } else {
                 dispatch({
@@ -48,7 +48,7 @@ const authActions = {
 
     forcedLogIn: tokenLS => {
         return async (dispatch, getState) => {
-            const response = await axios.get(path+`/user/login`, {
+            const response = await axios.get(path + `/user/login`, {
                 headers: {
                     Authorization: `Bearer ${tokenLS}`
                 }
