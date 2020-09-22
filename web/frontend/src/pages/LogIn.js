@@ -27,12 +27,6 @@ const LogIn = props => {
         await props.logUser(ingresoUsuario)
     }
 
-    // useEffect(()=>{
-    //      if(props.success){
-    //          alert("Welcome")
-    //         props.history.push("/home")  
-    //      }
-    //  },[props.success]) 
 
     const responseGoogle = respuesta => {
         props.logUser({
