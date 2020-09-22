@@ -5,9 +5,10 @@ var path = 'http://localhost:4000/api'
 const itemActions = {
 
     addItem: formItem => {
+        console.log(formItem)
+        return async (dispatch, getState) => {
 
-        return async(dispatch, getState) => {
-            const response = await axios.post(path+`/nombreBackend`, formItem, {
+            const response = await axios.post(path + `/product/addProduct`, formItem, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
