@@ -30,7 +30,7 @@ const AddItem = props => {
             await props.addItem(formItem)
         }
     }
-    console.log(item.photo)
+
     return (
         <main>
             <div id="divFormulario">
