@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import authActions from './redux/actions/authActions'
 import { connect } from 'react-redux'
 import './styles/styles.css'
+import LogOut from './components/LogOut';
 
 
 function App(props) {
@@ -19,6 +20,7 @@ function App(props) {
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
         <Route exact path="/shop" component={Shop} />
+        <Route path ="/logOut" component={LogOut} />
         <Redirect to="/" />
       </Switch>
       )
