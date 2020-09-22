@@ -6,7 +6,6 @@ import Carrito from './Carrito'
 
 const Header = (props) => {
 
-    console.log(props)
     return (
         <>
             <header>

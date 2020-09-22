@@ -1,0 +1,21 @@
+.container__links__footer{
+    display: flex;
+    justify-content: space-around;
+}
+
+.container__links__footer{
+    background-color: rgb(0, 0, 0);
+}
+
+.container__links__footer div:nth-child(2){
+margin-left: 6em;
+}
+
+.container__links__footer div:nth-child(2) img{
+    width: 1.5em;
+    padding-top: 2em;
+}
+
+.container__links__footer  div:nth-child(3) a{
+    color: whitesmoke;
+}
