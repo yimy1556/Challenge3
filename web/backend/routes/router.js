@@ -19,4 +19,8 @@ router.route("/product/addProduct")
     .post(productController.addProduct)
     .put(productController.updateProduct)
 
+router.route('/selectProduct/:id')
+    .get(productController.getSelectProductId)
+
+
 module.exports = router

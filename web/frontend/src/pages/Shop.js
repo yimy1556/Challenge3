@@ -3,14 +3,16 @@ import { connect } from 'react-redux'
 import itemActions from '../redux/actions/itemActions'
 import itemReducer from '../redux/reducers/itemReducer'
 import '../styles/shop.css'
+import { NavLink } from 'react-router-dom'
+import Product from '../pages/Product'
+
 
 class Shop extends React.Component {
+
     componentDidMount() {
         this.props.getProducts()
     }
     render() {
-        console.log(this.props.products)
-
         return (
             <div id="paginaShop">
                 <h2>All Products</h2>
@@ -21,13 +23,12 @@ class Shop extends React.Component {
                                 this.props.products.map(product => {
                                     console.log(product)
                                     return (
-                                        <div id="articulo">
-                                            <h3>{product.title}</h3>
-                                            <div id="imagenShop" style={{ backgroundImage: `url(${product.photo})`, width: '20vw', height: '20vh' }}></div>
-                                            <p id="descripcionShop">{product.description}</p>
-                                            <p id="precioShop">{product.price}$</p>
-                                        </div>
+                                        <>
+
+                                            <Product product={product} />
+                                        </>
                                     )
+
                                 })
                             }
                         </>

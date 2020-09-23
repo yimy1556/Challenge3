@@ -47,5 +47,16 @@ const productController = {
         console.log(title)
         console.log(req.files)
     },
+
+    getSelectProductId: async (req, res) => {
+        var id = req.params.id
+        try {
+            const product = await Product.findOne({ _id: id })
+            res.json({success:true, response: {product} })
+        }
+        catch {
+            res.json({ success: false, response: "Error geting product" })
+        }
+    },
 }
 module.exports = productController
