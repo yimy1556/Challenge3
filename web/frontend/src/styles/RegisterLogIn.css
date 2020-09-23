@@ -80,3 +80,8 @@ padding-bottom: -1vh;
     text-decoration: underline;
 }
 
+
+#radioContainer input {
+    margin: 0;
+    background: red;
+}

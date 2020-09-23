@@ -5,6 +5,7 @@ const cors = require('cors')
 const router = require('./routes/router')
 const fileUpload = require('express-fileupload')
 const app = express()
+app.use('/uploads', express.static(`${__dirname}/uploads`))
 
 app.use(express.json())
 app.use(cors())

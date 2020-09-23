@@ -13,21 +13,13 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    variety: {
+    variants: {
         type: Array,
 
     },
     price: {
         type: String,
         required: true
-    },
-    stock: {
-        type: String,
-        required: true
-    },
-    type: {
-        type: String,
-        required: true,
     }
 })
 
