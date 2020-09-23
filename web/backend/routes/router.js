@@ -18,6 +18,7 @@ router.route("/product/getProducts")
 router.route("/product/addProduct")
     .post(productController.addProduct)
 
-
+router.route("/product/addProduct")
+    .put(productController.updateProduct)
 
 module.exports = router

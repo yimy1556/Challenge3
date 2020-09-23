@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-var path = 'http://localhost:4000/api'
+var path = `http://localhost:4000/api`
 
 const itemActions = {
 
@@ -33,7 +33,16 @@ const itemActions = {
                 payload: info
             })
         }
-    }
+    },
+    setProduct: (x,content) => {
+        return async (dispatch, getState) => {
+            const response = await axios.put(path + `/product/addProducts`, { x, content })
+            dispatch({
+                type: 'ADD_ITEM',
+                payload: response.data
+            })
+        }
+    },
 }
 
 export default itemActions

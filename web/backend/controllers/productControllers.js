@@ -10,13 +10,15 @@ const productController = {
         var nombreArchivo = req.body.title + '.' + extension
         const serverURL = `uploads/${nombreArchivo}`
 
+        const photo = `http://localhost:4000/uploads/${nombreArchivo}`
+
         archivo.mv(serverURL)
 
         const newProduct = new Product({
             title,
             description, price,
-            variants: [{ stock, size, color }],
-            photo: `http://localhost:4000/uploads/${nombreArchivo}`
+            variants: [{ stock, size, color, photo: photo }],
+
         })
         await newProduct.save()
             .then(() => res.json({ success: true, message: 'product added successfully' }))
