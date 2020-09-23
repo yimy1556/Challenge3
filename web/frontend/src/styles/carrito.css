@@ -5,13 +5,18 @@
 }
 
 #carrito{
-    height: 60px;
-    width: 60px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    margin-right: 46vw;
-    background-color:  rgb(245, 245, 245);
+    margin-right: 50vw;
+    background-color: rgb(5, 5, 5);
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: black 1px solid;
+    height: 80%;
+    margin-top: 17px;
+    padding: 0 10px;
+
+
 }
 
 #menuCostado{
