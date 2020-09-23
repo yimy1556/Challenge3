@@ -14,6 +14,10 @@ const AddItem = props => {
         await props.getProducts()
     }, [])
 
+    const resetForm = () => { 
+        document.getElementById('form').reset()
+      }
+
     const sendInfo = async e => {
         e.preventDefault()
         if (item.title === '' || item.description === '' || item.photo === '' || item.price === '' || item.stock === '' || item.type === '') {
@@ -32,6 +36,8 @@ const AddItem = props => {
             formItem.append('size', item.size)
 
             await props.addItem(formItem)
+
+            resetForm()
         }
     }
     const putVariant = async e => {
@@ -53,11 +59,11 @@ const AddItem = props => {
         }
     }
     console.log(item)
+
     return (
         <main>
             <div id="divFormulario">
-
-                <form style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '30%', margin: '5vh auto' }}>
+                <form id='form' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '30%', margin: '5vh auto' }}>
                     <div id="radioContainer">
                         <input type="radio" onChange={readInput} id="newProduct" name="newProduct" value={true}></input>New Product
                         <input type="radio" onChange={readInput} id="newProduct" name="newProduct" value={false}></input>New Variant
