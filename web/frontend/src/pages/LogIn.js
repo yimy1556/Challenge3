@@ -2,7 +2,7 @@ import { GoogleLogin } from 'react-google-login';
 import React, { useState, useEffect } from 'react';
 import authActions from '../redux/actions/authActions'
 import { connect } from 'react-redux'
-
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -25,15 +25,14 @@ const LogIn = props => {
     const enviarInfo = async e => {
         console.log(ingresoUsuario)
         e.preventDefault()
-        await props.logUser(ingresoUsuario)       
+        await props.logUser(ingresoUsuario)
     }
 
-    useEffect(()=>{
-         if(props.success){
-           alert("Welcome")
-            props.history.push("/home")  
-         }
-      },[props.success]) 
+    useEffect(() => {
+        if (props.success) {
+            alert("Welcome")
+        }
+    }, [props.success])
 
 
     const responseGoogle = response => {
@@ -41,7 +40,6 @@ const LogIn = props => {
             mail: response.profileObj.email,
             pass: response.profileObj.googleId
         })
-        props.history.push("/home")
     }
 
 
@@ -68,8 +66,8 @@ const LogIn = props => {
                         <input onChange={leerImput} type="password" id="pass" name="pass" placeholder="Write your password here"></input>
                     </div>
                     <div id="HaveAccount">
-                       <p>Don't have an account?</p>
-                       <button> Sign up</button>
+                        <p>Don't have an account?</p>
+                        <NavLink to="/register"> Sign up</NavLink>
                     </div>
                     <button id="createAccount" onClick={enviarInfo}>Log in</button>
                 </form>
@@ -82,7 +80,7 @@ const LogIn = props => {
 
 const mapStateToProps = (state) => {
     return {
-        Success: state.authReducer.Success
+        success: state.authReducer.success
     }
 }
 

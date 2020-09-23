@@ -22,7 +22,7 @@ function App(props) {
   if (localStorage.getItem('token') && props.token === "") {
     props.forcedLogIn(localStorage.getItem('token'))
   }
-  if (props.rol == "admin") {
+  if (props.rol === "admin") {
     var myRoutes =
       (<Switch>
         <Route exact path="/admin" component={AddItem} />
@@ -70,7 +70,7 @@ function App(props) {
         <Switch>
           {myRoutes}
         </Switch>
-        <Footer/>
+        <Footer />
       </BrowserRouter>
     </>
   );

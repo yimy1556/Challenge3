@@ -1,0 +1,15 @@
+.container__maps{
+    text-align: center;
+    padding: 2em;
+}
+
+.container__maps p{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.container__maps iframe{
+    width:90%;
+    height: 450px;
+    border: 2px solid black;
+}
