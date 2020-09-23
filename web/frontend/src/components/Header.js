@@ -5,11 +5,12 @@ import Carrito from './Carrito'
 
 
 const Header = (props) => {
+    const logo = require('../images/logoblanco.png')
 
     return (
         <>
             <header>
-                <NavLink to="/" id="brand"><h1>Pyral</h1></NavLink>
+                <NavLink to="/" id="brand"><h1><img src={logo} style={{width: "15vw"}}></img></h1></NavLink>
                 <nav>
                     {props.userlogged.token !== ''
                         ?
