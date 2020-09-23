@@ -1,0 +1,93 @@
+.container__super__coverPageAbout{
+    display: flex;
+    justify-content: space-around;
+    background-color:#111F22;
+    align-items: center;
+}
+
+.container__super__coverPageAbout span{
+    color: whitesmoke;
+    font-size: 3em;
+}
+
+.container__sections {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    background-image: url('../images/backgroundAbout.jpg');
+    background-position: center;
+    background-size: 100%;
+    height: 100vh;
+  }
+  
+  .image1 {
+    margin: 10px;
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 75%,
+      75% 75%,
+      75% 100%,
+      50% 75%,
+      0% 75%
+    );
+    animation: clipOut 4s infinite;
+  }
+  
+  .image2 {
+    margin: 10px;
+    clip-path: polygon(
+      0% 20%,
+      40% 20%,
+      40% 0%,
+      100% 50%,
+      40% 100%,
+      40% 80%,
+      0% 80%
+    );
+    animation: clipUp 4s infinite;
+  }
+  
+  .image3 {
+    margin: 10px;
+    clip-path: polygon(
+      40% 0,
+      0% 20%,
+      40% 50%,
+      0% 80%,
+      20% 100%,
+      50% 70%,
+      80% 100%,
+      100% 80%,
+      70% 50%,
+      100% 20%,
+      80% 0%,
+      50% 30%
+    );
+    animation: clipUp3 7s infinite;
+  }
+
+  .image6 {
+    margin: 10px;
+    clip-path: polygon(50% 0%, 80% 50%, 50% 100%, 20% 50%);
+    animation: clipUp6 4s infinite;
+  }
+  
+  @keyframes clipOut {
+    from {
+      clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%);
+    }
+  }
+  
+  @keyframes clipUp {
+    from {
+      clip-path: polygon(0% 50%, 0% 50%, 0% 50%, 0% 50%, 0% 50%, 50% 0%, 50% 0%);
+    }
+  }
+  
+  @keyframes clipUp6 {
+    from {
+      clip-path: polygon(25% 25%, 50% 50%, 75% 75%, 100% 100%);
+    }
+  }
