@@ -6,8 +6,12 @@ const productController = {
         const { title, description, price, stock, type } = req.body
         console.log(req.files)
         const archivo = req.files.photo
-        archivo.mv(`uploads/${title}`)
-        const nombreArchivo = archivo.name
+        var extension = archivo.name.split('.')[1]
+        var nombreArchivo = req.body.title + '.' + extension
+        const serverURL = `uploads/${nombreArchivo}`
+
+        archivo.mv(serverURL)
+
         const newProduct = new Product({
             title,
             description, price,
@@ -18,10 +22,13 @@ const productController = {
             .then(() => res.json({ success: true, message: 'product added successfully' }))
             .catch((error) => res.json({ success: false, error }))
     },
-    getProducts: (req, res) => {
-        Product.find()
-            .then(product => res.json({ success: true, product }))
-            .catch(error => res.json({ success: false, error }))
+    getProducts: async (req, res) => {
+        console.log('hola')
+        const product = await Product.find()
+        res.json({
+            success: true,
+            product
+        })
     },
     getProductsByType: (req, res) => {
         Product.find({ ...req.params })

@@ -22,6 +22,17 @@ const itemActions = {
                 })
             }
         }
+    },
+    getProducts: () => {
+        return async (dispatch, getState) => {
+            const response = await axios.get(path + `/product/getProducts`);
+            const info = response.data;
+            console.log(info)
+            dispatch({
+                type: 'ADD_ITEM',
+                payload: info
+            })
+        }
     }
 }
 
