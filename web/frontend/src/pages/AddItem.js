@@ -31,8 +31,7 @@ const AddItem = (props) => {
             await props.addItem(formItem)
         }
     }
-    console.log(item)
-    
+
     return (
         <main>
             <div id="divFormulario">
@@ -57,10 +56,16 @@ const AddItem = (props) => {
     // input select(limited types)
 }
 
+const mapStateToProps = state => {
+    return{
+        item: state.itemReducer
+    }
+}
+
 const mapDispatchToProps = {
     addItem: itemActions.addItem
 }
 
-export default connect(null, mapDispatchToProps)(AddItem)
+export default connect(mapStateToProps, mapDispatchToProps)(AddItem)
 
 // export default AddItem

@@ -1,0 +1,53 @@
+
+#botonCarrito{
+    position: absolute;
+
+}
+
+#carrito{
+    height: 70px;
+    width: 70px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-right: 46vw;
+    background-color: rgb(80, 98, 255);
+
+
+}
+
+#menuCostado{
+    position: absolute;
+    position: fixed!important; 
+    background: white;
+    padding-top: 2vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    right: -40vw;
+    transition: right .3s linear;
+    z-index: 100;
+    background-color: rgb(80, 98, 255);
+    margin-top: -10vh;
+}
+
+#menuCostado h3{
+    margin-top: 4vh;
+}
+
+#ropaDelCarrito{
+    width: 30vw;
+    margin-top: 5vh;
+    background-color: white;
+    height: 20vh;
+}
+
+#butButton{
+    margin-top: 5vh;
+    background-color: white;
+    border: none;
+    padding: 1vh 1vw;
+    font-weight: bold;
+}

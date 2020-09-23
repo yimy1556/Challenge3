@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { GoogleLogin } from 'react-google-login';
 import React, { useState } from 'react';
 import authActions from '../redux/actions/authActions'
+import '../styles/RegisterLogIn.css'
 
 
 
@@ -106,6 +107,10 @@ const Register = (props) => {
                     </div>
                     <div id="divContraseña">
                         <input onChange={leerImput} type="password" id="pass" name="pass" placeholder="Write your password here"></input>
+                    </div>
+                    <div id="HaveAccount">
+                       <p>Have an account?</p>
+                       <button >Log in</button>
                     </div>
                     <button onClick={enviarInfo}>Create Account</button>
                 </form>

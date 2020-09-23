@@ -1,7 +1,7 @@
 const Product = require('../models/Product');
 
 const productController = {
-    addProduct: (req, res) => {
+    addProduct:async (req, res) => {
 
         const { title, description, price, stock, type } = req.body
         console.log(req.body);
@@ -16,7 +16,7 @@ const productController = {
             stock, type,
             photo: photo
         })
-        newProduct.save()
+        await newProduct.save()
             .then(() => res.json({ success: true, message: 'product added successfully' }))
             .catch((error) => res.json({ success: false, error }))
     },

@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Carrito from './Carrito'
 
 
 const Header = (props) => {
@@ -19,6 +20,7 @@ const Header = (props) => {
                             <NavLink to="/logOut">Logout</NavLink>
                             <h1>
                                 logged in as {props.userlogged.firstName}</h1>
+                            <Carrito />
                         </>
                         :
                         <>
@@ -26,6 +28,7 @@ const Header = (props) => {
                             <NavLink to="/shop">Shop</NavLink>
                             <NavLink to="/register">Register</NavLink>
                             <NavLink to="/login">LogIn</NavLink>
+                            <Carrito />
                         </>}
                 </nav>
             </header>
