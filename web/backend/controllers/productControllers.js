@@ -46,5 +46,16 @@ const productController = {
             .then(() => res.json({ success: true, response: 'The data has been modified successfully' }))
             .catch(error => res.json({ success: false, error }))
     },
+
+    getSelectProductId: async (req, res) => {
+        var id = req.params.id
+        try {
+            const product = await Product.findOne({ _id: id })
+            res.json({success:true, response: {product} })
+        }
+        catch {
+            res.json({ success: false, response: "Error geting product" })
+        }
+    },
 }
 module.exports = productController

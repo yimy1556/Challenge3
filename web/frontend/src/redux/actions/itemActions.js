@@ -33,7 +33,22 @@ const itemActions = {
                 payload: info
             })
         }
-    }
+    },
+
+    selectProductId: (productId) => {
+
+        return async (dispatch, getState) => {
+            const response = await axios.get(path + `/selectProduct/${productId}`)
+            console.log(response)
+            const product = response.data.response
+
+            dispatch({
+                type: 'GET_PRODUCT'
+            })
+            return (product)
+        }
+    },
+
 }
 
 export default itemActions
