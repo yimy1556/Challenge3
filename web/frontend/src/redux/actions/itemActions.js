@@ -20,7 +20,6 @@ const itemActions = {
                     type: 'ADD_ITEM',
                     payload: { title: item.title, description: item.description, photo: item.photo, price: item.price, stock: item.stock, type: item.type }
                 })
-                alert('We did it!')
             }
         }
     },
@@ -34,7 +33,16 @@ const itemActions = {
                 payload: info
             })
         }
-    }
+    },
+    setProduct: (x,content) => {
+        return async (dispatch, getState) => {
+            const response = await axios.put(path + `/product/addProducts`, { x, content })
+            dispatch({
+                type: 'ADD_ITEM',
+                payload: response.data
+            })
+        }
+    },
 }
 
 export default itemActions

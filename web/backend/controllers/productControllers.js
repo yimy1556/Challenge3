@@ -1,14 +1,16 @@
 const Product = require('../models/Product');
 
 const productController = {
-    addProduct:async (req, res) => {
-
+    addProduct: async (req, res) => {
+        console.log(req)
         const { title, description, price, stock, type } = req.body
-        console.log(req.body);
+        console.log(req.files)
         const archivo = req.files.photo
         var extension = archivo.name.split('.')[1]
         var nombreArchivo = req.body.title + '.' + extension
         const serverURL = `uploads/${nombreArchivo}`
+
+        const photo = `http://localhost:4000/uploads/${nombreArchivo}`
 
         archivo.mv(serverURL)
 
