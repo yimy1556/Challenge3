@@ -1,3 +1,8 @@
+
+#todoelhome{
+    background-color: black;
+}
+
 #divFormulario{
     display: flex;
     justify-content: center;
@@ -14,7 +19,7 @@ padding: 2vh 2vw;
 
 #divFormulario h3{
     margin-bottom: 5vh;
-    color: rgb(80, 98, 255);
+    color: white;
     margin-top: 10vh;
 }
 
@@ -36,12 +41,17 @@ padding: 2vh 2vw;
 #divFormulario button{
     margin-bottom: 4vh;
     font-weight: bold;
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: black;
+    border: 1px solid white;
     padding: 1vh 1vw;
 }
     
 
+#divFormulario button#createAccount:hover{
+    color: black;
+    background-color: white;
+}
 
 
 #divFormulario button span  {
@@ -57,10 +67,16 @@ padding-bottom: -1vh;
 #HaveAccount{
     display: flex;
     align-items: center;
+    color: white;
 }
 
 #HaveAccount button{
     border: none;
     margin-top: 3.8vh;
-    color: rgb(80, 98, 255);
+    color: white;
 }
+
+#HaveAccount button:hover{
+    text-decoration: underline;
+}
+

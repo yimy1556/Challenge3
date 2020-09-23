@@ -13,6 +13,8 @@ import './styles/styles.css'
 import './styles/RegisterLogIn.css'
 import LogOut from './components/LogOut';
 import Footer from './components/Footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App(props) {
@@ -53,6 +55,17 @@ function App(props) {
   return (
     <>
       <BrowserRouter>
+      <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         <Header />
         <Switch>
           {myRoutes}

@@ -35,7 +35,7 @@ const LogIn = props => {
          }
       },[props.success]) 
 
-      
+
     const responseGoogle = response => {
         props.logUser({
             mail: response.profileObj.email,
@@ -71,7 +71,7 @@ const LogIn = props => {
                        <p>Don't have an account?</p>
                        <button> Sign up</button>
                     </div>
-                    <button onClick={enviarInfo}>Log in</button>
+                    <button id="createAccount" onClick={enviarInfo}>Log in</button>
                 </form>
             </div>
 

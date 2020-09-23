@@ -1,6 +1,7 @@
 .container__links__footer{
     display: flex;
     justify-content: space-around;
+    border-top: 1px solid white;
 }
 
 .container__links__footer{
