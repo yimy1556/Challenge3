@@ -28,10 +28,11 @@ const Header = (props) => {
                             <NavLink to="/shop">Shop</NavLink>
                             <NavLink to="/register">Register</NavLink>
                             <NavLink to="/login">LogIn</NavLink>
+                            <Carrito />
 
                         </>}
                 </nav>
-                <Carrito />
+                
             </header>
         </>
     )

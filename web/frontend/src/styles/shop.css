@@ -1,0 +1,58 @@
+#paginaShop{
+    background-color: black;
+}
+
+#paginaShop h2{
+    color: white;
+    padding-top: 5vh;
+    margin-bottom: 5vh;
+    text-align: center;
+}
+
+#todoShop{
+    padding: 5vh 4vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+#articulo{
+    height: 300px;
+    width: 300px;
+    border: 1px solid black;
+    background-color: white;
+    margin: 1vh auto;
+    display:flex;
+    flex-direction: column;
+    padding: 2vh 2vw;
+}
+
+#articulo h3 {
+    align-self: center;
+    margin-bottom: 2vh;
+
+}
+
+#imagenShop{
+    align-self: center;
+    display: flex;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 32vh!important;
+    width: 32vh!important;
+    box-shadow: 0vw 0vw 0.4vw 0vw rgb(116, 116, 116);
+    border: 1px solid white;
+}
+
+#articulo p {
+    margin-top: 2vh;
+    align-self: center;
+}
+
+#precioShop {
+    font-weight: bold;
+}
+
+
+
+

@@ -7,10 +7,10 @@ import menos  from "../images/menos.png"
 
 
 
-
-
-
 const Carrito = (props) => {
+    const [precio, setprecio] = useState({
+        total: 0
+    })
 
     const [menuShow, setmenuShow] = useState({
         show: false
@@ -59,7 +59,7 @@ const Carrito = (props) => {
        
 
          <div id="menuCostado" style={menuShow.show ? {right:0} : {}}>
-             <div onClick={menuHamburguesa} id="botonCarrito" style={{ border: `none`}}>
+             <div onClick={menuHamburguesa} id="botonCarrito" style={{ border: `none`}} style={menuShow.show ? {display:'none'} :{display:'block'} }>
                  <div id="carrito" ><i class="fas fa-shopping-cart"></i></div>
               </div>
 
@@ -83,6 +83,11 @@ const Carrito = (props) => {
                     <button  onClick={borrarComentario} style={{backgroundColor:'white', border:'none'}}><i class="fas fa-trash-alt"></i></button>
                             <p style={{fontWeight:"bold"}}>350$</p>
                     </div>
+                </div>
+
+                <div id="totalPrecio">
+                    <p>Total</p>
+                    <p>230$</p>
                 </div>
             </div>
 

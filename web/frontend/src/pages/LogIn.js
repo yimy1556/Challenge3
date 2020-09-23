@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom'
 
 
 
+
 const LogIn = props => {
 
     const [ingresoUsuario, setIngresoUsuario] = useState({
@@ -28,12 +29,7 @@ const LogIn = props => {
         await props.logUser(ingresoUsuario)
     }
 
-    useEffect(() => {
-        if (props.success) {
-            alert("Welcome")
-        }
-    }, [props.success])
-
+  
 
     const responseGoogle = response => {
         props.logUser({
@@ -69,7 +65,7 @@ const LogIn = props => {
                         <p>Don't have an account?</p>
                         <NavLink to="/register"> Sign up</NavLink>
                     </div>
-                    <button onClick={enviarInfo}>Log in</button>
+                    <button id="createAccount" onClick={enviarInfo}>Log in</button>
                 </form>
             </div>
 
@@ -78,14 +74,10 @@ const LogIn = props => {
 
 }
 
-const mapStateToProps = (state) => {
-    return {
-        success: state.authReducer.success
-    }
-}
+
 
 const mapDispatchToProps = {
     logUser: authActions.logUser,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogIn)
+export default connect(null, mapDispatchToProps)(LogIn)

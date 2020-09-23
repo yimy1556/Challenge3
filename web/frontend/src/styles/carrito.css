@@ -13,7 +13,7 @@
     align-items: center;
     border-right: black 1px solid;
     height: 80%;
-    margin-top: 17px;
+    margin-top: 18px;
     padding: 0 10px;
 
 
@@ -52,6 +52,8 @@
     display: flex;
     justify-content: space-between;
     color: black;
+    border-bottom: 1px solid black;
+    padding-bottom: 2vh;
 }
 
 #butButton{
@@ -107,4 +109,10 @@ margin: 1vh ;
     font-weight: bold;
 }
 
-
+#totalPrecio{
+    display: flex;
+    color: black;
+    justify-content: space-between;
+    padding-top: 2vh;
+    font-weight: bold;
+}
