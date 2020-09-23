@@ -1,51 +1,59 @@
 import React from 'react'
 import itemActions from '../redux/actions/itemActions'
-import {connect} from 'react-redux'
-
-
+import { connect } from 'react-redux'
 
 class SelectProduct extends React.Component {
 
     state = {
-        selectProduct:null
+        selectProduct: null
     }
 
     async componentDidMount() {
         const productId = this.props.match.params.id
         const response = await this.props.selectProductId(productId)
-        console.log(response)        
+        console.log(response)
         this.setState({
             ...this.state,
             selectProduct: response.product
         })
     }
 
-    render(){
-     
+    render() {
+
 
         if (this.state.selectProduct === null) {
             return null
         } else if (this.state.selectProduct !== null) {
             var title = this.state.selectProduct.title
+            var description = this.state.selectProduct.description
             var price = this.state.selectProduct.price
+            var variants = this.state.selectProduct.variants
         }
 
-        console.log(this.state.selectProduct)
-        console.log(title)
-        console.log(price)
-        return(
+
+        console.log(variants)
+        return (
             <>
-            <div>
-        <p>{title}</p>
-        <p>${price}</p>
-            </div>
+                {variants.map(variant => {
+                    return (
+                        <div id="articulo">
+                        <h3>{title}</h3>
+                        <div id="imagenShop" style={{ backgroundImage: `url(${variant.photo})`, width: '20vw', height: '20vh' }}></div>
+                        <p id="descripcionShop">{description}</p>
+                        <p id="precioShop">{price}$</p>
+                        <p id="colorShop">{variant.color}</p>
+                    </div>
+                    )
+                })}
+
             </>
+
         )
     }
 }
 
 const mapDispatchToProps = {
-    selectProductId: itemActions.selectProductId 
+    selectProductId: itemActions.selectProductId
 }
 
 
