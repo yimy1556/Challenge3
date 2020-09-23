@@ -64,6 +64,8 @@ const Register = (props) => {
 
         } else {
             await props.newUser(user)
+                alert("Thank you for Signing Up")
+           
         }
     }
 

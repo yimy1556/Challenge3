@@ -1,4 +1,4 @@
-mongoose = require('mongoose');
+mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
     title: {

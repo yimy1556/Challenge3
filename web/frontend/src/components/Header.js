@@ -6,7 +6,6 @@ import Carrito from './Carrito'
 
 const Header = (props) => {
 
-    console.log(props)
     return (
         <>
             <header>
@@ -18,8 +17,8 @@ const Header = (props) => {
                             <NavLink to="/about">About</NavLink>
                             <NavLink to="/shop">Shop</NavLink>
                             <NavLink to="/logOut">Logout</NavLink>
-                            <h1>
-                                logged in as {props.userlogged.firstName}</h1>
+                            <h6>
+                                logged in as {props.userlogged.firstName}</h6>
                             <Carrito />
                         </>
                         :
@@ -28,9 +27,10 @@ const Header = (props) => {
                             <NavLink to="/shop">Shop</NavLink>
                             <NavLink to="/register">Register</NavLink>
                             <NavLink to="/login">LogIn</NavLink>
-                            <Carrito />
+
                         </>}
                 </nav>
+                <Carrito />
             </header>
         </>
     )
