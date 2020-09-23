@@ -46,8 +46,6 @@ const productController = {
         const { title, stock, color, size } = req.body
         console.log(title)
         console.log(req.files)
-
-
     },
 }
 module.exports = productController
