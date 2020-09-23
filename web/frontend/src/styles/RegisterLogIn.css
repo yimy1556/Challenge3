@@ -64,3 +64,9 @@ padding-bottom: -1vh;
     margin-top: 3.8vh;
     color: rgb(80, 98, 255);
 }
+
+
+#radioContainer input {
+    margin: 0;
+    background: red;
+}

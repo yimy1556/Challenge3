@@ -3,7 +3,7 @@ const Product = require('../models/Product');
 const productController = {
     addProduct: async (req, res) => {
         console.log(req)
-        const { title, description, price, stock, type } = req.body
+        const { title, description, price, stock, size, color } = req.body
         console.log(req.files)
         const archivo = req.files.photo
         var extension = archivo.name.split('.')[1]
@@ -15,7 +15,7 @@ const productController = {
         const newProduct = new Product({
             title,
             description, price,
-            stock, type,
+            variants: [{ stock, size, color }],
             photo: `http://localhost:4000/uploads/${nombreArchivo}`
         })
         await newProduct.save()
@@ -42,7 +42,7 @@ const productController = {
     },
     updateProduct: (req, res) => {
         const { _id } = req.body
-        Recipes.findOneAndUpdate({ _id }, { $set: { ...req.body } })
+        Product.findOneAndUpdate({ _id }, { $set: { ...req.body } })
             .then(() => res.json({ success: true, response: 'The data has been modified successfully' }))
             .catch(error => res.json({ success: false, error }))
     },
