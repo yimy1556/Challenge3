@@ -22,16 +22,16 @@ const AddItem = props => {
 
         } else {
 
-            const formItem = new FormData()
-            formItem.append('title', item.title)
-            formItem.append('description', item.description)
-            formItem.append('photo', item.photo)
-            formItem.append('price', item.price)
-            formItem.append('stock', item.stock)
-            formItem.append('color', item.color)
-            formItem.append('size', item.size)
+            const fd = new FormData()
+            fd.append('title', item.title)
+            fd.append('description', item.description)
+            fd.append('photo', item.photo)
+            fd.append('price', item.price)
+            fd.append('stock', item.stock)
+            fd.append('color', item.color)
+            fd.append('size', item.size)
 
-            await props.addItem(formItem)
+            await props.addItem(fd)
         }
     }
     const putVariant = async e => {
@@ -49,7 +49,7 @@ const AddItem = props => {
             formItem.append('color', item.color)
             formItem.append('size', item.size)
 
-            await props.addItem(formItem)
+            await props.putVariant(formItem)
         }
     }
     console.log(item)
@@ -85,8 +85,12 @@ const AddItem = props => {
                     }
                     <label htmlFor="photo">Photo</label>
                     <input onChange={readInput} type='file' name='photo' placeholder='Photo' />
-                    <label>Price $</label>
-                    <input onChange={readInput} type='number' name='price' placeholder='Price' />
+                    {item.newProduct == "true" &&
+                        <>
+                            <label>Price $</label>
+                            <input onChange={readInput} type='number' name='price' placeholder='Price' />
+                        </>
+                    }
                     <label>Stock</label>
                     <input onChange={readInput} type='number' name='stock' placeholder='Stock' />
                     <label>Size</label>
@@ -121,6 +125,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     addItem: itemActions.addItem,
+    putVariant: itemActions.putVariant,
     getProducts: itemActions.getProducts
 }
 

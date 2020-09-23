@@ -43,10 +43,11 @@ const productController = {
             .catch(error => res.json({ success: false, error }))
     },
     updateProduct: (req, res) => {
-        const { _id } = req.body
-        Product.findOneAndUpdate({ _id }, { $set: { ...req.body } })
-            .then(() => res.json({ success: true, response: 'The data has been modified successfully' }))
-            .catch(error => res.json({ success: false, error }))
+        const { title, stock, color, size } = req.body
+        console.log(title)
+        console.log(req.files)
+
+
     },
 }
 module.exports = productController

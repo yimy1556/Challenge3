@@ -34,13 +34,14 @@ const itemActions = {
             })
         }
     },
-    setProduct: (x,content) => {
+    putVariant: (formItem) => {
         return async (dispatch, getState) => {
-            const response = await axios.put(path + `/product/addProducts`, { x, content })
-            dispatch({
-                type: 'ADD_ITEM',
-                payload: response.data
+            const response = await axios.put(path + `/product/addProduct`, formItem, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             })
+            console.log(response.data)
         }
     },
 }
