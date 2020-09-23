@@ -24,7 +24,6 @@ const Carrito = (props) => {
         })       
     }
     const cerrar = require('../images/cerrar.png')
-    const carrito = require('../images/carrito.png')
 
     const borrarComentario = async e =>{
         e.preventDefault()
@@ -38,10 +37,13 @@ const Carrito = (props) => {
 
     const restar = e =>{
         e.preventDefault()
-        setcantidad ({
-            ...cantidad,
-            cantidad: cantidad.cantidad - 1 
-        })       
+        if (cantidad.cantidad > 1){
+            setcantidad ({
+                ...cantidad,
+                cantidad: cantidad.cantidad - 1 
+            })   
+        }
+          
     }
 
     const sumar = e =>{
@@ -58,9 +60,10 @@ const Carrito = (props) => {
 
          <div id="menuCostado" style={menuShow.show ? {right:0} : {}}>
              <div onClick={menuHamburguesa} id="botonCarrito" style={{ border: `none`}}>
-                 <div id="carrito" style={{backgroundImage: `url(${carrito})`}}></div>
+                 <div id="carrito" ><i class="fas fa-shopping-cart"></i></div>
               </div>
-              
+
+            
             <button onClick={menuHamburguesa} style={{backgroundColor: 'transparent', border:'none'}} ><img src={cerrar} style={{width:'2em', marginTop:'2vh'}}/></button>
             <h3>Shopping Cart</h3>
             <div id="ropaDelCarrito">
@@ -77,7 +80,7 @@ const Carrito = (props) => {
                     </div>
 
                     <div id="borrarPrecio">
-                    <button  onClick={borrarComentario} style={{backgroundColor:'white', border:'none'}}><img src={deletecoment} style={{width: '1.5vw'}}></img></button>
+                    <button  onClick={borrarComentario} style={{backgroundColor:'white', border:'none'}}><i class="fas fa-trash-alt"></i></button>
                             <p style={{fontWeight:"bold"}}>350$</p>
                     </div>
                 </div>

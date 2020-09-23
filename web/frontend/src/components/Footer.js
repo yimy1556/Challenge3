@@ -6,13 +6,14 @@ import instagram from '../images/instagram.svg'
 import facebook from '../images/facebook.svg'
 
 const Footer = () => {
+    const logo = require('../images/pyral.png')
 
     return (
         <>
             <footer >
                 <nav className="container_links_footer">
                     <div>
-                        <NavLink to="/" id="brand"><h1>Pyral</h1></NavLink>
+                        <NavLink to="/" id="brand"><h1><img src={logo} style={{width: "10vw"}}></img></h1></NavLink>
                     </div>
                     <div>
                         <NavLink to="/"><img src={whatsapp} alt="" /></NavLink>
