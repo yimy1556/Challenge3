@@ -44,15 +44,25 @@ const productController = {
     },
     updateProduct: (req, res) => {
         const { title, stock, color, size } = req.body
-        console.log(title)
         console.log(req.files)
-    },
+        const archivo = req.files.photo
+        var extension = archivo.name.split('.')[1]
+        var nombreArchivo = req.body.title + '.' + extension
+        const serverURL = `uploads/${nombreArchivo}`
 
+        const photo = `http://localhost:4000/uploads/${nombreArchivo}`
+
+        archivo.mv(serverURL)
+
+        Product.findOneAndUpdate({ title }, { $push: { variants: { stock, color, size, photo } } })
+            .then(() => res.json({ success: true, response: 'The data has been modified successfully' }))
+            .catch(error => res.json({ success: false, error }))
+    },
     getSelectProductId: async (req, res) => {
         var id = req.params.id
         try {
             const product = await Product.findOne({ _id: id })
-            res.json({success:true, response: {product} })
+            res.json({ success: true, response: { product } })
         }
         catch {
             res.json({ success: false, response: "Error geting product" })
