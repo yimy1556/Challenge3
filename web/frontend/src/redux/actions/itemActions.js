@@ -12,14 +12,15 @@ const itemActions = {
                     'Content-Type': 'multipart/form-data'
                 }
             })
-            const item = response.data
+            // const item = response.data
             if (!response.data.success) {
                 alert('Something went wrong')
             } else {
-                dispatch({
-                    type: 'ADD_ITEM',
-                    payload: { title: item.title, description: item.description, photo: item.photo, price: item.price, stock: item.stock, type: item.type }
-                })
+                alert('the product was uploaded successfully')
+                // dispatch({
+                //     type: 'ADD_ITEM',
+                //     payload: { title: item.title, description: item.description, photo: item.photo, price: item.price, stock: item.stock, type: item.type }
+                // })
             }
         }
     },
