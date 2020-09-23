@@ -13,13 +13,16 @@
     padding: 5vh 4vw;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
+
 #articulo{
     height: 300px;
     width: 300px;
     border: 1px solid black;
     background-color: white;
-    margin: 1vh auto;
+    color: black;
+    margin: 1vh auto!important;
     display:flex;
     flex-direction: column;
     padding: 2vh 2vw;

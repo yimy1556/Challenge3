@@ -19,12 +19,9 @@ class Shop extends React.Component {
                 <div id="todoShop">
                     {this.props.products == 0 ? <p>no products yet</p> :
                         <>
-                            {
-                                this.props.products.map(product => {
-                                    console.log(product)
+                            {this.props.products.map(product => {
                                     return (
                                         <>
-
                                             <Product product={product} />
                                         </>
                                     )
