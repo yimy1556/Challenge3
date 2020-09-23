@@ -15,15 +15,17 @@ const Header = (props) => {
                     {props.userlogged.token !== ''
                         ?
                         <>
+                            <NavLink to="/">Home</NavLink>
                             <NavLink to="/about">About</NavLink>
                             <NavLink to="/shop">Shop</NavLink>
                             <NavLink to="/logOut">Logout</NavLink>
-                            <h6>
+                            <h6 style={{marginLeft:"1vw", marginBottom:"-3vh"}}>
                                 logged in as {props.userlogged.firstName}</h6>
                             <Carrito />
                         </>
                         :
                         <>
+                            <NavLink to="/">Home</NavLink>
                             <NavLink to="/about">About</NavLink>
                             <NavLink to="/shop">Shop</NavLink>
                             <NavLink to="/register">Register</NavLink>
