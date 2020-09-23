@@ -1,0 +1,23 @@
+
+.container_footer{
+    width: 100%;
+    display: flex;
+
+}
+.container_links_footer{
+    display: flex;
+    justify-content: space-around;
+}
+
+.container_links_footer{
+    background-color: rgb(0, 0, 0);
+}
+
+.container_links_footer div:nth-child(2) img{
+    width: 1.5em;
+    padding-top: 2em;
+}
+
+.container_links_footer  div:nth-child(3) a{
+    color: whitesmoke;
+}

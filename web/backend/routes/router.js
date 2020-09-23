@@ -12,6 +12,9 @@ router.route("/user/login")
     .get(passport.authenticate('jwt', { session: false }), userController.getUser)
     .post(userController.loginUser)
 
+router.route("/product/getProducts")
+    .get(productController.getProducts)
+
 router.route("/product/addProduct")
     .post(productController.addProduct)
 

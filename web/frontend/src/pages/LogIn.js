@@ -2,7 +2,7 @@ import { GoogleLogin } from 'react-google-login';
 import React, { useState, useEffect } from 'react';
 import authActions from '../redux/actions/authActions'
 import { connect } from 'react-redux'
-
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -28,19 +28,18 @@ const LogIn = props => {
         await props.logUser(ingresoUsuario)
     }
 
-    // useEffect(()=>{
-    //      if(props.success){
-    //          alert("Welcome")
-    //         props.history.push("/home")  
-    //      }
-    //  },[props.success]) 
+    useEffect(() => {
+        if (props.success) {
+            alert("Welcome")
+        }
+    }, [props.success])
+
 
     const responseGoogle = response => {
         props.logUser({
             mail: response.profileObj.email,
             pass: response.profileObj.googleId
         })
-        props.history.push("/home")
     }
 
 
@@ -67,8 +66,8 @@ const LogIn = props => {
                         <input onChange={leerImput} type="password" id="pass" name="pass" placeholder="Write your password here"></input>
                     </div>
                     <div id="HaveAccount">
-                       <p>Don't have an account?</p>
-                       <button> Sign up</button>
+                        <p>Don't have an account?</p>
+                        <NavLink to="/register"> Sign up</NavLink>
                     </div>
                     <button onClick={enviarInfo}>Log in</button>
                 </form>
@@ -79,10 +78,14 @@ const LogIn = props => {
 
 }
 
-
+const mapStateToProps = (state) => {
+    return {
+        success: state.authReducer.success
+    }
+}
 
 const mapDispatchToProps = {
     logUser: authActions.logUser,
 }
 
-export default connect(null, mapDispatchToProps)(LogIn)
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn)
