@@ -7,14 +7,16 @@ html * {
 
 header{
     width: 100vw;
-    background-color: rgb(80, 98, 255);
+    background-color: rgb(0, 0, 0);
     color: whitesmoke;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2vh 5vw;
     padding-right: 10vw;
+    border-bottom: 1px solid white;
 }
+
 a{
     color: whitesmoke;
     justify-content: space-between;
