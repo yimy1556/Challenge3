@@ -28,7 +28,7 @@ const itemActions = {
         return async (dispatch, getState) => {
             const response = await axios.get(path + `/product/getProducts`);
             const info = response.data;
-            console.log(info)
+       
             dispatch({
                 type: 'ADD_ITEM',
                 payload: info
@@ -50,7 +50,7 @@ const itemActions = {
 
         return async (dispatch, getState) => {
             const response = await axios.get(path + `/selectProduct/${productId}`)
-            console.log(response)
+         
             const product = response.data.response
 
             dispatch({

@@ -52,7 +52,7 @@
     align-self: center;
 }
 
-#precioShop {
+#precioShop, #colorShop {
     font-weight: bold;
 }
 

@@ -5,9 +5,10 @@ import '../styles/shop.css'
 
 class Product extends React.Component {
 
+
     render() {
-        console.log(this.props.product)    
-            return (
+        console.log(this.props.product)
+        return (
             <>
                 <NavLink to={`./selectProduct/${this.props.product._id}`} className="linkProduct">
                     <div id="articulo">

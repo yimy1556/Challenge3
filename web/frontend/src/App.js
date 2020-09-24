@@ -38,6 +38,7 @@ function App(props) {
         <Route exact path="/about" component={About} />
         <Route exact path="/shop" component={Shop} />
         <Route path="/logOut" component={LogOut} />
+        <Route path="/selectProduct/:id" component={SelectProduct}/>
         <Redirect to="/" />
       </Switch>
       )
