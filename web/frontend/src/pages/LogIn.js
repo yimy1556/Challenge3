@@ -5,8 +5,6 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 
-
-
 const LogIn = props => {
 
     const [ingresoUsuario, setIngresoUsuario] = useState({
@@ -29,7 +27,7 @@ const LogIn = props => {
         await props.logUser(ingresoUsuario)
     }
 
-  
+
 
     const responseGoogle = response => {
         props.logUser({
@@ -41,7 +39,7 @@ const LogIn = props => {
 
 
     return (
-        <div id="todoelhome">
+        <div style={{ backgroundImage: 'url(https://www.onlygfx.com/wp-content/uploads/2017/07/paint-texture-black-and-white-3.jpeg)', height: '100vh', maxWidth: '100vw', backgroundSize: 'cover', backgroundPosition: '40% 0%' }}>
 
             <div id="divFormulario">
                 <form>
@@ -66,7 +64,7 @@ const LogIn = props => {
                         <NavLink to="/register"> Sign up</NavLink>
                         <NavLink to="/forgotPass">Forgot password?</NavLink>
                     </div>
-                    <button className="createAccount" onClick={enviarInfo}>Log in</button>
+                    <button className="createAccount button" onClick={enviarInfo}>Log in</button>
                 </form>
             </div>
 

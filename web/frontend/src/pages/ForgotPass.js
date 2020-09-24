@@ -20,10 +20,7 @@ class ForgotPass extends React.Component{
             email: value,
             error:""
         })
-        
-    
     }
-
 
     submit =  async e => {
  

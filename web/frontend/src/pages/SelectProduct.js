@@ -1,6 +1,8 @@
 import React from 'react'
 import itemActions from '../redux/actions/itemActions'
 import { connect } from 'react-redux'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 class SelectProduct extends React.Component {
 
@@ -20,7 +22,7 @@ class SelectProduct extends React.Component {
 
     render() {
 
-
+        
         if (this.state.selectProduct === null) {
             return null
         } else if (this.state.selectProduct !== null) {
@@ -34,6 +36,7 @@ class SelectProduct extends React.Component {
         console.log(variants)
         return (
             <>
+            <Header/>
                 {variants.map(variant => {
                     return (
                         <div id="articulo">
@@ -45,7 +48,7 @@ class SelectProduct extends React.Component {
                     </div>
                     )
                 })}
-
+                <Footer></Footer>
             </>
 
         )
