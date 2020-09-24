@@ -64,6 +64,7 @@ const LogIn = props => {
                     <div id="HaveAccount">
                         <p>Don't have an account?</p>
                         <NavLink to="/register"> Sign up</NavLink>
+                        <NavLink to="/forgotPass">Forgot password?</NavLink>
                     </div>
                     <button className="createAccount" onClick={enviarInfo}>Log in</button>
                 </form>

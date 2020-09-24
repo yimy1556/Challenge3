@@ -5,6 +5,7 @@ import Register from './pages/Register';
 import About from './pages/About';
 import Shop from './pages/Shop';
 import SelectProduct from './pages/SelectProduct'
+import ForgotPass from './pages/ForgotPass'
 import Header from './components/Header';
 import AddItem from './pages/AddItem'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
@@ -49,6 +50,7 @@ function App(props) {
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={LogIn} />
       <Route exact path="/about" component={About} />
+      <Route exact path="/forgotPass" component={ForgotPass}/>
       <Route exact path="/shop" component={Shop} />
       <Route path="/selectProduct/:id" component={SelectProduct}/>
       <Redirect to="/" />

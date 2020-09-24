@@ -2,6 +2,18 @@ const User = require("../models/User")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const message = "Mail or Password incorrect"
+const nodeMailer = require('nodemailer')
+
+
+var transport = nodeMailer.createTransport({
+    port:465, 
+    host:"smtp.gmail.com",
+    auth: {
+        pass: "Carla2020",
+        user: "carlabrunni79@gmail.com"
+    },
+    tls: { rejectUnauthorized: false }
+})
 
 const userController = {
 	createUser: async (req, res) => {
@@ -52,7 +64,55 @@ const userController = {
 		console.log('este es el forcedLogin')
 		const { firstName, lastName, mail, rol } = req.user
 		res.json({ firstName, lastName, mail, rol })
-	}
+	},
+
+	getNewPass: async (req, res) =>{
+	
+		mailSent = req.body.mail
+		
+
+        try{
+            
+			await User.findOne({mail:mailSent})
+			console.log(User.findOne({mail:mailSent}))
+			
+            var length = 8
+            var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+            var newPass = ""
+            for (var i = 0, n = charset.length; i < length; ++i) {
+                newPass += charset.charAt(Math.floor(Math.random() * n));
+            }
+            const passwordHashed = bcryptjs.hashSync(newPass, 10)
+            console.log(passwordHashed)
+				const user = await User.findOneAndUpdate({mail: mailSent}, {password: passwordHashed})
+				
+             
+                var mailOptions = {
+                    from: "Pyral <notresponse@notreply.com>",
+                    sender: "Pyral <notresponse@notreply.com>",
+                    to: `${user.mail}`,
+                    subject: "New Password",
+                    html:  `<div>
+                    <h1>This is your new password:${newPass}, continue using Pyral :)</h1>
+                    <h2>Please sign up again<h2>        
+                    </>`,
+                }
+                transport.sendMail(mailOptions, (error, info) => {
+                  
+                    res.send("email enviado")
+                })
+
+           
+
+        }catch(error){
+            res.json({
+                success:false,
+                response: "Error getting account"
+            })
+        }
+    }
+
+
 }
 
 module.exports = userController
