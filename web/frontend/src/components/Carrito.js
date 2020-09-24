@@ -53,10 +53,11 @@ const Carrito = (props) => {
         })
     }
 
+    
     return (
         <>
-
-
+           <div className='DivCerrarCarrito' onClick={menuHamburguesa} style={!menuShow.show ? {display: 'none', opacity: 0} : { display: 'block' }}></div>
+          
             <div id="menuCostado" style={menuShow.show ? { right: 0 } : {}}>
                 <div onClick={menuHamburguesa} id="botonCarrito" style={{ border: `none` }} style={menuShow.show ? { display: 'none' } : { display: 'block' }}>
                     <div id="carrito" ><ShoppingCartIcon></ShoppingCartIcon></div>
