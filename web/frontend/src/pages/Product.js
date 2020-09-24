@@ -1,0 +1,23 @@
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+
+class Product extends React.Component {
+
+    render() {
+        console.log(this.props)
+        return (
+            <>
+                <NavLink to={`./selectProduct/${this.props.product._id}`} className="linkProduct">
+                    <div id="articulo">
+                        <h3>{this.props.product.title}</h3>
+                        <div id="imagenShop" style={{ backgroundImage: `url(${this.props.product.photo})`, width: '20vw', height: '20vh' }}></div>
+                        <p id="descripcionShop">{this.props.product.description}</p>
+                        <p id="precioShop">{this.props.product.price}$</p>
+                    </div>
+                </NavLink>
+            </>
+        )
+    }
+}
+
+export default Product

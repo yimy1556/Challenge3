@@ -3,7 +3,7 @@ import { GoogleLogin } from 'react-google-login';
 import React, { useState } from 'react';
 import authActions from '../redux/actions/authActions'
 import '../styles/RegisterLogIn.css'
-
+import { toast } from 'react-toastify';
 
 
 
@@ -35,37 +35,36 @@ const Register = (props) => {
         const reMail = RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
         const rePass = RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[!{}[\]@#$%\^&*)(+=._-]).{5,}/)
         if (user.firstName === '' || user.lastName === '' || user.mail === '' || user.pass === '') {
-            alert("please complete all fields")
+            toast("please complete all fields")
 
             // name validation
         } else if (user.firstName.length < 3) {
-            alert("Your name must contain at least 3 characters")
+            toast("Your name must contain at least 3 characters")
         } else if (!uname.test(user.firstName)) {
-            alert("Your name must contain only numbers, '_' and '.'")
+            toast("Your name must contain only uppercase letter, lowercase letter, numbers, numbers, '_' and '.'")
 
             // lastName validation
         } else if (user.lastName.length < 3) {
-            alert("Your lastName must contain at least 3 characters")
+            toast("Your lastName must contain at least 3 characters")
         } else if (!uname.test(user.lastName)) {
-            alert("Your lastName must contain only numbers, '_' and '.'")
+            toast("Your lastName must contain only uppercase letter, lowercase letter, numbers, '_' and '.'")
 
             // mail validation
         } else if (user.mail.length < 6) {
-            alert("Your mail must contain at least 6 characters")
+            toast("Your mail must contain at least 6 characters")
         } else if (!reMail.test(user.mail)) {
-            alert("Your mail must be a valid mal, for exaple: 'example@server.com'")
+            toast("Your mail must be a valid mal, for exaple: 'example@server.com'")
 
             // pass validation
         } else if (user.pass.length < 5) {
-            alert("Your password must contain at least 5 characters")
+            toast("Your password must contain at least 5 characters")
         } else if (!rePass.test(user.pass)) {
-            alert("Your Password must include at least one uppercase letter, at least one lowercase letter, and at least one number. ")
+            toast("Your Password must include at least one uppercase letter, at least one lowercase letter, and at least one number. ")
 
 
         } else {
             await props.newUser(user)
-                alert("Thank you for Signing Up")
-           
+            toast("Thank you for Signing Up")
         }
     }
 
@@ -76,7 +75,7 @@ const Register = (props) => {
             mail: response.profileObj.email,
             pass: response.profileObj.googleId,
         })
-        alert("Thank you for signing up")
+        toast("Thank you for signing up")
 
     }
 
@@ -114,7 +113,7 @@ const Register = (props) => {
                        <p>Have an account?</p>
                        <button >Log in</button>
                     </div>
-                    <button onClick={enviarInfo}>Create Account</button>
+                    <button onClick={enviarInfo} id="createAccount">Create Account</button>
                 </form>
             </div>
         </div>

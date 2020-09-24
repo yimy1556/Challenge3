@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { toast } from 'react-toastify';
+
 
 var path = 'http://localhost:4000/api'
 
@@ -23,8 +25,9 @@ const authActions = {
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/login`, logUser)
             if (!response.data.success) {
-                alert('Something went wrong')
+                toast('Something went wrong')
             } else {
+                toast('Welcome')
                 dispatch({
                     type: 'LOG_USER',
                     payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol, success: response.data.success }

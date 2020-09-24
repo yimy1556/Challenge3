@@ -2,31 +2,39 @@ import React from 'react'
 import { connect } from 'react-redux'
 import itemActions from '../redux/actions/itemActions'
 import itemReducer from '../redux/reducers/itemReducer'
+import '../styles/shop.css'
+import { NavLink } from 'react-router-dom'
+import Product from '../pages/Product'
+
 
 class Shop extends React.Component {
+
     componentDidMount() {
         this.props.getProducts()
     }
     render() {
-        console.log(this.props.products)
-
         return (
-            <>
-                {this.props.products == 0 ? <p>no products yet</p> :
-                    <>
-                        {
-                            this.props.products.map(product => {
-                                return (
-                                    <>
-                                        <h1>{product.title}</h1>
-                                        <div style={{ backgroundImage: `url(${product.photo})`, width: '20vw', height: '20vh' }}></div>
-                                    </>
-                                )
-                            })
-                        }
-                    </>
-                }
-            </>
+            <div id="paginaShop">
+                <h2>All Products</h2>
+                <div id="todoShop">
+                    {this.props.products == 0 ? <p>no products yet</p> :
+                        <>
+                            {
+                                this.props.products.map(product => {
+                                    console.log(product)
+                                    return (
+                                        <>
+
+                                            <Product product={product} />
+                                        </>
+                                    )
+
+                                })
+                            }
+                        </>
+                    }
+                </div>
+            </div>
         )
     }
 }
