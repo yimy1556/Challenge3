@@ -67,7 +67,7 @@ const Carrito = (props) => {
                 <button onClick={menuHamburguesa} style={{ backgroundColor: 'transparent', border: 'none' }} ><CancelIcon style={{ color: "white", fontSize: 40 }}></CancelIcon></button>
                 <h3>Shopping Cart</h3>
                 <div id="ropaDelCarrito">
-                    <ItemCarrito />
+                    {props.listProduct.map(prod => <ItemCarrito product={prod}/>)}
 
                     <div id="totalPrecio">
                         <p>Total</p>
@@ -85,10 +85,12 @@ const Carrito = (props) => {
 
 
 }
-const mapStateToProps = (state) => {
-    return {
-        //     user: state.userReducer
-    }
-}
 
-export default connect(mapStateToProps)(Carrito)    
+const mapStateToProps = state => {
+    return {
+        listProduct : state.shoppingCartReducer.listProduct,
+	}
+}
+const mapDispatchToProps = {
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Carrito)

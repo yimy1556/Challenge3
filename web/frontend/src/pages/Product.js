@@ -3,7 +3,6 @@ import '../styles/shop.css'
 import React, { useState } from 'react';
 import Header from '../components/Header';
 
-
 const Product = (props) => {
 
     const [foto, setfoto] = useState({
@@ -19,25 +18,25 @@ const Product = (props) => {
     console.log(props)
 
     const variantsAux = []
-    console.log("hola",variantsAux)
+    console.log("hola", variantsAux)
 
-   
-    const borrarRepe = (variants) => { 
-            if(variants === undefined) return     variantsAux
+
+    const borrarRepe = (variants) => {
+        if (variants === undefined) return variantsAux
         variants.forEach(vari => {
-             if(variantsAux.filter(varia => varia.color === vari.color).length !== 0)
-                 return
-             variantsAux.push(vari)
-         })
-         return variantsAux}
+            if (variantsAux.filter(varia => varia.color === vari.color).length !== 0)
+                return
+            variantsAux.push(vari)
+        })
+        return variantsAux
+    }
 
-         borrarRepe(props.product.variants)
+    borrarRepe(props.product.variants)
 
 
 
     return (
         <>
-
             <div id="articulo">
                 <h3>{props.product.title}</h3>
                 <div id="imagenShop" style={{ backgroundImage: `url(${foto.color})` }}> </div>
