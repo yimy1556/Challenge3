@@ -17,6 +17,8 @@ class About extends React.Component {
                     </p>
                     <img src={photoStore} alt="" />
                 </div>
+                
+                
             </>
         )
     }

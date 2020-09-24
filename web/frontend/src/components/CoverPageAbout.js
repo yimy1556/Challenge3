@@ -23,9 +23,6 @@ const CoverPageAbout = () => {
                         <img src={image01} alt="Photo by Andy Watkins on Unsplash" height="250px" width="300px" className="image2"
                         />
                     </section>
-                    <section>
-                        <img src={image02} alt="Photo by Andy Watkins on Unsplash" height="250px" width="300px" className="image6" />
-                    </section>
                 </div>
                 <div>
                     <span>
