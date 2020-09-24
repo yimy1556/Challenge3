@@ -113,7 +113,7 @@ const Register = (props) => {
                        <p>Have an account?</p>
                        <button >Log in</button>
                     </div>
-                    <button onClick={enviarInfo} id="createAccount">Create Account</button>
+                    <button onClick={enviarInfo} className="createAccount">Create Account</button>
                 </form>
             </div>
         </div>

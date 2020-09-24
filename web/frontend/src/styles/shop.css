@@ -17,7 +17,7 @@
 }
 
 #articulo{
-    height: 300px;
+    height: 400px;
     width: 300px;
     border: 1px solid black;
     background-color: white;
@@ -41,8 +41,8 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 32vh!important;
-    width: 32vh!important;
+    height: 190px;
+    width: 190px;
     box-shadow: 0vw 0vw 0.4vw 0vw rgb(116, 116, 116);
     border: 1px solid white;
 }
@@ -58,4 +58,50 @@
 
 
 
+#fotosChicas{
+    height: 8vh;
+    width: 190px;
+    background-color: black;
+    border: 1px solid black;
+    margin-top: 1vh;
+    align-self: center;
+    padding: 1vh 1vw;
+    display: flex;
+}
 
+#imagenShopChica{
+    align-self: center;
+    display: flex;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid black;
+    margin-right: 1vw;
+}
+
+
+#divBotonVerMas{
+display: flex;
+justify-content: center;
+}
+
+
+button.createAccount{
+    margin-bottom: 4vh;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    padding: 1vh 1vw;
+    margin-bottom: -2vh;
+
+}
+
+button.createAccount:hover{
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+
+
+}
