@@ -58,7 +58,7 @@ class ForgotPass extends React.Component{
             <h3 className="title">Change your password</h3>
         
             <div style={{marginTop:"2rem",marginBottom:"2rem"}} className="signContainer">
-                <h4 style={{color:"whitesmoke",textAlign:"center",fontSize:"3rem",margin:"2rem"}}>If you forgot your password please enter your email</h4>
+                <h4 style={{color:"whitesmoke",textAlign:"center",fontSize:"3rem",margin:"2rem"}}></h4>
                 <div className="inputs">
                     <span className={this.state.error === "" ? "" : "logError"}>{this.state.error}</span>
                     <input className="account" onChange={this.getForm} name="email" type="text" placeholder="Your email"></input>

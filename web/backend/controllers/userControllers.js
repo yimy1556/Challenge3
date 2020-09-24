@@ -67,14 +67,11 @@ const userController = {
 	},
 
 	getNewPass: async (req, res) =>{
-	
 		mailSent = req.body.mail
-		
+		console.log(mailSent)
 
         try{
-            
 			await User.findOne({mail:mailSent})
-			console.log(User.findOne({mail:mailSent}))
 			
             var length = 8
             var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -82,11 +79,11 @@ const userController = {
             for (var i = 0, n = charset.length; i < length; ++i) {
                 newPass += charset.charAt(Math.floor(Math.random() * n));
             }
-            const passwordHashed = bcryptjs.hashSync(newPass, 10)
-            console.log(passwordHashed)
+            const passwordHashed = bcrypt.hashSync(newPass, 10)
+           
 				const user = await User.findOneAndUpdate({mail: mailSent}, {password: passwordHashed})
+				console.log
 				
-             
                 var mailOptions = {
                     from: "Pyral <notresponse@notreply.com>",
                     sender: "Pyral <notresponse@notreply.com>",
@@ -99,10 +96,8 @@ const userController = {
                 }
                 transport.sendMail(mailOptions, (error, info) => {
                   
-                    res.send("email enviado")
+                    res.send("send email")
                 })
-
-           
 
         }catch(error){
             res.json({
@@ -111,7 +106,6 @@ const userController = {
             })
         }
     }
-
 
 }
 
