@@ -9,8 +9,9 @@ const Header = (props) => {
 
     return (
         <>
+
             <header>
-                <NavLink to="/" id="brand"><h1><img src={logo} style={{width: "15vw"}}></img></h1></NavLink>
+                <NavLink to="/" id="brand"><h1>Pyral</h1></NavLink>
                 <nav>
                     {props.userlogged.token !== ''
                         ?
@@ -19,8 +20,8 @@ const Header = (props) => {
                             <NavLink to="/about">About</NavLink>
                             <NavLink to="/shop">Shop</NavLink>
                             <NavLink to="/logOut">Logout</NavLink>
-                            <h6 style={{marginLeft:"1vw", marginBottom:"-3vh"}}>
-                                logged in as {props.userlogged.firstName}</h6>
+                            {/* <h6 style={{ marginLeft: "1vw", marginBottom: "-3vh" }}>
+                                logged in as {props.userlogged.firstName}</h6> */}
                             <Carrito />
                         </>
                         :
@@ -34,7 +35,7 @@ const Header = (props) => {
 
                         </>}
                 </nav>
-                
+
             </header>
         </>
     )
