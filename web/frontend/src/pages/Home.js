@@ -1,21 +1,22 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import Slider from '../components/Slider'
 import '../styles/home.css'
 import InfoContainer from '../components/InfoContainer'
+import PhotoContainer from '../components/PhotoContainer'
 
 class Home extends React.Component {
     render() {
         return (
             <><Header />
-                <div style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1550246141-363ccad4018d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80)', height: '87vh', maxWidth: '100vw' }}>
+                <div style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1550246141-363ccad4018d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80)', height: '88vh', maxWidth: '100vw' }}>
                     <div id="buttonContainer">
                         <h1>Spring 2020</h1>
                         <button id="buttonShop">Shop Now</button>
                     </div>
                 </div>
                 <InfoContainer />
+                <PhotoContainer />
                 {/* <Slider /> */}
                 <div className="container__maps">
                     <p>how to get?</p>

@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/shop.css'
 import React, { useState } from 'react';
+import Header from '../components/Header';
 
 
 const Product = (props) => {
@@ -19,6 +20,7 @@ const Product = (props) => {
 
     return (
         <>
+
             <div id="articulo">
                 <h3>{props.product.title}</h3>
                 <div id="imagenShop" style={{ backgroundImage: `url(${foto.color})` }}> </div>

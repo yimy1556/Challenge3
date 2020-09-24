@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
 import '../styles/carrito.css'
 import ItemCarrito from './ItemCarrito'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
+import CancelIcon from '@material-ui/icons/Cancel';
 
 
 const Carrito = (props) => {
@@ -57,11 +59,11 @@ const Carrito = (props) => {
 
             <div id="menuCostado" style={menuShow.show ? { right: 0 } : {}}>
                 <div onClick={menuHamburguesa} id="botonCarrito" style={{ border: `none` }} style={menuShow.show ? { display: 'none' } : { display: 'block' }}>
-                    <div id="carrito" ><i class="fas fa-shopping-cart"></i></div>
+                    <div id="carrito" ><ShoppingCartIcon></ShoppingCartIcon></div>
                 </div>
 
 
-                <button onClick={menuHamburguesa} style={{ backgroundColor: 'transparent', border: 'none' }} ><img src={cerrar} style={{ width: '2em', marginTop: '2vh' }} /></button>
+                <button onClick={menuHamburguesa} style={{ backgroundColor: 'transparent', border: 'none' }} ><CancelIcon style={{ color: "white", fontSize: 40 }}></CancelIcon></button>
                 <h3>Shopping Cart</h3>
                 <div id="ropaDelCarrito">
                     <ItemCarrito />

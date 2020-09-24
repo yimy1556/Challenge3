@@ -1,6 +1,8 @@
 import React from 'react'
 import itemActions from '../redux/actions/itemActions'
 import { connect } from 'react-redux'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 class SelectProduct extends React.Component {
 
@@ -34,18 +36,19 @@ class SelectProduct extends React.Component {
         console.log(variants)
         return (
             <>
+                <Header />
                 {variants.map(variant => {
                     return (
                         <div id="articulo">
-                        <h3>{title}</h3>
-                        <div id="imagenShop" style={{ backgroundImage: `url(${variant.photo})`, width: '20vw', height: '20vh' }}></div>
-                        <p id="descripcionShop">{description}</p>
-                        <p id="precioShop">{price}$</p>
-                        <p id="colorShop">{variant.color}</p>
-                    </div>
+                            <h3>{title}</h3>
+                            <div id="imagenShop" style={{ backgroundImage: `url(${variant.photo})`, width: '20vw', height: '20vh' }}></div>
+                            <p id="descripcionShop">{description}</p>
+                            <p id="precioShop">{price}$</p>
+                            <p id="colorShop">{variant.color}</p>
+                        </div>
                     )
                 })}
-
+                <Footer />
             </>
 
         )

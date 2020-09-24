@@ -5,7 +5,6 @@ import Register from './pages/Register';
 import About from './pages/About';
 import Shop from './pages/Shop';
 import SelectProduct from './pages/SelectProduct'
-import Header from './components/Header';
 import AddItem from './pages/AddItem'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import authActions from './redux/actions/authActions'
@@ -13,7 +12,6 @@ import { connect } from 'react-redux'
 import './styles/styles.css'
 import './styles/RegisterLogIn.css'
 import LogOut from './components/LogOut';
-import Footer from './components/Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

@@ -3,6 +3,11 @@ import { connect } from 'react-redux'
 import '../styles/carrito.css'
 import mas from "../images/mas.png"
 import menos from "../images/menos.png"
+import Tooltip from '@material-ui/core/Tooltip'
+import IconButton from '@material-ui/core/IconButton'
+import DeleteIcon from '@material-ui/icons/Delete'
+import Add from '@material-ui/icons/Add'
+import Remove from '@material-ui/icons/Remove';
 
 
 
@@ -60,17 +65,18 @@ const ItemCarrito = (props) => {
 
                 <div id="tituloCantidad">
                     <p>Titulo del producto</p>
-                    <div id="cantidad">
-                        <button onClick={restar} style={{ backgroundColor: 'white', border: 'none' }}><img src={menos} style={{ width: '1.2vw' }}></img></button>
+                    <div id="cantidad" style={{ display: 'flex', alignItems: 'center' }}>
+                        <button onClick={restar} style={{ backgroundColor: 'white', border: 'none' }}><Remove></Remove></button>
                         <p>{cantidad.cantidad}</p>
-                        <button onClick={sumar} style={{ backgroundColor: 'white', border: 'none' }}><img src={mas} style={{ width: '1.2vw' }}></img></button>
+                        <button onClick={sumar} style={{ backgroundColor: 'white', border: 'none' }}><Add></Add></button>
                     </div>
                 </div>
 
-                <div id="borrarPrecio">
-                    <button onClick={borrarComentario} style={{ backgroundColor: 'white', border: 'none' }}><i class="fas fa-trash-alt"></i></button>
-                    <p style={{ fontWeight: "bold" }}>350$</p>
-                </div>
+                <Tooltip title="Delete" style={{ height: '50px' }} >
+                    <IconButton aria-label="delete">
+                        <DeleteIcon />
+                    </IconButton>
+                </Tooltip>
             </div>
         </>
     )

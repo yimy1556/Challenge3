@@ -85,12 +85,12 @@ color: black;
     font-size: 20px;
 }
 
-#brand{
+.brand{
     font-size: 1em;
 }
 .infoContainer{
-  height: 30vh;
-  padding: 80px;
+  height: 15vh;
+  padding-top: 60px;
   text-align: center;
 }
 
