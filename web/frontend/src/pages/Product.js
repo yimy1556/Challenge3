@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom'
 class Product extends React.Component {
 
     render() {
-        console.log(this.props)
         return (
             <>
                 <NavLink to={`./selectProduct/${this.props.product._id}`} className="linkProduct">

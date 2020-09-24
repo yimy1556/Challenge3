@@ -21,7 +21,6 @@ class Shop extends React.Component {
                         <>
                             {
                                 this.props.products.map(product => {
-                                    console.log(product)
                                     return (
                                         <>
 

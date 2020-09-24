@@ -25,9 +25,10 @@ const itemActions = {
     },
     getProducts: () => {
         return async (dispatch, getState) => {
+            const {listProduct} = getState().shoppingCartReducer
+            if(listProduct.length !== 0) return
             const response = await axios.get(path + `/product/getProducts`);
             const info = response.data;
-            console.log(info)
             dispatch({
                 type: 'ADD_ITEM',
                 payload: info
@@ -41,7 +42,6 @@ const itemActions = {
                     'Content-Type': 'multipart/form-data'
                 }
             })
-            console.log(response.data)
         }
     },
 
@@ -49,12 +49,7 @@ const itemActions = {
 
         return async (dispatch, getState) => {
             const response = await axios.get(path + `/selectProduct/${productId}`)
-            console.log(response)
             const product = response.data.response
-
-            dispatch({
-                type: 'GET_PRODUCT'
-            })
             return (product)
         }
     },
