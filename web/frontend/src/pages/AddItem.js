@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import Header from '../components/Header';
 import itemActions from '../redux/actions/itemActions'
 
 const AddItem = props => {
@@ -60,64 +61,67 @@ const AddItem = props => {
     console.log(item)
 
     return (
-        <main>
-            <div id="divFormulario">
-                <form id='form' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '30%', margin: '5vh auto' }}>
-                    <div id="radioContainer">
-                        <input type="radio" onChange={readInput} id="newProduct" name="newProduct" value={true}></input>New Product
+        <>
+            <Header />
+            <main>
+                <div id="divFormulario">
+                    <form id='form' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '30%', margin: '5vh auto' }}>
+                        <div id="radioContainer">
+                            <input type="radio" onChange={readInput} id="newProduct" name="newProduct" value={true}></input>New Product
                         <input type="radio" onChange={readInput} id="newProduct" name="newProduct" value={false}></input>New Variant
                     </div>
-                    <label>Title</label>
-                    {item.newProduct == "false" ?
-                        <select name="title" id="title" onChange={readInput} className="text-center col-6"
-                        >
-                            <option value={-1} className="text-center">
-                                Choose your article
+                        <label>Title</label>
+                        {item.newProduct == "false" ?
+                            <select name="title" id="title" onChange={readInput} className="text-center col-6"
+                            >
+                                <option value={-1} className="text-center">
+                                    Choose your article
                          </option>
-                            {props.products.map(product => {
-                                return (
-                                    <option>{product.title}</option>
-                                )
-                            })}
-                        </select> :
-                        <input onChange={readInput} type='text' name='title' placeholder='Title' />
-                    }
-                    {item.newProduct == "true" &&
-                        <>
-                            <label>Description</label>
-                            <input onChange={readInput} type='text' name='description' placeholder='Description' />
-                        </>
-                    }
-                    <label htmlFor="photo">Photo</label>
-                    <input onChange={readInput} type='file' name='photo' placeholder='Photo' />
-                    {item.newProduct == "true" &&
-                        <>
-                            <label>Price $</label>
-                            <input onChange={readInput} type='number' name='price' placeholder='Price' />
-                        </>
-                    }
-                    <label>Stock</label>
-                    <input onChange={readInput} type='number' name='stock' placeholder='Stock' />
-                    <label>Size</label>
-                    <select name="size" id="size" onChange={readInput}>
-                        <option >Choose the size</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                    </select>
-                    <label>Color</label>
-                    <select name="color" id="color" onChange={readInput}>
-                        <option >Choose the color</option>
-                        <option>White</option>
-                        <option>Black</option>
-                        <option>Blue</option>
-                        <option>Red</option>
-                        <option>Green</option>
-                    </select>
-                    {item.newProduct == "true" ? <button onClick={sendInfo}>Send item</button> : <button onClick={putVariant}>Send variant</button>}
-                </form>
-            </div>
-        </main>
+                                {props.products.map(product => {
+                                    return (
+                                        <option>{product.title}</option>
+                                    )
+                                })}
+                            </select> :
+                            <input onChange={readInput} type='text' name='title' placeholder='Title' />
+                        }
+                        {item.newProduct == "true" &&
+                            <>
+                                <label>Description</label>
+                                <input onChange={readInput} type='text' name='description' placeholder='Description' />
+                            </>
+                        }
+                        <label htmlFor="photo">Photo</label>
+                        <input onChange={readInput} type='file' name='photo' placeholder='Photo' />
+                        {item.newProduct == "true" &&
+                            <>
+                                <label>Price $</label>
+                                <input onChange={readInput} type='number' name='price' placeholder='Price' />
+                            </>
+                        }
+                        <label>Stock</label>
+                        <input onChange={readInput} type='number' name='stock' placeholder='Stock' />
+                        <label>Size</label>
+                        <select name="size" id="size" onChange={readInput}>
+                            <option >Choose the size</option>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                        </select>
+                        <label>Color</label>
+                        <select name="color" id="color" onChange={readInput}>
+                            <option >Choose the color</option>
+                            <option>White</option>
+                            <option>Black</option>
+                            <option>Blue</option>
+                            <option>Red</option>
+                            <option>Green</option>
+                        </select>
+                        {item.newProduct == "true" ? <button onClick={sendInfo}>Send item</button> : <button onClick={putVariant}>Send variant</button>}
+                    </form>
+                </div>
+            </main>
+        </>
     )
     // input select(limited types)
 }

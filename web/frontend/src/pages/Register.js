@@ -3,6 +3,7 @@ import { GoogleLogin } from 'react-google-login';
 import React, { useState } from 'react';
 import authActions from '../redux/actions/authActions'
 import '../styles/RegisterLogIn.css'
+import { NavLink } from 'react-router-dom'
 import { toast } from 'react-toastify';
 
 
@@ -83,12 +84,14 @@ const Register = (props) => {
     console.log(user)
 
     return (
-        <div id="todoelhome">
+        <div style={{ backgroundImage: 'url(https://www.onlygfx.com/wp-content/uploads/2017/07/paint-texture-black-and-white-3.jpeg)', height: '100vh', maxWidth: '100vw', backgroundSize: 'cover', backgroundPosition: '40% 0%' }}>
+
 
             <div id="divFormulario">
                 <form>
-                    <h3>Complete this form to register</h3>
-
+                    <div className="loginRegister" style={{ display: "flex" }}>
+                        <h3>Register | </h3><NavLink to="/login"> <h3 style={{ paddingLeft: '5px' }}> Log in</h3></NavLink>
+                    </div>
                     <GoogleLogin id="GoogleLogin"
                         clientId="83311303903-d8eviki4j9rvmabuc0ceg0c5im70b2ab.apps.googleusercontent.com"
                         buttonText="Sing up with Google"
@@ -110,12 +113,13 @@ const Register = (props) => {
                         <input onChange={leerImput} type="password" id="pass" name="pass" placeholder="Write your password here"></input>
                     </div>
                     <div id="HaveAccount">
-                       <p>Have an account?</p>
-                       <button >Log in</button>
+                        <p>Have an account?</p>
+                        <NavLink to="/login" class="clickHere"> Click Here</NavLink>
                     </div>
-                    <button onClick={enviarInfo} className="createAccount">Create Account</button>
+                    <button onClick={enviarInfo} className="createAccount button">Create Account</button>
                 </form>
             </div>
+
         </div>
     )
 }
