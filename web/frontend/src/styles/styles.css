@@ -88,5 +88,10 @@ color: black;
 #brand{
     font-size: 1em;
 }
+.infoContainer{
+  height: 30vh;
+  padding: 80px;
+  text-align: center;
+}
 
 

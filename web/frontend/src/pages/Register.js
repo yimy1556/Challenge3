@@ -89,8 +89,9 @@ const Register = (props) => {
 
             <div id="divFormulario">
                 <form>
-                    <h3>Complete this form to register</h3>
-
+                    <div className="loginRegister" style={{ display: "flex" }}>
+                        <h3>Register | </h3><NavLink to="/login"> <h3 style={{ paddingLeft: '5px' }}> Log in</h3></NavLink>
+                    </div>
                     <GoogleLogin id="GoogleLogin"
                         clientId="83311303903-d8eviki4j9rvmabuc0ceg0c5im70b2ab.apps.googleusercontent.com"
                         buttonText="Sing up with Google"

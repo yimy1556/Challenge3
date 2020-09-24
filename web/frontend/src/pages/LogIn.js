@@ -45,8 +45,9 @@ const LogIn = props => {
 
             <div id="divFormulario">
                 <form>
-                    <h3>Log In form</h3>
-
+                    <div className="loginRegister" style={{ display: "flex" }}>
+                        <NavLink to="/register">  <h3>Register | </h3> </NavLink><h3 style={{ paddingLeft: '5px' }}>Log in </h3>
+                    </div>
                     <GoogleLogin id="GoogleLogin"
                         clientId="83311303903-d8eviki4j9rvmabuc0ceg0c5im70b2ab.apps.googleusercontent.com"
                         buttonText="Log in with google"
