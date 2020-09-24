@@ -54,6 +54,7 @@ const Carrito = (props) => {
         })       
     }
 
+    
     return (
         <>
        
@@ -81,7 +82,7 @@ const Carrito = (props) => {
 
                     <div id="borrarPrecio">
                     <button  onClick={borrarComentario} style={{backgroundColor:'white', border:'none'}}><i class="fas fa-trash-alt"></i></button>
-                            <p style={{fontWeight:"bold"}}>350$</p>
+                     <p style={{fontWeight:"bold"}}>350$</p>
                     </div>
                 </div>
 
