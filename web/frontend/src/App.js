@@ -38,6 +38,7 @@ function App(props) {
         <Route exact path="/about" component={About} />
         <Route exact path="/shop" component={Shop} />
         <Route path="/logOut" component={LogOut} />
+        <Route path="/selectProduct/:id" component={SelectProduct} />
         <Redirect to="/" />
       </Switch>
       )
@@ -49,7 +50,7 @@ function App(props) {
       <Route exact path="/login" component={LogIn} />
       <Route exact path="/about" component={About} />
       <Route exact path="/shop" component={Shop} />
-      <Route path="/selectProduct/:id" component={SelectProduct}/>
+      <Route path="/selectProduct/:id" component={SelectProduct} />
       <Redirect to="/" />
     </Switch>
     )
@@ -57,22 +58,20 @@ function App(props) {
   return (
     <>
       <BrowserRouter>
-      <ToastContainer
-                position="bottom-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
-        <Header />
+        <ToastContainer
+          position="bottom-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <Switch>
           {myRoutes}
         </Switch>
-        <Footer />
       </BrowserRouter>
     </>
   );

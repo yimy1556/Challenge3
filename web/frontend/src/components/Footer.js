@@ -13,7 +13,7 @@ const Footer = () => {
             <footer >
                 <nav className="container_links_footer">
                     <div>
-                        <NavLink to="/" id="brand"><h1><img src={logo} style={{width: "10vw"}}></img></h1></NavLink>
+                        <NavLink to="/" id="brand"><h1><img src={logo} style={{ width: "8vw" }}></img></h1></NavLink>
                     </div>
                     <div>
                         <NavLink to="/"><img src={whatsapp} alt="" /></NavLink>
@@ -26,8 +26,6 @@ const Footer = () => {
                     </div>
                 </nav>
             </footer>
-
-
         </>
     )
 }

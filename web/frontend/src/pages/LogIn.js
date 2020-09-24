@@ -29,7 +29,7 @@ const LogIn = props => {
         await props.logUser(ingresoUsuario)
     }
 
-  
+
 
     const responseGoogle = response => {
         props.logUser({
@@ -41,12 +41,13 @@ const LogIn = props => {
 
 
     return (
-        <div id="todoelhome">
+        <div style={{ backgroundImage: 'url(https://www.onlygfx.com/wp-content/uploads/2017/07/paint-texture-black-and-white-3.jpeg)', height: '100vh', maxWidth: '100vw', backgroundSize: 'cover', backgroundPosition: '40% 0%' }}>
 
             <div id="divFormulario">
                 <form>
-                    <h3>Log In form</h3>
-
+                    <div className="loginRegister" style={{ display: "flex" }}>
+                        <NavLink to="/register">  <h3>Register | </h3> </NavLink><h3 style={{ paddingLeft: '5px' }}>Log in </h3>
+                    </div>
                     <GoogleLogin id="GoogleLogin"
                         clientId="83311303903-d8eviki4j9rvmabuc0ceg0c5im70b2ab.apps.googleusercontent.com"
                         buttonText="Log in with google"
@@ -63,9 +64,9 @@ const LogIn = props => {
                     </div>
                     <div id="HaveAccount">
                         <p>Don't have an account?</p>
-                        <NavLink to="/register"> Sign up</NavLink>
+                        <NavLink to="/register" class="clickHere"> Click Here</NavLink>
                     </div>
-                    <button id="createAccount" onClick={enviarInfo}>Log in</button>
+                    <button className="createAccount button" onClick={enviarInfo}>Log in</button>
                 </form>
             </div>
 

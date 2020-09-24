@@ -48,7 +48,7 @@ padding: 2vh 2vw;
 }
     
 
-#divFormulario button#createAccount:hover{
+#divFormulario button.createAccount:hover{
     color: black;
     background-color: white;
 }
@@ -80,8 +80,11 @@ padding-bottom: -1vh;
     text-decoration: underline;
 }
 
-
 #radioContainer input {
     margin: 0;
     background: red;
+}
+.loginRegister a{
+    text-decoration: none;
+
 }

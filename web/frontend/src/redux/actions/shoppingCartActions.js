@@ -36,6 +36,11 @@ const shoppingCartActions = {
             modificarCant(pertenece[0],listProduct)
             return
         }
+        dispatch({
+            type:'ADD_PRODUCT',
+            payload:listProduct
+            
+        })
         listProduct.push(prod)  
         console.log(listProduct,'yoyooyoy')
         prod.cant = 1  
