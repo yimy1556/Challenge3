@@ -7,6 +7,8 @@ import Shop from './pages/Shop';
 import SelectProduct from './pages/SelectProduct'
 import ForgotPass from './pages/ForgotPass'
 import AddItem from './pages/AddItem'
+import ModifyItem from './pages/ModifyItem'
+import DeleteItem from './pages/DeleteItem'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import authActions from './redux/actions/authActions'
 import { connect } from 'react-redux'
@@ -22,12 +24,14 @@ function App(props) {
   if (localStorage.getItem('token') && props.token === "") {
     props.forcedLogIn(localStorage.getItem('token'))
   }
-  if (props.rol === "admin") {
+  if (props.rol == "admin") {
     var myRoutes =
       (<Switch>
-        <Route exact path="/admin" component={AddItem} />
+        <Route exact path="/new" component={AddItem} />
+        <Route exact path="/modify" component={ModifyItem} />
+        <Route exact path="/delete" component={DeleteItem} />
         <Route path="/logOut" component={LogOut} />
-        <Redirect to="/admin" />
+        <Redirect to="/new" />
       </Switch>
       )
   } else if (props.token || localStorage.getItem('token')) {

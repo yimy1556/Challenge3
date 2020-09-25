@@ -6,6 +6,7 @@ import Header from '../components/Header'
 import Product from '../pages/Product'
 import Footer from '../components/Footer'
 import { animateScroll as scroll } from 'react-scroll'
+import ChatBotComponent from '../components/ChatBotComponent'
 
 
 class Shop extends React.Component {
@@ -41,6 +42,7 @@ class Shop extends React.Component {
                         }
                     </div>
                 </div>
+                <ChatBotComponent />
                 <Footer></Footer>
             </>
         )

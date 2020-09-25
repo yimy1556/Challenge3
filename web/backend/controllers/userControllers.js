@@ -61,7 +61,6 @@ const userController = {
 		})
 	},
 	getUser: (req, res) => {
-		console.log('este es el forcedLogin')
 		const { firstName, lastName, mail, rol } = req.user
 		res.json({ firstName, lastName, mail, rol })
 	},
@@ -87,7 +86,7 @@ const userController = {
 				sender: "Pyral <notresponse@notreply.com>",
 				to: `${user.mail}`,
 				subject: "New Password",
-				html:  	`<h4>Hello ${user.firstName},</h4>
+				html: `<h4>Hello ${user.firstName},</h4>
 						   <h3>Your new password is: <span style="color: #0D195A; font-size:20px;">${newPass}</span></h3>
        					Thanks. <hr/>
        					<h2>Team Pyral</h2>`

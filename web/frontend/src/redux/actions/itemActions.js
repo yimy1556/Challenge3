@@ -26,10 +26,11 @@ const itemActions = {
     },
     getProducts: () => {
         return async (dispatch, getState) => {
-            const {listProduct} = getState().shoppingCartReducer
-            if(listProduct.length !== 0) return
+            const { listProduct } = getState().shoppingCartReducer
+            if (listProduct.length !== 0) return
             const response = await axios.get(path + `/product/getProducts`);
             const info = response.data;
+            console.log(info)
             dispatch({
                 type: 'ADD_ITEM',
                 payload: info
@@ -45,7 +46,17 @@ const itemActions = {
             })
         }
     },
-
+    deleteItem: (product) => {
+        console.log(product)
+        return async (dispatch, getState) => {
+            const response = await axios.put(path + `/product/deleteProduct`, { product })
+        }
+    },
+    modifyVariant: async (product) => {
+        return async (dispatch, getState) => {
+            const response = await axios.put(path + `/product/modifyProduct`, { product })
+        }
+    },
     selectProductId: (productId) => {
 
         return async (dispatch, getState) => {

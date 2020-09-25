@@ -3,7 +3,8 @@ import CoverPageAbout from '../components/CoverPageAbout'
 import photoStore from '../images/aboutMessage.jpg'
 import Header from '../components/Header'
 import '../styles/about.css'
-import { animateScroll as scroll} from 'react-scroll'
+import { animateScroll as scroll } from 'react-scroll'
+import ChatBotComponent from '../components/ChatBotComponent'
 
 
 class About extends React.Component {
@@ -17,7 +18,7 @@ class About extends React.Component {
         scroll.scrollToTop();
     }
 
-  
+
     render() {
         return (
             <>
@@ -33,6 +34,7 @@ class About extends React.Component {
                     </p>
                     <img src={photoStore} alt="" />
                 </div>
+                <ChatBotComponent />
             </>
         )
     }

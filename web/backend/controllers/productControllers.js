@@ -25,7 +25,6 @@ const productController = {
             .catch((error) => res.json({ success: false, error }))
     },
     getProducts: async (req, res) => {
-        console.log('hola')
         const product = await Product.find()
         res.json({
             success: true,
@@ -37,10 +36,17 @@ const productController = {
             .then(product => res.json({ success: true, product }))
             .catch(error => res.json({ success: false, error }))
     },
-    deleteRecipe: (req, res) => {
-        Product.findByIdAndDelete({ ...req.params })
+    deleteProduct: (req, res) => {
+        const { product } = req.body
+        console.log(product)
+        Product.findOneAndDelete({ title: product })
             .then(() => res.json({ success: true, message: 'your product has been removed' }))
             .catch(error => res.json({ success: false, error }))
+    },
+    modifyProduct: (req, res) => {
+        const { product } = req.body
+        console.log(product)
+
     },
     updateProduct: (req, res) => {
         const { title, stock, color, size } = req.body
