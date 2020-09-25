@@ -4,16 +4,20 @@ import '../styles/footer.css'
 import whatsapp from '../images/whatsapp.svg'
 import instagram from '../images/instagram.svg'
 import facebook from '../images/facebook.svg'
+import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
-const Footer = () => {
-    const logo = require('../images/pyral.png')
 
-    return (
-        <>
+class Footer extends React.Component{
+    
+    render(){
+        const logo = require('../images/pyral.png')
+
+        return(
+            <>
             <footer >
                 <nav className="container_links_footer">
                     <div>
-                        <NavLink to="/" id="brand"><h1><img src={logo} style={{width: "10vw"}}></img></h1></NavLink>
+                        <NavLink to="/" className="brand"><h1>Pyral</h1></NavLink>
                     </div>
                     <div>
                         <NavLink to="/"><img src={whatsapp} alt="" /></NavLink>
@@ -27,6 +31,8 @@ const Footer = () => {
                 </nav>
             </footer>
         </>
-    )
+        )
+    }
 }
+
 export default Footer

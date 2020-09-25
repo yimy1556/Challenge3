@@ -72,6 +72,18 @@ const authActions = {
                 type: 'LOGOUT_USER'
             })
         }
+    },
+
+    sendMail:(mail) =>{
+
+        return async (dispatch, getState) =>{
+            const response = await axios.put(path + '/sendMail',{mail})
+         
+                dispatch({
+                    type:"SEND_MAIL"
+                })
+                return response.data.success
+        }
     }
 
 }

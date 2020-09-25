@@ -2,6 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Carrito from './Carrito'
+import PersonIcon from '@material-ui/icons/Person';
+
 
 
 const Header = (props) => {
@@ -9,32 +11,35 @@ const Header = (props) => {
 
     return (
         <>
+
             <header>
-                <NavLink to="/" id="brand"><h1><img src={logo} style={{width: "15vw"}}></img></h1></NavLink>
+                <NavLink to="/" className="brand"><h1>Pyral</h1></NavLink>
                 <nav>
                     {props.userlogged.token !== ''
                         ?
                         <>
-                            <NavLink to="/">Home</NavLink>
-                            <NavLink to="/about">About</NavLink>
-                            <NavLink to="/shop">Shop</NavLink>
-                            <NavLink to="/logOut">Logout</NavLink>
-                            <h6 style={{marginLeft:"1vw", marginBottom:"-3vh"}}>
-                                logged in as {props.userlogged.firstName}</h6>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <NavLink to="/">Home</NavLink>
+                                <NavLink to="/about">About</NavLink>
+                                <NavLink to="/shop">Shop</NavLink>
+                                <NavLink to="/profile"> <PersonIcon style={{ color: 'black', fontSize: 40 }}></PersonIcon></NavLink>
+                                <NavLink to="/logOut">Logout</NavLink>
+                            </div>
                             <Carrito />
                         </>
                         :
                         <>
-                            <NavLink to="/">Home</NavLink>
-                            <NavLink to="/about">About</NavLink>
-                            <NavLink to="/shop">Shop</NavLink>
-                            <NavLink to="/register">Register</NavLink>
-                            <NavLink to="/login">LogIn</NavLink>
-                            <Carrito />
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <NavLink to="/">Home</NavLink>
+                                <NavLink to="/about">About</NavLink>
+                                <NavLink to="/shop">Shop</NavLink>
+                                <NavLink to="/register"> <PersonIcon style={{ color: 'black', fontSize: 40 }}></PersonIcon></NavLink>
 
+                            </div>
+                            <Carrito />
                         </>}
                 </nav>
-                
+
             </header>
         </>
     )

@@ -84,3 +84,7 @@ padding-bottom: -1vh;
     margin: 0;
     background: red;
 }
+.loginRegister a{
+    text-decoration: none;
+
+}

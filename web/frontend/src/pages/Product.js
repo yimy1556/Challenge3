@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/shop.css'
 import React, { useState } from 'react';
+import Header from '../components/Header';
 
 
 const Product = (props) => {
@@ -14,8 +15,26 @@ const Product = (props) => {
             ...foto,
             color: foto
         })
-        console.log(foto)
     }
+    console.log(props)
+
+    const variantsAux = []
+    console.log("hola", variantsAux)
+
+
+    const borrarRepe = (variants) => {
+        if (variants === undefined) return variantsAux
+        variants.forEach(vari => {
+            if (variantsAux.filter(varia => varia.color === vari.color).length !== 0)
+                return
+            variantsAux.push(vari)
+        })
+        return variantsAux
+    }
+
+    borrarRepe(props.product.variants)
+
+
 
     return (
         <>
@@ -23,7 +42,7 @@ const Product = (props) => {
                 <h3>{props.product.title}</h3>
                 <div id="imagenShop" style={{ backgroundImage: `url(${foto.color})` }}> </div>
                 <div id="fotosChicas">
-                    {props.product.variants.map(variant => {
+                    {variantsAux.map(variant => {
                         return (<div id="imagenShopChica" onClick={e => cambiarFoto(variant.photo)} style={{ backgroundImage: `url(${variant.photo})`, width: '5vh', height: '5vh' }}> </div>)
                     })}
                 </div>
@@ -31,10 +50,11 @@ const Product = (props) => {
                 <p id="precioShop">{props.product.price}$</p>
                 <NavLink to={`./selectProduct/${props.product._id}`} className="linkProduct">
                     <div id="divBotonVerMas">
-                        <button className="createAccount">Ver mas</button>
+                        <button className="createAccount">View more</button>
                     </div>
                 </NavLink>
             </div>
+           
         </>
     )
 
