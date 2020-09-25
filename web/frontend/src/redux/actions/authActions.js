@@ -84,7 +84,20 @@ const authActions = {
                 })
                 return response.data.success
         }
-    }
+    },
+
+    addNewsletter: newNewsletter => {
+        return async (dispatch, getState) => {
+            const response = await axios.post(path + `/user/newsletter`, newNewsletter)
+            if (!response.data.success) {
+                alert('thanks')
+            } else {
+                dispatch({
+                    type:'ADD_NEWSLETTER',
+                })
+            }
+        }
+    },
 
 }
 

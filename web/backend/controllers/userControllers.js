@@ -1,8 +1,10 @@
 const User = require("../models/User")
+const newsletter = require('../models/Newsletter')
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const message = "Mail or Password incorrect"
 const nodeMailer = require('nodemailer')
+const Newsletter = require("../models/Newsletter")
 
 
 var transport = nodeMailer.createTransport({
@@ -100,6 +102,26 @@ const userController = {
 			res.json({
 				success: false,
 				response: "Error getting account"
+			})
+		}
+	},
+
+	createSuscription: async (req, res) => {
+
+		const { mail } = req.body
+		const mailExists = await Newsletter.findOne({mail})
+
+		if(mailExists){
+			res.json({
+				success:false, message:'The email is registered'
+			})
+		} else{
+			const newNewsletter = new Newsletter({
+				mail:mail
+			})
+			newNewsletter.save()
+			res.json({
+				success:true, mail: newNewsletter.mail
 			})
 		}
 	}

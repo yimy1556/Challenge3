@@ -16,7 +16,7 @@ const compraTotal = (list) => {
 }
 const cantTotal = (list) => {
     let total = 0
-    console.log(list)
+ 
     list.forEach(prod => total += prod.cant)
     return total
 }
