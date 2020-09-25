@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import itemActions from '../redux/actions/itemActions'
 import { connect } from 'react-redux'
-import Footer from '../components/Footer'
 import shoppingCartActions from '../redux/actions/shoppingCartActions'
 import Header from '../components/Header'
 

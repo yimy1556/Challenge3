@@ -3,7 +3,10 @@ import { connect } from 'react-redux'
 import '../styles/carrito.css'
 import ItemCarrito from './ItemCarrito'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
-import CancelIcon from '@material-ui/icons/Cancel';
+import CancelIcon from '@material-ui/icons/Cancel'
+import Badge from '@material-ui/core/Badge'
+
+
 
 
 const compraTotal = (list) => {
@@ -11,9 +14,20 @@ const compraTotal = (list) => {
     list.forEach(prod => total += prod.cant*prod.price)
     return total
 }
+const cantTotal = (list) => {
+    let total = 0
+    console.log(list)
+    list.forEach(prod => total += prod.cant)
+    return total
+}
 
 const Carrito = (props) => {
+    const [total, setTotal] = useState(0)
 
+    useEffect(() => {
+        setTotal(cantTotal(props.listProduct))
+    },[props.listProduct])
+    
     const [menuShow, setmenuShow] = useState({
         show: false
     })
@@ -31,7 +45,11 @@ const Carrito = (props) => {
           
             <div id="menuCostado" style={menuShow.show ? { right: 0 } : {}}>
                 <div onClick={menuHamburguesa} id="botonCarrito" style={{ border: `none` }} style={menuShow.show ? { display: 'none' } : { display: 'block' }}>
-                    <div id="carrito" ><ShoppingCartIcon></ShoppingCartIcon></div>
+                    <div id="carrito" >
+                        <Badge badgeContent={cantTotal(props.listProduct)} color="secondary">
+                            <ShoppingCartIcon  fontSize='large'/>
+                        </Badge>
+                    </div>     
                 </div>
 
 

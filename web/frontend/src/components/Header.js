@@ -7,8 +7,6 @@ import PersonIcon from '@material-ui/icons/Person';
 
 
 const Header = (props) => {
-    const logo = require('../images/logoblanco.png')
-
     return (
         <>
 
