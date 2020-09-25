@@ -81,7 +81,7 @@ const userController = {
             }
             const passwordHashed = bcrypt.hashSync(newPass, 10)
            
-				const user = await User.findOneAndUpdate({mail: mailSent}, {password: passwordHashed})
+				const user = await User.findOneAndUpdate({mail: mailSent}, {pass: passwordHashed})
 				console.log
 				
                 var mailOptions = {
