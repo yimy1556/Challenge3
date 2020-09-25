@@ -92,8 +92,24 @@ color: black;
   height: 15vh;
   padding-top: 60px;
   text-align: center;
+  margin-bottom: 25vh;
 }
 
-
+  
+.box {
+  cursor: pointer;
+  position: relative;
+  width: 50%;
+  height: 20%;
+  background-color: #111111;
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  will-change: transform;
+}
+#root > div:nth-child(3){
+  background-color: rgb(255, 255, 255)!important;
+  background-image: url(https://images.unsplash.com/photo-1512445239398-6d0c4c575b89?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80);
+}
 
 

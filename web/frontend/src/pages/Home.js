@@ -5,6 +5,18 @@ import '../styles/home.css'
 import InfoContainer from '../components/InfoContainer'
 import PhotoContainer from '../components/PhotoContainer'
 import ChatBotComponent from '../components/ChatBotComponent'
+import banner2 from '../images/banner2.jpg'
+import PhotoOne from '../images/uno.jpg'
+import PhotoTwo from '../images/dos.jpg'
+import Photo1 from '../images/1.jpg'
+import Photo2 from '../images/2.jpg'
+import Photo3 from '../images/3.jpg'
+import Photo4 from '../images/4.jpg'
+import Carousel from 'react-bootstrap/Carousel';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
 
 class Home extends React.Component {
     state = {
@@ -31,12 +43,39 @@ class Home extends React.Component {
     render() {
         return (
             <><Header />
-                <div style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1550246141-363ccad4018d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80)', height: '88vh', maxWidth: '100vw' }}>
-                    <div id="buttonContainer">
-                        <h1>Spring 2020</h1>
-                        <button id="buttonShop">Shop Now</button>
-                    </div>
+
+                <Carousel>
+                    <Carousel.Item>
+                        <div style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1550246141-363ccad4018d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80)', height: '100vh', maxWidth: '100vw' }}>
+                            <div id="buttonContainer">
+                                <h1>Spring 2020</h1>
+                                <button id="buttonShop">Shop Now</button>
+                            </div>
+                        </div>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <div style={{ backgroundImage: `url(${banner2})`, backgroundSize: "cover", height: '100vh', maxWidth: '100vw' }}>
+                            <div id="buttonContainer">
+                                <h1>Spring 2020</h1>
+                                <button id="buttonShop">Shop Now</button>
+                            </div>
+                        </div>
+                    </Carousel.Item>
+                </Carousel>
+
+                <div id="dosfotos">
+                    <div className="fotosHome" style={{ backgroundImage: `url(${PhotoOne})`, height: '60vw', width: '40vw' }}></div>
+                    <div className="fotosHome" style={{ backgroundImage: `url(${PhotoTwo})`, height: '60vw', width: '40vw' }}></div>
                 </div>
+
+                <div id="tresfotos">
+                    <div className="fotosHome" style={{ backgroundImage: `url(${Photo1})`, height: '35vw', width: '20vw' }}></div>
+                    <div className="fotosHome" style={{ backgroundImage: `url(${Photo2})`, height: '35vw', width: '20vw' }}></div>
+                    <div className="fotosHome" style={{ backgroundImage: `url(${Photo3})`, height: '35vw', width: '20vw' }}></div>
+                    <div className="fotosHome" style={{ backgroundImage: `url(${Photo4})`, height: '35vw', width: '20vw' }}></div>
+                </div>
+
+
                 <InfoContainer />
                 <PhotoContainer />
                 {/* <Slider /> */}
