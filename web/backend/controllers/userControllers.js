@@ -6,13 +6,13 @@ const nodeMailer = require('nodemailer')
 
 
 var transport = nodeMailer.createTransport({
-    port:465, 
-    host:"smtp.gmail.com",
-    auth: {
-        pass: "Carla2020",
-        user: "carlabrunni79@gmail.com"
-    },
-    tls: { rejectUnauthorized: false }
+	port: 465,
+	host: "smtp.gmail.com",
+	auth: {
+		pass: "Carla2020",
+		user: "carlabrunni79@gmail.com"
+	},
+	tls: { rejectUnauthorized: false }
 })
 
 const userController = {
@@ -66,47 +66,43 @@ const userController = {
 		res.json({ firstName, lastName, mail, rol })
 	},
 
-	getNewPass: async (req, res) =>{
+	getNewPass: async (req, res) => {
 		mailSent = req.body.mail
 		console.log(mailSent)
 
-        try{
-			await User.findOne({mail:mailSent})
-			
-            var length = 8
-            var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-            var newPass = ""
-            for (var i = 0, n = charset.length; i < length; ++i) {
-                newPass += charset.charAt(Math.floor(Math.random() * n));
-            }
-            const passwordHashed = bcrypt.hashSync(newPass, 10)
-           
-				const user = await User.findOneAndUpdate({mail: mailSent}, {pass: passwordHashed})
-				console.log
-				
-                var mailOptions = {
-                    from: "Pyral <notresponse@notreply.com>",
-                    sender: "Pyral <notresponse@notreply.com>",
-                    to: `${user.mail}`,
-                    subject: "New Password",
-                    html:  `<div>
-                    <h1>This is your new password:${newPass}, continue using Pyral :)</h1>
-                    <h2>Please sign up again<h2>        
-                    </>`,
-                }
-                transport.sendMail(mailOptions, (error, info) => {
-                  
-                    res.send("send email")
-                })
+		try {
+			await User.findOne({ mail: mailSent })
 
-        }catch(error){
-            res.json({
-                success:false,
-                response: "Error getting account"
-            })
-        }
-    }
+			var length = 8
+			var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+			var newPass = ""
+			for (var i = 0, n = charset.length; i < length; ++i) {
+				newPass += charset.charAt(Math.floor(Math.random() * n));
+			}
+			const passwordHashed = bcrypt.hashSync(newPass, 10)
+			const user = await User.findOneAndUpdate({ mail: mailSent }, { pass: passwordHashed })
 
+			var mailOptions = {
+				from: "Pyral <notresponse@notreply.com>",
+				sender: "Pyral <notresponse@notreply.com>",
+				to: `${user.mail}`,
+				subject: "New Password",
+				html:  	`<h4>Hello ${user.firstName},</h4>
+						   <h3>Your new password is: <span style="color: #0D195A; font-size:20px;">${newPass}</span></h3>
+       					Thanks. <hr/>
+       					<h2>Team Pyral</h2>`
+			}
+			transport.sendMail(mailOptions, (error, info) => {
+				res.send("send email")
+			})
+
+		} catch (error) {
+			res.json({
+				success: false,
+				response: "Error getting account"
+			})
+		}
+	}
 }
 
 module.exports = userController
