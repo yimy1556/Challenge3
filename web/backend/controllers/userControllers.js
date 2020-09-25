@@ -9,8 +9,8 @@ var transport = nodeMailer.createTransport({
 	port: 465,
 	host: "smtp.gmail.com",
 	auth: {
-		pass: "Carla2020",
-		user: "carlabrunni79@gmail.com"
+		pass: "Pyral2020",
+		user: "your.pyral@gmail.com"
 	},
 	tls: { rejectUnauthorized: false }
 })
@@ -83,11 +83,11 @@ const userController = {
 			const user = await User.findOneAndUpdate({ mail: mailSent }, { pass: passwordHashed })
 
 			var mailOptions = {
-				from: "Pyral <notresponse@notreply.com>",
-				sender: "Pyral <notresponse@notreply.com>",
+				from: "Pyral <your.pyral@gmail.com>",
+				sender: "Pyral <your.pyral@gmail.com>",
 				to: `${user.mail}`,
 				subject: "New Password",
-				html:  	`<h4>Hello ${user.firstName},</h4>
+				html: `<h4>Hello ${user.firstName},</h4>
 						   <h3>Your new password is: <span style="color: #0D195A; font-size:20px;">${newPass}</span></h3>
        					Thanks. <hr/>
        					<h2>Team Pyral</h2>`
