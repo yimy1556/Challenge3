@@ -5,7 +5,7 @@ import '../styles/shop.css'
 import Header from '../components/Header'
 import Product from '../pages/Product'
 import Footer from '../components/Footer'
-import { animateScroll as scroll} from 'react-scroll'
+import { animateScroll as scroll } from 'react-scroll'
 
 
 class Shop extends React.Component {
@@ -24,7 +24,7 @@ class Shop extends React.Component {
             <>
                 <Header />
                 <div id="paginaShop">
-                    <h2>All Products</h2>
+                    <h2 style={{ color: 'black' }}>All Products</h2>
                     <div id="todoShop">
                         {this.props.products == 0 ? <p>no products yet</p> :
                             <>
