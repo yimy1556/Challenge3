@@ -84,7 +84,11 @@ padding-bottom: -1vh;
     margin: 0;
     background: red;
 }
-.loginRegister a{
+#HaveAccount > a{
     text-decoration: none;
-
+    color: white;
+    padding-left: 2vw;
+}
+#divFormulario > form > div.loginRegister > a{
+    text-decoration: none;
 }

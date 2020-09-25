@@ -55,7 +55,7 @@ const SelectProduct = (props) => {
                 <h3>{product.price}</h3>
                 {(prod.size !== '' || prod.size !== 'Choose the size') &&
                     <h3> stock disponible {(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock)}</h3>}
-                <button onClick={() => props.addProduct(prod)} >añadir Producto</button>
+                <button onClick={() => props.addProduct(prod)} className="createAccount">añadir Producto</button>
             </div>
         </div>
     </>
