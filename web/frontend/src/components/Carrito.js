@@ -46,7 +46,7 @@ const Carrito = (props) => {
             <div id="menuCostado" style={menuShow.show ? { right: 0 } : {}}>
                 <div onClick={menuHamburguesa} id="botonCarrito" style={{ border: `none` }} style={menuShow.show ? { display: 'none' } : { display: 'block' }}>
                     <div id="carrito" >
-                        <Badge badgeContent={cantTotal(props.listProduct)} color="secondary">
+                        <Badge badgeContent={cantTotal(props.listProduct)}>
                             <ShoppingCartIcon  fontSize='large'/>
                         </Badge>
                     </div>     
