@@ -10,6 +10,7 @@ const shoppingCartReducer = ( state = initialState, action ) => {
                 listProduct: action.payload
             }
         case'REMOVE_PRODUCT':
+            console.log(action.payload,'salslkas%%%%')
             return{
                 ...state,
                 listProduct: action.payload

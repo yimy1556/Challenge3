@@ -11,12 +11,13 @@ import Badge from '@material-ui/core/Badge'
 
 const compraTotal = (list) => {
     let total = 0
+    console.log(list,'1')
     list.forEach(prod => total += prod.cant*prod.price)
     return total
 }
 const cantTotal = (list) => {
     let total = 0
-    console.log(list)
+    console.log(list,'2')
     list.forEach(prod => total += prod.cant)
     return total
 }
@@ -39,7 +40,10 @@ const Carrito = (props) => {
             show: !menuShow.show
         })
     }
-        return (
+
+    console.log(props.ddd,'ssa23ed8uhe')
+    if(props.listProduct === null) return <></>
+    return (
         <>
            <div className='DivCerrarCarrito' onClick={menuHamburguesa} style={!menuShow.show ? {display: 'none', opacity: 0} : { display: 'block' }}></div>
           
@@ -78,6 +82,7 @@ const Carrito = (props) => {
 const mapStateToProps = state => {
     return {
         listProduct : state.shoppingCartReducer.listProduct,
+        ddd : state.shoppingCartReducer 
 	}
 }
 const mapDispatchToProps = {

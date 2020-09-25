@@ -9,6 +9,8 @@ import ForgotPass from './pages/ForgotPass'
 import AddItem from './pages/AddItem'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import authActions from './redux/actions/authActions'
+import shoppingCartActions from './redux/actions/shoppingCartActions'
+import itemActions from './redux/actions/itemActions'
 import { connect } from 'react-redux'
 import './styles/styles.css'
 import './styles/RegisterLogIn.css'
@@ -18,61 +20,65 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function App(props) {
-  console.log(props.rol)
-  if (localStorage.getItem('token') && props.token === "") {
-    props.forcedLogIn(localStorage.getItem('token'))
-  }
-  if (props.rol === "admin") {
-    var myRoutes =
-      (<Switch>
-        <Route exact path="/admin" component={AddItem} />
-        <Route path="/logOut" component={LogOut} />
-        <Redirect to="/admin" />
-      </Switch>
-      )
-  } else if (props.token || localStorage.getItem('token')) {
-    var myRoutes =
-      (<Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/shop" component={Shop} />
-        <Route path="/logOut" component={LogOut} />
-        <Route path="/selectProduct/:id" component={SelectProduct} />
-        <Redirect to="/" />
-      </Switch>
-      )
-  }
-  else {
-    var myRoutes = (<Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/register" component={Register} />
-      <Route exact path="/login" component={LogIn} />
-      <Route exact path="/about" component={About} />
-      <Route exact path="/forgotPass" component={ForgotPass} />
-      <Route exact path="/shop" component={Shop} />
-      <Route path="/selectProduct/:id" component={SelectProduct} />
-      <Redirect to="/" />
-    </Switch>
-    )
-  }
-  return (
-    <>
-      <BrowserRouter>
-        <ToastContainer
-          position="bottom-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-        <Switch>
-          {myRoutes}
+    console.log(props.rol)
+    if(localStorage.getItem("listProduct"))
+        props.forcedPoducts(localStorage.getItem("listProduct"))
+    if(localStorage.getItem("carito"))
+        props.forcedCart(localStorage.getItem("carito"))
+    if (localStorage.getItem('token') && props.token === "") {
+        props.forcedLogIn(localStorage.getItem('token'))
+    }
+    if (props.rol === "admin") {
+        var myRoutes =
+        (<Switch>
+            <Route exact path="/admin" component={AddItem} />
+            <Route path="/logOut" component={LogOut} />
+            <Redirect to="/admin" />
         </Switch>
-      </BrowserRouter>
+        )
+    } else if (props.token || localStorage.getItem('token')) {
+        var myRoutes =
+        (<Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/shop" component={Shop} />
+            <Route path="/logOut" component={LogOut} />
+            <Route path="/selectProduct/:id" component={SelectProduct} />
+            <Redirect to="/" />
+        </Switch>
+        )
+    }
+    else {
+        var myRoutes = (<Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={LogIn} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/forgotPass" component={ForgotPass} />
+            <Route exact path="/shop" component={Shop} />
+            <Route path="/selectProduct/:id" component={SelectProduct} />
+            <Redirect to="/" />
+            </Switch>
+        )
+    }
+    return (
+    <>
+        <BrowserRouter>
+            <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+            <Switch>
+                {myRoutes}
+            </Switch>
+        </BrowserRouter>
     </>
   );
 }
@@ -84,7 +90,9 @@ const mapStateToProps = (state) => {
   }
 }
 const mapDispatchToProps = {
-  forcedLogIn: authActions.forcedLogIn
+    forcedLogIn: authActions.forcedLogIn,
+    forcedPoducts: itemActions.forcedPoducts,
+    forcedCart : shoppingCartActions.forcedCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

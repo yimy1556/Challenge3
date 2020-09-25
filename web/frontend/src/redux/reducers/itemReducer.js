@@ -5,7 +5,7 @@ const itemReducer = (state = initialState, action) => {
         case 'ADD_ITEM':
             return {
                 ...state,
-                product: action.payload.product,
+                product: action.payload,
 
             }
         default:
