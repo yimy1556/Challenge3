@@ -3,6 +3,7 @@ import '../styles/shop.css'
 import React, { useState } from 'react';
 import Header from '../components/Header';
 
+
 const Product = (props) => {
 
     const [foto, setfoto] = useState({
@@ -53,6 +54,7 @@ const Product = (props) => {
                     </div>
                 </NavLink>
             </div>
+           
         </>
     )
 

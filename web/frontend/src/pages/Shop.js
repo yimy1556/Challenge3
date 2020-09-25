@@ -4,13 +4,21 @@ import itemActions from '../redux/actions/itemActions'
 import '../styles/shop.css'
 import Header from '../components/Header'
 import Product from '../pages/Product'
+import Footer from '../components/Footer'
+import { animateScroll as scroll} from 'react-scroll'
 
 
 class Shop extends React.Component {
 
     componentDidMount() {
+        this.scrollToTop()
         this.props.getProducts()
     }
+
+    scrollToTop() {
+        scroll.scrollToTop();
+    }
+
     render() {
         return (
             <>
@@ -33,6 +41,7 @@ class Shop extends React.Component {
                         }
                     </div>
                 </div>
+                <Footer></Footer>
             </>
         )
     }

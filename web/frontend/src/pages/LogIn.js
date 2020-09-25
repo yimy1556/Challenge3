@@ -5,8 +5,6 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 
-
-
 const LogIn = props => {
 
     const [ingresoUsuario, setIngresoUsuario] = useState({
@@ -64,7 +62,8 @@ const LogIn = props => {
                     </div>
                     <div id="HaveAccount">
                         <p>Don't have an account?</p>
-                        <NavLink to="/register" class="clickHere"> Click Here</NavLink>
+                        <NavLink to="/register"> Sign up</NavLink>
+                        <NavLink to="/forgotPass">Forgot password?</NavLink>
                     </div>
                     <button className="createAccount button" onClick={enviarInfo}>Log in</button>
                 </form>

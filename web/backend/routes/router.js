@@ -22,5 +22,8 @@ router.route("/product/addProduct")
 router.route('/selectProduct/:id')
     .get(productController.getSelectProductId)
 
+router.route('/sendMail')
+    .put(userController.getNewPass)
+
 
 module.exports = router
