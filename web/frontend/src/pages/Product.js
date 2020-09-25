@@ -3,6 +3,7 @@ import '../styles/shop.css'
 import React, { useState } from 'react';
 import Header from '../components/Header';
 
+
 const Product = (props) => {
 
     const [foto, setfoto] = useState({
@@ -42,7 +43,7 @@ const Product = (props) => {
                 <div id="imagenShop" style={{ backgroundImage: `url(${foto.color})` }}> </div>
                 <div id="fotosChicas">
                     {variantsAux.map(variant => {
-                        return (<div id="imagenShopChica" onClick={e => cambiarFoto(variant.photo)} style={{ backgroundImage: `url(${variant.photo})`, width: '5vh', height: '5vh' }}> </div>)
+                        return (<div id="imagenShopChica" onClick={e => cambiarFoto(variant.photo)} style={{ backgroundImage: `url(${variant.photo})`, width: '8vh', height: '8vh' }}> </div>)
                     })}
                 </div>
                 <p id="descripcionShop">{props.product.description}</p>
@@ -53,6 +54,7 @@ const Product = (props) => {
                     </div>
                 </NavLink>
             </div>
+
         </>
     )
 

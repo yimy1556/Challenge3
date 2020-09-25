@@ -3,11 +3,25 @@ import CoverPageAbout from '../components/CoverPageAbout'
 import photoStore from '../images/aboutMessage.jpg'
 import Header from '../components/Header'
 import '../styles/about.css'
+import { animateScroll as scroll} from 'react-scroll'
+
 
 class About extends React.Component {
+
+
+    componentDidMount() {
+        this.scrollToTop()
+    }
+
+    scrollToTop() {
+        scroll.scrollToTop();
+    }
+
+  
     render() {
         return (
             <>
+
                 <Header style={{ background: 'black' }} />
                 <CoverPageAbout />
                 <div className="container__message__about">
