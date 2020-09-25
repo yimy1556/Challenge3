@@ -6,10 +6,13 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import CancelIcon from '@material-ui/icons/Cancel';
 
 
+const compraTotal = (list) => {
+    let total = 0
+    list.forEach(prod => total += prod.cant*prod.price)
+    return total
+}
+
 const Carrito = (props) => {
-    const [precio, setprecio] = useState({
-        total: 0
-    })
 
     const [menuShow, setmenuShow] = useState({
         show: false
@@ -22,39 +25,7 @@ const Carrito = (props) => {
             show: !menuShow.show
         })
     }
-    const cerrar = require('../images/cerrar.png')
-
-    const borrarComentario = async e => {
-        e.preventDefault()
-        //  await props.eliminarComentario(this.props.idItinerario, this.props.index)
-
-    }
-
-    const [cantidad, setcantidad] = useState({
-        cantidad: 1
-    })
-
-    const restar = e => {
-        e.preventDefault()
-        if (cantidad.cantidad > 1) {
-            setcantidad({
-                ...cantidad,
-                cantidad: cantidad.cantidad - 1
-            })
-        }
-
-    }
-
-    const sumar = e => {
-        e.preventDefault()
-        setcantidad({
-            ...cantidad,
-            cantidad: cantidad.cantidad + 1
-        })
-    }
-
-    
-    return (
+        return (
         <>
            <div className='DivCerrarCarrito' onClick={menuHamburguesa} style={!menuShow.show ? {display: 'none', opacity: 0} : { display: 'block' }}></div>
           
@@ -71,7 +42,7 @@ const Carrito = (props) => {
 
                     <div id="totalPrecio">
                         <p>Total</p>
-                        <p>230$</p>
+                        <p>{compraTotal(props.listProduct)}</p>
                     </div>
                 </div>
 
