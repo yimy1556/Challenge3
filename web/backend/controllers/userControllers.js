@@ -102,7 +102,14 @@ const userController = {
 				response: "Error getting account"
 			})
 		}
-	}
+	},
+
+	postRating: async (req, res) => {
+		const { rating } = req.body
+		res.json({success: true, rating: rating})
+		console.log(req.body.rating);
+	},
+
 }
 
 module.exports = userController

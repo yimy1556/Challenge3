@@ -25,5 +25,7 @@ router.route('/selectProduct/:id')
 router.route('/sendMail')
     .put(userController.getNewPass)
 
+router.route('/user/rating')
+    .post(userController.postRating)
 
 module.exports = router

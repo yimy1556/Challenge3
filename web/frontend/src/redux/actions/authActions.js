@@ -84,7 +84,23 @@ const authActions = {
                 })
                 return response.data.success
         }
-    }
+    },
+
+    rating: rating => {
+        console.log(rating);
+        return async (dispatch, getState) => {
+            const response = await axios.post(path + `/user/rating`, {rating})
+            console.log(response);
+            if (!response.data.success) {
+                toast('Something went wrong')
+            } else {
+                dispatch({
+                    type: 'LOG_USER',
+                    payload:{ rating: response.data.rating }
+                })
+            }
+        }
+    },
 
 }
 
