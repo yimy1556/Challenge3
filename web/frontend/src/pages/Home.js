@@ -1,4 +1,5 @@
 import React from 'react'
+import Header from '../components/Header'
 import Slider from '../components/Slider'
 import '../styles/home.css'
 
@@ -6,6 +7,7 @@ class Home extends React.Component {
     render() {
         return (
             <>
+                <Header />
                 <Slider />
                 <div className="container__maps">
                     <p>how to get?</p>

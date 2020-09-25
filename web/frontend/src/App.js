@@ -69,7 +69,7 @@ function App(props) {
                 draggable
                 pauseOnHover
             />
-        <Header />
+
         <Switch>
           {myRoutes}
         </Switch>

@@ -7,7 +7,7 @@ const productController = {
         console.log(req.files)
         const archivo = req.files.photo
         var extension = archivo.name.split('.')[1]
-        var nombreArchivo = req.body.title + '.' + extension
+        var nombreArchivo = req.body.title + req.body.color + '.' + extension
         const serverURL = `uploads/${nombreArchivo}`
 
         const photo = `http://localhost:4000/uploads/${nombreArchivo}`

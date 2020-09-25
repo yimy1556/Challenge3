@@ -48,7 +48,7 @@ padding: 2vh 2vw;
 }
     
 
-#divFormulario button.createAccount:hover{
+#divFormulario button.createAccount:hover, #divFormulario button.login:hover{
     color: black;
     background-color: white;
 }
