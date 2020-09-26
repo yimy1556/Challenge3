@@ -4,6 +4,12 @@ const newsletterSchema = new mongoose.Schema({
     mail:{
         type: String,
         required: true
+    },
+
+    subscription:{
+        type: Boolean,
+        default: true
+
     }
 })
 

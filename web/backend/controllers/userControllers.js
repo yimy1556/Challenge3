@@ -107,10 +107,10 @@ const userController = {
 	},
 
 	createSuscription: async (req, res) => {
-
+		
 		const { mail } = req.body
 		const mailExists = await Newsletter.findOne({mail})
-
+		console.log({mail})
 		if(mailExists){
 			res.json({
 				success:false, message:'The email is registered'
