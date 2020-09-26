@@ -14,6 +14,7 @@ import authActions from './redux/actions/authActions'
 import shoppingCartActions from './redux/actions/shoppingCartActions'
 import itemActions from './redux/actions/itemActions'
 import { connect } from 'react-redux'
+import FormularioAdmi from './pages/formularioAdmi'
 import './styles/styles.css'
 import './styles/RegisterLogIn.css'
 import LogOut from './components/LogOut';
@@ -53,8 +54,9 @@ function App(props) {
       )
   }
   else {
-    var myRoutes = (<Switch>
+    var myRoutes = (<Switch> 
       <Route exact path="/" component={Home} />
+      <Route path="/yimy" component={FormularioAdmi}/>
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={LogIn} />
       <Route exact path="/about" component={About} />
@@ -80,7 +82,7 @@ function App(props) {
           pauseOnHover
         />
         <Switch>
-          {myRoutes}
+            {myRoutes}
         </Switch>
       </BrowserRouter>
     </>

@@ -4,7 +4,15 @@ html * {
     font-family: 'Roboto', sans-serif;
     
 }
-
+.circulo {
+     width: 2em;
+     height: 2em;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     margin: 0em;
+     padding: 0em;
+}
 header{
     max-width: 100%;
     color: whitesmoke;
