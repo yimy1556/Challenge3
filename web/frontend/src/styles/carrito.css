@@ -124,3 +124,9 @@ margin: 1vh ;
     padding-top: 2vh;
     font-weight: bold;
 }
+
+span.MuiBadge-badge.MuiBadge-anchorOriginTopRightRectangle{
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}

@@ -24,17 +24,18 @@ const SelectProduct = (props) => {
     useEffect(() => {
         const productId = props.match.params.id
         props.selectProductId(productId)
-            .then(prodc => {
-                setProduct({ ...prodc.product })
+        .then(prodc => {
+                console.log(prodc,'ssssdsd')
+                setProduct({ ...prodc})
                 setProd({
                     ...prod,
-                    remeraActual: prodc.product.variants[0].photo,
-                    color: prodc.product.variants[0].color,
-                    title: prodc.product.title,
-                    price: prodc.product.price
+                    remeraActual: prodc.variants[0].photo,
+                    color: prodc.variants[0].color,
+                    title: prodc.title,
+                    price: prodc.price
                 })
             })
-    }, [])
+    },[])
     if (product === {}) return <></>
     return (<>
         <Header />

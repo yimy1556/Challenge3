@@ -11,6 +11,8 @@ import ModifyItem from './pages/ModifyItem'
 import DeleteItem from './pages/DeleteItem'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import authActions from './redux/actions/authActions'
+import shoppingCartActions from './redux/actions/shoppingCartActions'
+import itemActions from './redux/actions/itemActions'
 import { connect } from 'react-redux'
 import './styles/styles.css'
 import './styles/RegisterLogIn.css'
@@ -21,6 +23,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App(props) {
   console.log(props.rol)
+  if (localStorage.getItem("listProduct"))
+    props.forcedPoducts(localStorage.getItem("listProduct"))
+  if (localStorage.getItem("carito"))
+    props.forcedCart(localStorage.getItem("carito"))
   if (localStorage.getItem('token') && props.token === "") {
     props.forcedLogIn(localStorage.getItem('token'))
   }
@@ -88,7 +94,9 @@ const mapStateToProps = (state) => {
   }
 }
 const mapDispatchToProps = {
-  forcedLogIn: authActions.forcedLogIn
+  forcedLogIn: authActions.forcedLogIn,
+  forcedPoducts: itemActions.forcedPoducts,
+  forcedCart: shoppingCartActions.forcedCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

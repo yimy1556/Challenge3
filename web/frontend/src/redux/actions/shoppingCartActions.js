@@ -1,8 +1,8 @@
-/*import axios from 'axios'
-var path = 'http://localhost:4000/api'*/
+const key1 = ['_id','size','color'] 
+const key2 = ['size','color'] 
 
-const sonIguales = (prod1,prod2) => {
-let keyProc = ['_id','size','color'] 
+
+const sonIguales = (prod1, prod2 , keyProc) => {
     let condicion = true
     keyProc.forEach(key => {
         if(!condicion) return
@@ -11,41 +11,70 @@ let keyProc = ['_id','size','color']
     return condicion
 }
 
-const modificarCant = (prodMo, listProduct, cant = 1) => {
+const updateLocal = (listProduct, carrito) => {
+    localStorage.clear()
+    localStorage.setItem("listProduct", JSON.stringify(listProduct))
+    localStorage.setItem("carito", JSON.stringify(carrito)) 
+}
 
+const modificarCant = (prodMo, listProduct, cant = 1) => {
    let posi =  listProduct.indexOf(prodMo) 
    listProduct[posi].cant = listProduct[posi].cant + cant
 }
 
+const  updateProduct = (product, listProduct, cant) => {
+    let productUpdate =  listProduct.filter(prod => prod._id === product._id)[0]
+    let pos = listProduct.indexOf(productUpdate)
+    const varientsUpdate = listProduct[pos].variants
+    productUpdate = varientsUpdate.filter(varie => sonIguales(varie, product, key2))[0]
+    pos = varientsUpdate.indexOf(productUpdate)
+    varientsUpdate[pos].stock = Number(varientsUpdate[pos].stock) + cant
+}
 
 const shoppingCartActions = {
     addProduct: (prod) => (dispatch, getState) => {
-        /**const {product} = getState().itemReduce*/
+        const {product} = getState().itemReducer
         const {listProduct} = getState().shoppingCartReducer
-        const pertenece = listProduct.filter(produ => sonIguales(produ,prod))
-        if(pertenece.length !== 0){
+        const pertenece = listProduct.filter(produ => sonIguales(produ,prod,key1))
+        if(pertenece.length !== 0)
             modificarCant(pertenece[0],listProduct)
-            return
-        }
-        listProduct.push(prod)  
+        else
+            listProduct.push(prod)
+        updateProduct(prod, product, -1)
+        updateLocal(product, listProduct)
         prod.cant=1
     },
-    updateQuantity: (product, cant) => (dispatch, getState) => {
+    updateQuantity: (prod, cant) => (dispatch, getState) => {
+        const {product} = getState().itemReducer
         const {listProduct} =  getState().shoppingCartReducer
-        modificarCant(product, listProduct, cant)
+        updateProduct(prod, product, -cant)
+        modificarCant(prod, listProduct, cant)
+        updateLocal(product, listProduct)
         console.log('pase por aqui')
     },
-    removeProduct:(product) => (dispatch, getState) => {
+    removeProduct:(prod) => (dispatch, getState) => {
+        const {product} = getState().itemReducer
+        updateProduct(prod, product, prod.cant)
         const {listProduct} = getState().shoppingCartReducer
+        const updateListProduct = listProduct.filter(produ => produ !== prod)
+        updateLocal(product, updateListProduct)
         dispatch({
             type:'REMOVE_PRODUCT',
-            payload:listProduct.filter(prod => prod !== product)
+            payload: updateListProduct
         })
     },
-
     finishBuying: () => (dispatch, getState) => {
         /// agregar alerta     
         dispatch({type:'FINISH', payload: []})
+    },
+    forcedCart: (cart) => (dispatch, getState) => {
+        const cartParse = JSON.parse(cart)
+        console.log(cartParse,'sasas----------------09876')
+        dispatch({
+            type:'REMOVE_PRODUCT',
+            payload: cartParse
+        })
+        
     }
 }
 
