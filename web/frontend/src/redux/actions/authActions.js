@@ -65,7 +65,14 @@ const authActions = {
 
         }
     },
+    forcedRol: () => {
+        return async (dispatch, getState) => {
+            const rol = getState().authReducer.rol
+            if (rol === '') {
 
+            }
+        }
+    },
     logOutUser: () => {
         return (dispatch, getState) => {
             dispatch({
@@ -74,15 +81,15 @@ const authActions = {
         }
     },
 
-    sendMail:(mail) =>{
+    sendMail: (mail) => {
 
-        return async (dispatch, getState) =>{
-            const response = await axios.put(path + '/sendMail',{mail})
-         
-                dispatch({
-                    type:"SEND_MAIL"
-                })
-                return response.data.success
+        return async (dispatch, getState) => {
+            const response = await axios.put(path + '/sendMail', { mail })
+
+            dispatch({
+                type: "SEND_MAIL"
+            })
+            return response.data.success
         }
     }
 
