@@ -48,7 +48,14 @@ const Product = (props) => {
                     </div>
                     <div style={{ display: 'flex' }}>
                         {variantsAux.map(variant => {
-                            return (<div id="imagenShopChica" onClick={e => cambiarFoto(variant.photo)} style={{ backgroundColor: `${variant.color === 'Red' ? '#44282D' : variant.color}` }}> </div>)
+                            return (<div id="imagenShopChica" onClick={e => cambiarFoto(variant.photo)} style={{
+                                backgroundColor: `${variant.color === 'Wine' ? '#44282D' :
+                                    variant.color === 'Black' ? '#111111' :
+                                        variant.color === 'DarkGrey' ? '#34343D' :
+                                            variant.color === 'White' ? 'whitesmoke' :
+                                                variant.color === 'Cream' ? '#EBE4D4' :
+                                                    variant.color === 'Grey' ? '#303B4F' : ''}`
+                            }}> </div>)
                         })}
                     </div>
                 </div>

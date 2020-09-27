@@ -62,7 +62,7 @@ const SelectProduct = (props) => {
                 </div>
                 {(prod.size !== '' || prod.size !== 'Choose the size') &&
                     <h3>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 5 && <p>Last unities</p>)}</h3>}
-                <button onClick={() => props.addProduct(prod)} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>añadir Producto</button>
+                <button onClick={() => props.addProduct(prod)} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
             </div>
         </div>
     </>

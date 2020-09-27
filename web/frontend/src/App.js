@@ -4,10 +4,10 @@ import LogIn from './pages/LogIn';
 import Register from './pages/Register';
 import About from './pages/About';
 import Shop from './pages/Shop';
+import Profile from './pages/Profile';
 import SelectProduct from './pages/SelectProduct'
 import ForgotPass from './pages/ForgotPass'
 import AddItem from './pages/AddItem'
-import ModifyItem from './pages/ModifyItem'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import authActions from './redux/actions/authActions'
 import shoppingCartActions from './redux/actions/shoppingCartActions'
@@ -47,6 +47,7 @@ function App(props) {
         <Route exact path="/shop" component={Shop} />
         <Route path="/logOut" component={LogOut} />
         <Route path="/selectProduct/:id" component={SelectProduct} />
+        <Route path="/profile" component={Profile} />
         <Redirect to="/" />
       </Switch>
       )

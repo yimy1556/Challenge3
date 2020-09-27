@@ -51,7 +51,7 @@ header a:hover,header a:focus {
     margin-left: 10vw;
 }
 #buttonContainer h1{
-padding-top: 200px;
+padding-top: 150px;
 font-size: 80px;
 margin-left: -8vw;
 color: black;
@@ -73,6 +73,16 @@ color: black;
     background: #111111;
     color: #fff !important;
   }
+
+  #buttonShop a{
+    text-decoration: none;
+    color:  #111111;
+  }
+  #buttonShop a:hover{
+    text-decoration: none;
+    color:  white;
+  }
+  
   .button {
     color: #ffffff !important;
     font-size: 20px;
