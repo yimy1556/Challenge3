@@ -3,7 +3,6 @@ import Header from './Header'
 import Footer from './Footer'
 import '../styles/home.css'
 import InfoContainer from './InfoContainer'
-import PhotoContainer from './PhotoContainer'
 import ChatBot from 'react-simple-chatbot'
 import { ThemeProvider } from 'styled-components';
 import ChatBubbleIcon from '@material-ui/icons/Comment';

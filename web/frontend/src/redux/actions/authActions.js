@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2'
 
 
 var path = 'http://localhost:4000/api'
@@ -91,7 +92,22 @@ const authActions = {
             })
             return response.data.success
         }
-    }
+    },
+
+    addNewsletter: mail => {
+        return async (dispatch, getState) => {
+            const response = await axios.post(path + '/newsletter', {mail})
+            console.log(response)
+            if (response.data.success) {
+                Swal.fire( {title: 'Success! Youre signed up!'})
+            } else {
+                Swal.fire({ title: response.data.message})
+                dispatch({
+                    type:'ADD_NEWSLETTER',
+                })
+            }
+        }
+    },
 
 }
 

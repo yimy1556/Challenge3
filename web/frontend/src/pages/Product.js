@@ -38,20 +38,22 @@ const Product = (props) => {
 
     return (
         <>
+
             <div id="articulo">
-                <div id="imagenShop" style={{ backgroundImage: `url(${foto.color})` }}> </div>
+                <NavLink to={`./selectProduct/${props.product._id}`} className="linkProduct"> <div id="imagenShop" style={{ backgroundImage: `url(${foto.color})`, borderBottom: '1px solid rgba(128, 128, 128, 0.37)' }}> </div> </NavLink>
                 <div id="fotosChicas">
-                    {variantsAux.map(variant => {
-                        return (<div id="imagenShopChica" onClick={e => cambiarFoto(variant.photo)} style={{ backgroundColor: `${variant.color}`}}> </div>)
-                    })}
-                </div>
-                <p id="descripcionShop">{props.product.description}</p>
-                <p id="precioShop">{props.product.price}$</p>
-                <NavLink to={`./selectProduct/${props.product._id}`} className="linkProduct">
-                    <div id="divBotonVerMas">
-                        <button className="createAccount"  style={{fontSize:"3vh"}}>View more</button>
+                    <div>
+                        <p id="descripcionShop">{props.product.title}</p>
+                        <p id="precioShop">${props.product.price}</p>
                     </div>
-                </NavLink>
+                    <div style={{ display: 'flex' }}>
+                        {variantsAux.map(variant => {
+                            return (<div id="imagenShopChica" onClick={e => cambiarFoto(variant.photo)} style={{ backgroundColor: `${variant.color === 'Red' ? '#44282D' : variant.color}` }}> </div>)
+                        })}
+                    </div>
+                </div>
+
+
             </div>
 
         </>

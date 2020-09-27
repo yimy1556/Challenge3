@@ -31,5 +31,8 @@ router.route('/selectProduct/:id')
 router.route('/sendMail')
     .put(userController.getNewPass)
 
+router.route('/newsletter')
+    .post(userController.createSuscription)
+
 
 module.exports = router

@@ -1,8 +1,5 @@
 import React from 'react'
-import CoverPageAbout from '../components/CoverPageAbout'
-import photoStore from '../images/aboutMessage.jpg'
 import Header from '../components/Header'
-import Trail2 from '../components/Trail2'
 import '../styles/about.css'
 import { animateScroll as scroll } from 'react-scroll'
 import ChatBotComponent from '../components/ChatBotComponent'
@@ -26,7 +23,7 @@ class About extends React.Component {
             <>
 
                 <Header />
-                <Trail2></Trail2>
+
                 <ChatBotComponent />
                 <Footer />
             </>
