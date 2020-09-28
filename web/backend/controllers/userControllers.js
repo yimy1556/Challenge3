@@ -106,23 +106,33 @@ const userController = {
 	},
 
 	createSuscription: async (req, res) => {
-		
+
 		const { mail } = req.body
-		const mailExists = await Newsletter.findOne({mail})
-		console.log({mail})
-		if(mailExists){
+		const mailExists = await Newsletter.findOne({ mail })
+		console.log({ mail })
+		if (mailExists) {
 			res.json({
-				success:false, message:'The email is registered'
+				success: false, message: 'The email is registered'
 			})
-		} else{
+		} else {
 			const newNewsletter = new Newsletter({
-				mail:mail
+				mail: mail
 			})
 			newNewsletter.save()
 			res.json({
-				success:true, mail: newNewsletter.mail
+				success: true, mail: newNewsletter.mail
 			})
 		}
+	},
+
+	listSubsNewsletter: async (req, res) => {
+		const list = await Newsletter.find()
+			.then(list => {
+				res.json({ success: true, list })
+			})
+			.catch(error => {
+				res.json({ success: false, error })
+			})
 	}
 }
 

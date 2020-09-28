@@ -3,6 +3,7 @@ import itemActions from '../redux/actions/itemActions'
 import { connect } from 'react-redux'
 import shoppingCartActions from '../redux/actions/shoppingCartActions'
 import Header from '../components/Header'
+import { animateScroll as scroll } from 'react-scroll'
 
 const borrarRepe = (variants) => {
     const variantsAux = []
@@ -15,6 +16,10 @@ const borrarRepe = (variants) => {
     return variantsAux
 }
 
+    const scrollToTop = () => {
+        scroll.scrollToTop();
+    }
+
 const SelectProduct = (props) => {
     const [product, setProduct] = useState({})
     const [prod, setProd] = useState({
@@ -22,6 +27,7 @@ const SelectProduct = (props) => {
         remeraActual: '', color: '', size: '', cant: 1
     })
     useEffect(() => {
+        scrollToTop()
         const productId = props.match.params.id
         props.selectProductId(productId)
             .then(prodc => {
