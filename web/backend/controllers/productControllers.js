@@ -37,9 +37,7 @@ const productController = {
             .catch(error => res.json({ success: false, error }))
     },
     deleteProduct: (req, res) => {
-        const { product } = req.body
-        console.log(product)
-        Product.findOneAndDelete({ title: product })
+        Product.findOneAndDelete({...req.body})
             .then(() => res.json({ success: true, message: 'your product has been removed' }))
             .catch(error => res.json({ success: false, error }))
     },
