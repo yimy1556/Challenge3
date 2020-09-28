@@ -9,11 +9,11 @@ const userSchema = new mongoose.Schema({
 	lastName: {
 		type: String,
 		trim: true
-    },
-    rol:{
-        type:String,
-        default:'client'
-    },
+	},
+	rol: {
+		type: String,
+		default: 'client'
+	},
 	mail: {
 		type: String,
 		required: true,

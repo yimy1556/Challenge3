@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import LogIn from './pages/LogIn';
 import Register from './pages/Register';
 import About from './pages/About';
+import Buy from './pages/Buy';
 import Shop from './pages/Shop';
 import Profile from './pages/Profile';
 import SelectProduct from './pages/SelectProduct'
@@ -45,6 +46,7 @@ function App(props) {
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
         <Route exact path="/shop" component={Shop} />
+        <Route exact path="/buy" component={Buy} />
         <Route path="/logOut" component={LogOut} />
         <Route path="/selectProduct/:id" component={SelectProduct} />
         <Route path="/profile" component={Profile} />

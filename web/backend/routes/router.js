@@ -33,6 +33,7 @@ router.route('/sendMail')
 
 router.route('/newsletter')
     .post(userController.createSuscription)
+    .get(userController.listSubsNewsletter)
 
 
 module.exports = router
