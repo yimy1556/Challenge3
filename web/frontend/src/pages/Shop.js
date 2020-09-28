@@ -11,6 +11,10 @@ import ChatBotComponent from '../components/ChatBotComponent'
 
 
 class Shop extends React.Component {
+    state = {
+        sort: '',
+        sortFlag: ''
+    }
 
     componentDidMount() {
         this.scrollToTop()
@@ -21,18 +25,42 @@ class Shop extends React.Component {
     scrollToTop() {
         scroll.scrollToTop();
     }
+    highestPrice = this.props.products.sort(function (a, b) {
+        return (b.price - a.price)
+    })
+    lowestPrice = this.props.products.sort(function (a, b) {
+        return (a.price - b.price)
+    })
 
+    sort = (e) => {
+        var value = e.target.value
+        if (value !== "") {
+            console.log(value)
+            this.setState({
+                sortFlag: true,
+                sort: value
+            })
+        } else {
+            this.setState({
+                sortFlag: false,
+            })
+        }
+
+    }
     render() {
+        console.log(this.highestPrice)
+        console.log(this.lowestPrice)
         return (
             <>
                 <Header />
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                     <div style={{ flex: '1', padding: '50px', display: 'flex', flexDirection: 'column' }}>
                         <h4>Order</h4>
-                        <select name="color" id="color" >
-                            <option >Most Relevant</option>
-                            <option>Lowest Price</option>
-                            <option>Highest Price</option>
+                        <select name="sort" id="sort" onChange={this.sort}>
+                            <option value="">Sort by</option>
+                            <option value="mostRevelant">Most Relevant</option>
+                            <option value="lowestPrice">Lowest Price</option>
+                            <option value="highestPrice">Highest Price</option>
                         </select>
                         <h3>Indumentaria</h3>
                         <Slider />
@@ -51,6 +79,7 @@ class Shop extends React.Component {
 
                                     })
                                     }
+
                                 </>
                             }
                         </div>
