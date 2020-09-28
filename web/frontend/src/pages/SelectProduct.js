@@ -47,7 +47,7 @@ const SelectProduct = (props) => {
                 <img src={prod?.remeraActual} alt="remeraActual" style={{ width: '28vw', height: '76vh' }} />
 
             </div>
-            <div >
+            <div style={{ width: '50vw' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', paddingRight: '7em' }}>
                     <h3>{product.title}</h3>
                     <h3>${product.price}</h3>
@@ -61,7 +61,7 @@ const SelectProduct = (props) => {
                     </select>
                 </div>
                 {(prod.size !== '' || prod.size !== 'Choose the size') &&
-                    <h3>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 5 && <p>Last unities</p>)}</h3>}
+                    <h3>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</h3>}
                 <button onClick={() => props.addProduct(prod)} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
             </div>
         </div>

@@ -44,18 +44,18 @@ class Home extends React.Component {
 
                 <Carousel>
                     <Carousel.Item>
-                        <div style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1550246141-363ccad4018d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80)', height: '70vh', maxWidth: '100vw' }}>
+                        <div style={{ backgroundImage: 'url(https://static.pullandbear.net/2/static2/itxwebstandard/images/home/2020-09/24/1400/Newin_man.jpg?ver=20200927021501)', height: '80vh', maxWidth: '100vw', backgroundPosition: 'cover' }}>
                             <div id="buttonContainer">
-                                <h1>Spring 2020</h1>
+                                <h1 style={{ color: 'white' }}>Spring 2020</h1>
                                 <button id="buttonShop"><NavLink to="/shop">Shop Now</NavLink></button>
                             </div>
                         </div>
                     </Carousel.Item>
                     <Carousel.Item>
-                        <div style={{ backgroundImage: `url(https://images.pexels.com/photos/3707182/pexels-photo-3707182.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)`, backgroundSize: "cover", height: '70vh', maxWidth: '100vw' }}>
-                            <div id="buttonContainer">
-                                <h1 style={{ color: 'white' }}>Spring 2020</h1>
-                                <button id="buttonShop"><NavLink to="/shop">Shop Now</NavLink></button>
+                        <div style={{ backgroundImage: `url(https://s7d2.scene7.com/is/image/aeo/20200915-mhp-matchup-lg?scl=1&qlt=60&fmt=jpeg)`, backgroundSize: "cover", height: '80vh', maxWidth: '100vw' }}>
+                            <div id="buttonContainer2" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <h1 >Spring 2020</h1>
+                                <button id="buttonShop2"><NavLink to="/shop">Shop Now</NavLink></button>
                             </div>
                         </div>
                     </Carousel.Item>
@@ -70,8 +70,8 @@ class Home extends React.Component {
                 </div>
                 <InfoContainer />
                 <div id="dosfotos">
-                    <div className="fotosHome" style={{ backgroundImage: `url(https://images.pexels.com/photos/724499/pexels-photo-724499.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)`, height: '40vw', width: '41vw' }}></div>
-                    <div className="fotosHome" style={{ backgroundImage: `url(https://images.pexels.com/photos/3473516/pexels-photo-3473516.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)`, height: '40vw', width: '41vw' }}></div>
+                    <div className="fotosHome" style={{ backgroundImage: `url(https://static.zara.net/photos///mkt/spots/ss20-south-collection-man/subhome-xmedia-39//w/552/portrait_0.jpg?ts=1600705575855)`, height: '40vw', width: '41vw' }}></div>
+                    <div className="fotosHome" style={{ backgroundImage: `url(https://static.zara.net/photos///mkt/spots/ss20-south-collection-man/subhome-xmedia-39//w/552/portrait_0.jpg?ts=1600705575855)`, height: '40vw', width: '41vw' }}></div>
                 </div>
 
 
