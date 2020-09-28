@@ -9,20 +9,19 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Header from '../components/Header'
+import HeaderAdmin from '../components/HeaderAdmin'
 import itemActions from '../redux/actions/itemActions'
 
 
 
 function CollapsibleTable(props) {
-    const headerFormu = ['Variants','Title','Description','Price', 'Delate / Update']
+    const headerFormu = ['Variants', 'Title', 'Description', 'Price', 'Delate / Update']
     useEffect(() => {
-        const get = async () => await props.getProducts
-        get()
-    },[props.products])
+        props.getProducts()
+    }, [props.products])
 
     return (<>
-        <Header/>
+        <HeaderAdmin />
         <TableContainer component={Paper}>
             <Table aria-label="collapsible table">
                 <TableHead>
