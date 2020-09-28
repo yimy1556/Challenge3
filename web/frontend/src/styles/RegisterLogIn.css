@@ -30,7 +30,7 @@ padding: 2vh 2vw;
 #divFormulario label{
     margin-right: 2vw;
 }
-#divFormulario input, select{
+#divFormulario input, #divFormulario select{
     width: 50vw;
     height: 7vh;
     padding: 0vh 1vw;
