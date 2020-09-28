@@ -37,6 +37,7 @@ const userController = {
 					firstName: user.firstName,
 					mail: user.mail,
 					lastName: user.lastName,
+					rating: user.rating,
 					rol: user.rol
 				})
 			})
@@ -59,6 +60,7 @@ const userController = {
 			firstName: userExists.firstName,
 			mail: userExists.mail,
 			lastName: userExists.lastName,
+			rating: userExists.rating,
 			rol: userExists.rol
 		})
 	},
@@ -102,6 +104,15 @@ const userController = {
 				response: "Error getting account"
 			})
 		}
+	},
+
+	postRating: async (req, res) => {
+		const { rating, productId } = req.body
+		// Está harcodeada la id por ahora, después se cambia
+		const productRating = await User.findOneAndUpdate({_id: '5f722c325662db1db4e938b6'},{$push:{rating:{productId: productId, ratingNumber: rating}}})
+		res.json({ success: true, rating, productId })
+		console.log(rating);
+		console.log(productRating);
 	},
 
 	createSuscription: async (req, res) => {

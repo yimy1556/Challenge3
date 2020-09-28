@@ -12,8 +12,7 @@ import ChatBotComponent from '../components/ChatBotComponent'
 
 class Shop extends React.Component {
     state = {
-        sort: '',
-        sortFlag: ''
+        list: this.props.products
     }
 
     componentDidMount() {
@@ -25,12 +24,25 @@ class Shop extends React.Component {
     scrollToTop() {
         scroll.scrollToTop();
     }
-    highestPrice = this.props.products.sort(function (a, b) {
-        return (b.price - a.price)
-    })
-    lowestPrice = this.props.products.sort(function (a, b) {
-        return (a.price - b.price)
-    })
+
+    lowestPrice = () => {
+        var lowestPrice = this.props.products.sort(function (a, b) {
+            return (a.price - b.price)
+        })
+        console.log('hola')
+        this.setState({
+            list: lowestPrice
+        })
+    }
+    highestPrice = (params) => {
+        var highestPrice = this.props.products.sort(function (a, b) {
+            return (b.price - a.price)
+        })
+        console.log('hola')
+        this.setState({
+            list: highestPrice
+        })
+    }
 
     sort = (e) => {
         var value = e.target.value
@@ -48,21 +60,17 @@ class Shop extends React.Component {
 
     }
     render() {
-        console.log(this.highestPrice)
-        console.log(this.lowestPrice)
         return (
             <>
                 <Header />
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                     <div style={{ flex: '1', padding: '50px', display: 'flex', flexDirection: 'column' }}>
                         <h4>Order</h4>
-                        <select name="sort" id="sort" onChange={this.sort}>
-                            <option value="">Sort by</option>
-                            <option value="mostRevelant">Most Relevant</option>
-                            <option value="lowestPrice">Lowest Price</option>
-                            <option value="highestPrice">Highest Price</option>
-                        </select>
-                        <h3>Indumentaria</h3>
+
+                        <button onClick={this.lowestPrice}>Lowest Price</button>
+                        <button onClick={this.highestPrice}>Highest Price</button>
+
+
                         <Slider />
                     </div>
                     <div id="paginaShop" style={{ flex: '8' }}>
@@ -70,7 +78,7 @@ class Shop extends React.Component {
                         <div id="todoShop">
                             {this.props.products == 0 ? <p>no products yet</p> :
                                 <>
-                                    {this.props.products.map(product => {
+                                    {this.state.list.map(product => {
                                         return (
                                             <>
                                                 <Product product={product} />

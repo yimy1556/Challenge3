@@ -31,7 +31,6 @@ const Register = (props) => {
 
     const enviarInfo = async e => {
         e.preventDefault()
-        console.log(user)
         const uname = RegExp(/^[a-zA-Z0-9._]+$/)
         const reMail = RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
         const rePass = RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[!{}[\]@#$%\^&*)(+=._-]).{5,}/)
@@ -81,7 +80,6 @@ const Register = (props) => {
     }
 
 
-    console.log(user)
 
     return (
         <div style={{ backgroundImage: 'url(https://www.onlygfx.com/wp-content/uploads/2017/07/paint-texture-black-and-white-3.jpeg)', height: '100vh', maxWidth: '100vw', backgroundSize: 'cover', backgroundPosition: '40% 0%' }}>

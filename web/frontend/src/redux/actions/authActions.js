@@ -96,18 +96,33 @@ const authActions = {
 
     addNewsletter: mail => {
         return async (dispatch, getState) => {
-            const response = await axios.post(path + '/newsletter', {mail})
+            const response = await axios.post(path + '/newsletter', { mail })
             console.log(response)
             if (response.data.success) {
-                Swal.fire( {title: 'Success! Youre signed up!'})
+                Swal.fire({ title: 'Success! You\'re signed up!' })
             } else {
-                Swal.fire({ title: response.data.message})
+                Swal.fire({ title: response.data.message })
                 dispatch({
-                    type:'ADD_NEWSLETTER',
+                    type: 'ADD_NEWSLETTER',
                 })
             }
         }
-    }
+    },
+    rating: (productId, rating) => {
+        console.log(productId, rating);
+        return async (dispatch, getState) => {
+            const response = await axios.post(path + `/user/rating`, { productId, rating })
+            console.log(response);
+            if (!response.data.success) {
+                toast('Something went wrong')
+            } else {
+                dispatch({
+                    type: 'LOG_USER',
+                    payload: { rating: response.data.rating, productId: response.data.productId }
+                })
+            }
+        }
+    },
 
 }
 

@@ -3,6 +3,7 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import ItemCarrito from '../components/ItemCarrito'
 import { connect } from 'react-redux'
+import HorizontalLabelPositionBelowStepper from '../components/Stepper'
 
 class Buy extends React.Component {
     compraTotal = (list) => {
@@ -17,6 +18,7 @@ class Buy extends React.Component {
                 <Header />
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                     <div>
+                        {/* <HorizontalLabelPositionBelowStepper /> */}
                         <div id="ropaDelCarrito">
                             {this.props.listProduct.map(prod => <ItemCarrito product={prod} />)}
 
