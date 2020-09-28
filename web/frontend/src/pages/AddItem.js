@@ -115,9 +115,10 @@ const AddItem = props => {
                             <option >Choose the color</option>
                             <option>White</option>
                             <option>Black</option>
-                            <option>Blue</option>
-                            <option>Red</option>
-                            <option>Green</option>
+                            <option>DarkGrey</option>
+                            <option>Grey</option>
+                            <option>Wine</option>
+                            <option>Cream</option>
                         </select>
                         {item.newProduct == "true" ? <button onClick={sendInfo}>Send item</button> : <button onClick={putVariant}>Send variant</button>}
                     </form>

@@ -4,11 +4,10 @@ import LogIn from './pages/LogIn';
 import Register from './pages/Register';
 import About from './pages/About';
 import Shop from './pages/Shop';
+import Profile from './pages/Profile';
 import SelectProduct from './pages/SelectProduct'
 import ForgotPass from './pages/ForgotPass'
 import AddItem from './pages/AddItem'
-import ModifyItem from './pages/ModifyItem'
-import DeleteItem from './pages/DeleteItem'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import authActions from './redux/actions/authActions'
 import shoppingCartActions from './redux/actions/shoppingCartActions'
@@ -35,10 +34,9 @@ function App(props) {
     var myRoutes =
       (<Switch>
         <Route exact path="/new" component={AddItem} />
-        <Route exact path="/modify" component={ModifyItem} />
-        <Route exact path="/delete" component={DeleteItem} />
+        <Route path="/modify" component={FormularioAdmi} />
         <Route path="/logOut" component={LogOut} />
-        <Redirect to="/new" />
+        <Redirect to="/modify" />
       </Switch>
       )
   } else if (props.token || localStorage.getItem('token')) {
@@ -49,14 +47,14 @@ function App(props) {
         <Route exact path="/shop" component={Shop} />
         <Route path="/logOut" component={LogOut} />
         <Route path="/selectProduct/:id" component={SelectProduct} />
+        <Route path="/profile" component={Profile} />
         <Redirect to="/" />
       </Switch>
       )
   }
   else {
-    var myRoutes = (<Switch> 
+    var myRoutes = (<Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/yimy" component={FormularioAdmi}/>
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={LogIn} />
       <Route exact path="/about" component={About} />
@@ -82,7 +80,7 @@ function App(props) {
           pauseOnHover
         />
         <Switch>
-            {myRoutes}
+          {myRoutes}
         </Switch>
       </BrowserRouter>
     </>

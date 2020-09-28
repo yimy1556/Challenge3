@@ -24,9 +24,9 @@ const SelectProduct = (props) => {
     useEffect(() => {
         const productId = props.match.params.id
         props.selectProductId(productId)
-        .then(prodc => {
-                console.log(prodc,'ssssdsd')
-                setProduct({ ...prodc})
+            .then(prodc => {
+                console.log(prodc, 'ssssdsd')
+                setProduct({ ...prodc })
                 setProd({
                     ...prod,
                     remeraActual: prodc.variants[0].photo,
@@ -35,28 +35,34 @@ const SelectProduct = (props) => {
                     price: prodc.price
                 })
             })
-    },[])
+    }, [])
     if (product === {}) return <></>
     return (<>
         <Header />
-        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-            <div>
-                <img src={prod?.remeraActual} alt="remeraActual" style={{ width: '25em', height: '25em' }} />
-                <div>{borrarRepe(product?.variants).map(vari => <img onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
-                    src={vari.photo} alt={vari.title} style={{ width: '4em', height: '4em' }} />)}
+        <div style={{ display: 'flex', justifyContent: 'space-around', padding: '3em' }}>
+            <div style={{ display: 'flex' }}>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
+                    src={vari.photo} alt={vari.title} style={{ width: '3em', height: '4em' }} />)}
                 </div>
+                <img src={prod?.remeraActual} alt="remeraActual" style={{ width: '28vw', height: '76vh' }} />
+
             </div>
-            <div>
-                <h3>{product.title} color {prod.color}</h3>
-                <label>Size</label>
-                <select name="size" id="size" onChange={(e) => setProd({ ...prod, size: e.target.value })}>
-                    <option >Choose the size</option>
-                    {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <option>{vari.size}</option>)}
-                </select>
-                <h3>{product.price}</h3>
+            <div >
+                <div style={{ display: 'flex', justifyContent: 'space-between', paddingRight: '7em' }}>
+                    <h3>{product.title}</h3>
+                    <h3>${product.price}</h3>
+                </div>
+                <p style={{ maxWidth: '20em', padding: '20px 0' }}>{product.description}</p>
+                <div style={{ display: 'flex', flexDirection: 'column' }} >
+                    <label>Size</label>
+                    <select name="size" id="size" onChange={(e) => setProd({ ...prod, size: e.target.value })}>
+                        <option >Choose the size</option>
+                        {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <option>{vari.size}</option>)}
+                    </select>
+                </div>
                 {(prod.size !== '' || prod.size !== 'Choose the size') &&
-                    <h3> stock disponible {(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock)}</h3>}
-                <button onClick={() => props.addProduct(prod)} className="createAccount">añadir Producto</button>
+                    <h3>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 5 && <p>Last unities</p>)}</h3>}
+                <button onClick={() => props.addProduct(prod)} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
             </div>
         </div>
     </>

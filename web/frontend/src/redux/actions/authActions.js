@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2'
 
 
 var path = 'http://localhost:4000/api'
@@ -65,7 +66,14 @@ const authActions = {
 
         }
     },
+    forcedRol: () => {
+        return async (dispatch, getState) => {
+            const rol = getState().authReducer.rol
+            if (rol === '') {
 
+            }
+        }
+    },
     logOutUser: () => {
         return (dispatch, getState) => {
             dispatch({
@@ -74,17 +82,32 @@ const authActions = {
         }
     },
 
-    sendMail:(mail) =>{
+    sendMail: (mail) => {
 
-        return async (dispatch, getState) =>{
-            const response = await axios.put(path + '/sendMail',{mail})
-         
-                dispatch({
-                    type:"SEND_MAIL"
-                })
-                return response.data.success
+        return async (dispatch, getState) => {
+            const response = await axios.put(path + '/sendMail', { mail })
+
+            dispatch({
+                type: "SEND_MAIL"
+            })
+            return response.data.success
         }
-    }
+    },
+
+    addNewsletter: mail => {
+        return async (dispatch, getState) => {
+            const response = await axios.post(path + '/newsletter', {mail})
+            console.log(response)
+            if (response.data.success) {
+                Swal.fire( {title: 'Success! Youre signed up!'})
+            } else {
+                Swal.fire({ title: response.data.message})
+                dispatch({
+                    type:'ADD_NEWSLETTER',
+                })
+            }
+        }
+    },
 
 }
 

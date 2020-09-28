@@ -1,16 +1,18 @@
 const User = require("../models/User")
+const newsletter = require('../models/Newsletter')
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const message = "Mail or Password incorrect"
 const nodeMailer = require('nodemailer')
+const Newsletter = require("../models/Newsletter")
 
 
 var transport = nodeMailer.createTransport({
 	port: 465,
 	host: "smtp.gmail.com",
 	auth: {
-		pass: "Carla2020",
-		user: "carlabrunni79@gmail.com"
+		pass: "Pyral2020",
+		user: "your.pyral@gmail.com"
 	},
 	tls: { rejectUnauthorized: false }
 })
@@ -82,8 +84,8 @@ const userController = {
 			const user = await User.findOneAndUpdate({ mail: mailSent }, { pass: passwordHashed })
 
 			var mailOptions = {
-				from: "Pyral <notresponse@notreply.com>",
-				sender: "Pyral <notresponse@notreply.com>",
+				from: "Pyral <your.pyral@gmail.com>",
+				sender: "Pyral <your.pyral@gmail.com>",
 				to: `${user.mail}`,
 				subject: "New Password",
 				html: `<h4>Hello ${user.firstName},</h4>
@@ -99,6 +101,26 @@ const userController = {
 			res.json({
 				success: false,
 				response: "Error getting account"
+			})
+		}
+	},
+
+	createSuscription: async (req, res) => {
+		
+		const { mail } = req.body
+		const mailExists = await Newsletter.findOne({mail})
+		console.log({mail})
+		if(mailExists){
+			res.json({
+				success:false, message:'The email is registered'
+			})
+		} else{
+			const newNewsletter = new Newsletter({
+				mail:mail
+			})
+			newNewsletter.save()
+			res.json({
+				success:true, mail: newNewsletter.mail
 			})
 		}
 	}

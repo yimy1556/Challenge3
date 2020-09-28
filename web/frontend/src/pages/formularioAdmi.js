@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import Row from '../components/Row'
 import Box from '@material-ui/core/Box';
@@ -40,8 +40,8 @@ function CollapsibleTable(props) {
 
 const mapStateToProps = state => {
     return {
-        products : state.itemReducer.product
-	}
+        products: state.itemReducer.product
+    }
 }
 const mapDispatchToProps = {
     getProducts: itemActions.getProducts
