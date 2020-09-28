@@ -7,6 +7,7 @@ const nodeMailer = require('nodemailer')
 const Newsletter = require("../models/Newsletter")
 
 
+
 var transport = nodeMailer.createTransport({
 	port: 465,
 	host: "smtp.gmail.com",
@@ -22,7 +23,6 @@ const userController = {
 		const { pass } = req.body
 		const newUser = new User({ ...req.body })
 		newUser.pass = bcrypt.hashSync(pass.trim(), 10)
-		console.log(newUser)
 		newUser.save()
 			.then(user => {
 				const token = jwt.sign({ ...user }, process.env.SECRET_KEY, {})
@@ -69,7 +69,6 @@ const userController = {
 
 	getNewPass: async (req, res) => {
 		mailSent = req.body.mail
-		console.log(mailSent)
 
 		try {
 			await User.findOne({ mail: mailSent })
@@ -109,7 +108,6 @@ const userController = {
 
 		const { mail } = req.body
 		const mailExists = await Newsletter.findOne({ mail })
-		console.log({ mail })
 		if (mailExists) {
 			res.json({
 				success: false, message: 'The email is registered'
@@ -120,7 +118,23 @@ const userController = {
 			})
 			newNewsletter.save()
 			res.json({
-				success: true, mail: newNewsletter.mail
+				success: true, mail: newNewsletter.mail, message: 'You will receive our promotions very soon!'
+			})
+			var mailOptions = {
+				from: "Pyral <your.pyral@gmail.com>",
+				sender: "Pyral <your.pyral@gmail.com>",
+				to: `${mail}`,
+				subject: "Pyral Newsletter",
+				html: `<h4>Welcome to Pyral</h4>
+							<p style="color: #0D195A; font-size:18px;">Thank you for subscribing,
+							 we will notify you when a discount or promotion is available! <a style="color: #152657; font-size:25px;" 
+							 href="http://localhost:3000/shop">Visit us </a> </p>
+							 <a style="color: #0D195A; font-size:9px;" href="http://www.google.com">Unsuscribe</a>
+						   <hr/>
+       					<h2>Team Pyral</h2>`
+			}
+			transport.sendMail(mailOptions, (error, info) => {
+				res.send("send email")
 			})
 		}
 	},

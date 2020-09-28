@@ -55,7 +55,7 @@ class ForgotPass extends React.Component{
                     disabled: false
                 }) 
             } else{
-                Swal.fire({  title: 'A email has been sent!',  text: "Please check your mail box",  icon: 'success',  showConfirmButton: false, timer: 4000,allowOutsideClick: false})
+                Swal.fire({  title: 'A email has been sent!',  text: "Please check your mail box",  icon: 'success',  showConfirmButton: false, timer: 3000,allowOutsideClick: false})
                 this.props.history.push('/')
                 this.setState({
                     ...this.state,
