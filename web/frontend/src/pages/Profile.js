@@ -6,7 +6,7 @@ import ChatBotComponent from '../components/ChatBotComponent'
 import Footer from '../components/Footer'
 
 
-class About extends React.Component {
+class Profile extends React.Component {
 
 
     componentDidMount() {
@@ -23,7 +23,7 @@ class About extends React.Component {
             <>
 
                 <Header />
-                <h1>This is the about page</h1>
+                <h1>This is your Profile</h1>
                 <ChatBotComponent />
                 <Footer />
             </>
@@ -31,4 +31,4 @@ class About extends React.Component {
     }
 }
 
-export default About
+export default Profile

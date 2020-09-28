@@ -19,11 +19,23 @@ router.route("/product/addProduct")
     .post(productController.addProduct)
     .put(productController.updateProduct)
 
+router.route("/product/deleteProduct")
+    .put(productController.deleteProduct)
+
+router.route("/product/modifyProduct")
+    .put(productController.modifyProduct)
+
 router.route('/selectProduct/:id')
     .get(productController.getSelectProductId)
 
 router.route('/sendMail')
     .put(userController.getNewPass)
+
+router.route('/user/rating')
+    .post(userController.postRating)
+router.route('/newsletter')
+    .post(userController.createSuscription)
+    .get(userController.listSubsNewsletter)
 
 
 module.exports = router

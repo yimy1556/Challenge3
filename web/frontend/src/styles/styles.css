@@ -4,7 +4,15 @@ html * {
     font-family: 'Roboto', sans-serif;
     
 }
-
+.circulo {
+     width: 2em;
+     height: 2em;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     margin: 0em;
+     padding: 0em;
+}
 header{
     max-width: 100%;
     color: whitesmoke;
@@ -38,17 +46,24 @@ header a:hover,header a:focus {
 
 
 #buttonContainer{
-
     flex-direction: column;
     margin-left: 10vw;
 }
+#buttonContainer2{
+  flex-direction: column;
+}
 #buttonContainer h1{
-padding-top: 200px;
+padding-top: 150px;
 font-size: 80px;
 margin-left: -8vw;
 color: black;
 }
-
+#buttonContainer2 h1{
+  padding-top: 150px;
+  font-size: 80px;
+  color: black;
+  }
+  
 #buttonShop {
     color: #111111 !important;
     font-size: 30px;
@@ -60,10 +75,41 @@ color: black;
     position: relative;
     margin-top: 80px;
   }
-  
+  #buttonShop2 {
+    color: #b6b6b6 !important;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 0.3em 1em;
+    background: rgba(255, 255, 255);
+    border:none;
+    transition: all 1s ease;
+    position: relative;
+    margin-top: 80px;
+  }  
   #buttonShop:hover {
     background: #111111;
     color: #fff !important;
+  }
+  #buttonShop2:hover {
+    background: #111111;
+    color: #fff !important;
+  }
+  #buttonShop a{
+    text-decoration: none;
+    color:  #111111;
+  }
+  #buttonShop2 a{
+    text-decoration: none;
+    color:  #111111;
+  }
+  #buttonShop a:hover{
+    text-decoration: none;
+    color:  white;
+  }
+  
+  #buttonShop2 a:hover{
+    text-decoration: none;
+    color:  white;
   }
   .button {
     color: #ffffff !important;
@@ -95,6 +141,25 @@ color: black;
   margin-bottom: 25vh;
 }
 
+  
+.box {
+  cursor: pointer;
+  position: relative;
+  width: 50%;
+  height: 20%;
+  background-color: #111111;
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  will-change: transform;
+}
 
 
+input:focus, input.form-control:focus {
 
+  outline:none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}

@@ -7,7 +7,7 @@ const productController = {
         console.log(req.files)
         const archivo = req.files.photo
         var extension = archivo.name.split('.')[1]
-        var nombreArchivo = req.body.title + '.' + extension
+        var nombreArchivo = req.body.title + req.body.color + '.' + extension
         const serverURL = `uploads/${nombreArchivo}`
 
         const photo = `http://localhost:4000/uploads/${nombreArchivo}`
@@ -25,7 +25,6 @@ const productController = {
             .catch((error) => res.json({ success: false, error }))
     },
     getProducts: async (req, res) => {
-        console.log('hola')
         const product = await Product.find()
         res.json({
             success: true,
@@ -37,10 +36,15 @@ const productController = {
             .then(product => res.json({ success: true, product }))
             .catch(error => res.json({ success: false, error }))
     },
-    deleteRecipe: (req, res) => {
-        Product.findByIdAndDelete({ ...req.params })
+    deleteProduct: (req, res) => {
+        Product.findOneAndDelete({...req.body})
             .then(() => res.json({ success: true, message: 'your product has been removed' }))
             .catch(error => res.json({ success: false, error }))
+    },
+    modifyProduct: (req, res) => {
+        const { product } = req.body
+        console.log(product)
+
     },
     updateProduct: (req, res) => {
         const { title, stock, color, size } = req.body

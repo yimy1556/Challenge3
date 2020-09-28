@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
+import HeaderAdmin from '../components/HeaderAdmin';
 import itemActions from '../redux/actions/itemActions'
 
 const AddItem = props => {
@@ -62,8 +63,9 @@ const AddItem = props => {
 
     return (
         <>
-            <Header />
+            <HeaderAdmin />
             <main>
+                <h1 style={{ textAlign: 'center' }}>Add a new item</h1>
                 <div id="divFormulario">
                     <form id='form' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '30%', margin: '5vh auto' }}>
                         <div id="radioContainer">
@@ -74,7 +76,7 @@ const AddItem = props => {
                         {item.newProduct == "false" ?
                             <select name="title" id="title" onChange={readInput} className="text-center col-6"
                             >
-                                <option value={-1} className="text-center">
+                                <option className="text-center">
                                     Choose your article
                          </option>
                                 {props.products.map(product => {
@@ -113,9 +115,10 @@ const AddItem = props => {
                             <option >Choose the color</option>
                             <option>White</option>
                             <option>Black</option>
-                            <option>Blue</option>
-                            <option>Red</option>
-                            <option>Green</option>
+                            <option>DarkGrey</option>
+                            <option>Grey</option>
+                            <option>Wine</option>
+                            <option>Cream</option>
                         </select>
                         {item.newProduct == "true" ? <button onClick={sendInfo}>Send item</button> : <button onClick={putVariant}>Send variant</button>}
                     </form>

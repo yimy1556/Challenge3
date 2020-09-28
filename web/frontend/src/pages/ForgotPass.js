@@ -2,9 +2,21 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import authActions from '../redux/actions/authActions'
+import { animateScroll as scroll } from 'react-scroll'
 import Swal from 'sweetalert2'
 
 class ForgotPass extends React.Component{
+
+
+
+    componentDidMount() {
+        this.scrollToTop()
+    }
+
+    scrollToTop() {
+        scroll.scrollToTop();
+    }
+
 
     state={
         email:"",
@@ -43,7 +55,7 @@ class ForgotPass extends React.Component{
                     disabled: false
                 }) 
             } else{
-                Swal.fire({  title: 'A email has been sent!',  text: "Please check your mail box",  icon: 'success',  showConfirmButton: false, timer: 4000,allowOutsideClick: false})
+                Swal.fire({  title: 'A email has been sent!',  text: "Please check your mail box",  icon: 'success',  showConfirmButton: false, timer: 3000,allowOutsideClick: false})
                 this.props.history.push('/')
                 this.setState({
                     ...this.state,

@@ -10,21 +10,21 @@ import shoppingCartActions from '../redux/actions/shoppingCartActions'
 const ItemCarrito = (props) => {
     return (
         <>
-            <div id="unelEmentoCarrito">
+            <div id="unelEmentoCarrito" style={{ marginBottom: '20px' }}>
                 <div id="imageCarrito" style={{ backgroundImage: `url(${props.product.remeraActual})`, width: "8vw", height: "8vw" }}></div>
 
                 <div id="tituloCantidad">
                     <p>{props.product.title}</p>
                     <div id="cantidad">
-                        <button onClick={() => props.updateQuantity(props.product,-1)} 
-                            style={{ backgroundColor: 'white', border: 'none' }}><Remove/></button>
+                        <button onClick={() => props.updateQuantity(props.product, -1)}
+                            style={{ backgroundColor: 'white', border: 'none' }}><Remove /></button>
                         <p>{props.product.cant}</p>
-                        <button onClick={() => props.updateQuantity(props.product,1)} 
-                                style={{ backgroundColor: 'white', border: 'none' }}><Add/></button>
+                        <button onClick={() => props.updateQuantity(props.product, 1)}
+                            style={{ backgroundColor: 'white', border: 'none' }}><Add /></button>
                     </div>
                 </div>
 
-                    <Tooltip onClick={() => props.removeProduct(props.product)} title="Delete" style={{ height: '50px' }} >
+                <Tooltip onClick={() => props.removeProduct(props.product)} title="Delete" style={{ height: '50px' }} >
                     <IconButton aria-label="delete">
                         <DeleteIcon />
                     </IconButton>
