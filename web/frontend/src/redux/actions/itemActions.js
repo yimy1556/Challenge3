@@ -26,13 +26,16 @@ const itemActions = {
     },
     getProducts: () => {
         return async (dispatch, getState) => {
-            const {listProduct} = getState().shoppingCartReducer
-            if(listProduct.length !== 0) return
+            const { listProduct } = getState().shoppingCartReducer
+            if (listProduct.length !== 0) return
             const response = await axios.get(path + `/product/getProducts`);
             const info = response.data;
+            console.log(info.product)
+            localStorage.setItem("listProduct", JSON.stringify(info.product))
+            localStorage.setItem("carito", JSON.stringify([]))
             dispatch({
                 type: 'ADD_ITEM',
-                payload: info
+                payload: info.product
             })
         }
     },
@@ -45,16 +48,31 @@ const itemActions = {
             })
         }
     },
-
-    selectProductId: (productId) => {
-
-        return async (dispatch, getState) => {
-            const response = await axios.get(path + `/selectProduct/${productId}`)
-            const product = response.data.response
-            return (product)
+    deleteItem: (product) => {
+        console.log(product)
+            return async (dispatch, getState) => {
+            
+            const response = await axios.put(path + `/product/deleteProduct`, product)
         }
     },
-
+    modifyVariant: async (product) => {
+        return async (dispatch, getState) => {
+            const response = await axios.put(path + `/product/modifyProduct`, { product })
+        }
+    },
+    selectProductId: (productId) => async (dispatch, getState) => {
+        const { product } = getState().itemReducer
+        const prod = product.filter(pro => pro._id === productId)
+        console.log(prod, 'dsdsdsdsd')
+        return (prod[0])
+    },
+    forcedPoducts: (products) => (dispatch, getState) => {
+        const productsParse = JSON.parse(products)
+        dispatch({
+            type: 'ADD_ITEM',
+            payload: productsParse
+        })
+    }
 }
 
 export default itemActions

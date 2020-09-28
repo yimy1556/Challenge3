@@ -19,6 +19,12 @@ router.route("/product/addProduct")
     .post(productController.addProduct)
     .put(productController.updateProduct)
 
+router.route("/product/deleteProduct")
+    .put(productController.deleteProduct)
+
+router.route("/product/modifyProduct")
+    .put(productController.modifyProduct)
+
 router.route('/selectProduct/:id')
     .get(productController.getSelectProductId)
 
@@ -27,5 +33,8 @@ router.route('/sendMail')
 
 router.route('/user/rating')
     .post(userController.postRating)
+router.route('/newsletter')
+    .post(userController.createSuscription)
+
 
 module.exports = router

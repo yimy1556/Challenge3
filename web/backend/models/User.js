@@ -16,17 +16,24 @@ const userSchema = new mongoose.Schema({
     },
 	mail: {
 		type: String,
-		required: true,
+		// required: true,
 		trim: true,
 		unique: true
 	},
 	pass: {
 		type: String,
-		required: true
+		// required: true
 	},
 	direction: {
 		type: Array,
 		default: []
+	},
+	rating: {
+		type: Array,
+		default: [{
+			productId: {type: String}, 
+			ratingNumber: {type: Number}
+		}]
 	}
 })
 

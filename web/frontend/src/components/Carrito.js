@@ -11,12 +11,13 @@ import Badge from '@material-ui/core/Badge'
 
 const compraTotal = (list) => {
     let total = 0
-    list.forEach(prod => total += prod.cant*prod.price)
+    console.log(list, '1')
+    list.forEach(prod => total += prod.cant * prod.price)
     return total
 }
 const cantTotal = (list) => {
     let total = 0
-    console.log(list)
+    console.log(list, '2')
     list.forEach(prod => total += prod.cant)
     return total
 }
@@ -26,8 +27,8 @@ const Carrito = (props) => {
 
     useEffect(() => {
         setTotal(cantTotal(props.listProduct))
-    },[props.listProduct])
-    
+    }, [props.listProduct])
+
     const [menuShow, setmenuShow] = useState({
         show: false
     })
@@ -39,24 +40,27 @@ const Carrito = (props) => {
             show: !menuShow.show
         })
     }
-        return (
+
+    console.log(props.ddd, 'ssa23ed8uhe')
+    if (props.listProduct === null) return <></>
+    return (
         <>
-           <div className='DivCerrarCarrito' onClick={menuHamburguesa} style={!menuShow.show ? {display: 'none', opacity: 0} : { display: 'block' }}></div>
-          
+            <div className='DivCerrarCarrito' onClick={menuHamburguesa} style={!menuShow.show ? { display: 'none', opacity: 0 } : { display: 'block' }}></div>
+
             <div id="menuCostado" style={menuShow.show ? { right: 0 } : {}}>
                 <div onClick={menuHamburguesa} id="botonCarrito" style={{ border: `none` }} style={menuShow.show ? { display: 'none' } : { display: 'block' }}>
                     <div id="carrito" >
-                        <Badge badgeContent={cantTotal(props.listProduct)} color="secondary">
-                            <ShoppingCartIcon  fontSize='large'/>
+                        <Badge badgeContent={cantTotal(props.listProduct)}>
+                            <ShoppingCartIcon fontSize='large' />
                         </Badge>
-                    </div>     
+                    </div>
                 </div>
 
 
                 <button onClick={menuHamburguesa} style={{ backgroundColor: 'transparent', border: 'none' }} ><CancelIcon style={{ color: "white", fontSize: 40 }}></CancelIcon></button>
                 <h3>Shopping Cart</h3>
                 <div id="ropaDelCarrito">
-                    {props.listProduct.map(prod => <ItemCarrito product={prod}/>)}
+                    {props.listProduct.map(prod => <ItemCarrito product={prod} />)}
 
                     <div id="totalPrecio">
                         <p>Total</p>
@@ -77,8 +81,9 @@ const Carrito = (props) => {
 
 const mapStateToProps = state => {
     return {
-        listProduct : state.shoppingCartReducer.listProduct,
-	}
+        listProduct: state.shoppingCartReducer.listProduct,
+        ddd: state.shoppingCartReducer
+    }
 }
 const mapDispatchToProps = {
 }

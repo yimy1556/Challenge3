@@ -4,12 +4,16 @@ import LogIn from './pages/LogIn';
 import Register from './pages/Register';
 import About from './pages/About';
 import Shop from './pages/Shop';
+import Profile from './pages/Profile';
 import SelectProduct from './pages/SelectProduct'
 import ForgotPass from './pages/ForgotPass'
 import AddItem from './pages/AddItem'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import authActions from './redux/actions/authActions'
+import shoppingCartActions from './redux/actions/shoppingCartActions'
+import itemActions from './redux/actions/itemActions'
 import { connect } from 'react-redux'
+import FormularioAdmi from './pages/formularioAdmi'
 import './styles/styles.css'
 import './styles/RegisterLogIn.css'
 import LogOut from './components/LogOut';
@@ -19,15 +23,20 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App(props) {
   console.log(props.rol)
+  if (localStorage.getItem("listProduct"))
+    props.forcedPoducts(localStorage.getItem("listProduct"))
+  if (localStorage.getItem("carito"))
+    props.forcedCart(localStorage.getItem("carito"))
   if (localStorage.getItem('token') && props.token === "") {
     props.forcedLogIn(localStorage.getItem('token'))
   }
-  if (props.rol === "admin") {
+  if (props.rol == "admin") {
     var myRoutes =
       (<Switch>
-        <Route exact path="/admin" component={AddItem} />
+        <Route exact path="/new" component={AddItem} />
+        <Route path="/modify" component={FormularioAdmi} />
         <Route path="/logOut" component={LogOut} />
-        <Redirect to="/admin" />
+        <Redirect to="/modify" />
       </Switch>
       )
   } else if (props.token || localStorage.getItem('token')) {
@@ -38,6 +47,7 @@ function App(props) {
         <Route exact path="/shop" component={Shop} />
         <Route path="/logOut" component={LogOut} />
         <Route path="/selectProduct/:id" component={SelectProduct} />
+        <Route path="/profile" component={Profile} />
         <Redirect to="/" />
       </Switch>
       )
@@ -84,7 +94,9 @@ const mapStateToProps = (state) => {
   }
 }
 const mapDispatchToProps = {
-  forcedLogIn: authActions.forcedLogIn
+  forcedLogIn: authActions.forcedLogIn,
+  forcedPoducts: itemActions.forcedPoducts,
+  forcedCart: shoppingCartActions.forcedCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

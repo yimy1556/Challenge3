@@ -1,23 +1,26 @@
-
-.container_footer{
-    width: 100%;
-    display: flex;
-}
-.container_links_footer{
-    display: flex;
+footer{
+    display: flex!important;
     justify-content: space-around;
     border-top: 1px solid white;
+    flex: 1;
+    align-items: center;
+    padding: 10px!important;
+    min-height: 400px ;
 }
 
-.container_links_footer{
+footer{
     background-color: #111111;
 }
 
-.container_links_footer div:nth-child(2) img{
+footer div:nth-child(2) img{
     width: 1.5em;
     padding-top: 2em;
 }
 
-.container_links_footer  div:nth-child(3) a{
+footer  div:nth-child(3) a{
     color: whitesmoke;
+}
+
+footer a{
+    color: white;
 }
