@@ -19,7 +19,6 @@ const Product = (props) => {
     console.log(props)
 
     const variantsAux = []
-    console.log("hola", variantsAux)
 
 
     const borrarRepe = (variants) => {

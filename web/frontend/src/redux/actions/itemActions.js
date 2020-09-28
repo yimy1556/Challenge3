@@ -39,6 +39,12 @@ const itemActions = {
             })
         }
     },
+    getColors: () => {
+        return async (dispatch, getState) => {
+            const response = await axios.get('http://127.0.0.1:5000/colors')
+            console.log(response)
+        }
+    },
     putVariant: (formItem) => {
         return async (dispatch, getState) => {
             const response = await axios.put(path + `/product/addProduct`, formItem, {
@@ -50,8 +56,8 @@ const itemActions = {
     },
     deleteItem: (product) => {
         console.log(product)
-            return async (dispatch, getState) => {
-            
+        return async (dispatch, getState) => {
+
             const response = await axios.put(path + `/product/deleteProduct`, product)
         }
     },
