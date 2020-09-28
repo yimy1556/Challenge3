@@ -50,8 +50,9 @@ const itemActions = {
     },
     deleteItem: (product) => {
         console.log(product)
-        return async (dispatch, getState) => {
-            const response = await axios.put(path + `/product/deleteProduct`, { product })
+            return async (dispatch, getState) => {
+            
+            const response = await axios.put(path + `/product/deleteProduct`, product)
         }
     },
     modifyVariant: async (product) => {
