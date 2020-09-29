@@ -103,9 +103,20 @@ const authActions = {
             } else {
                 Swal.fire({ title: response.data.message})
                 dispatch({
-                    type:'ADD_NEWSLETTER',
+                    type:'ADD_NEWSLETTER'
                 })
             }
+        }
+    },
+
+    changePassword : (mail, password) => {
+     
+        return async (dispatch, getState) =>{
+            const response = await axios.put(path + '/changePassword', {mail, password})
+            console.log(response.data)
+            dispatch({
+                type: 'CHANGE_PASSWORD'
+            })
         }
     }
 

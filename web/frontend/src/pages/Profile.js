@@ -4,6 +4,7 @@ import '../styles/about.css'
 import { animateScroll as scroll } from 'react-scroll'
 import ChatBotComponent from '../components/ChatBotComponent'
 import Footer from '../components/Footer'
+import ChangePass from '../components/ChangePass'
 
 
 class Profile extends React.Component {
@@ -19,11 +20,15 @@ class Profile extends React.Component {
 
 
     render() {
+
+        console.log(this.props)
+
         return (
             <>
 
                 <Header />
                 <h1>This is your Profile</h1>
+                <ChangePass />
                 <ChatBotComponent />
                 <Footer />
             </>

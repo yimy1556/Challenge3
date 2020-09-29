@@ -22,7 +22,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function App(props) {
-  console.log(props.rol)
+
   if (localStorage.getItem("listProduct"))
     props.forcedPoducts(localStorage.getItem("listProduct"))
   if (localStorage.getItem("carito"))
