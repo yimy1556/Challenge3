@@ -70,7 +70,6 @@ class Shop extends React.Component {
                         <button onClick={this.lowestPrice}>Lowest Price</button>
                         <button onClick={this.highestPrice}>Highest Price</button>
 
-
                         <Slider />
                     </div>
                     <div id="paginaShop" style={{ flex: '8' }}>
