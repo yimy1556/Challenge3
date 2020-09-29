@@ -3,14 +3,13 @@ import { Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import styled from "styled-components"
-import Header from '../Components/Header'
+import Products from '../Views/Products'
 import { FontAwesome } from '@expo/vector-icons';
 
 const Home = () => <Container><Text>Home</Text></Container>
     
 const About = () => <Container><Text>About</Text></Container>
 
-const Shop = () => <Container><Text>Shop</Text></Container>
 
 const Container = styled.View`
     flex: 1;
@@ -42,7 +41,7 @@ export default function TabV() {
                     name="Home" 
                     component={Home} 
                 />
-            <Tab.Screen name="Shop" component={Shop}/>
+            <Tab.Screen name="Shop" component={Products}/>
             <Tab.Screen name="About" component={About}/>
       </Tab.Navigator>
     </NavigationContainer>
