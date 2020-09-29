@@ -47,9 +47,10 @@ const SelectProduct = (props) => {
     useEffect(() => {
         scrollToTop()
         const productId = props.match.params.id
-        props.postRating(productId, value)
         props.selectProductId(productId)
+
             .then(prodc => {
+
                 console.log(prodc, 'ssssdsd')
                 setProduct({ ...prodc })
                 setProd({
@@ -61,11 +62,16 @@ const SelectProduct = (props) => {
                 })
             })
     }, [value])
-    console.log(props.rating);
+
+    const ratingSet = () => {
+        props.postRating(props.token, props.match.params.id, value)
+    }
+    console.log(props.token);
     if (product === {}) return <></>
     return (<>
         <Header />
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '3em' }}>
+
             <div style={{ display: 'flex' }}>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
                     src={vari.photo} alt={vari.title} style={{ width: '3em', height: '4em' }} />)}
@@ -73,12 +79,16 @@ const SelectProduct = (props) => {
                 <img src={prod?.remeraActual} alt="remeraActual" style={{ width: '28vw', height: '76vh' }} />
 
             </div>
+
             <div style={{ width: '50vw' }}>
+
                 <div style={{ display: 'flex', justifyContent: 'space-between', paddingRight: '7em' }}>
                     <h3>{product.title}</h3>
                     <h3>${product.price}</h3>
                 </div>
+
                 <p style={{ maxWidth: '20em', padding: '20px 0' }}>{product.description}</p>
+
                 <div style={{ display: 'flex', flexDirection: 'column' }} >
                     <label>Size</label>
                     <select name="size" id="size" onChange={(e) => setProd({ ...prod, size: e.target.value })}>
@@ -86,22 +96,23 @@ const SelectProduct = (props) => {
                         {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <option>{vari.size}</option>)}
                     </select>
                 </div>
+
                 {(prod.size !== '' || prod.size !== 'Choose the size') &&
                     <h3>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</h3>}
                 <button onClick={() => props.addProduct(prod)} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
+
                 <div>
                     <Box component="fieldset" mb={3} borderColor="transparent">
                         <Typography component="legend">Rating</Typography>
                         <Rating
                             name="simple-controlled"
-                            onChange={(event, newValue) => {
-                                setValue(newValue)
-                            }}
-                            value={ratingNum}
+                            onChange={ratingSet}
+                            value={value}
                             style={{ color: 'black' }}
                         />
                     </Box>
                 </div>
+
             </div>
         </div>
     </>
@@ -111,12 +122,14 @@ const SelectProduct = (props) => {
 const mapDispatchToProps = {
     selectProductId: itemActions.selectProductId,
     addProduct: shoppingCartActions.addProduct,
-    postRating: authActions.rating
+    postRating: authActions.rating,
+
 }
 
 const mapStateToProps = state => {
     return {
-        rating: state.authReducer.rating
+        rating: state.authReducer.rating,
+        token: state.authReducer.token
     }
 }
 

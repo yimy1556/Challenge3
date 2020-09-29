@@ -12,7 +12,8 @@ const sonIguales = (prod1, prod2, keyProc) => {
 }
 
 const updateLocal = (listProduct, carrito) => {
-    localStorage.clear()
+    localStorage.removeItem("listProduct")
+    localStorage.removeItem("carrito")
     localStorage.setItem("listProduct", JSON.stringify(listProduct))
     localStorage.setItem("carito", JSON.stringify(carrito))
 }

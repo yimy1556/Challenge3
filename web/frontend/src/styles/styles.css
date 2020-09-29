@@ -19,8 +19,8 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5vw;
-    padding-right: 10vw;
+    padding: 0 3vw;
+    padding-right: 8vw;
     border-bottom: 1px solid black;
     max-height: 13vh;
 }
@@ -124,7 +124,7 @@ color: black;
   
   .button:hover {
     background: #111111;
-    color: rgb(0, 0, 0) !important;
+    color: rgb(255, 255, 255)!important;
   }
 .clickHere a{
     color: white!important;
@@ -163,3 +163,31 @@ input:focus, input.form-control:focus {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
 }
+
+#formProduct input,#formProduct select{
+  margin: 5px 0;
+}
+input[type="file"] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: -1;
+  }
+  label[for="photo"] {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color:#111111;
+    display: inline-block;
+    transition: all .5s;
+    cursor: pointer;
+    padding: 15px 40px !important;
+    text-transform: uppercase;
+    width: fit-content;
+    text-align: center;
+    margin-left:  auto;
+    margin-right:  auto;
+    margin-top: 10px;
+    }
