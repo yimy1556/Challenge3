@@ -18,7 +18,7 @@ function CollapsibleTable(props) {
     const headerFormu = ['Variants', 'Title', 'Description', 'Price', 'Delate / Update']
     useEffect(() => {
         props.getProducts()
-    }, [props.products])
+    }, [])
 
     return (<>
         <HeaderAdmin />

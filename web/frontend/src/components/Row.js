@@ -71,7 +71,12 @@ const Row = (props) => {
     const headerRowIterno = ['Phote','Stock', 'Size', 'Color', 'Delate / Update']
     const [bloque, setBloque] = useState(true)
     const [open, setOpen] = React.useState(false)
-
+    console.log(props)
+    const modifyProd = () => {
+        setBloque(!bloque)
+        if(bloque) return;
+        props.modifyProduct(product)
+    }
     return ( 
         <React.Fragment>
             <TableRow>
@@ -95,7 +100,7 @@ const Row = (props) => {
                     <IconButton style={{outline:'0px'}} onClick = {() => props.deleteItem(product)} >
                         <DeleteIcon/>
                     </IconButton>
-                        <IconButton style={{outline:'0px'}} onClick={() => setBloque(!bloque)}>
+                        <IconButton style={{outline:'0px'}} onClick={() => modifyProd()}>
                             <CreateSharpIcon/>
                         </IconButton>
                 </TableCell>
@@ -114,7 +119,7 @@ const Row = (props) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {product.variants.map((vari,index) => <RowInterno key={index} variants={vari} _id={product._id}/>)}
+                                {product.variants.map((vari,index) => <RowInterno {...props} key={index} variants={vari} _id={product._id}/>)}
                             </TableBody>
                         </Table>
                     </Box>
@@ -126,6 +131,8 @@ const Row = (props) => {
 
 
 const mapDispatchToProps = {
-    deleteItem: itemActions.deleteItem
+    deleteItem: itemActions.deleteItem,
+    modifyProduct: itemActions.modifyProduct
+
 }
 export default connect(null, mapDispatchToProps)(Row)
