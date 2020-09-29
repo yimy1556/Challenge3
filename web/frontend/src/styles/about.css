@@ -5,8 +5,22 @@
     margin-top: 2em;
 }
 
+#panel1a-header > div.MuiAccordionSummary-content > p, 
+#panel2a-header > div.MuiAccordionSummary-content.Mui-expanded > p, 
+#panel2a-header > div.MuiAccordionSummary-content > p{
+    font-weight: bold;
+}
+
 .container__accordion{
     width: 80%;
     margin: 2em auto;
 }
 
+.title__table{
+    background-color:#9a9a9a; 
+    color:#FFFFFF;
+}
+
+tbody th, tbody td {
+    padding: .5rem .625rem .625rem;
+}

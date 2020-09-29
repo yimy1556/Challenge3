@@ -15,10 +15,11 @@ class Shop extends React.Component {
         list: this.props.products
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         this.scrollToTop()
         this.props.getProducts()
-        this.props.getColors()
+        var mostVisited = await this.props.products.sort((a, b) => b.views - a.views)
+        var lessVisited = await this.props.products.sort((a, b) => a.views - b.views)
     }
 
     scrollToTop() {
@@ -60,6 +61,8 @@ class Shop extends React.Component {
 
     }
     render() {
+
+
         return (
             <>
                 <Header />

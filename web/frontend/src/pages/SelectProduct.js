@@ -16,6 +16,8 @@ const borrarRepe = (variants) => {
             return
         variantsAux.push(vari)
     })
+
+
     return variantsAux
 }
 
@@ -32,6 +34,7 @@ const borrarRepe = (variants) => {
 // }
 
 const SelectProduct = (props) => {
+
     const [product, setProduct] = useState({})
     const [prod, setProd] = useState({
         _id: props.match.params.id,
@@ -42,9 +45,9 @@ const SelectProduct = (props) => {
     useEffect(() => {
 
         const productId = props.match.params.id
+        props.upViews(productId)
         props.selectProductId(productId)
             .then(prodc => {
-                console.log(prodc, 'ssssdsd')
                 setProduct({ ...prodc })
                 setProd({
                     ...prod,
@@ -127,7 +130,8 @@ const SelectProduct = (props) => {
 const mapDispatchToProps = {
     selectProductId: itemActions.selectProductId,
     addProduct: shoppingCartActions.addProduct,
-    postRating: authActions.rating
+    postRating: authActions.rating,
+    upViews: itemActions.upViews
 }
 
 const mapStateToProps = state => {

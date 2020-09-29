@@ -2,9 +2,7 @@ const Product = require('../models/Product');
 
 const productController = {
     addProduct: async (req, res) => {
-        console.log(req)
         const { title, description, price, stock, size, color } = req.body
-        console.log(req.files)
         const archivo = req.files.photo
         var extension = archivo.name.split('.')[1]
         var nombreArchivo = req.body.title + req.body.color + '.' + extension
@@ -37,28 +35,25 @@ const productController = {
             .catch(error => res.json({ success: false, error }))
     },
     deleteProduct: (req, res) => {
-        Product.findOneAndDelete({...req.body})
+        Product.findOneAndDelete({ ...req.body })
             .then(() => res.json({ success: true, message: 'your product has been removed' }))
             .catch(error => res.json({ success: false, error }))
     },
     modifyProduct: (req, res) => {
         const { _id, title, description, price } = req.body
-        console.log('kdkd',req.body)
-        Product.findByIdAndUpdate(_id, {title, description, price }, { new: true })
-        .then(product => {
-            console.log("dsd",product,"sdsd")
-            res.json({ success: true, product})})
-        .catch(error => {
-            console.log("sdsd",error,"ddd")
-            res.json({ success: false, error })})
-    },
-    modifyVariants:(req, res) => {
-        const {_id,variant} = req.body
-        
+        console.log('kdkd', req.body)
+        Product.findByIdAndUpdate(_id, { title, description, price }, { new: true })
+            .then(product => {
+                console.log("dsd", product, "sdsd")
+                res.json({ success: true, product })
+            })
+            .catch(error => {
+                console.log("sdsd", error, "ddd")
+                res.json({ success: false, error })
+            })
     },
     updateProduct: (req, res) => {
         const { title, stock, color, size } = req.body
-        console.log(req.files)
         const archivo = req.files.photo
         var extension = archivo.name.split('.')[1]
         var nombreArchivo = req.body.title + req.body.color + '.' + extension
@@ -72,6 +67,8 @@ const productController = {
             .then(() => res.json({ success: true, response: 'The data has been modified successfully' }))
             .catch(error => res.json({ success: false, error }))
     },
+
+    //Select product by "id"
     getSelectProductId: async (req, res) => {
         var id = req.params.id
         try {
@@ -82,5 +79,25 @@ const productController = {
             res.json({ success: false, response: "Error geting product" })
         }
     },
+
+    //Hit counter for a single product.
+    upViews: async (req, res) => {
+        var id = req.params.id
+        try {
+            const product = await Product.findOne({ _id: id })
+            var views = product.views += 1
+            await Product.updateOne({ _id: id }, { views })
+            res.json({
+                success: true,
+                response: "viewed"
+            })
+        } catch (error) {
+            res.json({
+                success: false,
+                response: error
+            })
+        }
+    }
+
 }
 module.exports = productController
