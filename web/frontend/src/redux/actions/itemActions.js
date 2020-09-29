@@ -69,11 +69,13 @@ const itemActions = {
         return async (dispatch, getState) => {
             const response = await axios.put(path + `/product/modifyProduct`, { product })
         }
+    },  
+    modifyProduct : (product) => async (dispatch,getState) => {
+        const response = await axios.put(`${path}/product/modifyProduct`,{...product})
     },
     selectProductId: (productId) => async (dispatch, getState) => {
         const { product } = getState().itemReducer
         const prod = product.filter(pro => pro._id === productId)
-        console.log(prod, 'dsdsdsdsd')
         return (prod[0])
     },
     forcedPoducts: (products) => (dispatch, getState) => {
