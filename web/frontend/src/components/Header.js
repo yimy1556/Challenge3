@@ -21,7 +21,7 @@ const Header = (props) => {
                                 <NavLink to="/about">About</NavLink>
                                 <NavLink to="/shop">Shop</NavLink>
                                 <NavLink to="/profile"> <PersonIcon style={{ color: 'black', fontSize: 40 }}></PersonIcon></NavLink>
-                                <NavLink to="/logOut">Logout</NavLink>
+
                             </div>
                             <Carrito />
                         </>

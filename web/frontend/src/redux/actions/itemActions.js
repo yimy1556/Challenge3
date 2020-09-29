@@ -27,19 +27,26 @@ const itemActions = {
     getProducts: () => {
         return async (dispatch, getState) => {
             const { listProduct } = getState().shoppingCartReducer
-            if (listProduct.length !== 0){
+            if (listProduct.length !== 0) {
                 console.log(911)
-                return}
+                return
+            }
             console.log('ssdsdw')
             const response = await axios.get(path + `/product/getProducts`);
             const info = response.data;
-            console.log(info.product,'yimyyy')
+            console.log(info.product, 'yimyyy')
             localStorage.setItem("listProduct", JSON.stringify(info.product))
             localStorage.setItem("carito", JSON.stringify([]))
             dispatch({
                 type: 'ADD_ITEM',
                 payload: info.product
             })
+        }
+    },
+    getColors: () => {
+        return async (dispatch, getState) => {
+            const response = await axios.get('http://127.0.0.1:5000/colors')
+            console.log(response)
         }
     },
     putVariant: (formItem) => {
@@ -53,8 +60,8 @@ const itemActions = {
     },
     deleteItem: (product) => {
         console.log(product)
-            return async (dispatch, getState) => {
-            
+        return async (dispatch, getState) => {
+
             const response = await axios.put(path + `/product/deleteProduct`, product)
         }
     },

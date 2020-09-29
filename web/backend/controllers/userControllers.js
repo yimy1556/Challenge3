@@ -7,6 +7,7 @@ const nodeMailer = require('nodemailer')
 const Newsletter = require("../models/Newsletter")
 
 
+
 var transport = nodeMailer.createTransport({
 	port: 465,
 	host: "smtp.gmail.com",
@@ -22,7 +23,6 @@ const userController = {
 		const { pass } = req.body
 		const newUser = new User({ ...req.body })
 		newUser.pass = bcrypt.hashSync(pass.trim(), 10)
-		console.log(newUser)
 		newUser.save()
 			.then(user => {
 				const token = jwt.sign({ ...user }, process.env.SECRET_KEY, {})
@@ -37,6 +37,7 @@ const userController = {
 					firstName: user.firstName,
 					mail: user.mail,
 					lastName: user.lastName,
+					rating: user.rating,
 					rol: user.rol
 				})
 			})
@@ -59,6 +60,7 @@ const userController = {
 			firstName: userExists.firstName,
 			mail: userExists.mail,
 			lastName: userExists.lastName,
+			rating: userExists.rating,
 			rol: userExists.rol
 		})
 	},
@@ -69,7 +71,6 @@ const userController = {
 
 	getNewPass: async (req, res) => {
 		mailSent = req.body.mail
-		console.log(mailSent)
 
 		try {
 			await User.findOne({ mail: mailSent })
@@ -105,24 +106,59 @@ const userController = {
 		}
 	},
 
+	postRating: async (req, res) => {
+		const { rating, productId } = req.body
+
+		// Está harcodeada la id por ahora, después se cambia
+		const productRating = await User.findOneAndUpdate({ _id: '5f722c325662db1db4e938b6' }, { $push: { rating: { productId: productId, ratingNumber: rating } } })
+		res.json({ success: true, rating, productId })
+		console.log(rating);
+		console.log(productRating);
+	},
+
 	createSuscription: async (req, res) => {
-		
+
 		const { mail } = req.body
-		const mailExists = await Newsletter.findOne({mail})
-		console.log({mail})
-		if(mailExists){
+		const mailExists = await Newsletter.findOne({ mail })
+		if (mailExists) {
 			res.json({
-				success:false, message:'The email is registered'
+				success: false, message: 'The email is registered'
 			})
-		} else{
+		} else {
 			const newNewsletter = new Newsletter({
-				mail:mail
+				mail: mail
 			})
 			newNewsletter.save()
 			res.json({
-				success:true, mail: newNewsletter.mail
+				success: true, mail: newNewsletter.mail, message: 'You will receive our promotions very soon!'
+			})
+			var mailOptions = {
+				from: "Pyral <your.pyral@gmail.com>",
+				sender: "Pyral <your.pyral@gmail.com>",
+				to: `${mail}`,
+				subject: "Pyral Newsletter",
+				html: `<h4>Welcome to Pyral</h4>
+							<p style="color: #0D195A; font-size:18px;">Thank you for subscribing,
+							 we will notify you when a discount or promotion is available! <a style="color: #152657; font-size:25px;" 
+							 href="http://localhost:3000/shop">Visit us </a> </p>
+							 <a style="color: #0D195A; font-size:9px;" href="http://www.google.com">Unsuscribe</a>
+						   <hr/>
+       					<h2>Team Pyral</h2>`
+			}
+			transport.sendMail(mailOptions, (error, info) => {
+				res.send("send email")
 			})
 		}
+	},
+
+	listSubsNewsletter: async (req, res) => {
+		const list = await Newsletter.find()
+			.then(list => {
+				res.json({ success: true, list })
+			})
+			.catch(error => {
+				res.json({ success: false, error })
+			})
 	}
 }
 

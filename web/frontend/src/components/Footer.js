@@ -4,7 +4,6 @@ import '../styles/footer.css'
 import whatsapp from '../images/whatsapp.svg'
 import instagram from '../images/instagram.svg'
 import facebook from '../images/facebook.svg'
-import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import Newsletter from '../components/Newsletter'
 
 

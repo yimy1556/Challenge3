@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import '../styles/carrito.css'
 import ItemCarrito from './ItemCarrito'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
@@ -11,13 +12,11 @@ import Badge from '@material-ui/core/Badge'
 
 const compraTotal = (list) => {
     let total = 0
-    console.log(list, '1')
     list.forEach(prod => total += prod.cant * prod.price)
     return total
 }
 const cantTotal = (list) => {
     let total = 0
-    console.log(list, '2')
     list.forEach(prod => total += prod.cant)
     return total
 }
@@ -41,8 +40,9 @@ const Carrito = (props) => {
         })
     }
 
-    console.log(props.ddd, 'ssa23ed8uhe')
-    if (props.listProduct === null) return <></>
+    console.log(props.listProduct)
+    if (props.listProduct === null) return <>
+    </>
     return (
         <>
             <div className='DivCerrarCarrito' onClick={menuHamburguesa} style={!menuShow.show ? { display: 'none', opacity: 0 } : { display: 'block' }}></div>
@@ -68,7 +68,7 @@ const Carrito = (props) => {
                     </div>
                 </div>
 
-                <button id="butButton">Buy</button>
+                <button id="butButton"><NavLink to="/buy">Buy</NavLink></button>
             </div>
 
         </>

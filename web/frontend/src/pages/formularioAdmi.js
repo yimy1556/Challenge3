@@ -15,15 +15,13 @@ import itemActions from '../redux/actions/itemActions'
 
 
 function CollapsibleTable(props) {
-    const headerFormu = ['Variants','Title','Description','Price', 'Delate / Update']
+    const headerFormu = ['Variants', 'Title', 'Description', 'Price', 'Delate / Update']
     useEffect(() => {
-        const get = async () => await props.getProducts
-        get()
-        console.log(props.products,'dd333dsd')
-    })
+        props.getProducts()
+    }, [props.products])
 
     return (<>
-        <HeaderAdmin/>
+        <HeaderAdmin />
         <TableContainer component={Paper}>
             <Table aria-label="collapsible table">
                 <TableHead>

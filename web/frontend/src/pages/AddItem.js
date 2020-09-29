@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import HeaderAdmin from '../components/HeaderAdmin';
 import itemActions from '../redux/actions/itemActions'
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem'
+
 
 const AddItem = props => {
 
@@ -17,7 +20,7 @@ const AddItem = props => {
     }, [])
 
     const resetForm = () => {
-        document.getElementById('form').reset()
+        document.getElementById('formProduct').reset()
     }
 
     const sendInfo = async e => {
@@ -59,20 +62,58 @@ const AddItem = props => {
             await props.putVariant(formItem)
         }
     }
-    console.log(item)
+    const sizes = [
+        {
+            value: 'S',
+            label: 'S',
+        },
+        {
+            value: 'M',
+            label: 'M',
+        },
+        {
+            value: 'L',
+            label: 'L',
+        },
+    ];
+    const colors = [
+        {
+            value: 'White',
+            label: 'White',
+        },
+        {
+            value: 'Black',
+            label: 'Black',
+        },
+        {
+            value: 'Wine',
+            label: 'Wine',
+        },
+        {
+            value: 'Darkgrey',
+            label: 'Darkgrey',
+        },
+        {
+            value: 'Grey',
+            label: 'Grey',
+        },
+        {
+            value: 'Cream',
+            label: 'Cream',
+        },
+    ];
 
     return (
         <>
             <HeaderAdmin />
             <main>
-                <h1 style={{ textAlign: 'center' }}>Add a new item</h1>
-                <div id="divFormulario">
-                    <form id='form' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '30%', margin: '5vh auto' }}>
-                        <div id="radioContainer">
-                            <input type="radio" onChange={readInput} id="newProduct" name="newProduct" value={true}></input>New Product
-                        <input type="radio" onChange={readInput} id="newProduct" name="newProduct" value={false}></input>New Variant
-                    </div>
-                        <label>Title</label>
+                <h2 style={{ textAlign: 'center' }}>Add a new item</h2>
+                <div>
+                    <form id='formProduct' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '35%', margin: '3vh auto' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                            <div> <input type="radio" onChange={readInput} id="newProduct" name="newProduct" value={true}></input>New Product</div>
+                            <div>  <input type="radio" onChange={readInput} id="newProduct" name="newProduct" value={false}></input>New Variant</div>
+                        </div>
                         {item.newProduct == "false" ?
                             <select name="title" id="title" onChange={readInput} className="text-center col-6"
                             >
@@ -85,42 +126,51 @@ const AddItem = props => {
                                     )
                                 })}
                             </select> :
-                            <input onChange={readInput} type='text' name='title' placeholder='Title' />
+                            <TextField id="title" label="Title" name='title' onChange={readInput} />
+
                         }
                         {item.newProduct == "true" &&
                             <>
-                                <label>Description</label>
-                                <input onChange={readInput} type='text' name='description' placeholder='Description' />
+                                <TextField id="description" label="Description" name='description' onChange={readInput} />
                             </>
                         }
                         <label htmlFor="photo">Photo</label>
-                        <input onChange={readInput} type='file' name='photo' placeholder='Photo' />
+                        <input onChange={readInput} type='file' name='photo' placeholder='photo' id="photo" />
                         {item.newProduct == "true" &&
                             <>
-                                <label>Price $</label>
-                                <input onChange={readInput} type='number' name='price' placeholder='Price' />
+                                <TextField id="price" label="Price" name='price' onChange={readInput} />
                             </>
                         }
-                        <label>Stock</label>
-                        <input onChange={readInput} type='number' name='stock' placeholder='Stock' />
-                        <label>Size</label>
-                        <select name="size" id="size" onChange={readInput}>
-                            <option >Choose the size</option>
-                            <option>S</option>
-                            <option>M</option>
-                            <option>L</option>
-                        </select>
-                        <label>Color</label>
-                        <select name="color" id="color" onChange={readInput}>
-                            <option >Choose the color</option>
-                            <option>White</option>
-                            <option>Black</option>
-                            <option>DarkGrey</option>
-                            <option>Grey</option>
-                            <option>Wine</option>
-                            <option>Cream</option>
-                        </select>
-                        {item.newProduct == "true" ? <button onClick={sendInfo}>Send item</button> : <button onClick={putVariant}>Send variant</button>}
+                        <TextField id="stock" label="Stock" name='stock' type='number' onChange={readInput} />
+
+                        <TextField
+                            id="size"
+                            name="size"
+                            select
+                            label="Size"
+
+                            onChange={readInput}
+                        >
+                            {sizes.map((option) => (
+                                <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                </MenuItem>
+                            ))}
+                        </TextField >
+                        <TextField
+                            id="color"
+                            name="color"
+                            select
+                            label="Color"
+                            onChange={readInput}
+                        >
+                            {colors.map((option) => (
+                                <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                </MenuItem>
+                            ))}
+                        </TextField >
+                        {item.newProduct == "true" ? <button onClick={sendInfo} >Send item</button> : <button onClick={putVariant}>Send variant</button>}
                     </form>
                 </div>
             </main>

@@ -31,41 +31,46 @@ const Register = (props) => {
 
     const enviarInfo = async e => {
         e.preventDefault()
-        console.log(user)
         const uname = RegExp(/^[a-zA-Z0-9._]+$/)
         const reMail = RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
         const rePass = RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[!{}[\]@#$%\^&*)(+=._-]).{5,}/)
         if (user.firstName === '' || user.lastName === '' || user.mail === '' || user.pass === '') {
-            toast("please complete all fields")
+            toast.error("please complete all fields")
 
             // name validation
         } else if (user.firstName.length < 3) {
-            toast("Your name must contain at least 3 characters")
+            toast.error("Your name must contain at least 3 characters")
         } else if (!uname.test(user.firstName)) {
-            toast("Your name must contain only uppercase letter, lowercase letter, numbers, numbers, '_' and '.'")
+            toast.error("Your name must contain only uppercase letter, lowercase letter, numbers, numbers, '_' and '.'")
 
             // lastName validation
         } else if (user.lastName.length < 3) {
-            toast("Your lastName must contain at least 3 characters")
+            toast.error("Your lastName must contain at least 3 characters")
         } else if (!uname.test(user.lastName)) {
-            toast("Your lastName must contain only uppercase letter, lowercase letter, numbers, '_' and '.'")
+            toast.error("Your lastName must contain at least 3 characters")
+            ("Your lastName must contain only uppercase letter, lowercase letter, numbers, '_' and '.'")
 
             // mail validation
         } else if (user.mail.length < 6) {
-            toast("Your mail must contain at least 6 characters")
+            toast.error("Your lastName must contain at least 3 characters")
+            ("Your mail must contain at least 6 characters")
         } else if (!reMail.test(user.mail)) {
-            toast("Your mail must be a valid mal, for exaple: 'example@server.com'")
+            toast.error("Your lastName must contain at least 3 characters")
+            ("Your mail must be a valid mal, for exaple: 'example@server.com'")
 
             // pass validation
         } else if (user.pass.length < 5) {
-            toast("Your password must contain at least 5 characters")
+            toast.error("Your lastName must contain at least 3 characters")
+            ("Your password must contain at least 5 characters")
         } else if (!rePass.test(user.pass)) {
-            toast("Your Password must include at least one uppercase letter, at least one lowercase letter, and at least one number. ")
+            toast.error("Your lastName must contain at least 3 characters")
+            ("Your Password must include at least one uppercase letter, at least one lowercase letter, and at least one number. ")
 
 
         } else {
             await props.newUser(user)
-            toast("Thank you for Signing Up")
+            toast.error("Your lastName must contain at least 3 characters")
+            ("Thank you for Signing Up")
         }
     }
 
@@ -76,12 +81,11 @@ const Register = (props) => {
             mail: response.profileObj.email,
             pass: response.profileObj.googleId,
         })
-        toast("Thank you for signing up")
+        toast.success("Thank you for signing up")
 
     }
 
 
-    console.log(user)
 
     return (
         <div style={{ backgroundImage: 'url(https://www.onlygfx.com/wp-content/uploads/2017/07/paint-texture-black-and-white-3.jpeg)', height: '100vh', maxWidth: '100vw', backgroundSize: 'cover', backgroundPosition: '40% 0%' }}>

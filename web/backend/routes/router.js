@@ -31,8 +31,11 @@ router.route('/selectProduct/:id')
 router.route('/sendMail')
     .put(userController.getNewPass)
 
+router.route('/user/rating')
+    .post(userController.postRating)
 router.route('/newsletter')
     .post(userController.createSuscription)
+    .get(userController.listSubsNewsletter)
 
 
 module.exports = router

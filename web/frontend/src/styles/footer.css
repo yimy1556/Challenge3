@@ -4,8 +4,8 @@ footer{
     border-top: 1px solid white;
     flex: 1;
     align-items: center;
-    padding: 10px!important;
-    min-height: 400px ;
+    padding: 5px!important;
+    min-height: 250px ;
 }
 
 footer{
@@ -14,7 +14,7 @@ footer{
 
 footer div:nth-child(2) img{
     width: 1.5em;
-    padding-top: 2em;
+    padding-top: 1em;
 }
 
 footer  div:nth-child(3) a{

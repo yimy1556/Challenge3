@@ -9,24 +9,31 @@ const userSchema = new mongoose.Schema({
 	lastName: {
 		type: String,
 		trim: true
-    },
-    rol:{
-        type:String,
-        default:'client'
-    },
+	},
+	rol: {
+		type: String,
+		default: 'client'
+	},
 	mail: {
 		type: String,
-		required: true,
+		// required: true,
 		trim: true,
 		unique: true
 	},
 	pass: {
 		type: String,
-		required: true
+		// required: true
 	},
 	direction: {
 		type: Array,
 		default: []
+	},
+	rating: {
+		type: Array,
+		default: [{
+			productId: {type: String}, 
+			ratingNumber: {type: Number}
+		}]
 	}
 })
 

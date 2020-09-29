@@ -14,9 +14,20 @@ import Photo3 from '../images/3.jpg'
 import Photo4 from '../images/4.jpg'
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { animateScroll as scroll } from 'react-scroll'
 
 
 class Home extends React.Component {
+
+    componentDidMount() {
+        this.scrollToTop()
+    }
+
+
+    scrollToTop() {
+        scroll.scrollToTop();
+    }
+
     state = {
         showBot: false
     }
