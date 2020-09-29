@@ -5,7 +5,8 @@ const initialState = {
     token: '',
     rol: '',
     success: '',
-    rating: ''
+    rating: '',
+    productId: ''
 }
 
 const authReducer = (state = initialState, action) => {
@@ -20,12 +21,13 @@ const authReducer = (state = initialState, action) => {
                 token: action.payload.token,
                 rol: action.payload.rol,
                 success: action.payload.success,
-
+                rating: action.payload.rating,
             }
         case 'RATING':
             return {
                 ...state,
-                rating: action.payload.rating
+
+                productId: action.payload.productId
             }
         case 'LOGOUT_USER':
             localStorage.clear()

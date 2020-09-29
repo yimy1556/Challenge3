@@ -35,6 +35,7 @@ router.route('/sendMail')
 
 router.route('/user/rating')
     .post(passport.authenticate('jwt', { session: false }), userController.postRating)
+
 //subscription newsletter
 router.route('/newsletter')
     .post(userController.createSuscription)

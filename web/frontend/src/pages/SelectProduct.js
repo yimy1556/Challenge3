@@ -56,13 +56,25 @@ const SelectProduct = (props) => {
             })
     }, [])
     const [value, setValue] = useState(0)
+
     const ratingSet = () => {
         alert(value)
         const productId = props.match.params.id
+
         props.postRating(productId, value, props.userlogged.token)
+
     }
+    const ratingUpdate = () => {
+        alert(value)
+        const productId = props.match.params.id
+
+        props.postRating(productId, value, props.userlogged.token)
+
+    }
+    var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
+    console.log(arrayFiltrado[0].stars)
     if (product === {}) return <></>
-    console.log(value)
+    props.product.map(product => console.log(`${product.stars}`))
     return (<>
         <Header />
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '3em' }}>
@@ -78,6 +90,7 @@ const SelectProduct = (props) => {
                     <h3>{product.title}</h3>
                     <h3>${product.price}</h3>
                 </div>
+                <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
                 <p style={{ maxWidth: '20em', padding: '20px 0' }}>{product.description}</p>
                 <div style={{ display: 'flex', flexDirection: 'column' }} >
                     <label>Size</label>
@@ -98,9 +111,12 @@ const SelectProduct = (props) => {
                             onChange={(event, newValue) => {
                                 setValue(newValue);
                             }}
-                            onChangeActive={ratingSet}
+
                         />
+
                     </Box>
+                    {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 && <button onClick={ratingSet}>Enviar estrellitas</button>}
+
                 </div>
             </div>
         </div>
@@ -117,6 +133,8 @@ const mapDispatchToProps = {
 const mapStateToProps = state => {
     return {
         rating: state.authReducer.rating,
+        productId: state.authReducer.productId,
+        product: state.itemReducer.product,
         userlogged: state.authReducer
     }
 }
