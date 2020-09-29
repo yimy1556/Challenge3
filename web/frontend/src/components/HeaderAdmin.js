@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Carrito from './Carrito'
 import PersonIcon from '@material-ui/icons/Person';
 
 

@@ -12,7 +12,7 @@ const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'LOG_USER':
             localStorage.setItem('token', action.payload.token)
-            localStorage.setItem('rating', action.payload.rating)
+
             return {
                 ...state,
                 firstName: action.payload.firstName,

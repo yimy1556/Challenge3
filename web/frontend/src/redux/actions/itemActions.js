@@ -27,13 +27,14 @@ const itemActions = {
     getProducts: () => {
         return async (dispatch, getState) => {
             const { listProduct } = getState().shoppingCartReducer
-            if (listProduct.length !== 0){
+            if (listProduct.length !== 0) {
                 console.log(911)
-                return}
+                return
+            }
             console.log('ssdsdw')
             const response = await axios.get(path + `/product/getProducts`);
             const info = response.data;
-            console.log(info.product,'yimyyy')
+            console.log(info.product, 'yimyyy')
             localStorage.setItem("listProduct", JSON.stringify(info.product))
             localStorage.setItem("carito", JSON.stringify([]))
             dispatch({
