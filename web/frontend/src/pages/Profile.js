@@ -6,6 +6,7 @@ import ChatBotComponent from '../components/ChatBotComponent'
 import Footer from '../components/Footer'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import ChangePass from '../components/ChangePass'
 
 
 class Profile extends React.Component {
@@ -22,6 +23,9 @@ class Profile extends React.Component {
 
     render() {
         console.log(this.props.userlogged)
+
+        console.log(this.props)
+
         return (
             <>
 
@@ -45,6 +49,7 @@ class Profile extends React.Component {
 
                     </div>
                 </div>
+                <ChangePass />
                 <ChatBotComponent />
                 <Footer />
             </>

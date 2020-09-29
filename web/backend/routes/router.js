@@ -25,17 +25,26 @@ router.route("/product/deleteProduct")
 router.route("/product/modifyProduct")
     .put(productController.modifyProduct)
 
+//Search product of "id"    
 router.route('/selectProduct/:id')
     .get(productController.getSelectProductId)
 
+//Forgot Pass, sending email with new password.
 router.route('/sendMail')
     .put(userController.getNewPass)
 
 router.route('/user/rating')
-    .post(userController.postRating)
+    .post(passport.authenticate('jwt', { session: false }), userController.postRating)
+//subscription newsletter
 router.route('/newsletter')
     .post(userController.createSuscription)
     .get(userController.listSubsNewsletter)
 
+//Change password from user profile.
+router.route('/changePassword')
+    .put(userController.changePass)
+
+//     router.route('/viewsProduct/:id')
+// .get(productController.upViews)
 
 module.exports = router

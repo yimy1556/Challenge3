@@ -4,6 +4,7 @@ import '../styles/about.css'
 import { animateScroll as scroll } from 'react-scroll'
 import ChatBotComponent from '../components/ChatBotComponent'
 import Footer from '../components/Footer'
+import Faqs from '../components/Faqs'
 
 
 class About extends React.Component {
@@ -23,7 +24,7 @@ class About extends React.Component {
             <>
 
                 <Header />
-                <h1>This is the about page</h1>
+                <Faqs />
                 <ChatBotComponent />
                 <Footer />
             </>

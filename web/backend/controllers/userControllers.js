@@ -69,6 +69,7 @@ const userController = {
 		res.json({ firstName, lastName, mail, rol })
 	},
 
+	//A new random password is generated and sent. (forgot password)
 	getNewPass: async (req, res) => {
 		mailSent = req.body.mail
 
@@ -108,7 +109,7 @@ const userController = {
 
 	postRating: async (req, res) => {
 		const { rating, productId } = req.body
-
+		console.log(req.user)
 		// Está harcodeada la id por ahora, después se cambia
 		const productRating = await User.findOneAndUpdate({ _id: '5f722c325662db1db4e938b6' }, { $push: { rating: { productId: productId, ratingNumber: rating } } })
 		res.json({ success: true, rating, productId })
@@ -116,6 +117,7 @@ const userController = {
 		console.log(productRating);
 	},
 
+	//Subscription mail is recorded and notified by mail.
 	createSuscription: async (req, res) => {
 
 		const { mail } = req.body
@@ -151,6 +153,8 @@ const userController = {
 		}
 	},
 
+
+	//List of subscribers to the newsletter
 	listSubsNewsletter: async (req, res) => {
 		const list = await Newsletter.find()
 			.then(list => {
@@ -159,7 +163,30 @@ const userController = {
 			.catch(error => {
 				res.json({ success: false, error })
 			})
+	},
+
+	//Password change from user profile. 
+	changePass: async (req, res) => {
+
+		mailUser = req.body.mail
+		passwordUser = req.body.password
+
+		const passHash = bcrypt.hashSync(passwordUser, 10)
+		try {
+			const user = await User.findOneAndUpdate({ mail: mailUser }, { pass: passHash })
+			res.json({
+				success: true,
+				response: "your password has been changed successfully."
+			})
+		}
+		catch {
+			res.json({
+				success: false,
+				response: "error in change password"
+			})
+		}
 	}
+
 }
 
 module.exports = userController
