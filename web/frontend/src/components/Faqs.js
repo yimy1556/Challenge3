@@ -11,7 +11,7 @@ import '../styles/about.css'
 export default function Faqs() {
 
   return (
-    <div className= "container__super__faqs">
+    <div className="container__super__faqs">
       <p id="title_accordeon">Frequent questions</p>
       <div className="container__accordion">
         <Accordion>
@@ -52,16 +52,58 @@ export default function Faqs() {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-            Our hours of operation are: <br/>
-            Monday through Friday (6 AM – 3:30 PM PST)<br/>
-            Email: your.pyral@gmail.com<br/>
-            Call: (855) 909-8267<br/>
-            Text: (714) 598-1819<br/>
+              Our hours of operation are: <br />
+            Monday through Friday (6 AM – 3:30 PM PST)<br />
+            Email: your.pyral@gmail.com<br />
+            Call: (855) 909-8267<br />
+            Text: (714) 598-1819<br />
             Live chat: when available, the “Live Chat” button is at the top and right side of any page.
           </Typography>
           </AccordionDetails>
         </Accordion>
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2a-content" id="panel2a-header">
+            <Typography>Do you offer exchanges?</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+            Due to high volume and dynamic inventory fluctuations, we do not currently offer exchanges through Pyral.com. 
+            You can return your product and reorder.
+              <table border="1" cellpadding="15" cellspacing="2">
+                <tbody>
+                  <tr>
+                  </tr>
+                  <tr className="title__table">
+                    <td>Returns only by US Postal Service</td></tr>
+                  <tr>
+                    <td>1. Pack and seal the product securely in your original Pyral box (if possible) or any cardboard shipping box</td>
+                  </tr>
+                  <tr>
+                    <td>2. Write your <b>name</b>, <b>return address</b>, and <b>order number</b> on the return shipping label. Order number(s) 
+                    can be found in your order history at Pyral.com and in your shipping confirmation email. </td>
+                  </tr>
+                  <tr>
+                    <td>3. Attach the prepaid US Postal Service return label to the outside of the return package (make sure to cover or remove any old shipping labels)</td>
+                  </tr>
+                  <tr>
+                    <td>4. The package can be picked up by the US Postal Service at your mailbox or dropped off at the Post Office or FedEx Retail location</td>
+                  </tr>
+                  <tr>
+                    <td>*Please note, due to COVID-19, shipping carriers have reported delays. Please note, returns may take 8-13 business days to be delivered 
+                      sback to our DC to process. We appreciate your patience and understanding.</td>
+                  </tr>
+                  <tr>
+                    <td>A full refund, excluding shipping charges, will be issued on unworn merchandise within 30 business days to the original form of payment</td>
+                  </tr>
+                </tbody>
+              </table>
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
       </div>
+
+
+
     </div>
 
   );

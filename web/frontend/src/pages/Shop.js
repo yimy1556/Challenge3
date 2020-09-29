@@ -12,9 +12,15 @@ import ChatBotComponent from '../components/ChatBotComponent'
 
 class Shop extends React.Component {
 
-    componentDidMount() {
+    state = {
+        
+    }
+
+    async componentDidMount() {
         this.scrollToTop()
         this.props.getProducts()
+        var mostVisited = await this.props.products.sort((a,b) => b.views-a.views)
+        var lessVisited = await this.props.products.sort((a,b) => a.views-b.views)
     }
 
     scrollToTop() {
@@ -22,6 +28,8 @@ class Shop extends React.Component {
     }
 
     render() {
+
+        
         return (
             <>
                 <Header />

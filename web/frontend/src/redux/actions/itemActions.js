@@ -30,7 +30,6 @@ const itemActions = {
             if (listProduct.length !== 0) return
             const response = await axios.get(path + `/product/getProducts`);
             const info = response.data;
-            console.log(info.product)
             localStorage.setItem("listProduct", JSON.stringify(info.product))
             localStorage.setItem("carito", JSON.stringify([]))
             dispatch({
@@ -49,7 +48,6 @@ const itemActions = {
         }
     },
     deleteItem: (product) => {
-        console.log(product)
             return async (dispatch, getState) => {
             
             const response = await axios.put(path + `/product/deleteProduct`, product)
@@ -60,10 +58,10 @@ const itemActions = {
             const response = await axios.put(path + `/product/modifyProduct`, { product })
         }
     },
+
     selectProductId: (productId) => async (dispatch, getState) => {
         const { product } = getState().itemReducer
         const prod = product.filter(pro => pro._id === productId)
-        console.log(prod, 'dsdsdsdsd')
         return (prod[0])
     },
     forcedPoducts: (products) => (dispatch, getState) => {
@@ -72,6 +70,16 @@ const itemActions = {
             type: 'ADD_ITEM',
             payload: productsParse
         })
+    },
+
+    //Up views by product
+    upViews: (productId) =>{
+        return async(dispatch, getState) =>{
+            const response = await axios.get(path + '/viewsProduct/' + productId)
+            dispatch({
+                type:'UP_VIEWS'
+            })
+        }
     }
 }
 

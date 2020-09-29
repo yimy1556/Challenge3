@@ -16,11 +16,8 @@ const Product = (props) => {
             color: foto
         })
     }
-    console.log(props)
-
+   
     const variantsAux = []
-    console.log("hola", variantsAux)
-
 
     const borrarRepe = (variants) => {
         if (variants === undefined) return variantsAux
