@@ -24,10 +24,11 @@ const ChangePass = (props) => {
         const mail = dataNewPass.mail
         const password = dataNewPass.password
         props.changePassword(mail, password)
-        
+        const response = await props.changePassword(mail, password)
+        console.log(response)
     }
 
-    console.log(dataNewPass.mail)
+   
 
     return (
         <>

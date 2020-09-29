@@ -42,4 +42,7 @@ router.route('/newsletter')
 router.route('/changePassword')
     .put(userController.changePass)
 
+//     router.route('/viewsProduct/:id')
+// .get(productController.upViews)
+
 module.exports = router

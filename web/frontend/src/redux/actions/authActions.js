@@ -97,7 +97,7 @@ const authActions = {
     addNewsletter: mail => {
         return async (dispatch, getState) => {
             const response = await axios.post(path + '/newsletter', {mail})
-            console.log(response)
+           
             if (response.data.success) {
                 Swal.fire( {title: 'Success! Youre signed up!'})
             } else {
@@ -105,6 +105,7 @@ const authActions = {
                 dispatch({
                     type:'ADD_NEWSLETTER'
                 })
+                return response.data
             }
         }
     },
@@ -113,10 +114,10 @@ const authActions = {
      
         return async (dispatch, getState) =>{
             const response = await axios.put(path + '/changePassword', {mail, password})
-            console.log(response.data)
             dispatch({
                 type: 'CHANGE_PASSWORD'
             })
+            return response.data
         }
     }
 
