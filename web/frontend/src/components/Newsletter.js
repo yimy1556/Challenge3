@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import TextField from '@material-ui/core/TextField'
-import { Button } from '@material-ui/core'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import authActions from '../redux/actions/authActions'
 import { connect } from 'react-redux'
@@ -24,7 +22,7 @@ const Newsletter = (props) => {
 
         if (errorResponse === undefined){
             setErrorInput('enter a valid email.')
-        }else if(errorResponse !== undefined){
+        }else{
             setErrorInput(errorResponse.info)
         }
     }

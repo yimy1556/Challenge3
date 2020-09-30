@@ -13,14 +13,54 @@ footer{
 }
 
 footer div:nth-child(2) img{
-    width: 1.5em;
-    padding-top: 1em;
+    width: 2.5em;
+    padding: .4em;
+    margin: 1em;
+    background-color: whitesmoke;
 }
 
-footer  div:nth-child(3) a{
-    color: whitesmoke;
-}
 
 footer a{
     color: white;
+    font-weight: 0.5em;
+}
+
+
+.container__items__footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container__items__footer div:nth-child(1){
+    display: flex;
+    flex-direction: column;
+}
+
+.container__icons__social{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+}
+
+
+
+footer span {
+    margin-top: 2em;
+    font-size: .8em;
+    color: whitesmoke;
+}
+
+@media only screen and (max-width: 768px) {
+
+    footer{
+        justify-content: space-around;
+        flex-direction: column;
+    }
+    footer div:nth-child(3) h4{
+        margin-top: 2em;
+        display: flex;
+        flex-direction: column;
+        font-size: .9em;
+    }
 }

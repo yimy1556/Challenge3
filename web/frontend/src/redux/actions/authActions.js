@@ -108,7 +108,7 @@ const authActions = {
                     return errorResponse = response.data.info
                 }
                 return errorResponse
-                console.log(errorResponse)   
+                  
                 
         }
     },
