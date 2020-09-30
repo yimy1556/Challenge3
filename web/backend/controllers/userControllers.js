@@ -127,7 +127,7 @@ const userController = {
 			res.json({	success: false, info: 'The email is registered'})
 		} else {
 			const newNewsletter = new Newsletter({
-				mail: mail
+				mail
 			})
 			newNewsletter.save()
 			res.json({

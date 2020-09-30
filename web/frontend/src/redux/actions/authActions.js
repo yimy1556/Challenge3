@@ -96,7 +96,7 @@ const authActions = {
     addNewsletter: mail => {
         return async (dispatch, getState) => {
             const response = await axios.post(path + '/newsletter', { mail })
-            // console.log(errorResponse)   
+            
             dispatch({
                     type: 'ADD_NEWSLETTER',
                 })
@@ -108,6 +108,7 @@ const authActions = {
                     return errorResponse = response.data.info
                 }
                 return errorResponse
+                console.log(errorResponse)   
                 
         }
     },
