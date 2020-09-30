@@ -115,8 +115,8 @@ const userController = {
 		// Está harcodeada la id por ahora, después se cambia
 		const productRating = await User.findOneAndUpdate({ _id }, { $push: { rating: { productId: productId, ratingNumber: rating } } })
 		const productR = await Product.findOneAndUpdate({ _id: productId }, { $inc: { stars: +rating, reviews: +1 } })
-		console.log(rating)
-		res.json({ success: true, rating, productId })
+			.then(console.log('bien'))
+			.catch(console.log('mal'))
 	},
 	//Subscription mail is recorded and notified by mail.
 	createSuscription: async (req, res) => {
@@ -124,16 +124,14 @@ const userController = {
 		const { mail } = req.body
 		const mailExists = await Newsletter.findOne({ mail })
 		if (mailExists) {
-			res.json({
-				success: false, message: 'The email is registered'
-			})
+			res.json({ success: false, info: 'The email is registered' })
 		} else {
 			const newNewsletter = new Newsletter({
-				mail: mail
+				mail
 			})
 			newNewsletter.save()
 			res.json({
-				success: true, mail: newNewsletter.mail, message: 'You will receive our promotions very soon!'
+				success: true, mail: newNewsletter.mail, info: 'You will receive our promotions very soon!'
 			})
 			var mailOptions = {
 				from: "Pyral <your.pyral@gmail.com>",
