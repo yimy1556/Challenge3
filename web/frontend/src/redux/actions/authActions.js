@@ -8,7 +8,6 @@ var path = 'http://localhost:4000/api'
 const authActions = {
 
     newUser: newUser => {
-        console.log(newUser);
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/register`, newUser)
             if (!response.data.success) {
@@ -31,7 +30,7 @@ const authActions = {
                 toast('Welcome')
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol, success: response.data.success }
+                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol, rating: response.data.rating, success: response.data.success }
                 })
             }
         }
@@ -45,7 +44,7 @@ const authActions = {
             } else {
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol, success: response.data.success }
+                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol, rating: response.data.rating, success: response.data.success }
                 })
             }
         }
@@ -60,7 +59,7 @@ const authActions = {
             })
             dispatch({
                 type: 'LOG_USER',
-                payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: tokenLS, rol: response.data.rol }
+                payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: tokenLS, rol: response.data.rol, rating: response.data.rating }
             })
 
 
@@ -123,7 +122,26 @@ const authActions = {
             } else {
                 dispatch({
                     type: 'RATING',
-                    payload: { rating: response.data.rating }
+                    payload: { rating: response.data.rating, productId: response.data.productId }
+                })
+            }
+        }
+    },
+    ratingUpdate: (productId, rating, token) => {
+        console.log(productId, rating, token);
+        return async (dispatch, getState) => {
+            const response = await axios.post(path + `/user/ratingUpdate`, { productId, rating }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            console.log(response);
+            if (!response.data.success) {
+                toast('Something went wrong')
+            } else {
+                dispatch({
+                    type: 'RATING',
+                    payload: { rating: response.data.rating, productId: response.data.productId }
                 })
             }
         }

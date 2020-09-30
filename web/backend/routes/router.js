@@ -35,6 +35,7 @@ router.route('/sendMail')
 
 router.route('/user/rating')
     .post(passport.authenticate('jwt', { session: false }), userController.postRating)
+
 //subscription newsletter
 router.route('/newsletter')
     .post(userController.createSuscription)
@@ -44,7 +45,8 @@ router.route('/newsletter')
 router.route('/changePassword')
     .put(userController.changePass)
 
-//     router.route('/viewsProduct/:id')
-// .get(productController.upViews)
+    //view counter per product.
+    router.route('/viewsProduct/:id')
+.get(productController.upViews)
 
 module.exports = router

@@ -69,9 +69,9 @@ const itemActions = {
         return async (dispatch, getState) => {
             const response = await axios.put(path + `/product/modifyProduct`, { product })
         }
-    },  
-    modifyProduct : (product) => async (dispatch,getState) => {
-        const response = await axios.put(`${path}/product/modifyProduct`,{...product})
+    },
+    modifyProduct: (product) => async (dispatch, getState) => {
+        const response = await axios.put(`${path}/product/modifyProduct`, { ...product })
     },
     selectProductId: (productId) => async (dispatch, getState) => {
         const { product } = getState().itemReducer
@@ -84,7 +84,16 @@ const itemActions = {
             type: 'ADD_ITEM',
             payload: productsParse
         })
+    },
+    upViews: (productId) => {
+        return async (dispatch, getState) => {
+            const response = await axios.get(path + '/viewsProduct/' + productId)
+            dispatch({
+                type: 'UP_VIEWS'
+            })
+        }
     }
 }
 
 export default itemActions
+//Up views by product

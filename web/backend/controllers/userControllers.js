@@ -1,10 +1,12 @@
 const User = require("../models/User")
+const Product = require("../models/Product")
 const newsletter = require('../models/Newsletter')
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const message = "Mail or Password incorrect"
 const nodeMailer = require('nodemailer')
 const Newsletter = require("../models/Newsletter")
+
 
 
 
@@ -65,8 +67,8 @@ const userController = {
 		})
 	},
 	getUser: (req, res) => {
-		const { firstName, lastName, mail, rol } = req.user
-		res.json({ firstName, lastName, mail, rol })
+		const { firstName, lastName, mail, rol, rating } = req.user
+		res.json({ firstName, lastName, mail, rol, rating })
 	},
 
 	//A new random password is generated and sent. (forgot password)
@@ -109,14 +111,13 @@ const userController = {
 
 	postRating: async (req, res) => {
 		const { rating, productId } = req.body
-		console.log(req.user)
+		const { _id } = req.user
 		// Está harcodeada la id por ahora, después se cambia
-		const productRating = await User.findOneAndUpdate({ _id: '5f722c325662db1db4e938b6' }, { $push: { rating: { productId: productId, ratingNumber: rating } } })
+		const productRating = await User.findOneAndUpdate({ _id }, { $push: { rating: { productId: productId, ratingNumber: rating } } })
+		const productR = await Product.findOneAndUpdate({ _id: productId }, { $inc: { stars: +rating, reviews: +1 } })
+		console.log(rating)
 		res.json({ success: true, rating, productId })
-		console.log(rating);
-		console.log(productRating);
 	},
-
 	//Subscription mail is recorded and notified by mail.
 	createSuscription: async (req, res) => {
 
