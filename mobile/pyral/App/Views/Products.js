@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
 import Product from '../Components/Product'
-import {ScrollView, View, FlatList} from 'react-native'
+import {ScrollView, View, FlatList, Button, TouchableOpacity} from 'react-native'
 
 const PR = [{
         price: "1500",
@@ -88,17 +88,24 @@ const PR = [{
 
 
 
-export default function Products() {
-    const renderItem = ({ item }) => <Product product={item}/>
-        return (<>
-        <ScrollView>
+export default function Products({navigation}) {
+    console.log(navigation)
+    
+    
+    return (<>
+      
+           <ScrollView>
             <FlatList
                 style={{flex:1,alignSelf:'center'}}
                 numColumns={2}
                 data={PR}
-                renderItem={renderItem} 
+                renderItem={({ item }) => 
+                    <TouchableOpacity title="Go to product" onPress={() => navigation.navigate('OneProduct', {item: item})}>
+                        <Product product={item}/>
+                    </TouchableOpacity>} 
                 keyExtractor={item => item.price}
             />
-        </ScrollView>        
+        </ScrollView>   
+        
     </>);
 }

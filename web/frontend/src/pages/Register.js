@@ -5,6 +5,7 @@ import authActions from '../redux/actions/authActions'
 import '../styles/RegisterLogIn.css'
 import { NavLink } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import { TextareaAutosize } from '@material-ui/core';
 
 
 
@@ -26,6 +27,19 @@ const Register = (props) => {
         })
     }
 
+    const [mensajes, setMensajes] = useState({
+        firstName1: false,
+        firstName2: false,
+        lastName1: false,
+        lastName2: false,
+        mail1: false,
+        mail12: false,
+        pass1: false,
+        pass2: false,
+    })
+
+console.log(mensajes)
+console.log(user)
 
 
 
@@ -34,44 +48,76 @@ const Register = (props) => {
         const uname = RegExp(/^[a-zA-Z0-9._]+$/)
         const reMail = RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
         const rePass = RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[!{}[\]@#$%\^&*)(+=._-]).{5,}/)
+        
+      
+
+       mensajes.firstName1 = false
+       mensajes.firstName2 = false
+       mensajes.lastName1 = false
+       mensajes.lastName2 = false
+       mensajes.mail1 = false
+       mensajes.mail12 = false
+       mensajes.pass1 = false
+       mensajes.pass2 = false
+
         if (user.firstName === '' || user.lastName === '' || user.mail === '' || user.pass === '') {
             toast.error("please complete all fields")
 
             // name validation
         } else if (user.firstName.length < 3) {
-            toast.error("Your name must contain at least 3 characters")
-        } else if (!uname.test(user.firstName)) {
-            toast.error("Your name must contain only uppercase letter, lowercase letter, numbers, numbers, '_' and '.'")
+            setMensajes({
+                ...mensajes,
+                firstName1: true
+            })
+        }   else if (!uname.test(user.firstName)) {
+            setMensajes({
+                ...mensajes,
+                firstName2: true
+            })
 
             // lastName validation
         } else if (user.lastName.length < 3) {
-            toast.error("Your lastName must contain at least 3 characters")
+            setMensajes({
+                ...mensajes,
+                lastName1: true
+            })
         } else if (!uname.test(user.lastName)) {
-            toast.error("Your lastName must contain at least 3 characters")
-            ("Your lastName must contain only uppercase letter, lowercase letter, numbers, '_' and '.'")
+            setMensajes({
+                ...mensajes,
+                lastName2: true
+            })
 
             // mail validation
         } else if (user.mail.length < 6) {
-            toast.error("Your lastName must contain at least 3 characters")
-            ("Your mail must contain at least 6 characters")
+            setMensajes({
+                ...mensajes,
+                mail1: true
+            })
         } else if (!reMail.test(user.mail)) {
-            toast.error("Your lastName must contain at least 3 characters")
-            ("Your mail must be a valid mal, for exaple: 'example@server.com'")
+            setMensajes({
+                ...mensajes,
+                mail2: true
+            })
 
             // pass validation
         } else if (user.pass.length < 5) {
-            toast.error("Your lastName must contain at least 3 characters")
-            ("Your password must contain at least 5 characters")
+            setMensajes({
+                ...mensajes,
+                pass1: true
+            })
         } else if (!rePass.test(user.pass)) {
-            toast.error("Your lastName must contain at least 3 characters")
-            ("Your Password must include at least one uppercase letter, at least one lowercase letter, and at least one number. ")
-
+            setMensajes({
+                ...mensajes,
+                pass2: true
+            })
 
         } else {
             await props.newUser(user)
-            toast.error("Your lastName must contain at least 3 characters")
-            ("Thank you for Signing Up")
+            toast.error ("Thank you for Signing Up")
+           
         }
+
+      
     }
 
     const responseGoogle = response => {
@@ -104,23 +150,27 @@ const Register = (props) => {
                         cookiePolicy={'single_host_origin'}
                     />
 
-                    <div id="divNombre">
+                    <div id="divNombre" style={{color:"red"}}>  
+                        {mensajes.firstName1 ? <p>*Your name must contain at least 3 characters</p> : mensajes.firstName2 ?  <p>*Your name must contain only uppercase letter, lowercase letter, numbers, numbers, '_' and '.'</p> : <p></p>}
                         <input onChange={leerImput} type="text" id="firstName" name="firstName" placeholder="Write your name here"></input>
                     </div>
-                    <div id="divApellido">
+                    <div id="divApellido" style={{color:"red"}}>
+                    {mensajes.lastName1 ? <p>*Your lastName must contain at least 3 characters</p> : mensajes.lastName2 ?  <p>*Your lastName must contain only uppercase letter, lowercase letter, numbers, numbers, '_' and '.'</p> : <p></p>}
                         <input onChange={leerImput} type="text" id="lastName" name="lastName" placeholder="Write your lastName here"></input>
                     </div>
-                    <div id="divMail">
+                    <div id="divMail" style={{color:"red"}}>
+                    {mensajes.mail1 ? <p>*Your mail must contain at least 6 characters</p> : mensajes.mail2 ?  <p>*Your mail must be a valid mal, for exaple: 'example@server.com</p> : <p></p>}
                         <input onChange={leerImput} type="text" id="mail" name="mail" placeholder="Write your mail here"></input>
                     </div>
-                    <div id="divContraseña">
+                    <div id="divContraseña" style={{color:"red"}}>
+                    {mensajes.pass1 ? <p>*Your password must contain at least 5 characters</p> : mensajes.pass2 ?  <p>*Your Password must include at least one uppercase letter, at least one lowercase letter, and at least one number.</p> : <p></p>}
                         <input onChange={leerImput} type="password" id="pass" name="pass" placeholder="Write your password here"></input>
                     </div>
                     <div id="HaveAccount">
                         <p>Have an account?</p>
                         <NavLink to="/login" class="clickHere"> Click Here</NavLink>
                     </div>
-                    <button onClick={enviarInfo} className="createAccount button">Create Account</button>
+                    <button onClick={enviarInfo}  className="createAccount button">Create Account</button>
                 </form>
             </div>
 
