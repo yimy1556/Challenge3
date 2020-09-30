@@ -24,3 +24,34 @@
 tbody th, tbody td {
     padding: .5rem .625rem .625rem;
 }
+
+.container__video{
+    display: flex;
+    justify-content:center;
+    margin-bottom: 2em;
+    padding: 0px;
+
+}
+
+.container__video p{
+    margin-right: 40em;
+}
+
+.container__video span{
+    font-weight: bold;
+    color: black;
+    font-size: 1.5em;
+}
+
+.container__data__video p{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+.container__data__video p span{
+    color: black;
+    font-weight: normal;
+}
+
