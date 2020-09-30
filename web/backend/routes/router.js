@@ -2,6 +2,7 @@ const express = require('express')
 const userController = require("../controllers/userControllers")
 const productController = require("../controllers/productControllers")
 const passport = require("../config/passport")
+const validatorMail = require('../config/validator')
 
 const router = express.Router()
 
@@ -38,7 +39,7 @@ router.route('/user/rating')
 
 //subscription newsletter
 router.route('/newsletter')
-    .post(userController.createSuscription)
+    .post(validatorMail.validateData, userController.createSuscription)
     .get(userController.listSubsNewsletter)
 
 //Change password from user profile.

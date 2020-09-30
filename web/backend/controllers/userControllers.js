@@ -124,16 +124,14 @@ const userController = {
 		const { mail } = req.body
 		const mailExists = await Newsletter.findOne({ mail })
 		if (mailExists) {
-			res.json({
-				success: false, message: 'The email is registered'
-			})
+			res.json({	success: false, info: 'The email is registered'})
 		} else {
 			const newNewsletter = new Newsletter({
 				mail: mail
 			})
 			newNewsletter.save()
 			res.json({
-				success: true, mail: newNewsletter.mail, message: 'You will receive our promotions very soon!'
+				success: true, mail: newNewsletter.mail, info: 'You will receive our promotions very soon!'
 			})
 			var mailOptions = {
 				from: "Pyral <your.pyral@gmail.com>",
