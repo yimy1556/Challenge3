@@ -105,24 +105,40 @@ const authActions = {
                 dispatch({
                     type: 'ADD_NEWSLETTER',
                 })
+                return response.data
             }
         }
     },
-    rating: (productId, rating) => {
-        console.log(productId, rating);
+    rating: (productId, rating, token) => {
+        console.log(productId, rating, token);
         return async (dispatch, getState) => {
-            const response = await axios.post(path + `/user/rating`, { productId, rating })
+            const response = await axios.post(path + `/user/rating`, { productId, rating }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
             console.log(response);
             if (!response.data.success) {
                 toast('Something went wrong')
             } else {
                 dispatch({
-                    type: 'LOG_USER',
-                    payload: { rating: response.data.rating, productId: response.data.productId }
+                    type: 'RATING',
+                    payload: { rating: response.data.rating }
                 })
             }
         }
     },
+
+    changePassword: (mail, password) => {
+
+        return async (dispatch, getState) => {
+            const response = await axios.put(path + '/changePassword', { mail, password })
+            dispatch({
+                type: 'CHANGE_PASSWORD'
+            })
+            return response.data
+        }
+    }
 
 }
 

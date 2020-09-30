@@ -2,9 +2,5 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 953,
-  "expoServerNgrokUrl": "https://aa-p6s.anonymous.pyral.exp.direct",
-  "packagerNgrokUrl": "https://packager.aa-p6s.anonymous.pyral.exp.direct",
-  "ngrokPid": 48809,
-  "webpackServerPort": 19006
+  "packagerPid": 2542
 }

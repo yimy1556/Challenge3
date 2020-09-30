@@ -12,7 +12,6 @@ const Newsletter = (props) => {
 
     const readInput = e => {
         const dataMail = e.target.value
-        console.log(dataMail)
         setMail(dataMail)
     }
 
@@ -23,8 +22,6 @@ const Newsletter = (props) => {
     }
 
 
-
-    console.log(props)
     return (
         <>
             <div style={{ display: 'flex', alignItems: 'center', color: 'white', flexDirection: 'column' }}>

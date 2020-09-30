@@ -16,8 +16,6 @@ const Product = (props) => {
             color: foto
         })
     }
-    console.log(props)
-
     const variantsAux = []
 
 

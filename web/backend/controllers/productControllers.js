@@ -42,9 +42,19 @@ const productController = {
             .catch(error => res.json({ success: false, error }))
     },
     modifyProduct: (req, res) => {
-        const { product } = req.body
-        console.log(product)
-
+        const { _id, title, description, price } = req.body
+        console.log('kdkd',req.body)
+        Product.findByIdAndUpdate(_id, {title, description, price }, { new: true })
+        .then(product => {
+            console.log("dsd",product,"sdsd")
+            res.json({ success: true, product})})
+        .catch(error => {
+            console.log("sdsd",error,"ddd")
+            res.json({ success: false, error })})
+    },
+    modifyVariants:(req, res) => {
+        const {_id,variant} = req.body
+        
     },
     updateProduct: (req, res) => {
         const { title, stock, color, size } = req.body

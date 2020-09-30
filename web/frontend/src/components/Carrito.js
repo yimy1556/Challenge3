@@ -40,9 +40,8 @@ const Carrito = (props) => {
         })
     }
 
-    console.log(props.listProduct)
-    if (props.listProduct === null) return <>
-    </>
+
+    if (props.listProduct === null) return <></>
     return (
         <>
             <div className='DivCerrarCarrito' onClick={menuHamburguesa} style={!menuShow.show ? { display: 'none', opacity: 0 } : { display: 'block' }}></div>
