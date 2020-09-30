@@ -131,9 +131,6 @@ const SelectProduct = (props) => {
 
                 <button onClick={() => props.addProduct(prod)} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
 
-
-
-
                 <div id="todoShop">
                     {props.product == 0 ? <p>no products yet</p> :
                         <>
