@@ -39,6 +39,7 @@ const userController = {
 					firstName: user.firstName,
 					mail: user.mail,
 					lastName: user.lastName,
+					direction: user.direction,
 					rating: user.rating,
 					rol: user.rol
 				})
@@ -62,13 +63,14 @@ const userController = {
 			firstName: userExists.firstName,
 			mail: userExists.mail,
 			lastName: userExists.lastName,
+			direction: userExists.direction,
 			rating: userExists.rating,
 			rol: userExists.rol
 		})
 	},
 	getUser: (req, res) => {
-		const { firstName, lastName, mail, rol, rating } = req.user
-		res.json({ firstName, lastName, mail, rol, rating })
+		const { firstName, lastName, mail, direction, rol, rating } = req.user
+		res.json({ firstName, lastName, mail, direction, rol, rating })
 	},
 
 	//A new random password is generated and sent. (forgot password)
@@ -118,6 +120,18 @@ const userController = {
 			.then(console.log('bien'))
 			.catch(console.log('mal'))
 	},
+
+	postDirection: async (req, res) => {
+		const { direction } = req.body
+		const { _id } = req.user
+		const newDirection = await User.findOneAndUpdate({ _id }, {$push: { direction: direction }})
+		// res.json({ success: true, direction })
+	},
+
+	// getDirection: (req, res) => {
+	// 	const { direction } = req.body
+	// 	res.json({ success: true, direction })
+	// },
 	//Subscription mail is recorded and notified by mail.
 	createSuscription: async (req, res) => {
 

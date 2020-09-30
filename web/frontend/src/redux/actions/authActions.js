@@ -10,12 +10,13 @@ const authActions = {
     newUser: newUser => {
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/register`, newUser)
+            console.log(response.data);
             if (!response.data.success) {
-                alert('Something went wrong')
+                toast.error('Incorrect mail or password')
             } else {
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token }
+                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, direction: response.data.direction }
                 })
             }
         }
@@ -25,12 +26,12 @@ const authActions = {
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/login`, logUser)
             if (!response.data.success) {
-                toast('Something went wrong')
+                toast.error('Incorrect mail or password')
             } else {
                 toast('Welcome')
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol, rating: response.data.rating, success: response.data.success }
+                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, direction: response.data.direction,rol: response.data.rol, rating: response.data.rating, success: response.data.success }
                 })
             }
         }
@@ -44,7 +45,7 @@ const authActions = {
             } else {
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol, rating: response.data.rating, success: response.data.success }
+                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol, rating: response.data.rating, success: response.data.success, direction: response.data.direction }
                 })
             }
         }
@@ -59,7 +60,7 @@ const authActions = {
             })
             dispatch({
                 type: 'LOG_USER',
-                payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: tokenLS, rol: response.data.rol, rating: response.data.rating }
+                payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: tokenLS, rol: response.data.rol, rating: response.data.rating, direction: response.data.direction }
             })
 
 
@@ -148,6 +149,20 @@ const authActions = {
                     payload: { rating: response.data.rating, productId: response.data.productId }
                 })
             }
+        }
+    },
+
+    postDirection: (direction, token) => {
+        return async (dispatch, getState) => {
+            const response = await axios.post(path+`/user/direction`, { direction }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            if (!response.data.success) {
+                toast('Something went wrong')
+            }
+
         }
     },
 
