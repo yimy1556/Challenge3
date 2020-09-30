@@ -75,11 +75,11 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    border: 1px solid rgba(37, 37, 37, 0.295);
+    border: 0.4px solid rgba(158, 158, 158, 0.932);
     margin-right: 1vw;
     border-radius: 100%;
-    width: 1vw;
-    height: 1vw;
+    width: 1em;
+    height: 1em;
 }
 
 
