@@ -1,8 +1,8 @@
 {
-  "devToolsPort": 19002,
+  "devToolsPort": 19003,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 30759,
+  "packagerPid": 10445,
   "expoServerNgrokUrl": "https://8r-wsc.anonymous.pyral.exp.direct",
   "packagerNgrokUrl": "https://packager.8r-wsc.anonymous.pyral.exp.direct",
   "ngrokPid": 30809,

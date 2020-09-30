@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack'
@@ -10,7 +9,6 @@ import Home from '../Views/Home'
 import Products from '../Views/Products'
 import LogInt from '../Components/LogInt'
 import { FontAwesome } from '@expo/vector-icons';
-import Products from '../Views/Products'
 import OneProduct from '../Views/OneProduct'
 
 
@@ -61,7 +59,7 @@ const TabsScreen = (props) => {
             }}
         >
             <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Shop" component={Products} />
+            <Tab.Screen name="Shop" component={ShopStackScreen} />
             <Tab.Screen name="About" component={About} />
         </Tab.Navigator>
 
