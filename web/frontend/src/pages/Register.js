@@ -47,30 +47,27 @@ const Register = (props) => {
         } else if (user.lastName.length < 3) {
             toast.error("Your lastName must contain at least 3 characters")
         } else if (!uname.test(user.lastName)) {
-            toast.error("Your lastName must contain at least 3 characters")
-            ("Your lastName must contain only uppercase letter, lowercase letter, numbers, '_' and '.'")
+            toast.error("Your lastName must contain only uppercase letter, lowercase letter, numbers, '_' and '.'")
+            
 
             // mail validation
         } else if (user.mail.length < 6) {
-            toast.error("Your lastName must contain at least 3 characters")
-            ("Your mail must contain at least 6 characters")
+            toast.error("Your mail must contain at least 6 characters"
+)
         } else if (!reMail.test(user.mail)) {
-            toast.error("Your lastName must contain at least 3 characters")
-            ("Your mail must be a valid mal, for exaple: 'example@server.com'")
+            toast.error("Your mail must be a valid mal, for exaple: 'example@server.com'")
+
 
             // pass validation
         } else if (user.pass.length < 5) {
-            toast.error("Your lastName must contain at least 3 characters")
-            ("Your password must contain at least 5 characters")
-        } else if (!rePass.test(user.pass)) {
-            toast.error("Your lastName must contain at least 3 characters")
-            ("Your Password must include at least one uppercase letter, at least one lowercase letter, and at least one number. ")
+            toast.error("Your password must contain at least 5 characters")
 
+        } else if (!rePass.test(user.pass)) {
+            toast.error("Your Password must include at least one uppercase letter, at least one lowercase letter, and at least one number. ")
 
         } else {
             await props.newUser(user)
-            toast.error("Your lastName must contain at least 3 characters")
-            ("Thank you for Signing Up")
+            toast("Thank you for Signing Up")
         }
     }
 

@@ -11,7 +11,7 @@ const authActions = {
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/register`, newUser)
             if (!response.data.success) {
-                alert('Something went wrong')
+                toast.error('Incorrect mail or password')
             } else {
                 dispatch({
                     type: 'LOG_USER',
@@ -25,7 +25,7 @@ const authActions = {
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/login`, logUser)
             if (!response.data.success) {
-                toast('Something went wrong')
+                toast.error('Incorrect mail or password')
             } else {
                 toast('Welcome')
                 dispatch({
