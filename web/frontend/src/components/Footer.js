@@ -38,8 +38,12 @@ class Footer extends React.Component {
                     <div>
                         <Newsletter />
                     </div>
-                    <span>© Pyral, A mindhub Company  -  All rights reserved</span>
                 </footer>
+                <div className="all__reserved">
+                    <hr className="hr" />
+                    <span>© Pyral, A mindhub Company  -  All rights reserved</span>
+                </div>
+
             </>
         )
     }

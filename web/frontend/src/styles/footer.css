@@ -2,7 +2,6 @@ footer{
     display: flex!important;
     justify-content: space-around;
     border-top: 1px solid white;
-    flex: 1;
     align-items: center;
     padding: 5px!important;
     min-height: 250px ;
@@ -13,10 +12,10 @@ footer{
 }
 
 footer div:nth-child(2) img{
-    width: 2.5em;
+    width: 2em;
     padding: .4em;
-    margin: 1em;
- 
+    margin: .2em;
+    background-color: whitesmoke;
 }
 
 
@@ -43,12 +42,22 @@ footer a{
     margin-top: 1em;
 }
 
+.all__reserved{
+    text-align: center;
+    background-color: #111111;
+    padding: 1em;
+}
 
-
-footer span {
+div span{
     margin-top: 2em;
     font-size: .8em;
     color: whitesmoke;
+    text-align: center;
+}
+
+.hr{
+    border-top: 1px solid rgb(56, 56, 56);
+    margin-bottom: 1em;
 }
 
 @media only screen and (max-width: 768px) {
