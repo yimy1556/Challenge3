@@ -118,8 +118,8 @@ const SelectProduct = (props) => {
                         />
 
                     </Box>
-                    {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 && <button onClick={ratingSet}>Enviar estrellitas</button>}
-
+                  {/* {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 && <button onClick={ratingSet}>Enviar estrellitas</button>}
+*/} 
                 </div>
             </div>
         </div>

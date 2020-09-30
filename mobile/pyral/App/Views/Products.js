@@ -89,6 +89,7 @@ const PR = [{
 
 
 export default function Products({navigation}) {
+    console.log(navigation)
     
     
     return (<>
