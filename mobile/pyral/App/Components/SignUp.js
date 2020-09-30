@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {View, Text, CheckBox, ImageBackground, Button, StyleSheet, TextInput} from 'react-native';
 import styled from 'styled-components'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import axios from 'axios'
 
 
 
@@ -25,7 +26,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
     })
     
     
-    const sendInfo = async => {
+    const sendInfo = async() => {
         const uname = RegExp(/^[a-zA-Z0-9._]+$/)
         const reMail = RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
         const rePass = RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[!{}[\]@#$%\^&*)(+=._-]).{5,}/)
@@ -91,7 +92,14 @@ import Icon from 'react-native-vector-icons/FontAwesome';
             })
 
         } else {
-           {/* await props.newUser(user)*/}
+            const newUser = {
+                firstName:name,
+                lastName:surname,
+                mail:mail,
+                pass:pass
+            }
+
+            await axios.post(`https://e54f6d44a66d.ngrok.io/api/user/register`, newUser)
             alert("Thank you for Signing Up")
            
         }
