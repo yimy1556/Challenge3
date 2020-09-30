@@ -90,6 +90,7 @@ const PR = [{
 
 export default function Products() {
     const renderItem = ({ item }) => <Product product={item}/>
+        
         return (<>
         <ScrollView>
             <FlatList

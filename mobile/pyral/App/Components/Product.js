@@ -17,8 +17,6 @@ const Product = (props) => {
     //const cambiarFoto = (foto) => setfoto({...foto, color: foto})
 
     const variantsAux = []
-
-    console.log(props)
     const borrarRepe = (variants) => {
         variants.forEach(vari => {
             if (variantsAux.filter(varia => varia.color === vari.color).length !== 0)
