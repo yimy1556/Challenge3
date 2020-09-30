@@ -18,13 +18,13 @@ const Newsletter = (props) => {
 
     const sendMail = async e => {
         e.preventDefault()
-        props.addNewsletter(mail)
+       
         setMail('')
         const errorResponse = await props.addNewsletter(mail)
-       
+
         if (errorResponse === undefined){
             setErrorInput('enter a valid email.')
-        }else {
+        }else if(errorResponse !== undefined){
             setErrorInput(errorResponse.info)
         }
     }
