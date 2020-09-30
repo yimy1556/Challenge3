@@ -97,7 +97,7 @@ const PR = [{
 
 
 
-export default function Products() {
+export default function Products( {navigation}) {
     const renderItem = ({ item }) => <Product product={item} />
 
     return (<>
