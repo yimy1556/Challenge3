@@ -33,7 +33,7 @@ class Buy extends React.Component {
                         <h3 style={{ textAlign: 'center' }}>Purchase summary</h3>
                         <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <p>Products({this.props.listProduct.map(prod => `${prod.cant}`)})</p>
+                            <p>{this.props.listProduct.map(prod => `Products(${prod.cant})`)}</p>
                             <p>${this.compraTotal(this.props.listProduct)}</p>
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
