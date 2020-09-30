@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from "@react-navigation/stack";
 import styled from "styled-components"
 import Home from '../Views/Home'
 import Products from '../Views/Products'
 import LogInt from '../Components/LogInt'
 import { FontAwesome } from '@expo/vector-icons';
 import OneProduct from '../Views/OneProduct'
+import SignUp from '../Components/SignUp';
 
 
 
@@ -73,6 +74,7 @@ export default function TabV() {
             <Drawer.Navigator>
                 <Drawer.Screen name="Home" component={TabsScreen} />
                 <Drawer.Screen name="Registro" component={LogInt} />
+                <Drawer.Screen name="SignUp" component={SignUp} />
             </Drawer.Navigator>
         </NavigationContainer>
     );

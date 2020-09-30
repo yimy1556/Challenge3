@@ -48,7 +48,7 @@ footer a{
     padding: 1em;
 }
 
-div span{
+#root > div.all__reserved > span{
     margin-top: 2em;
     font-size: .8em;
     color: whitesmoke;
