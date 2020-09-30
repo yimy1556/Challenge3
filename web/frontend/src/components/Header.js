@@ -7,6 +7,7 @@ import PersonIcon from '@material-ui/icons/Person';
 
 
 const Header = (props) => {
+   
     return (
         <>
 
@@ -20,8 +21,7 @@ const Header = (props) => {
                                 <NavLink to="/">Home</NavLink>
                                 <NavLink to="/about">About</NavLink>
                                 <NavLink to="/shop">Shop</NavLink>
-                                <NavLink to="/profile"> <PersonIcon style={{ color: 'black', fontSize: 40 }}></PersonIcon></NavLink>
-
+                                <NavLink to="/profile"><PersonIcon style={{ color: 'black', fontSize: 40 }}></PersonIcon><span style={{textTransform:'uppercase', fontSize:'0.7em'}}>{props.userlogged.firstName}</span> </NavLink>
                             </div>
                             <Carrito />
                         </>

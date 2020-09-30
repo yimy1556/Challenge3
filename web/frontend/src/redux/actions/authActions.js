@@ -96,27 +96,30 @@ const authActions = {
     addNewsletter: mail => {
         return async (dispatch, getState) => {
             const response = await axios.post(path + '/newsletter', { mail })
-            console.log(response)
-            if (response.data.success) {
-                Swal.fire({ title: 'Success! You\'re signed up!' })
-            } else {
-                Swal.fire({ title: response.data.message })
-                dispatch({
+            // console.log(errorResponse)   
+            dispatch({
                     type: 'ADD_NEWSLETTER',
                 })
-                return response.data
-            }
+                
+                var errorResponse = ''
+                if(response.data.error === undefined){
+                    return  errorResponse = response.data
+                }else {
+                    return errorResponse = response.data.info
+                }
+                return errorResponse
+                
         }
     },
     rating: (productId, rating, token) => {
-        console.log(productId, rating, token);
+       
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/rating`, { productId, rating }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
-            console.log(response);
+           
             if (!response.data.success) {
                 toast('Something went wrong')
             } else {
@@ -128,14 +131,14 @@ const authActions = {
         }
     },
     ratingUpdate: (productId, rating, token) => {
-        console.log(productId, rating, token);
+        
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/ratingUpdate`, { productId, rating }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
-            console.log(response);
+           
             if (!response.data.success) {
                 toast('Something went wrong')
             } else {
@@ -148,7 +151,6 @@ const authActions = {
     },
 
     changePassword: (mail, password) => {
-
         return async (dispatch, getState) => {
             const response = await axios.put(path + '/changePassword', { mail, password })
             dispatch({
