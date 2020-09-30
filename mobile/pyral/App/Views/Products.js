@@ -97,8 +97,7 @@ const PR = [{
 
 
 
-export default function Products() {
-    const renderItem = ({ item }) => <Product product={item} />
+export default function Products({ navigation }) {
 
     return (<>
         <ScrollView>
