@@ -13,12 +13,12 @@ const colors = {
 
 const Product = (props) => {
     const [foto, setfoto] = useState({color : props.product.variants[0].photo})
-
+console.log(props)
     //const cambiarFoto = (foto) => setfoto({...foto, color: foto})
 
     const variantsAux = []
 
-    console.log(props)
+    console.log( "hola", props)
     const borrarRepe = (variants) => {
         variants.forEach(vari => {
             if (variantsAux.filter(varia => varia.color === vari.color).length !== 0)

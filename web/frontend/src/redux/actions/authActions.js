@@ -10,12 +10,13 @@ const authActions = {
     newUser: newUser => {
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/register`, newUser)
+            console.log(response.data);
             if (!response.data.success) {
                 toast.error('Incorrect mail or password')
             } else {
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token }
+                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, direction: response.data.direction }
                 })
             }
         }
@@ -30,7 +31,7 @@ const authActions = {
                 toast('Welcome')
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol, rating: response.data.rating, success: response.data.success }
+                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, direction: response.data.direction,rol: response.data.rol, rating: response.data.rating, success: response.data.success }
                 })
             }
         }
@@ -44,7 +45,7 @@ const authActions = {
             } else {
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol, rating: response.data.rating, success: response.data.success }
+                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol, rating: response.data.rating, success: response.data.success, direction: response.data.direction }
                 })
             }
         }
@@ -59,7 +60,7 @@ const authActions = {
             })
             dispatch({
                 type: 'LOG_USER',
-                payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: tokenLS, rol: response.data.rol, rating: response.data.rating }
+                payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: tokenLS, rol: response.data.rol, rating: response.data.rating, direction: response.data.direction }
             })
 
 
@@ -96,27 +97,31 @@ const authActions = {
     addNewsletter: mail => {
         return async (dispatch, getState) => {
             const response = await axios.post(path + '/newsletter', { mail })
-            console.log(response)
-            if (response.data.success) {
-                Swal.fire({ title: 'Success! You\'re signed up!' })
-            } else {
-                Swal.fire({ title: response.data.message })
-                dispatch({
+            
+            dispatch({
                     type: 'ADD_NEWSLETTER',
                 })
-                return response.data
-            }
+                
+                var errorResponse = ''
+                if(response.data.error === undefined){
+                    return  errorResponse = response.data
+                }else {
+                    return errorResponse = response.data.info
+                }
+                return errorResponse
+                  
+                
         }
     },
     rating: (productId, rating, token) => {
-        console.log(productId, rating, token);
+       
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/rating`, { productId, rating }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
-            console.log(response);
+           
             if (!response.data.success) {
                 toast('Something went wrong')
             } else {
@@ -128,14 +133,14 @@ const authActions = {
         }
     },
     ratingUpdate: (productId, rating, token) => {
-        console.log(productId, rating, token);
+        
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/ratingUpdate`, { productId, rating }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
-            console.log(response);
+           
             if (!response.data.success) {
                 toast('Something went wrong')
             } else {
@@ -147,8 +152,21 @@ const authActions = {
         }
     },
 
-    changePassword: (mail, password) => {
+    postDirection: (direction, token) => {
+        return async (dispatch, getState) => {
+            const response = await axios.post(path+`/user/direction`, { direction }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            if (!response.data.success) {
+                toast('Something went wrong')
+            }
 
+        }
+    },
+
+    changePassword: (mail, password) => {
         return async (dispatch, getState) => {
             const response = await axios.put(path + '/changePassword', { mail, password })
             dispatch({

@@ -2,11 +2,15 @@ import * as React from 'react';
 import { Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack'
 import styled from "styled-components"
-import Products from '../Views/Products'
+import Home from '../Views/Home'
 import { FontAwesome } from '@expo/vector-icons';
+import Products from '../Views/Products'
+import OneProduct from '../Views/OneProduct'
 
-const Home = () => <Container><Text>Home</Text></Container>
+
+
     
 const About = () => <Container><Text>About</Text></Container>
 
@@ -24,9 +28,21 @@ const iconos = {
 }
 
 const Tab = createBottomTabNavigator();
+const ShopStack = createStackNavigator();
+
+const ShopStackScreen = () => (
+      <ShopStack.Navigator>
+        <ShopStack.Screen name="Products" component={Products} />
+        <ShopStack.Screen name="OneProduct" component={OneProduct} />
+      </ShopStack.Navigator>
+    )
+
+
+
 
 export default function TabV() {
     return (
+
         <NavigationContainer>
             <Tab.Navigator
                 screenOptions = {({ route }) => ({
@@ -37,11 +53,8 @@ export default function TabV() {
                     inactiveTintColor: 'gray',
                 }}
             >
-            <Tab.Screen 
-                    name="Home" 
-                    component={Home} 
-                />
-            <Tab.Screen name="Shop" component={Products}/>
+            <Tab.Screen name="Home" component={Home}     />
+            <Tab.Screen name="Shop" component={ShopStackScreen}/>
             <Tab.Screen name="About" component={About}/>
       </Tab.Navigator>
     </NavigationContainer>

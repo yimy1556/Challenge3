@@ -12,7 +12,7 @@ export default function Faqs() {
 
   return (
     <div className="container__super__faqs">
-      <p id="title_accordeon">Frequent questions</p>
+      <p id="title_accordeon">FREQUENTLY ASKED QUESTIONS</p>
       <div className="container__accordion">
         <Accordion>
           <AccordionSummary
@@ -67,8 +67,8 @@ export default function Faqs() {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-            Due to high volume and dynamic inventory fluctuations, we do not currently offer exchanges through Pyral.com. 
-            You can return your product and reorder.
+              Due to high volume and dynamic inventory fluctuations, we do not currently offer exchanges through Pyral.com.
+              You can return your product and reorder.
               <table border="1" cellpadding="15" cellspacing="2">
                 <tbody>
                   <tr>
@@ -79,7 +79,7 @@ export default function Faqs() {
                     <td>1. Pack and seal the product securely in your original Pyral box (if possible) or any cardboard shipping box</td>
                   </tr>
                   <tr>
-                    <td>2. Write your <b>name</b>, <b>return address</b>, and <b>order number</b> on the return shipping label. Order number(s) 
+                    <td>2. Write your <b>name</b>, <b>return address</b>, and <b>order number</b> on the return shipping label. Order number(s)
                     can be found in your order history at Pyral.com and in your shipping confirmation email. </td>
                   </tr>
                   <tr>
@@ -89,7 +89,7 @@ export default function Faqs() {
                     <td>4. The package can be picked up by the US Postal Service at your mailbox or dropped off at the Post Office or FedEx Retail location</td>
                   </tr>
                   <tr>
-                    <td>*Please note, due to COVID-19, shipping carriers have reported delays. Please note, returns may take 8-13 business days to be delivered 
+                    <td>*Please note, due to COVID-19, shipping carriers have reported delays. Please note, returns may take 8-13 business days to be delivered
                       sback to our DC to process. We appreciate your patience and understanding.</td>
                   </tr>
                   <tr>
@@ -100,6 +100,55 @@ export default function Faqs() {
             </Typography>
           </AccordionDetails>
         </Accordion>
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2a-content" id="panel2a-header">
+            <Typography>How are your shoes sized?</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+              Our shoes are sized according to the US standard; the size conversion from women's to men's shoes is 1.5 sizes down. <br />
+              For example, if you were a size 8 in women's, you'd be a size 6.5 in men's.
+              If you fall below men's 6.5, you would fit into the "Kids" category. <br />
+              Please note, by design, our high performance skate shoes tend to fit snug, so you may want to select a half size larger. <br />
+              Alternatively, if you have a wide foot, you may purchase one size larger to compensate for the width or check out designing your own pair of wide Customs!
+              Check out our size charts below: <br />
+              Shoe Size Chart: Unisex <br />
+              Shoe Size Chart: Infant <br />
+              Shoe Size Chart: Toddler <br />
+              Shoe Size Chart: Kid
+
+          </Typography>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2a-content" id="panel2a-header">
+            <Typography>What are the benefits of registering on Pyral.com?</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+              Benefits of registering on Pyral.com: <br/>
+              • Access to track orders <br/>
+              • Review your order history <br/>
+              • Add multiple addresses and payment methods for easy checkout <br/>
+              • Easy-to-share favorites list <br/> 
+              • Ability to personalize and manage your profile <br/>
+              • Be the first to know about Pyral product news and special promotions
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2a-content" id="panel2a-header">
+            <Typography>What is Pyral Family?</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+            Pyral Family is an experiential loyalty program, our way of inviting you to enjoy Off The Wall experiences designed for our biggest fans. <br/>
+            As a member of our family, you’ll get insider information, exclusive Customs designs and members-only experiences. <br/>
+            Earn points from shopping and sharing, and redeem those points for rewards. Still curious? Check out the Pyral Family FAQ page! <br/>
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+
       </div>
 
 

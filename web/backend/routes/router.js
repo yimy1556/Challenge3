@@ -2,6 +2,7 @@ const express = require('express')
 const userController = require("../controllers/userControllers")
 const productController = require("../controllers/productControllers")
 const passport = require("../config/passport")
+const validatorMail = require('../config/validator')
 
 const router = express.Router()
 
@@ -38,7 +39,7 @@ router.route('/user/rating')
 
 //subscription newsletter
 router.route('/newsletter')
-    .post(userController.createSuscription)
+    .post(validatorMail.validateData, userController.createSuscription)
     .get(userController.listSubsNewsletter)
 
 //Change password from user profile.
@@ -48,5 +49,10 @@ router.route('/changePassword')
     //view counter per product.
     router.route('/viewsProduct/:id')
 .get(productController.upViews)
+
+// Post direction
+router.route('/user/direction')
+    // .get(userController.getDirection)
+    .post(passport.authenticate('jwt', { session: false }),userController.postDirection)
 
 module.exports = router
