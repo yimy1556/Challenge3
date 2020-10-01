@@ -1,11 +1,14 @@
 import React from 'react'
 import styled from "styled-components"
+import { StatusBar, StyleSheet } from "react-native";
 
-export default function Header() {
+export default function Header(props) {
+    console.log(props)
     return (
         <Container>
-            <Img condicion={true} source={require('../Assets/logonegro.png')} />
+            <Img condicion={false} source={require('../Assets/botLogo.png')} />
             <Img condicion={false} source={require('../Assets/cari.png')} />
+            <StatusBar hidden={true} />
         </Container>
     );
 }
@@ -20,10 +23,11 @@ const Img = styled.Image`
 `;
 
 const Container = styled.View`
-    marginTop: 15%;
     flexDirection: row;
     borderRadius: 5px;
     justifyContent: space-between;
     width : 100%;
-    height: 10%;
+      
 `; 
+
+
