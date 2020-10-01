@@ -41,6 +41,7 @@ router.route('/user/rating')
 router.route('/newsletter')
     .post(validatorMail.validateData, userController.createSuscription)
     .get(userController.listSubsNewsletter)
+    .delete(userController.lowNewsletter)
 
 //Change password from user profile.
 router.route('/changePassword')
@@ -53,6 +54,6 @@ router.route('/changePassword')
 // Post direction
 router.route('/user/direction')
     // .get(userController.getDirection)
-    .post(passport.authenticate('jwt', { session: false }),userController.postDirection)
+    .post(passport.authenticate('jwt', { session: false }),userController.postContact)
 
 module.exports = router

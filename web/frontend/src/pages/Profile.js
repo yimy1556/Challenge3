@@ -15,34 +15,42 @@ import itemActions from '../redux/actions/itemActions'
 class Profile extends React.Component {
 
     state = {
-        address: [],
+        country: '',
+        address: '',
+        postalCode: '',
+        phoneNumber: '',
     }
 
     componentDidMount() {
         this.scrollToTop()
         this.props.getCountries()
     }
-
     scrollToTop() {
         scroll.scrollToTop();
     }
 
-    readAddress = e => {
+    readContact = e => {
         this.setState({
             ...this.state,
-            address: e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
-    sendAddress = async () => {
-        await this.props.address(this.state.address, this.props.userlogged.token)
+    sendContact = async () => {
+        let country = this.state.country
+        let city = this.state.city
+        let address = this.state.address
+        let postalCode = this.state.postalCode
+        let phoneNumber = this.state.phoneNumber
+        await this.props.contact(country, city, address, postalCode, phoneNumber, this.props.userlogged.token)
         toast.success("Thank you for signing up")
     }
 
     render() {
-        console.log(this.props.userlogged);
-        console.log(this.props.userlogged.direction);
-        console.log(this.props.countries)
+        // console.log(this.state);
+        // console.log(this.props.userlogged);
+        console.log(this.props.userlogged.contact);
+        // console.log(this.props.countries)
         return (
             <>
 
@@ -61,18 +69,35 @@ class Profile extends React.Component {
                         </div>
                         <div>
                             <h3 style={{ margin: '3vh auto' }}>Order History</h3>
-                            <h3>Your address</h3>
-                            <h4>{this.props.userlogged.direction}</h4>
-                            <input onChange={this.readAddress} type="text" id="address" name="address" placeholder="Write your address here" />
-                            <button onClick={this.sendAddress}>Enviar dirección</button>
+                            <h3>Your info</h3>
+                            <div>
+                                {this.props.userlogged.contact.map((x) => {
+                                    return (
+                                        <>
+                                            <div style={{ border: '3px solid black', margin: '1vh' }}>
+                                                <p><strong>Country:</strong> {x.country}</p>
+                                                <p><strong>City:</strong> {x.city}</p>
+                                                <p><strong>Address:</strong> {x.address}</p>
+                                                <p><strong>Postal Code:</strong> {x.postalCode}</p>
+                                                <p><strong>Phone Number:</strong> {x.phoneNumber}</p>
+                                            </div>
+                                        </>
+                                    )
+                                })}
+                            </div>
+                            <input onChange={this.readContact} type="text" id="city" name="city" placeholder="Write your city here" />
+                            <input onChange={this.readContact} type="text" id="address" name="address" placeholder="Write your address here" />
+                            <input onChange={this.readContact} type="number" id="postalCode" name="postalCode" placeholder="Write your postal code here" />
+                            <input onChange={this.readContact} type="number" id="phoneNumber" name="phoneNumber" placeholder="Write your phone number here" />
+                            <button onClick={this.sendContact}>Enviar dirección</button>
                             <NavLink to="/logOut">Logout</NavLink>
                         </div>
                     </div>
-                    <select>
+                    {/* <select>
                         {this.props.countries.map(country => {
-                            return <option>{country.country}</option>
+                            return <option onChange={this.readContact} name="country">{country.country}</option>
                         })}
-                    </select>
+                    </select> */}
                     <div>
 
                     </div>
@@ -91,8 +116,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    address: authActions.postDirection,
-    getCountries: itemActions.getCountries
+    contact: authActions.postContact,
+    getCountries: itemActions.getCountries,
+    getUser: authActions.logUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

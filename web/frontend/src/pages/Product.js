@@ -32,34 +32,46 @@ const Product = (props) => {
     borrarRepe(props.product.variants)
 
 
-
+    console.log(props.view)
     return (
         <>
-
-            <div id="articulo" >
-                <NavLink to={props.selectProduct?  `./${props.product._id}`:`./selectProduct/${props.product._id}`} className="linkProduct"> <div id="imagenShop" style={{ backgroundImage: `url(${foto.color})`, borderBottom: '1px solid rgba(128, 128, 128, 0.37)' }}> </div> </NavLink>
-                <div id="fotosChicas">
-                    <div>
-                        <p id="descripcionShop">{props.product.title}</p>
-                        <p id="precioShop">${props.product.price}</p>
-                    </div>
-                    <div style={{ display: 'flex' }}>
-                        {variantsAux.map(variant => {
-                            return (<div id="imagenShopChica" onClick={e => cambiarFoto(variant.photo)} style={{
-                                border: `${variant.color === 'White' ? '1px solid black' : ''}`,
-                                backgroundColor: `${variant.color === 'Wine' ? '#44282D' :
-                                    variant.color === 'Black' ? '#111111' :
-                                        variant.color === 'DarkGrey' ? '#34343D' :
-                                            variant.color === 'White' ? 'whitesmoke' :
-                                                variant.color === 'Cream' ? '#EBE4D4' :
-                                                    variant.color === 'Grey' ? '#303B4F' : ''}`
-                            }} > </div>)
-                        })}
-                    </div>
+            {props.view ? <><div className='listArticle' style={{ display: 'flex', flexDirection: 'column' }}>
+                <div style={{ display: 'flex' }}>
+                    <NavLink to={props.selectProduct ? `./${props.product._id}` : `./selectProduct/${props.product._id}`} className="linkProduct">
+                        <div id="imagenShopList" style={{ backgroundImage: `url(${foto.color})`, borderBottom: '1px solid rgba(128, 128, 128, 0.37)', width: '200px' }}>
+                        </div>
+                    </NavLink>
+                    <p id="descripcionShop">{props.product.title}</p>
+                    <p id="precioShop">${props.product.price}</p>
                 </div>
-
-
             </div>
+            </>
+                : <><div className="articulo">
+
+                    <NavLink to={props.selectProduct ? `./${props.product._id}` : `./selectProduct/${props.product._id}`} className="linkProduct"> <div id="imagenShop" style={{ backgroundImage: `url(${foto.color})`, borderBottom: '1px solid rgba(128, 128, 128, 0.37)' }}> </div> </NavLink>
+                    <div id="fotosChicas">
+                        <div>
+                            <p id="descripcionShop">{props.product.title}</p>
+                            <p id="precioShop">${props.product.price}</p>
+                        </div>
+                        <div style={{ display: 'flex' }}>
+                            {variantsAux.map(variant => {
+                                return (<div id="imagenShopChica" onClick={e => cambiarFoto(variant.photo)} style={{
+                                    border: `${variant.color === 'White' ? '1px solid black' : ''}`,
+                                    backgroundColor: `${variant.color === 'Wine' ? '#44282D' :
+                                        variant.color === 'Black' ? '#111111' :
+                                            variant.color === 'DarkGrey' ? '#34343D' :
+                                                variant.color === 'White' ? 'whitesmoke' :
+                                                    variant.color === 'Cream' ? '#EBE4D4' :
+                                                        variant.color === 'Grey' ? '#303B4F' : ''}`
+                                }} > </div>)
+                            })}
+                        </div>
+                    </div>
+
+
+                </div> </>}
+
 
         </>
     )

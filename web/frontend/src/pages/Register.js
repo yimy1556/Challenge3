@@ -6,7 +6,7 @@ import '../styles/RegisterLogIn.css'
 import { NavLink } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { TextareaAutosize } from '@material-ui/core';
-
+import TextField from '@material-ui/core/TextField';
 
 
 const Register = (props) => {
@@ -47,17 +47,17 @@ const Register = (props) => {
         const uname = RegExp(/^[a-zA-Z0-9._]+$/)
         const reMail = RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
         const rePass = RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[!{}[\]@#$%\^&*)(+=._-]).{5,}/)
-        
-      
 
-       mensajes.firstName1 = false
-       mensajes.firstName2 = false
-       mensajes.lastName1 = false
-       mensajes.lastName2 = false
-       mensajes.mail1 = false
-       mensajes.mail2 = false
-       mensajes.pass1 = false
-       mensajes.pass2 = false
+
+
+        mensajes.firstName1 = false
+        mensajes.firstName2 = false
+        mensajes.lastName1 = false
+        mensajes.lastName2 = false
+        mensajes.mail1 = false
+        mensajes.mail2 = false
+        mensajes.pass1 = false
+        mensajes.pass2 = false
 
         if (user.firstName === '' || user.lastName === '' || user.mail === '' || user.pass === '') {
             toast.error("please complete all fields")
@@ -68,7 +68,7 @@ const Register = (props) => {
                 ...mensajes,
                 firstName1: true
             })
-        }   else if (!uname.test(user.firstName)) {
+        } else if (!uname.test(user.firstName)) {
             setMensajes({
                 ...mensajes,
                 firstName2: true
@@ -112,11 +112,11 @@ const Register = (props) => {
 
         } else {
             await props.newUser(user)
-            toast.error ("Thank you for Signing Up")
-           
+            toast.error("Thank you for Signing Up")
+
         }
 
-      
+
     }
 
     const responseGoogle = response => {
@@ -133,47 +133,49 @@ const Register = (props) => {
 
 
     return (
-        <div style={{ backgroundImage: 'url(https://www.onlygfx.com/wp-content/uploads/2017/07/paint-texture-black-and-white-3.jpeg)', height: '100vh', maxWidth: '100vw', backgroundSize: 'cover', backgroundPosition: '40% 0%' }}>
+        <>
+            <div style={{ display: 'flex' }}>
+                <div style={{ backgroundImage: 'url(https://www.onlygfx.com/wp-content/uploads/2017/07/paint-texture-black-and-white-3.jpeg)', width: '40%', maxHeight: '100vh', backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+                    <h1>PYRAL</h1>
+                </div>
+                <div id="divFormulario" style={{ background: ' whitesmoke', width: '60%', maxHeight: '100vh' }}>
+                    <form>
+                        <div className="loginRegister" style={{ display: "flex" }}>
+                            <h3>Register | </h3><NavLink to="/login"> <h3 style={{ paddingLeft: '5px' }}> Log in</h3></NavLink>
+                        </div>
+                        <GoogleLogin id="GoogleLogin"
+                            clientId="83311303903-d8eviki4j9rvmabuc0ceg0c5im70b2ab.apps.googleusercontent.com"
+                            buttonText="Sing up with Google"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={'single_host_origin'}
+                        />
 
-
-            <div id="divFormulario">
-                <form>
-                    <div className="loginRegister" style={{ display: "flex" }}>
-                        <h3>Register | </h3><NavLink to="/login"> <h3 style={{ paddingLeft: '5px' }}> Log in</h3></NavLink>
-                    </div>
-                    <GoogleLogin id="GoogleLogin"
-                        clientId="83311303903-d8eviki4j9rvmabuc0ceg0c5im70b2ab.apps.googleusercontent.com"
-                        buttonText="Sing up with Google"
-                        onSuccess={responseGoogle}
-                        onFailure={responseGoogle}
-                        cookiePolicy={'single_host_origin'}
-                    />
-
-                    <div id="divNombre" style={{color:"red"}}>  
-                        {mensajes.firstName1 ? <p>*Your name must contain at least 3 characters</p> : mensajes.firstName2 ?  <p>*Your name must contain only uppercase letter, lowercase letter, numbers, numbers, '_' and '.'</p> : <p></p>}
-                        <input onChange={leerImput} type="text" id="firstName" name="firstName" placeholder="Write your name here"></input>
-                    </div>
-                    <div id="divApellido" style={{color:"red"}}>
-                    {mensajes.lastName1 ? <p>*Your lastName must contain at least 3 characters</p> : mensajes.lastName2 ?  <p>*Your lastName must contain only uppercase letter, lowercase letter, numbers, numbers, '_' and '.'</p> : <p></p>}
-                        <input onChange={leerImput} type="text" id="lastName" name="lastName" placeholder="Write your last name here"></input>
-                    </div>
-                    <div id="divMail" style={{color:"red"}}>
-                    {mensajes.mail1 ? <p>*Your mail must contain at least 6 characters</p> : mensajes.mail2 ?  <p>*Your mail must be a valid mal, for exaple: 'example@server.com</p> : <p></p>}
-                        <input onChange={leerImput} type="text" id="mail" name="mail" placeholder="Write your mail here"></input>
-                    </div>
-                    <div id="divContraseña" style={{color:"red"}}>
-                    {mensajes.pass1 ? <p>*Your password must contain at least 5 characters</p> : mensajes.pass2 ?  <p>*Your Password must include at least one uppercase letter, at least one lowercase letter, and at least one number.</p> : <p></p>}
-                        <input onChange={leerImput} type="password" id="pass" name="pass" placeholder="Write your password here"></input>
-                    </div>
-                    <div id="HaveAccount">
-                        <p>Have an account?</p>
-                        <NavLink to="/login" class="clickHere"> Click Here</NavLink>
-                    </div>
-                    <button onClick={enviarInfo}  className="createAccount button">Create Account</button>
-                </form>
+                        <div id="divNombre" style={{ color: "red" }}>
+                            {mensajes.firstName1 ? <p>*Your name must contain at least 3 characters</p> : mensajes.firstName2 ? <p>*Your name must contain only uppercase letter, lowercase letter, numbers, numbers, '_' and '.'</p> : <p></p>}
+                            <TextField onChange={leerImput} type="text" id="firstName" name="firstName" placeholder="Write your name here"></TextField>
+                        </div>
+                        <div id="divApellido" style={{ color: "red" }}>
+                            {mensajes.lastName1 ? <p>*Your lastName must contain at least 3 characters</p> : mensajes.lastName2 ? <p>*Your lastName must contain only uppercase letter, lowercase letter, numbers, numbers, '_' and '.'</p> : <p></p>}
+                            <TextField onChange={leerImput} type="text" id="lastName" name="lastName" placeholder="Write your last name here"></TextField>
+                        </div>
+                        <div id="divMail" style={{ color: "red" }}>
+                            {mensajes.mail1 ? <p>*Your mail must contain at least 6 characters</p> : mensajes.mail2 ? <p>*Your mail must be a valid mal, for exaple: 'example@server.com</p> : <p></p>}
+                            <TextField onChange={leerImput} type="text" id="mail" name="mail" placeholder="Write your mail here"></TextField>
+                        </div>
+                        <div id="divContraseña" style={{ color: "red" }}>
+                            {mensajes.pass1 ? <p>*Your password must contain at least 5 characters</p> : mensajes.pass2 ? <p>*Your Password must include at least one uppercase letter, at least one lowercase letter, and at least one number.</p> : <p></p>}
+                            <TextField onChange={leerImput} type="password" id="pass" name="pass" placeholder="Write your password here"></TextField>
+                        </div>
+                        <div id="HaveAccount">
+                            <p>Have an account?</p>
+                            <NavLink to="/login" class="clickHere"> Click Here</NavLink>
+                        </div>
+                        <button onClick={enviarInfo} className="createAccount button">Create Account</button>
+                    </form>
+                </div>
             </div>
-
-        </div>
+        </>
     )
 }
 

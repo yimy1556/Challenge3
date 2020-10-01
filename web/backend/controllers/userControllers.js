@@ -39,7 +39,7 @@ const userController = {
 					firstName: user.firstName,
 					mail: user.mail,
 					lastName: user.lastName,
-					direction: user.direction,
+					Contact: user.contact,
 					rating: user.rating,
 					rol: user.rol
 				})
@@ -63,14 +63,14 @@ const userController = {
 			firstName: userExists.firstName,
 			mail: userExists.mail,
 			lastName: userExists.lastName,
-			direction: userExists.direction,
+			contact: userExists.contact,
 			rating: userExists.rating,
 			rol: userExists.rol
 		})
 	},
 	getUser: (req, res) => {
-		const { firstName, lastName, mail, direction, rol, rating } = req.user
-		res.json({ firstName, lastName, mail, direction, rol, rating })
+		const { firstName, lastName, mail, contact, rol, rating } = req.user
+		res.json({ firstName, lastName, mail, contact, rol, rating })
 	},
 
 	//A new random password is generated and sent. (forgot password)
@@ -121,11 +121,11 @@ const userController = {
 			.catch(console.log('mal'))
 	},
 
-	postDirection: async (req, res) => {
-		const { direction } = req.body
+	postContact: async (req, res) => {
+		const { country, city, address, postalCode, phoneNumber } = req.body
 		const { _id } = req.user
-		const newDirection = await User.findOneAndUpdate({ _id }, {$push: { direction: direction }})
-		// res.json({ success: true, direction })
+		const newDirection = await User.findOneAndUpdate({ _id }, {$push: { contact: { country: country, city: city, address: address, postalCode: postalCode, phoneNumber: phoneNumber }  }})
+		// res.json({ success: true, newDirection })
 	},
 
 	// getDirection: (req, res) => {
@@ -196,6 +196,24 @@ const userController = {
 			res.json({
 				success: false,
 				response: "error in change password"
+			})
+		}
+	},
+
+	lowNewsletter: async (req, res) => {
+		mailUser = req.body.mail
+		
+		try{
+			await Newsletter.findOneAndDelete({mail:mailUser})
+			res.json({
+				success: true,
+				response:" delete newsletter DB"
+			})
+		}
+		catch{
+			res.json({
+				success: false,
+				response:"error in low newsletter"
 			})
 		}
 	}
