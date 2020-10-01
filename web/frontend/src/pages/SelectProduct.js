@@ -17,10 +17,6 @@ import {
     TelegramShareButton,
     TwitterShareButton,
     WhatsappShareButton,
-    FacebookIcon,
-    TwitterIcon,
-    TelegramIcon,
-    WhatsappIcon
 
 } from "react-share";
 
@@ -36,6 +32,7 @@ const SelectProduct = (props) => {
         })
         return variantsAux
     }
+    const [bottom, setBottom] = useState(true)
     const [product, setProduct] = useState({})
     const [prod, setProd] = useState({
         _id: props.match.params.id,
@@ -44,7 +41,6 @@ const SelectProduct = (props) => {
     const ratingNum = props.rating
 
     useEffect(() => {
-
         const productId = props.match.params.id
         props.upViews(productId)
         props.selectProductId(productId)
@@ -68,13 +64,17 @@ const SelectProduct = (props) => {
         props.postRating(productId, value, props.userlogged.token)
 
     }
-
+    const addProducts = () =>{
+        props.addProduct(prod)
+        setBottom(!bottom)
+    }
+    
     var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
 
     if (product === {}) return <></>
     props.product.map(product => console.log(`${product.stars}`))
     return (<>
-        <Header />
+        <Header bott = {bottom}  setBott = {setBottom}/>
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '3em' }}>
             <div style={{ display: 'flex' }}>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
@@ -134,7 +134,7 @@ const SelectProduct = (props) => {
                 {(prod.size !== '' || prod.size !== 'Choose the size') &&
                     <h3>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</h3>}
 
-                <button onClick={() => props.addProduct(prod)} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
+                <button onClick={() => addProducts()} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
             </div>
         </div>
         <div id="todoShop">

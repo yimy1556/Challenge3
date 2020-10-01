@@ -34,7 +34,7 @@ const Header = (props) => {
                                 <NavLink to="/register"> <PersonIcon style={{ color: 'black', fontSize: 40 }}></PersonIcon></NavLink>
 
                             </div>
-                            <Carrito />
+                            <Carrito bott={props.bott}/>
                         </>}
                 </nav>
 
