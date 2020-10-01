@@ -39,7 +39,7 @@ const userController = {
 					firstName: user.firstName,
 					mail: user.mail,
 					lastName: user.lastName,
-					direction: user.direction,
+					direction: user.contact,
 					rating: user.rating,
 					rol: user.rol
 				})
@@ -63,14 +63,14 @@ const userController = {
 			firstName: userExists.firstName,
 			mail: userExists.mail,
 			lastName: userExists.lastName,
-			direction: userExists.direction,
+			contact: userExists.contact,
 			rating: userExists.rating,
 			rol: userExists.rol
 		})
 	},
 	getUser: (req, res) => {
-		const { firstName, lastName, mail, direction, rol, rating } = req.user
-		res.json({ firstName, lastName, mail, direction, rol, rating })
+		const { firstName, lastName, mail, contact, rol, rating } = req.user
+		res.json({ firstName, lastName, mail, contact, rol, rating })
 	},
 
 	//A new random password is generated and sent. (forgot password)
@@ -124,7 +124,7 @@ const userController = {
 	postDirection: async (req, res) => {
 		const { direction } = req.body
 		const { _id } = req.user
-		const newDirection = await User.findOneAndUpdate({ _id }, {$push: { direction: direction }})
+		const newDirection = await User.findOneAndUpdate({ _id }, {$push: { contact: { country: country, address: address, postalCode: postalCode, phoneNumber: phoneNumber }  }})
 		// res.json({ success: true, direction })
 	},
 
