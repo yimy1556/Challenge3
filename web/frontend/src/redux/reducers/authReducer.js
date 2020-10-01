@@ -22,7 +22,7 @@ const authReducer = (state = initialState, action) => {
                 mail: action.payload.mail,
                 token: action.payload.token,
                 rol: action.payload.rol,
-                contact: action.payload.contact,          
+                contact: action.payload.contact,
                 success: action.payload.success,
                 rating: action.payload.rating,
             }

@@ -147,7 +147,7 @@ const authActions = {
     lowNewsletter: mail => {
         return async (dispatch, getState) => {
 
-            const response = await axios.delete(path + '/newsletter', { mail })
+            const response = await axios.put(path + '/newsletter', { mail })
             console.log(response)
             dispatch({
                 type: 'LOW_NEWSLETTER'
