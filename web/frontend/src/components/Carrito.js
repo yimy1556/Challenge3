@@ -60,11 +60,11 @@ const Carrito = (props) => {
                 <h3>Shopping Cart</h3>
                 <div id="ropaDelCarrito">
                     {props.listProduct.map(prod => <ItemCarrito product={prod} />)}
-
                     <div id="totalPrecio">
                         <p>Total</p>
                         <p>{compraTotal(props.listProduct)}</p>
                     </div>
+
                 </div>
 
                 <button id="butButton"><NavLink to="/buy">Buy</NavLink></button>

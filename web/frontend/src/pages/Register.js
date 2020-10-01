@@ -33,13 +33,12 @@ const Register = (props) => {
         lastName1: false,
         lastName2: false,
         mail1: false,
-        mail12: false,
+        mail2: false,
         pass1: false,
         pass2: false,
     })
 
-console.log(mensajes)
-console.log(user)
+
 
 
 
@@ -56,7 +55,7 @@ console.log(user)
        mensajes.lastName1 = false
        mensajes.lastName2 = false
        mensajes.mail1 = false
-       mensajes.mail12 = false
+       mensajes.mail2 = false
        mensajes.pass1 = false
        mensajes.pass2 = false
 
@@ -156,7 +155,7 @@ console.log(user)
                     </div>
                     <div id="divApellido" style={{color:"red"}}>
                     {mensajes.lastName1 ? <p>*Your lastName must contain at least 3 characters</p> : mensajes.lastName2 ?  <p>*Your lastName must contain only uppercase letter, lowercase letter, numbers, numbers, '_' and '.'</p> : <p></p>}
-                        <input onChange={leerImput} type="text" id="lastName" name="lastName" placeholder="Write your lastName here"></input>
+                        <input onChange={leerImput} type="text" id="lastName" name="lastName" placeholder="Write your last name here"></input>
                     </div>
                     <div id="divMail" style={{color:"red"}}>
                     {mensajes.mail1 ? <p>*Your mail must contain at least 6 characters</p> : mensajes.mail2 ?  <p>*Your mail must be a valid mal, for exaple: 'example@server.com</p> : <p></p>}

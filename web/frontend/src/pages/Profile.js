@@ -9,6 +9,7 @@ import { NavLink } from 'react-router-dom'
 import ChangePass from '../components/ChangePass'
 import authActions from '../redux/actions/authActions'
 import { toast } from 'react-toastify';
+import itemActions from '../redux/actions/itemActions'
 
 
 class Profile extends React.Component {
@@ -19,6 +20,7 @@ class Profile extends React.Component {
 
     componentDidMount() {
         this.scrollToTop()
+        this.props.getCountries()
     }
 
     scrollToTop() {
@@ -31,16 +33,16 @@ class Profile extends React.Component {
             address: e.target.value
         })
     }
-    
-    sendAddress =async () => {
+
+    sendAddress = async () => {
         await this.props.address(this.state.address, this.props.userlogged.token)
         toast.success("Thank you for signing up")
     }
 
-    render() {  
+    render() {
         console.log(this.props.userlogged);
         console.log(this.props.userlogged.direction);
-        // console.log(this.props)rs
+        console.log(this.props.countries)
         return (
             <>
 
@@ -49,23 +51,28 @@ class Profile extends React.Component {
                     <p>My Account</p>
                 </div>
                 <div style={{ margin: '4em' }}>
-                    <div style={{display: 'flex', justifyContent: 'space-between', margin:'1vh'}}>
-                        <div style={{margin:'auto 5vh'}}>
-                            <h3 style={{color: 'gray'}}>Name and Last name</h3>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', margin: '1vh' }}>
+                        <div style={{ margin: 'auto 5vh' }}>
+                            <h3 style={{ color: 'gray' }}>Name and Last name</h3>
                             <h3>{this.props.userlogged.firstName} {this.props.userlogged.lastName}</h3>
-                            <h3 style={{color: 'gray'}}>Mail</h3>
+                            <h3 style={{ color: 'gray' }}>Mail</h3>
                             <p>{this.props.userlogged.mail}</p>
                             <ChangePass />
                         </div>
                         <div>
-                            <h3 style={{margin: '3vh auto'}}>Order History</h3>
+                            <h3 style={{ margin: '3vh auto' }}>Order History</h3>
                             <h3>Your address</h3>
                             <h4>{this.props.userlogged.direction}</h4>
-                                <input onChange={this.readAddress} type="text" id="address" name="address" placeholder="Write your address here"/>
-                                <button onClick={this.sendAddress}>Enviar dirección</button>
+                            <input onChange={this.readAddress} type="text" id="address" name="address" placeholder="Write your address here" />
+                            <button onClick={this.sendAddress}>Enviar dirección</button>
                             <NavLink to="/logOut">Logout</NavLink>
                         </div>
                     </div>
+                    <select>
+                        {this.props.countries.map(country => {
+                            return <option>{country.country}</option>
+                        })}
+                    </select>
                     <div>
 
                     </div>
@@ -78,12 +85,14 @@ class Profile extends React.Component {
 }
 const mapStateToProps = (state) => {
     return {
-        userlogged: state.authReducer
+        userlogged: state.authReducer,
+        countries: state.itemReducer.countries
     }
 }
 
 const mapDispatchToProps = {
     address: authActions.postDirection,
+    getCountries: itemActions.getCountries
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)
