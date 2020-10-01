@@ -60,6 +60,7 @@ class Profile extends React.Component {
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: '100vw', height: '20vh', background: '#111111', color: 'white', textAlign: 'center', fontSize: '60px', fontWeight: 'bold' }}>
                     <p>My Account</p>
                 </div>
+                <h1>texto para probar push</h1>
                 <div style={{ display: "flex", margin: '4em', justifyContent: "space-around" }}>
                     <div className="loginRegister" style={{ display: "flex", flexDirection:'column'}}>
                         <h3>Profile</h3>
