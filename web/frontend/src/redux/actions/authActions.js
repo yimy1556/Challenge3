@@ -16,7 +16,11 @@ const authActions = {
             } else {
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, direction: response.data.direction }
+                    payload: { firstName: response.data.firstName, 
+                        lastName: response.data.lastName, 
+                        mail: response.data.mail, 
+                        token: response.data.token, 
+                        contact: response.data.contact }
                 })
             }
         }
@@ -31,7 +35,14 @@ const authActions = {
                 toast('Welcome')
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, direction: response.data.direction,rol: response.data.rol, rating: response.data.rating, success: response.data.success }
+                    payload: { firstName: response.data.firstName, 
+                        lastName: response.data.lastName, 
+                        mail: response.data.mail, 
+                        token: response.data.token, 
+                        contact: response.data.contact, 
+                        rol: response.data.rol, 
+                        rating: response.data.rating, 
+                        success: response.data.success }
                 })
             }
         }
@@ -45,7 +56,14 @@ const authActions = {
             } else {
                 dispatch({
                     type: 'LOG_USER',
-                    payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: response.data.token, rol: response.data.rol, rating: response.data.rating, success: response.data.success, direction: response.data.direction }
+                    payload: { firstName: response.data.firstName, 
+                        lastName: response.data.lastName, 
+                        mail: response.data.mail, 
+                        token: response.data.token, 
+                        rol: response.data.rol,
+                        rating: response.data.rating, 
+                        success: response.data.success, 
+                        contact: response.data.contact }
                 })
             }
         }
@@ -60,7 +78,13 @@ const authActions = {
             })
             dispatch({
                 type: 'LOG_USER',
-                payload: { firstName: response.data.firstName, lastName: response.data.lastName, mail: response.data.mail, token: tokenLS, rol: response.data.rol, rating: response.data.rating, direction: response.data.direction }
+                payload: { firstName: response.data.firstName, 
+                    lastName: response.data.lastName, 
+                    mail: response.data.mail, 
+                    token: tokenLS, 
+                    rol: response.data.rol, 
+                    rating: response.data.rating, 
+                    contact: response.data.contact }
             })
 
 
@@ -152,9 +176,10 @@ const authActions = {
         }
     },
 
-    postDirection: (direction, token) => {
+    postContact: (country, city, address, postalCode, phoneNumber, token) => {
+        console.log(country, city, address, postalCode, phoneNumber);
         return async (dispatch, getState) => {
-            const response = await axios.post(path+`/user/direction`, { direction }, {
+            const response = await axios.post(path+`/user/direction`, { country, city, address, postalCode, phoneNumber }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -162,7 +187,7 @@ const authActions = {
             if (!response.data.success) {
                 toast('Something went wrong')
             }
-
+            
         }
     },
 

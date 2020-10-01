@@ -53,6 +53,6 @@ router.route('/changePassword')
 // Post direction
 router.route('/user/direction')
     // .get(userController.getDirection)
-    .post(passport.authenticate('jwt', { session: false }),userController.postDirection)
+    .post(passport.authenticate('jwt', { session: false }),userController.postContact)
 
 module.exports = router

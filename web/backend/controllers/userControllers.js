@@ -39,7 +39,7 @@ const userController = {
 					firstName: user.firstName,
 					mail: user.mail,
 					lastName: user.lastName,
-					direction: user.contact,
+					Contact: user.contact,
 					rating: user.rating,
 					rol: user.rol
 				})
@@ -121,11 +121,11 @@ const userController = {
 			.catch(console.log('mal'))
 	},
 
-	postDirection: async (req, res) => {
-		const { direction } = req.body
+	postContact: async (req, res) => {
+		const { country, city, address, postalCode, phoneNumber } = req.body
 		const { _id } = req.user
-		const newDirection = await User.findOneAndUpdate({ _id }, {$push: { contact: { country: country, address: address, postalCode: postalCode, phoneNumber: phoneNumber }  }})
-		// res.json({ success: true, direction })
+		const newDirection = await User.findOneAndUpdate({ _id }, {$push: { contact: { country: country, city: city, address: address, postalCode: postalCode, phoneNumber: phoneNumber }  }})
+		// res.json({ success: true, newDirection })
 	},
 
 	// getDirection: (req, res) => {
