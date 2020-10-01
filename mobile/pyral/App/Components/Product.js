@@ -12,7 +12,7 @@ const colors = {
 }
 
 const Product = (props) => {
-    const [foto, setfoto] = useState({ color: props.product.variants[0].photo })
+    const [foto, setfoto] = useState({ color: props?.product.variants[0].photo })
     console.log(props)
     //const cambiarFoto = (foto) => setfoto({...foto, color: foto})
 
@@ -26,14 +26,16 @@ const Product = (props) => {
         return variantsAux
     }
     console.log(foto.color)
-    borrarRepe(props.product.variants)
+    borrarRepe(props?.product.variants)
+
+    if(props.product === undefined) return<></>
     return (
         <Arcticulo>
             <ImageShop source={{ uri: 'http://181.44.131.8:4000/uploads/T-shirt.jpg' }} />
             <FotosChicas>
                 <View style={{ alignSelf: 'center' }}>
-                    <Text>{props.product.title}</Text>
-                    <Text>{props.product.price}</Text>
+                    <Text>{props?.product.title}</Text>
+                    <Text>{props?.product.price}</Text>
                 </View>
                 <ContainerColors>
                     {variantsAux.map(variant => <ImageShopChica key={variant.stock} color={colors[variant.color]} />)}
