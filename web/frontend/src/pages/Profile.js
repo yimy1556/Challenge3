@@ -27,10 +27,6 @@ class Profile extends React.Component {
 
     }
 
-    componentDidUpdate(){
-        this.props.getUser()
-    }
-
     scrollToTop() {
         scroll.scrollToTop();
     }
@@ -64,46 +60,23 @@ class Profile extends React.Component {
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: '100vw', height: '20vh', background: '#111111', color: 'white', textAlign: 'center', fontSize: '60px', fontWeight: 'bold' }}>
                     <p>My Account</p>
                 </div>
-                <div style={{ margin: '4em' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', margin: '1vh' }}>
-                        <div style={{ margin: 'auto 5vh' }}>
-                            <h3 style={{ color: 'gray' }}>Name and Last name</h3>
-                            <h3>{this.props.userlogged.firstName} {this.props.userlogged.lastName}</h3>
-                            <h3 style={{ color: 'gray' }}>Mail</h3>
-                            <p>{this.props.userlogged.mail}</p>
-                            <ChangePass />
-                        </div>
-                        <div>
-                            <h3 style={{ margin: '3vh auto' }}>Order History</h3>
-                            <h3>Your info</h3>
-                            <div>
-                                {this.props.userlogged.contact.map((x) => {
-                                return (
-                                <div style= {{border: '3px solid black', margin: '1vh'}}>
-                                    <p><strong>Country:</strong> {x.country}</p>
-                                    <p><strong>City:</strong> {x.city}</p>
-                                    <p><strong>Address:</strong> {x.address}</p>
-                                    <p><strong>Postal Code:</strong> {x.postalCode}</p>
-                                    <p><strong>Phone Number:</strong> {x.phoneNumber}</p>
-                                </div>
-                                )
-                            })}
+                <div style={{ display: "flex", margin: '4em', justifyContent: "space-around" }}>
+                    <div className="loginRegister" style={{ display: "flex", flexDirection:'column'}}>
+                        <h3>Profile</h3>
+                        <NavLink to="/address"><h3>Address</h3></NavLink>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', width:'70%'}}>
+                        <h2 style= {{ padding:'1vh 0vh'}}>Your info</h2>
+                        <div style={{ boxShadow:'-1px 1px 13px -4px rgba(0,0,0,0.15)', padding:'5vh' }}>
+                            <p style={{ color: 'gray' }}>Name and last name</p>
+                            <h5>{this.props.userlogged.firstName} {this.props.userlogged.lastName}</h5>
+                            <p style={{ color: 'gray' }}>Mail</p>
+                            <h5>{this.props.userlogged.mail}</h5>
+                                <div>
+                            <ChangePass />  
                             </div>
-                            <input onChange={this.readContact} type="text" id="city" name="city" placeholder="Write your city here" />
-                            <input onChange={this.readContact} type="text" id="address" name="address" placeholder="Write your address here" />
-                            <input onChange={this.readContact} type="number" id="postalCode" name="postalCode" placeholder="Write your postal code here" />
-                            <input onChange={this.readContact} type="number" id="phoneNumber" name="phoneNumber" placeholder="Write your phone number here" />
-                            <button onClick={this.sendContact}>Enviar dirección</button>
                             <NavLink to="/logOut">Logout</NavLink>
                         </div>
-                    </div>
-                    {/* <select>
-                        {this.props.countries.map(country => {
-                            return <option onChange={this.readContact} name="country">{country.country}</option>
-                        })}
-                    </select> */}
-                    <div>
-
                     </div>
                 </div>
                 <ChatBotComponent />

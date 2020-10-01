@@ -20,6 +20,7 @@ import './styles/RegisterLogIn.css'
 import LogOut from './components/LogOut';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Address from './components/Address';
 
 
 function App(props) {
@@ -50,6 +51,7 @@ function App(props) {
         <Route path="/logOut" component={LogOut} />
         <Route path="/selectProduct/:id" component={SelectProduct} />
         <Route path="/profile" component={Profile} />
+        <Route path="/address" component={Address} />
         <Redirect to="/" />
       </Switch>
       )

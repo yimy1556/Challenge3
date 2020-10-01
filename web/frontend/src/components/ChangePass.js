@@ -31,11 +31,13 @@ const ChangePass = (props) => {
    
 
     return (
-        <>
-          <label htmlFor="">enter a new password</label>
-          <input onChange={readInput} name="password" type="password"></input>
-          <button onClick={sendNewPass}>Change Pass</button>
-        </>
+        <div>
+          <label htmlFor="">Enter a new password</label>
+          <div>
+            <input onChange={readInput} name="password" type="password"></input>
+            <button onClick={sendNewPass}>Change Pass</button>
+          </div>
+        </div>
     )
 }
 
