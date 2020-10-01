@@ -100,6 +100,7 @@ const PR = [{
 export default function Products( {navigation}) {
 
     return (<>
+
         <ScrollView>
             <FlatList
                 style={{ flex: 1, alignSelf: 'center' }}

@@ -50,4 +50,9 @@ router.route('/changePassword')
     router.route('/viewsProduct/:id')
 .get(productController.upViews)
 
+// Post direction
+router.route('/user/direction')
+    // .get(userController.getDirection)
+    .post(passport.authenticate('jwt', { session: false }),userController.postDirection)
+
 module.exports = router

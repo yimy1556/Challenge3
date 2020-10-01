@@ -5,6 +5,7 @@ import { animateScroll as scroll } from 'react-scroll'
 import ChatBotComponent from '../components/ChatBotComponent'
 import Footer from '../components/Footer'
 import Faqs from '../components/Faqs'
+import VideoBackground from '../components/VideoBackground'
 
 
 class About extends React.Component {
@@ -26,6 +27,7 @@ class About extends React.Component {
                 <Header />
                 <Faqs />
                 <ChatBotComponent />
+                <VideoBackground />
                 <Footer />
             </>
         )
