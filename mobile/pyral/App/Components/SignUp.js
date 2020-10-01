@@ -141,7 +141,7 @@ import axios from 'axios'
             {mensajes.pass1 ? <Text style={styles.mensajeError}>*Your password must contain at least 5 characters</Text> : mensajes.pass2 ?  <Text style={styles.mensajeError}>*Your Password must include at least one uppercase letter, at least one lowercase letter, and at least one number.</Text> : <Text></Text>}
             <TextInput
                 style={styles.TextInput}
-				secureTextEntry= "true"
+				secureTextEntry = {true}
 				placeholder="Write your password here"
                 placeholderTextColor="#ffffffa9"
                 onChangeText={(val)=> setPass(val)}
