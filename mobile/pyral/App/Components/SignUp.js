@@ -56,7 +56,7 @@ import axios from 'axios'
             })
 
             // lastName validation
-        } else if (surname.length < 3) {
+        }else if (surname.length < 3) {
             setMensajes({
                 ...mensajes,
                 lastName1: true
