@@ -109,3 +109,9 @@ button.createAccount:hover{
 #articulo > a{
     text-decoration: none;
 }
+
+.scrollProduts::-webkit-scrollbar{
+    display: flex;
+    overflow-x: scroll;
+}
+

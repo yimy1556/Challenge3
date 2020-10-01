@@ -210,3 +210,11 @@ input[type="file"] {
 #menuCostado ::-webkit-scrollbar-thumb:active {
     background-color: #999999;
 }
+
+#yimy ::-webkit-scrollbar{
+    display: flex;
+    overflow-x: scroll;
+    width: 90%;
+    background-color: red;
+  }
+

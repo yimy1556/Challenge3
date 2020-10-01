@@ -19,7 +19,7 @@ import {
     WhatsappShareButton,
 
 } from "react-share";
-
+import ScrollProducts from '../components/ScrollProduts'
 
 const SelectProduct = (props) => {
     const borrarRepe = (variants) => {
@@ -54,7 +54,7 @@ const SelectProduct = (props) => {
                     price: prodc.price
                 })
             })
-    }, [])
+    }, [props.match.params.id])
     const [value, setValue] = useState(0)
 
     const ratingSet = () => {
@@ -74,7 +74,7 @@ const SelectProduct = (props) => {
     if (product === {}) return <></>
     props.product.map(product => console.log(`${product.stars}`))
     return (<>
-        <Header bott = {bottom}  setBott = {setBottom}/>
+        <Header bott = {bottom}/>
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '3em' }}>
             <div style={{ display: 'flex' }}>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
@@ -137,29 +137,7 @@ const SelectProduct = (props) => {
                 <button onClick={() => addProducts()} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
             </div>
         </div>
-        <div id="todoShop">
-            {props.product == 0 ? <p>no products yet</p> :
-                <>
-                    {props.product.map(product => {
-                        return (
-                            <>
-                                <NavLink to={`/selectProduct/${product._id}`}>
-                                    <img src={product.variants.photo}></img>
-                                    <div>
-                                        <p id="descripcionShop">{product.title}</p>
-                                        <p id="precioShop">${product.price}</p>
-                                    </div>
-                                </NavLink>
-                            </>
-                        )
-
-                    })
-                    }
-
-                </>
-            }
-        </div>
-
+        <ScrollProducts/>
         <div>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <h3 >Reviews</h3>
@@ -192,7 +170,6 @@ const SelectProduct = (props) => {
                 }
             </div>
         </div>
-
 
     </>
     )

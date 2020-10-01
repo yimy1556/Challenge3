@@ -23,7 +23,7 @@ const Carrito = (props) => {
     const [menuShow, setmenuShow] = useState({
         show: false
     })
-    useEffect(() => {},[props.bott])
+    useEffect(() => {},[props.ddd])
 
     const menuHamburguesa = e => {
         setmenuShow({

@@ -36,8 +36,8 @@ const Product = (props) => {
     return (
         <>
 
-            <div id="articulo">
-                <NavLink to={`./selectProduct/${props.product._id}`} className="linkProduct"> <div id="imagenShop" style={{ backgroundImage: `url(${foto.color})`, borderBottom: '1px solid rgba(128, 128, 128, 0.37)' }}> </div> </NavLink>
+            <div id="articulo" >
+                <NavLink to={props.selectProduct?  `./${props.product._id}`:`./selectProduct/${props.product._id}`} className="linkProduct"> <div id="imagenShop" style={{ backgroundImage: `url(${foto.color})`, borderBottom: '1px solid rgba(128, 128, 128, 0.37)' }}> </div> </NavLink>
                 <div id="fotosChicas">
                     <div>
                         <p id="descripcionShop">{props.product.title}</p>
