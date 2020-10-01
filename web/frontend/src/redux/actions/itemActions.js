@@ -43,10 +43,17 @@ const itemActions = {
             })
         }
     },
-    getColors: () => {
+    getCountries: () => {
         return async (dispatch, getState) => {
-            const response = await axios.get('http://127.0.0.1:5000/colors')
-            console.log(response)
+            const response = await axios.get('http://127.0.0.1:5000/countries')
+            var info = response.data
+
+            dispatch({
+                type: 'GET_COUNTRIES',
+                payload: info
+
+            })
+
         }
     },
     putVariant: (formItem) => {

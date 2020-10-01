@@ -18,7 +18,7 @@ class Shop extends React.Component {
     async componentDidMount() {
         this.scrollToTop()
         this.props.getProducts()
-        this.props.getColors()
+
     }
 
     scrollToTop() {
@@ -121,7 +121,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
     getProducts: itemActions.getProducts,
-    getColors: itemActions.getColors
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Shop)
