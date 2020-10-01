@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React ,{useState } from 'react';
 import { View, Text } from 'react-native';
 import styled from 'styled-components'
 
@@ -28,7 +28,6 @@ const Product = (props) => {
     console.log(foto.color)
     borrarRepe(props?.product.variants)
 
-    if(props.product === undefined) return<></>
     return (
         <Arcticulo>
             <ImageShop source={{ uri: 'http://181.44.131.8:4000/uploads/T-shirt.jpg' }} />
