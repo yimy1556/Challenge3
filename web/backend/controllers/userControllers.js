@@ -39,6 +39,7 @@ const userController = {
 					firstName: user.firstName,
 					mail: user.mail,
 					lastName: user.lastName,
+					direction: user.direction,
 					rating: user.rating,
 					rol: user.rol
 				})
@@ -62,13 +63,14 @@ const userController = {
 			firstName: userExists.firstName,
 			mail: userExists.mail,
 			lastName: userExists.lastName,
+			direction: userExists.direction,
 			rating: userExists.rating,
 			rol: userExists.rol
 		})
 	},
 	getUser: (req, res) => {
-		const { firstName, lastName, mail, rol, rating } = req.user
-		res.json({ firstName, lastName, mail, rol, rating })
+		const { firstName, lastName, mail, direction, rol, rating } = req.user
+		res.json({ firstName, lastName, mail, direction, rol, rating })
 	},
 
 	//A new random password is generated and sent. (forgot password)
@@ -115,16 +117,28 @@ const userController = {
 		// Está harcodeada la id por ahora, después se cambia
 		const productRating = await User.findOneAndUpdate({ _id }, { $push: { rating: { productId: productId, ratingNumber: rating } } })
 		const productR = await Product.findOneAndUpdate({ _id: productId }, { $inc: { stars: +rating, reviews: +1 } })
-		console.log(rating)
-		res.json({ success: true, rating, productId })
+			.then(console.log('bien'))
+			.catch(console.log('mal'))
 	},
+
+	postDirection: async (req, res) => {
+		const { direction } = req.body
+		const { _id } = req.user
+		const newDirection = await User.findOneAndUpdate({ _id }, {$push: { direction: direction }})
+		// res.json({ success: true, direction })
+	},
+
+	// getDirection: (req, res) => {
+	// 	const { direction } = req.body
+	// 	res.json({ success: true, direction })
+	// },
 	//Subscription mail is recorded and notified by mail.
 	createSuscription: async (req, res) => {
 
 		const { mail } = req.body
 		const mailExists = await Newsletter.findOne({ mail })
 		if (mailExists) {
-			res.json({	success: false, info: 'The email is registered'})
+			res.json({ success: false, info: 'The email is registered' })
 		} else {
 			const newNewsletter = new Newsletter({
 				mail
@@ -142,7 +156,7 @@ const userController = {
 							<p style="color: #0D195A; font-size:18px;">Thank you for subscribing,
 							 we will notify you when a discount or promotion is available! <a style="color: #152657; font-size:25px;" 
 							 href="http://localhost:3000/shop">Visit us </a> </p>
-							 <a style="color: #0D195A; font-size:9px;" href="http://www.google.com">Unsuscribe</a>
+							 <a style="color: #0D195A; font-size:9px;" href="http://localhost:3000/lowNewsletter">Unsuscribe</a>
 						   <hr/>
        					<h2>Team Pyral</h2>`
 			}
@@ -187,10 +201,12 @@ const userController = {
 	},
 
 	lowNewsletter: async (req, res) => {
-		mailUser = req.body.mail
+
+		console.log(req.body)
+		userMail = req.body.mail
 		
 		try{
-			await Newsletter.findOneAndDelete({mail:mailUser})
+			await Newsletter.findOneAndDelete({mail:userMail})
 			res.json({
 				success: true,
 				response:" delete newsletter DB"

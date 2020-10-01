@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import authActions from '../redux/actions/authActions'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 
 const LogIn = props => {
@@ -25,6 +26,7 @@ const LogIn = props => {
         console.log(ingresoUsuario)
         e.preventDefault()
         await props.logUser(ingresoUsuario)
+
     }
 
 
@@ -37,7 +39,7 @@ const LogIn = props => {
     }
 
 
-
+    console.log(props.user);
     return (
         <div style={{ backgroundImage: 'url(https://www.onlygfx.com/wp-content/uploads/2017/07/paint-texture-black-and-white-3.jpeg)', height: '100vh', maxWidth: '100vw', backgroundSize: 'cover', backgroundPosition: '40% 0%' }}>
 
@@ -74,10 +76,14 @@ const LogIn = props => {
 
 }
 
-
+const mapStateToProps = state => {
+    return {
+        user: state.authReducer
+    }
+}
 
 const mapDispatchToProps = {
     logUser: authActions.logUser,
 }
 
-export default connect(null, mapDispatchToProps)(LogIn)
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn)

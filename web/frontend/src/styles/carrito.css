@@ -53,6 +53,8 @@
     margin-top: 5vh;
     background-color: white;
     padding: 2vh 1vw;
+    overflow: scroll;
+
 
 }
 

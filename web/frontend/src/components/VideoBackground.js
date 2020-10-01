@@ -19,7 +19,7 @@ class VideoBackground extends React.Component {
                         />
                     </div>
                     <p>
-                       <span>How do I check my gift card balance?</span><br/>
+                        <span>How do I check my gift card balance?</span><br />
                         Please visit http://www.pyral.com/us/gift-cards to check your balance
                 </p>
                 </div>

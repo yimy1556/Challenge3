@@ -7,34 +7,35 @@ import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import authActions from '../redux/actions/authActions'
+import { NavLink } from 'react-router-dom'
+import FacebookIcon2 from '@material-ui/icons/Facebook';
+import TwitterIcon2 from '@material-ui/icons/Twitter';
+import WhatsappIcon2 from '@material-ui/icons/WhatsApp';
+import TelegramIcon2 from '@material-ui/icons/Telegram';
+import {
+    FacebookShareButton,
+    TelegramShareButton,
+    TwitterShareButton,
+    WhatsappShareButton,
+    FacebookIcon,
+    TwitterIcon,
+    TelegramIcon,
+    WhatsappIcon
 
-const borrarRepe = (variants) => {
-    const variantsAux = []
-    if (variants === undefined) return variantsAux
-    variants.forEach(vari => {
-        if (variantsAux.filter(varia => varia.color === vari.color).length !== 0)
-            return
-        variantsAux.push(vari)
-    })
+} from "react-share";
 
-
-    return variantsAux
-}
-
-// const SimpleRating = props => {
-//     const [value, setValue] = useState(1)
-
-//     const rating = value
-
-//     console.log(value);
-//     return (
-
-//     )
-
-// }
 
 const SelectProduct = (props) => {
-
+    const borrarRepe = (variants) => {
+        const variantsAux = []
+        if (variants === undefined) return variantsAux
+        variants.forEach(vari => {
+            if (variantsAux.filter(varia => varia.color === vari.color).length !== 0)
+                return
+            variantsAux.push(vari)
+        })
+        return variantsAux
+    }
     const [product, setProduct] = useState({})
     const [prod, setProd] = useState({
         _id: props.match.params.id,
@@ -67,15 +68,9 @@ const SelectProduct = (props) => {
         props.postRating(productId, value, props.userlogged.token)
 
     }
-    const ratingUpdate = () => {
-        alert(value)
-        const productId = props.match.params.id
 
-        props.postRating(productId, value, props.userlogged.token)
-
-    }
     var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
-    console.log(arrayFiltrado[0].stars)
+
     if (product === {}) return <></>
     props.product.map(product => console.log(`${product.stars}`))
     return (<>
@@ -88,13 +83,19 @@ const SelectProduct = (props) => {
                 <img src={prod?.remeraActual} alt="remeraActual" style={{ width: '28vw', height: '76vh' }} />
 
             </div>
-            <div style={{ width: '50vw' }}>
+            <div style={{ width: '50vw', height: '76vh' }}>
+
                 <div style={{ display: 'flex', justifyContent: 'space-between', paddingRight: '7em' }}>
                     <h3>{product.title}</h3>
                     <h3>${product.price}</h3>
                 </div>
-                <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                <div style={{ display: 'flex' }}>
+                    <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    <p>{arrayFiltrado[0].reviews} reviews</p>
+                </div>
+
                 <p style={{ maxWidth: '20em', padding: '20px 0' }}>{product.description}</p>
+
                 <div style={{ display: 'flex', flexDirection: 'column' }} >
                     <label>Size</label>
                     <select name="size" id="size" onChange={(e) => setProd({ ...prod, size: e.target.value })}>
@@ -102,27 +103,97 @@ const SelectProduct = (props) => {
                         {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <option>{vari.size}</option>)}
                     </select>
                 </div>
+                <WhatsappShareButton
+                    url={"https://scapeteamred.herokuapp.com/"}
+                    quote={"CampersTribe - World is yours to explore"}
+                    hashtag="#camperstribe"
+                >
+                    <WhatsappIcon2 style={{ fontSize: 40 }} />
+                </WhatsappShareButton>
+                <FacebookShareButton
+                    url={"https://scapeteamred.herokuapp.com/"}
+                    quote={"CampersTribe - World is yours to explore"}
+                    hashtag="#camperstribe"
+                >
+                    <FacebookIcon2 style={{ fontSize: 40 }} />
+                </FacebookShareButton>
+                <TwitterShareButton
+                    url={"https://scapeteamred.herokuapp.com/"}
+                    quote={"CampersTribe - World is yours to explore"}
+                    hashtag="#camperstribe"
+                >
+                    <TwitterIcon2 style={{ fontSize: 40 }} />
+                </TwitterShareButton>
+                <TelegramShareButton
+                    url={"https://scapeteamred.herokuapp.com/"}
+                    quote={"CampersTribe - World is yours to explore"}
+                    hashtag="#camperstribe"
+                >
+                    <TelegramIcon2 style={{ fontSize: 40 }} />
+                </TelegramShareButton>
                 {(prod.size !== '' || prod.size !== 'Choose the size') &&
                     <h3>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</h3>}
+
                 <button onClick={() => props.addProduct(prod)} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
-                <div>
-                    <Box component="fieldset" mb={3} borderColor="transparent">
-                        <Typography component="legend">Rating</Typography>
-                        <Rating
-                            name="simple-controlled"
-                            value={value}
-                            onChange={(event, newValue) => {
-                                setValue(newValue);
-                            }}
-
-                        />
-
-                    </Box>
-                    {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 && <button onClick={ratingSet}>Enviar estrellitas</button>}
-
-                </div>
             </div>
         </div>
+        <div id="todoShop">
+            {props.product == 0 ? <p>no products yet</p> :
+                <>
+                    {props.product.map(product => {
+                        return (
+                            <>
+                                <NavLink to={`/selectProduct/${product._id}`}>
+                                    <img src={product.variants.photo}></img>
+                                    <div>
+                                        <p id="descripcionShop">{product.title}</p>
+                                        <p id="precioShop">${product.price}</p>
+                                    </div>
+                                </NavLink>
+                            </>
+                        )
+
+                    })
+                    }
+
+                </>
+            }
+        </div>
+
+        <div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <h3 >Reviews</h3>
+                <div style={{ display: 'flex' }}>
+                    <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
+                    <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    <p>{arrayFiltrado[0].reviews} reviews</p>
+                </div>
+            </div>
+            <div style={{ display: 'flex' }}>
+                {props.userlogged.token &&
+                    <>
+                        {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 &&
+                            <>
+                                <Box component="fieldset" mb={3} borderColor="transparent">
+                                    <Typography component="legend">Rating</Typography>
+                                    <Rating
+                                        name="simple-controlled"
+                                        value={value}
+                                        onChange={(event, newValue) => {
+                                            setValue(newValue);
+
+                                        }}
+                                        style={{ color: 'black' }}
+                                    />
+
+                                </Box>
+                                <button onClick={ratingSet}>Send Rating</button>  </>}
+                    </>
+                }
+            </div>
+        </div>
+
+
     </>
     )
 }
@@ -139,7 +210,8 @@ const mapStateToProps = state => {
         rating: state.authReducer.rating,
         productId: state.authReducer.productId,
         product: state.itemReducer.product,
-        userlogged: state.authReducer
+        userlogged: state.authReducer,
+
     }
 }
 

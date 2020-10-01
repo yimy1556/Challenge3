@@ -41,7 +41,7 @@ router.route('/user/rating')
 router.route('/newsletter')
     .post(validatorMail.validateData, userController.createSuscription)
     .get(userController.listSubsNewsletter)
-    .delete(userController.lowNewsletter)
+    .put(userController.lowNewsletter)
 
 //Change password from user profile.
 router.route('/changePassword')
@@ -50,5 +50,10 @@ router.route('/changePassword')
     //view counter per product.
     router.route('/viewsProduct/:id')
 .get(productController.upViews)
+
+// Post direction
+router.route('/user/direction')
+    // .get(userController.getDirection)
+    .post(passport.authenticate('jwt', { session: false }),userController.postDirection)
 
 module.exports = router

@@ -18,8 +18,7 @@ class Shop extends React.Component {
     async componentDidMount() {
         this.scrollToTop()
         this.props.getProducts()
-        var mostVisited = await this.props.products.sort((a, b) => b.views - a.views)
-        var lessVisited = await this.props.products.sort((a, b) => a.views - b.views)
+
     }
 
     scrollToTop() {
@@ -44,7 +43,20 @@ class Shop extends React.Component {
             list: highestPrice
         })
     }
-
+    lessRelevant = (params) => {
+        var mostVisited = this.props.products.sort((a, b) => a.views - b.views)
+        console.log('hola')
+        this.setState({
+            list: mostVisited
+        })
+    }
+    mostRelevant = (params) => {
+        var lessVisited = this.props.products.sort((a, b) => b.views - a.views)
+        console.log('hola')
+        this.setState({
+            list: lessVisited
+        })
+    }
     sort = (e) => {
         var value = e.target.value
         if (value !== "") {
@@ -72,6 +84,8 @@ class Shop extends React.Component {
 
                         <button onClick={this.lowestPrice}>Lowest Price</button>
                         <button onClick={this.highestPrice}>Highest Price</button>
+                        <button onClick={this.mostRelevant}>most Relevant</button>
+                        <button onClick={this.lessRelevant}>less Relevant</button>
                     </div>
                     <div id="paginaShop" style={{ flex: '8' }}>
                         <h2 style={{ color: 'black' }}>All Products</h2>
@@ -102,12 +116,12 @@ class Shop extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        products: state.itemReducer.product
+        products: state.itemReducer.product,
     }
 }
 const mapDispatchToProps = {
     getProducts: itemActions.getProducts,
-    getColors: itemActions.getColors
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Shop)

@@ -9,7 +9,6 @@ import Header from '../components/Header'
 const LowNewsletter = (props) => {
 
     const [mail, setMail] = useState('')
-    const [errorInput, setErrorInput] = useState(null)
 
     const readInput = e => {
         const dataMail = e.target.value
@@ -22,7 +21,6 @@ const LowNewsletter = (props) => {
         setMail('')
     }
 
-
 return (
     <>  
         <div>
@@ -30,7 +28,6 @@ return (
                 <input onChange={readInput} name="mail" id="standard-basic" value={mail} label="Sign up for offers & news" placeholder="Sign up with your email"/>
                 <ArrowRightIcon  onClick={sendMail} />
             </div>
-            <span>{errorInput} </span>
         </div>
 
     </>

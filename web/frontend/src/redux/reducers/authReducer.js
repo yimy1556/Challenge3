@@ -4,12 +4,14 @@ const initialState = {
     mail: '',
     token: '',
     rol: '',
+    direction: '',
     success: '',
     rating: '',
     productId: ''
 }
 
 const authReducer = (state = initialState, action) => {
+  
     switch (action.type) {
         case 'LOG_USER':
             localStorage.setItem('token', action.payload.token)
@@ -20,13 +22,13 @@ const authReducer = (state = initialState, action) => {
                 mail: action.payload.mail,
                 token: action.payload.token,
                 rol: action.payload.rol,
+                direction: action.payload.direction,          
                 success: action.payload.success,
                 rating: action.payload.rating,
             }
         case 'RATING':
             return {
                 ...state,
-
                 productId: action.payload.productId
             }
         case 'LOGOUT_USER':
