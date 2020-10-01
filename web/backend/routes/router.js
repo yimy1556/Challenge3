@@ -41,7 +41,7 @@ router.route('/user/rating')
 router.route('/newsletter')
     .post(validatorMail.validateData, userController.createSuscription)
     .get(userController.listSubsNewsletter)
-
+    .put(userController.lowNewsletter)
 
 //Change password from user profile.
 router.route('/changePassword')
