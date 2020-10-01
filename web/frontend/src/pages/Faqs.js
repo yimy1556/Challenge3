@@ -5,12 +5,25 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import '../styles/about.css'
-
-
+import VideoBackground from '../components/VideoBackground'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import { animateScroll as scroll } from 'react-scroll'
+import { useEffect } from 'react'
 
 export default function Faqs() {
 
+ useEffect(() => {
+  scrollToTop()
+   }, [])
+  
+  const scrollToTop = () => {
+    scroll.scrollToTop();
+}
+
   return (
+    <>
+    <Header></Header>
     <div className="container__super__faqs">
       <p id="title_accordeon">FREQUENTLY ASKED QUESTIONS</p>
       <div className="container__accordion">
@@ -148,12 +161,11 @@ export default function Faqs() {
             </Typography>
           </AccordionDetails>
         </Accordion>
-
       </div>
-
-
-
+      <VideoBackground />
     </div>
-
-  );
+    <Footer></Footer>
+</>
+  )
 }
+

@@ -25,6 +25,7 @@ class Footer extends React.Component {
                             <NavLink to="/">Home</NavLink>
                             <NavLink to="/about">About</NavLink>
                             <NavLink to="/shop">Shop</NavLink>
+                            <NavLink to="/faqs">FAQs</NavLink>
                         </div>
                         <div className="container__icons__social" >
                             <div> <NavLink to="/" id="icon__whatsapp"><img src={whatsapp} alt="" /></NavLink></div>

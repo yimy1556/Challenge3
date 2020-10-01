@@ -107,11 +107,21 @@ const authActions = {
                 }else {
                     return errorResponse = response.data.info
                 }
-                return errorResponse
-                  
-                
+                return errorResponse   
         }
     },
+
+    lowNewsletter: mail => {
+        return async(dispatch, getState) => {
+            
+            const response = await axios.delete(path + '/newsletter', {mail})
+            console.log(response)
+            dispatch({
+                type: 'LOW_NEWSLETTER'
+            })
+        }
+    },
+
     rating: (productId, rating, token) => {
        
         return async (dispatch, getState) => {
