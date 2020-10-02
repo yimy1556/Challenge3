@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import itemActions from '../redux/actions/itemActions'
+import { ImageZoom } from 'react-simple-image-zoom';
 import { connect } from 'react-redux'
 import shoppingCartActions from '../redux/actions/shoppingCartActions'
 import Header from '../components/Header'
@@ -13,6 +14,13 @@ import TwitterIcon2 from '@material-ui/icons/Twitter';
 import WhatsappIcon2 from '@material-ui/icons/WhatsApp';
 import TelegramIcon2 from '@material-ui/icons/Telegram';
 import { animateScroll as scroll } from 'react-scroll'
+import {
+    MagnifierContainer,
+    MagnifierPreview,
+    MagnifierZoom,
+    SideBySideMagnifier,
+    MOUSE_ACTIVATION,
+} from "react-image-magnifiers";
 import {
     FacebookShareButton,
     TelegramShareButton,
@@ -75,7 +83,6 @@ const SelectProduct = (props) => {
         scroll.scrollToTop();
     }
 
-
     var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
 
     if (product === {}) return <></>
@@ -87,7 +94,27 @@ const SelectProduct = (props) => {
                 <div style={{ display: 'flex', flexDirection: 'column' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
                     src={vari.photo} alt={vari.title} style={{ width: '3em', height: '4em' }} />)}
                 </div>
-                <img src={prod?.remeraActual} alt="remeraActual" style={{ width: '28vw', height: '76vh' }} />
+                {/* <img src={prod?.remeraActual} alt="remeraActual" style={{ width: '28vw', height: '76vh' }} /> */}
+
+                {/* <MagnifierContainer>
+                    <div className="example-class">
+                        <MagnifierPreview imageSrc={prod?.remeraActual} style={{ width: '30em'}}
+                          mouseActivation={MOUSE_ACTIVATION.DOUBLE_CLICK} fillGapRight // Optional
+                          />
+                    </div>
+                    <MagnifierZoom imageSrc={prod?.remeraActual} style={{ width: '28vw', height: '76vh' }} fillGapRight/>
+                </MagnifierContainer> */}
+
+                <SideBySideMagnifier
+                    className="input-position"
+                    style={{ width: '28vw', height: '76vh' }}
+                    imageSrc={prod?.remeraActual}
+                    mouseActivation={MOUSE_ACTIVATION.CLICK}
+                    overlayOpacity={0.2}
+                    alwaysInPlace={true}
+                    cursorStyle={'SideBySideMagnifier'}
+                />
+
 
             </div>
             <div style={{ width: '50vw', height: '76vh' }}>
