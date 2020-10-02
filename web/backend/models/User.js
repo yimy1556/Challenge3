@@ -27,11 +27,11 @@ const userSchema = new mongoose.Schema({
 	contact: {
 		type: Array,
 		default: [{
-			country: { type: String, default: '' },
-			city: { type: String, default: '' },
-			address: { type: String, default: '' },
-			postalCode: { type: Number, default: '' },
-			phoneNumber: { type: Number, default: '' }
+			country: String,
+			city: String,
+			address: String,
+			postalCode: Number,
+			phoneNumber: Number
 		}]
 	},
 	rating: {

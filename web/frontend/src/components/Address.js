@@ -70,19 +70,24 @@ class Address extends React.Component {
                     <div>
                         <div style={{ boxShadow:'-1px 1px 13px -4px rgba(0,0,0,0.15)', padding:'5vh'}}>
                             <h4>Contact information</h4>
-                            {this.props.userlogged.contact.map((x) => {
-                            return (
-                            <div style= {{fontWeight:'lighter'}}>
-                                <p>{x.country}</p>
-                                <p>{x.city}</p>
-                                <p>{x.address}</p>
-                                <p>{x.postalCode}</p>
-                                <p>{x.phoneNumber}</p>
-                                <hr/>
+                            {this.props.userlogged.contact &&
+                                    <>
+
+                                        {this.props.userlogged.contact.map((x) => {
+                                            return (
+                                                <div style={{ fontWeight: 'lighter' }}>
+                                                    <p>{x.country}</p>
+                                                    <p>{x.city}</p>
+                                                    <p>{x.address}</p>
+                                                    <p>{x.postalCode}</p>
+                                                    <p>{x.phoneNumber}</p>
+                                                    <hr />
+                                                </div>
+                                            )
+                                        })}
+                                    </>}
                             </div>
-                            )
-                        })}
-                        </div>
+
                         <div id="divFormulario" style={{display: 'flex', flexDirection:'column',  boxShadow:'-1px 1px 13px -4px rgba(0,0,0,0.15)', padding:'5vh', margin:'2vh 0vh'}}>
                         <h4>Add your contact information</h4>
                             <div style={{display: 'flex',justifyContent:'space-between', margin:'2vh'}}>
