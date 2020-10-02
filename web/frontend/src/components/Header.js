@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -35,7 +34,7 @@ const Header = (props) => {
                                 <NavLink to="/register"> <PersonIcon style={{ color: 'black', fontSize: 40 }}></PersonIcon></NavLink>
 
                             </div>
-                            <Carrito bott={props.bott} />
+                            <Carrito />
                         </>}
                 </nav>
 

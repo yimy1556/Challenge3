@@ -8,6 +8,8 @@ import CancelIcon from '@material-ui/icons/Cancel'
 import Badge from '@material-ui/core/Badge'
 
 
+
+
 const compraTotal = (list) => {
     let total = 0
     list.forEach(prod => total += prod.cant * prod.price)
@@ -20,17 +22,24 @@ const cantTotal = (list) => {
 }
 
 const Carrito = (props) => {
+    const [total, setTotal] = useState(0)
+
+    useEffect(() => {
+        setTotal(cantTotal(props.listProduct))
+    }, [props.listProduct])
+
     const [menuShow, setmenuShow] = useState({
         show: false
     })
-    useEffect(() => {},[props.ddd])
 
     const menuHamburguesa = e => {
+        e.preventDefault()
         setmenuShow({
             ...menuShow,
             show: !menuShow.show
         })
     }
+
 
     if (props.listProduct === null) return <></>
     return (
