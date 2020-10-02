@@ -45,9 +45,7 @@ const ShopStackScreen = () => (
         <ShopStack.Screen name="Products" component={Products} 
             options={{ headerTitle: props => <Header {...props} /> }}
         />
-        <ShopStack.Screen name="OneProduct" component={OneProduct} 
-            options={{ headerTitle: props => <Header {...props} /> }}     
-        />
+        <ShopStack.Screen name="OneProduct" component={OneProduct}/>
 
     </ShopStack.Navigator>
 )
@@ -85,4 +83,8 @@ export default function TabV() {
         </NavigationContainer>
     );
 }
+
+
+
+
 

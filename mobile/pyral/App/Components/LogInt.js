@@ -3,6 +3,7 @@ import {View, Text, CheckBox, ImageBackground, Button, StyleSheet, TextInput} fr
 import styled from 'styled-components'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import axios from 'axios'
+import {API} from '../Constants/index'
 
 
     const  LogInt = ({navigation}) => {
@@ -15,7 +16,7 @@ import axios from 'axios'
             mail:mail,
             pass:pass
         }
-        const response = await axios.post(`https://5f5e1bf643b3.ngrok.io/api/user/login`, logUser)
+        const response = await axios.post(`${API}/user/login`, logUser)
         if (!response.data.success) {
             alert('Incorrect mail or password')
         } else {
