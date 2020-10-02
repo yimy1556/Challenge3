@@ -79,7 +79,7 @@ export default function TabV() {
         <NavigationContainer>
             <Drawer.Navigator>
                 <Drawer.Screen name="Home" component={TabsScreen} />
-                <Drawer.Screen name="Registro" component={LogInt} />
+                <Drawer.Screen name="LogIn" component={LogInt} />
                 <Drawer.Screen name="SignUp" component={SignUp} />
             </Drawer.Navigator>
         </NavigationContainer>

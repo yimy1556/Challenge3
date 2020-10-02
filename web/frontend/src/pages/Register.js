@@ -145,7 +145,7 @@ const Register = (props) => {
                         </div>
                         <GoogleLogin id="GoogleLogin"
                             clientId="83311303903-d8eviki4j9rvmabuc0ceg0c5im70b2ab.apps.googleusercontent.com"
-                            buttonText="Sing up with Google"
+                            buttonText="Sign up with Google"
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}
                             cookiePolicy={'single_host_origin'}
