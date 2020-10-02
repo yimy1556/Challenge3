@@ -2,10 +2,9 @@ import React, {useState} from "react"
 import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from "react-native"
 import {LOCAL_HOST, IMAGE} from '../Constants/index'
 import styled from 'styled-components'
-
+import ScrollProducts from '../Components/ScrollProducts'
 export default function OneProduct(props){
     const product = props.route.params.item
-    console.log(props.route.params.item.variants)
     const [products, setProducts] = useState({photo:product.variants[0].photo,
             stock:product.variants[0].stock    
         })
@@ -27,6 +26,7 @@ export default function OneProduct(props){
                 <ImageShop source={{uri:image}} margin={30} width={250} height={290}/>
             </View> 
             <Text style={styles.title}>{product.price}</Text>
+            <ScrollProducts {...props}/>
         </ScrollView>
     )
 } 

@@ -33,32 +33,31 @@ const HomeStack = createStackNavigator();
 const HomeStackScreen = () => (
     <HomeStack.Navigator>
         <HomeStack.Screen name="Home" component={Home}
-        options={{ headerTitle: props => <Header {...props} /> }}
+            options={{ headerTitle: props => <Header {...props} /> }}
         />
-    </HomeStack.Navigator>  
+    </HomeStack.Navigator>
 );
 
 
 const ShopStack = createStackNavigator();
 const ShopStackScreen = () => (
     <ShopStack.Navigator>
-        <ShopStack.Screen name="Products" component={Products} 
+        <ShopStack.Screen name="Products" component={Products}
             options={{ headerTitle: props => <Header {...props} /> }}
         />
-        <ShopStack.Screen name="OneProduct" component={OneProduct}/>
+        <ShopStack.Screen name="OneProduct" component={OneProduct} />
 
     </ShopStack.Navigator>
 )
 
 const Tab = createBottomTabNavigator();
 const TabsScreen = (props) => {
-    console.log(props.route)
     return (
         <Tab.Navigator initialRouteName={props.route.name}
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ size, color }) => <FontAwesome name={iconos[route.name]} size={size} color={color} />
             })}
-                tabBarOptions={{    
+            tabBarOptions={{
                 activeTintColor: '#201F22',
                 inactiveTintColor: 'gray',
             }}
@@ -77,8 +76,8 @@ export default function TabV() {
         <NavigationContainer>
             <Drawer.Navigator>
                 <Drawer.Screen name="Home" component={TabsScreen} />
-                <Drawer.Screen name="LogIn" component={LogInt} />
-                <Drawer.Screen name="SignUp" component={SignUp} />
+                <Drawer.Screen name="Sign In" component={LogInt} />
+                <Drawer.Screen name="Sign Up" component={SignUp} />
             </Drawer.Navigator>
         </NavigationContainer>
     );
