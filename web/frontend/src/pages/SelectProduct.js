@@ -12,6 +12,8 @@ import FacebookIcon2 from '@material-ui/icons/Facebook';
 import TwitterIcon2 from '@material-ui/icons/Twitter';
 import WhatsappIcon2 from '@material-ui/icons/WhatsApp';
 import TelegramIcon2 from '@material-ui/icons/Telegram';
+import { animateScroll as scroll } from 'react-scroll'
+import swal from 'sweetalert';
 import {
     FacebookShareButton,
     TelegramShareButton,
@@ -38,10 +40,22 @@ const SelectProduct = (props) => {
         _id: props.match.params.id,
         remeraActual: '', color: '', size: '', cant: 1
     })
-    const ratingNum = props.rating
 
+    const [value, setValue] = useState(0)
+    const ratingNum = props.rating
+    var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
+    const [revandstars, setRevandstars] = useState({
+        stars: props.product.stars,
+        reviews: props.product.reviews
+    })
     useEffect(() => {
+        scrollToTop()
         const productId = props.match.params.id
+        setRevandstars({
+            ...revandstars,
+            stars: arrayFiltrado[0].stars,
+            reviews: arrayFiltrado[0].reviews
+        })
         props.upViews(productId)
         props.selectProductId(productId)
             .then(prodc => {
@@ -55,13 +69,19 @@ const SelectProduct = (props) => {
                 })
             })
     }, [props.match.params.id])
-    const [value, setValue] = useState(0)
 
     const ratingSet = () => {
         alert(value)
         const productId = props.match.params.id
 
         props.postRating(productId, value, props.userlogged.token)
+        swal({
+            title:'Pyral',
+            text: 'The rating was sent successfully!',
+            buttons: {
+                confirm: true,
+            }
+        })
 
     }
     const addProducts = () => {
@@ -69,7 +89,10 @@ const SelectProduct = (props) => {
         setBottom(!bottom)
     }
 
-    var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
+    const scrollToTop = () => {
+        scroll.scrollToTop();
+    }
+
 
     if (product === {}) return <></>
     props.product.map(product => console.log(`${product.stars}`))

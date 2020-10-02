@@ -22,7 +22,7 @@ const authReducer = (state = initialState, action) => {
                 mail: action.payload.mail,
                 token: action.payload.token,
                 rol: action.payload.rol,
-                contact: action.payload.contact,          
+                contact: action.payload.contact,
                 success: action.payload.success,
                 rating: action.payload.rating,
             }
@@ -31,6 +31,11 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 productId: action.payload.productId
             }
+        // case 'GET_CONTACT':
+        //     return {
+        //         ...state,
+        //         contact: action.payload.contact
+        //     }
         case 'LOGOUT_USER':
             localStorage.clear()
             return {

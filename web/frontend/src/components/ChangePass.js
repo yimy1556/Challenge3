@@ -1,20 +1,20 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {useState} from 'react'
+import { connect } from 'react-redux'
+import { useState } from 'react'
 import authActions from '../redux/actions/authActions'
 
 
 
 const ChangePass = (props) => {
 
-    const [dataNewPass, setDatanewPass] = useState({mail: '', password:''})
+    const [dataNewPass, setDatanewPass] = useState({ mail: '', password: '' })
 
     const readInput = e => {
         const dataPassword = e.target.value
         const dataMail = props.userlogged.mail
         setDatanewPass({
-            
-            password:dataPassword,
+
+            password: dataPassword,
             mail: dataMail
         })
     }
@@ -28,16 +28,15 @@ const ChangePass = (props) => {
         console.log(response)
     }
 
-   
+
 
     return (
-        <div>
-          <label htmlFor="">Enter a new password</label>
-          <div>
+        <>
+            <h5 style={{fontWeight:'bold' }}>Forgot your password?</h5>
+            <label htmlFor="">Enter your new password</label>
             <input onChange={readInput} name="password" type="password"></input>
-            <button onClick={sendNewPass}>Change Pass</button>
-          </div>
-        </div>
+            <button onClick={sendNewPass} className="createAccount button" style={{ width: '60%', margin: '2vh auto' }}>Change Pass</button>
+        </>
     )
 }
 
