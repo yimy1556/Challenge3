@@ -99,7 +99,7 @@ import axios from 'axios'
                 pass:pass
             }
 
-            await axios.post(`https://e54f6d44a66d.ngrok.io/api/user/register`, newUser)
+            await axios.post(`https://5f5e1bf643b3.ngrok.io/api/user/register`, newUser)
             alert("Thank you for Signing Up")
            
         }
@@ -111,7 +111,7 @@ import axios from 'axios'
         
         <View style = {{backgroundColor:'#2B3B40',flex:1}}>
           <ImageBackground style = {{justifyContent:'center',flex:1}} imageStyle = {{borderBottomLeftRadius:70, borderBottomRightRadius: 70}} source={image}> 
-          <Text style={styles.welcome}>Register</Text>
+          <Text style={styles.welcome}>Sign up</Text>
 
           {mensajes.firstName1 ? <Text style={styles.mensajeError} >*Your name must contain at least 3 characters</Text> : mensajes.firstName2 ?  <Text style={styles.mensajeError}>*Your name must contain only uppercase letter, lowercase letter, numbers, numbers, '_' and '.'</Text> : <Text></Text>}
           <TextInput
@@ -156,7 +156,7 @@ import axios from 'axios'
                         <Text style={{alignSelf:'center' , color: 'white' }}>Remember me</Text>
                     </View>
                 </ContainerInfo>   
-                <ButtonPers tam={50} color={'#6A9DAC'}>
+                <ButtonPers tam={50} color={'#DBEBF0'}>
                     <Text style={{alignSelf:'center'}} onPress={sendInfo} >Create Account</Text>
                 </ButtonPers>    
                 <ButtonPers tam={30} color={'#DBEBF0'}>
