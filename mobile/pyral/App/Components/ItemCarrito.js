@@ -6,15 +6,27 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 
 const ItemCarrito = (props) => {
-    const  [button, setButton] = useState(true)
-    
-    useEffect( ()=> {
-    },[button])
+   
 
-   {/* const modStock = (cant) => {
-        props.updateQuantity(props.product, cant)
-        setButton(!button)
-    }*/}
+    const  [cantidad, setcantidad] = useState(props.product.cant)
+    console.log(cantidad)
+   const sumar = () => {
+    setcantidad({
+        ...cantidad,
+        cantidad: cantidad +1
+    })
+
+   }
+   const restar = () => {
+       if(cantidad > 0){
+            setcantidad({
+                ...cantidad,
+                cantidad: cantidad -1
+            })
+        }
+    }
+        
+    
     return (
         <>
             <View style={styles.unelEmentoCarrito}>
@@ -24,9 +36,9 @@ const ItemCarrito = (props) => {
                     <Text style={styles.titulo}>{props.product.title}</Text>
                    
                     <View style={styles.cantidad}>
-                        <MaterialIcons name="remove" size={24} color="black" />
-                        <Text style={styles.numerocantidad}>{props.product.cant}</Text>
-                        <Entypo name="plus" size={24} color="black" />
+                        <MaterialIcons name="remove" size={24} color="black" onPress={sumar}/>
+                        <Text style={styles.numerocantidad}>{cantidad}</Text>
+                        <Entypo name="plus" size={24} color="black" onPress={restar} />
                     </View>
 
                 </View>

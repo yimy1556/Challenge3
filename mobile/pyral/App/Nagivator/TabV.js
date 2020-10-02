@@ -34,8 +34,9 @@ const HomeStack = createStackNavigator();
 const HomeStackScreen = () => (
     <HomeStack.Navigator>
         <HomeStack.Screen name="Home" component={Home}
-        options={{ headerTitle: props => <Header {...props} /> }}
-        />
+        options={{ headerTitle: props => <Header {...props} /> }}/>
+         <ShopStack.Screen name="Products" component={Products}/>
+
     </HomeStack.Navigator>  
 );
 
