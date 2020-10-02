@@ -53,7 +53,7 @@ router.route('/viewsProduct/:id')
 
 // Post direction
 router.route('/user/direction')
-    // .get(userController.getDirection)
+    // .get(passport.authenticate('jwt', { session: false }),userController.getContact)
     .post(passport.authenticate('jwt', { session: false }), userController.postContact)
 
 module.exports = router

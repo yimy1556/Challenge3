@@ -32,9 +32,10 @@ const ChangePass = (props) => {
 
     return (
         <>
-            <label htmlFor="">enter a new password</label>
+            <h5 style={{fontWeight:'bold' }}>Forgot your password?</h5>
+            <label htmlFor="">Enter your new password</label>
             <input onChange={readInput} name="password" type="password"></input>
-            <button onClick={sendNewPass}>Change Pass</button>
+            <button onClick={sendNewPass} className="createAccount button" style={{ width: '60%', margin: '2vh auto' }}>Change Pass</button>
         </>
     )
 }

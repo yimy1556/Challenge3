@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import itemActions from '../redux/actions/itemActions'
-import { ImageZoom } from 'react-simple-image-zoom';
 import { connect } from 'react-redux'
 import shoppingCartActions from '../redux/actions/shoppingCartActions'
 import Header from '../components/Header'
@@ -14,6 +13,7 @@ import TwitterIcon2 from '@material-ui/icons/Twitter';
 import WhatsappIcon2 from '@material-ui/icons/WhatsApp';
 import TelegramIcon2 from '@material-ui/icons/Telegram';
 import { animateScroll as scroll } from 'react-scroll'
+import swal from 'sweetalert';
 import {
     MagnifierContainer,
     MagnifierPreview,
@@ -29,6 +29,10 @@ import {
 
 } from "react-share";
 import ScrollProducts from '../components/ScrollProduts'
+import { ImageZoom } from 'react-simple-image-zoom';
+const largeCatImg = 'https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/d/domestic-cat_thumb.ngsversion.1472140774957.adapt.1900.1.jpg';
+
+
 
 const SelectProduct = (props) => {
     const borrarRepe = (variants) => {
@@ -47,11 +51,22 @@ const SelectProduct = (props) => {
         _id: props.match.params.id,
         remeraActual: '', color: '', size: '', cant: 1
     })
-    const ratingNum = props.rating
 
+    const [value, setValue] = useState(0)
+    const ratingNum = props.rating
+    var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
+    const [revandstars, setRevandstars] = useState({
+        stars: props.product.stars,
+        reviews: props.product.reviews
+    })
     useEffect(() => {
         scrollToTop()
         const productId = props.match.params.id
+        setRevandstars({
+            ...revandstars,
+            stars: arrayFiltrado[0].stars,
+            reviews: arrayFiltrado[0].reviews
+        })
         props.upViews(productId)
         props.selectProductId(productId)
             .then(prodc => {
@@ -65,13 +80,19 @@ const SelectProduct = (props) => {
                 })
             })
     }, [props.match.params.id])
-    const [value, setValue] = useState(0)
 
     const ratingSet = () => {
         alert(value)
         const productId = props.match.params.id
 
         props.postRating(productId, value, props.userlogged.token)
+        swal({
+            title: 'Pyral',
+            text: 'The rating was sent successfully!',
+            buttons: {
+                confirm: true,
+            }
+        })
 
     }
     const addProducts = () => {
@@ -83,7 +104,6 @@ const SelectProduct = (props) => {
         scroll.scrollToTop();
     }
 
-    var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
 
     if (product === {}) return <></>
     props.product.map(product => console.log(`${product.stars}`))
@@ -112,6 +132,7 @@ const SelectProduct = (props) => {
                     mouseActivation={MOUSE_ACTIVATION.CLICK}
                     overlayOpacity={0.2}
                     alwaysInPlace={true}
+                    fillGap={true}
                     cursorStyle={'SideBySideMagnifier'}
                 />
 
@@ -204,6 +225,26 @@ const SelectProduct = (props) => {
                 }
             </div>
         </div>
+        <div style={{ width: "540px", marginLeft: "20px", overflow: "hidden" }}>
+            <ImageZoom
+                portalId="portal"
+                largeImgSrc={largeCatImg}
+                imageWidth={540}
+                imageHeight={540}
+                zoomContainerWidth={540}
+                activeClass="my-active"
+                portalStyle={Object.assign(
+                    { ...ImageZoom.defaultPortalStyle },
+                    { top: "140px" }
+                )}
+                zoomScale={1}
+                responsive={true}
+            >
+                <img src={largeCatImg} alt="Cat image" width="100%" />
+            </ImageZoom>
+        </div>
+
+        <div id="portal" className="slick-side" />
 
     </>
     )

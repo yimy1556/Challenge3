@@ -128,9 +128,10 @@ const userController = {
 		// res.json({ success: true, newDirection })
 	},
 
-	// getDirection: (req, res) => {
-	// 	const { direction } = req.body
-	// 	res.json({ success: true, direction })
+	// getContact: (req, res) => {
+	// 	const { contact } = req.user
+	// 	console.log(contact);
+	// 	res.json({ success: true, contact })
 	// },
 	//Subscription mail is recorded and notified by mail.
 	createSuscription: async (req, res) => {

@@ -10,12 +10,14 @@ import ChangePass from '../components/ChangePass'
 import authActions from '../redux/actions/authActions'
 import { toast } from 'react-toastify';
 import itemActions from '../redux/actions/itemActions'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 
 class Address extends React.Component {
 
     state = {
         country: '',
+        city: '',
         address: '',
         postalCode: '',
         phoneNumber: '',
@@ -24,8 +26,12 @@ class Address extends React.Component {
     componentDidMount() {
         this.scrollToTop()
         this.props.getCountries()
-
+        // this.props.getContact()
     }
+
+    // componentWillReceiveProps(){
+    //     this.props.userlogged()
+    // }   
 
     scrollToTop() {
         scroll.scrollToTop();
@@ -45,6 +51,7 @@ class Address extends React.Component {
         let postalCode = this.state.postalCode
         let phoneNumber = this.state.phoneNumber
         await this.props.contact(country, city, address, postalCode, phoneNumber, this.props.userlogged.token)
+        // await this.props.getContact(this.props.userlogged.token)
         toast.success("Thank you for signing up")
     }
 
@@ -62,32 +69,31 @@ class Address extends React.Component {
                 </div>
                 <div style={{ display: "flex", margin: '4em', justifyContent: "space-around" }}>
                     <div className="loginRegister" style={{ display: "flex", flexDirection: 'column', padding: '1vh 0vh' }}>
-                        <NavLink to="/profile"><h3>Profile</h3></NavLink>
-                        <h3>Address</h3>
+                        <NavLink to="/profile" style={{textDecoration:'none', color:'gray'}}><h3>Profile</h3></NavLink>
+                        <h3>Address<ChevronRightIcon fontSize="medium"/></h3>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
-                        <h2 style={{ padding: '1vh 0vh' }}>Your info</h2>
-                        <div>
-                            <div style={{ boxShadow: '-1px 1px 13px -4px rgba(0,0,0,0.15)', padding: '5vh' }}>
-                                <h4>Contact information</h4>
-                                {this.props.userlogged.contact &&
+                    <div style={{ display: 'flex', flexDirection: 'column', width:'70%'}}>
+                    <h2 style= {{ padding:'1vh 0vh'}}>Your info</h2>
+                    <div>
+                        <div style={{ boxShadow:'-1px 1px 13px -4px rgba(0,0,0,0.15)', padding:'5vh'}}>
+                            <h4>Contact information</h4>
+                            {this.props.userlogged.contact &&
                                     <>
 
                                         {this.props.userlogged.contact.map((x) => {
                                             return (
-                                                <div style={{ fontWeight: 'lighter' }}>
-                                                    <p>{x.country}</p>
-                                                    <p>{x.city}</p>
-                                                    <p>{x.address}</p>
-                                                    <p>{x.postalCode}</p>
-                                                    <p>{x.phoneNumber}</p>
+                                                <div style={{margin: '1vh 0vh'}}>
+                                                    <p><strong>Country:</strong> {x.country}</p>
+                                                    <p><strong>City:</strong> {x.city}</p>
+                                                    <p><strong>Address:</strong> {x.address}</p>
+                                                    <p><strong>Postal code:</strong> {x.postalCode}</p>
+                                                    <p><strong>Phone number:</strong> {x.phoneNumber}</p>
                                                     <hr />
                                                 </div>
                                             )
                                         })}
                                     </>}
                             </div>
-
                             <div id="divFormulario" style={{ display: 'flex', flexDirection: 'column', boxShadow: '-1px 1px 13px -4px rgba(0,0,0,0.15)', padding: '5vh', margin: '2vh 0vh' }}>
                                 <h4>Add your contact information</h4>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', margin: '2vh' }}>
@@ -127,7 +133,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     contact: authActions.postContact,
     getCountries: itemActions.getCountries,
-    getUser: authActions.logUser
+    getUser: authActions.logUser,
+    // getContact: authActions.getContact
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Address)
