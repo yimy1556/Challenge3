@@ -1,4 +1,4 @@
-export const API = "http://bcdb88294f97.ngrok.io/api"
+export const API = "http://ec77d2c642ee.ngrok.io/api"
 
 export const colors = {
     Wine: '#44282D',

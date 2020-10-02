@@ -3,6 +3,8 @@ import {View, Text, CheckBox, ImageBackground, Button, StyleSheet, TextInput} fr
 import styled from 'styled-components'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import axios from 'axios'
+import {API} from '../Constants/index'
+
 
 
 
@@ -99,7 +101,7 @@ import axios from 'axios'
                 pass:pass
             }
 
-            await axios.post(`https://5f5e1bf643b3.ngrok.io/api/user/register`, newUser)
+            await axios.post(`${API}/user/register`, newUser)
             alert("Thank you for Signing Up")
            
         }

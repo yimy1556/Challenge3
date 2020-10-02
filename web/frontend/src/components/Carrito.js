@@ -31,6 +31,7 @@ const Carrito = (props) => {
             show: !menuShow.show
         })
     }
+    console.log("hola",props.listProduct)
 
     if (props.listProduct === null) return <></>
     return (
