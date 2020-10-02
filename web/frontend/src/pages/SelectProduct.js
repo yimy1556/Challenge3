@@ -17,13 +17,9 @@ import {
     TelegramShareButton,
     TwitterShareButton,
     WhatsappShareButton,
-    FacebookIcon,
-    TwitterIcon,
-    TelegramIcon,
-    WhatsappIcon
 
 } from "react-share";
-
+import ScrollProducts from '../components/ScrollProduts'
 
 const SelectProduct = (props) => {
     const borrarRepe = (variants) => {
@@ -36,6 +32,7 @@ const SelectProduct = (props) => {
         })
         return variantsAux
     }
+    const [bottom, setBottom] = useState(true)
     const [product, setProduct] = useState({})
     const [prod, setProd] = useState({
         _id: props.match.params.id,
@@ -44,7 +41,6 @@ const SelectProduct = (props) => {
     const ratingNum = props.rating
 
     useEffect(() => {
-
         const productId = props.match.params.id
         props.upViews(productId)
         props.selectProductId(productId)
@@ -58,7 +54,7 @@ const SelectProduct = (props) => {
                     price: prodc.price
                 })
             })
-    }, [])
+    }, [props.match.params.id])
     const [value, setValue] = useState(0)
 
     const ratingSet = () => {
@@ -68,13 +64,17 @@ const SelectProduct = (props) => {
         props.postRating(productId, value, props.userlogged.token)
 
     }
+    const addProducts = () => {
+        props.addProduct(prod)
+        setBottom(!bottom)
+    }
 
     var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
 
     if (product === {}) return <></>
     props.product.map(product => console.log(`${product.stars}`))
     return (<>
-        <Header />
+        <Header bott={bottom} />
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '3em' }}>
             <div style={{ display: 'flex' }}>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
@@ -106,14 +106,14 @@ const SelectProduct = (props) => {
                 <WhatsappShareButton
                     url={"https://scapeteamred.herokuapp.com/"}
                     quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#camperstribe"
+                    hashtag={`${product.title}`}
                 >
                     <WhatsappIcon2 style={{ fontSize: 40 }} />
                 </WhatsappShareButton>
                 <FacebookShareButton
                     url={"https://scapeteamred.herokuapp.com/"}
                     quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#camperstribe"
+                    hashtag={`${product.title}`}
                 >
                     <FacebookIcon2 style={{ fontSize: 40 }} />
                 </FacebookShareButton>
@@ -134,32 +134,10 @@ const SelectProduct = (props) => {
                 {(prod.size !== '' || prod.size !== 'Choose the size') &&
                     <h3>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</h3>}
 
-                <button onClick={() => props.addProduct(prod)} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
+                <button onClick={() => addProducts()} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
             </div>
         </div>
-        <div id="todoShop">
-            {props.product == 0 ? <p>no products yet</p> :
-                <>
-                    {props.product.map(product => {
-                        return (
-                            <>
-                                <NavLink to={`/selectProduct/${product._id}`}>
-                                    <img src={product.variants.photo}></img>
-                                    <div>
-                                        <p id="descripcionShop">{product.title}</p>
-                                        <p id="precioShop">${product.price}</p>
-                                    </div>
-                                </NavLink>
-                            </>
-                        )
-
-                    })
-                    }
-
-                </>
-            }
-        </div>
-
+        <ScrollProducts />
         <div>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <h3 >Reviews</h3>
@@ -192,7 +170,6 @@ const SelectProduct = (props) => {
                 }
             </div>
         </div>
-
 
     </>
     )

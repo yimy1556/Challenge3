@@ -2,16 +2,14 @@ import React, { useState } from 'react'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import authActions from '../redux/actions/authActions'
 import { connect } from 'react-redux'
-import '../styles/lowNewsLetter.css'
-import { FormControlLabel, RadioGroup, Radio, Button, Checkbox, responsiveFontSizes, Link } from '@material-ui/core'
-import Swal from 'sweetalert2'
-import { Redirect } from 'react-router-dom'
+import Header from '../components/Header'
 
 
 
 const LowNewsletter = (props) => {
 
     const [mail, setMail] = useState('')
+    const [errorInput, setErrorInput] = useState(null)
 
     const readInput = e => {
         const dataMail = e.target.value
@@ -19,34 +17,24 @@ const LowNewsletter = (props) => {
     }
 
     const sendMail = async e => {
+        e.preventDefault()
+        props.lowNewsletter(mail)
         setMail('')
-        const response = await props.lowNewsletter(mail)
-        if (response.data.success) {
-            Swal.fire({ title: 'You are no longer subscribed to our website.' })
-        }
     }
 
-    console.log(props)
-    return (
-        <>
-            <div className="container__super__lowNewsletter">
-                <div>
-                    <p>Subscription Center</p>
-                </div>
-                <div>
-                    <label htmlFor="mail">Indicate your mailbox to be removed:</label>
-                    <input onChange={readInput} name="mail" id="standard-basic" value={mail} label="Sign up for offers & news" />
-                </div>
-                <div>
-                    <FormControlLabel control={<Checkbox name="checkedB" color="default" />} label="I get too many notifications." />
-                    <FormControlLabel control={<Checkbox name="checkedB" color="default" />} label="I don't like your products anymore." />
-                    <FormControlLabel control={<Checkbox name="checkedB" color="default" />} label="I don't like your products." />
-                </div>
-                <Button variant="contained" color="primary" onClick={sendMail}>unsubscribe</Button>
-            </div>
 
-        </>
-    )
+return (
+    <>  
+        <div>
+            <div>
+                <input onChange={readInput} name="mail" id="standard-basic" value={mail} label="Sign up for offers & news" placeholder="Sign up with your email"/>
+                <ArrowRightIcon  onClick={sendMail} />
+            </div>
+            <span>{errorInput} </span>
+        </div>
+
+    </>
+)
 }
 
 const mapDispatchToProps = {
