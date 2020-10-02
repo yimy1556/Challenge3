@@ -1,19 +1,7 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
-=======
 import React ,{useState } from 'react';
->>>>>>> e480f5cc02e8040f70508292bd88f3b712b492b6
 import { View, Text } from 'react-native';
 import styled from 'styled-components'
-
-const colors = {
-    Wine: '#44282D',
-    Black: '#111111',
-    DarkGrey: '#34343D',
-    White: 'whitesmoke',
-    Cream: '#EBE4D4',
-    Grey: '#303B4F'
-}
+import { colors, IMAGE, LOCAL_HOST } from '../Constants/index'
 
 const Product = (props) => {
     const [foto, setfoto] = useState({ color: props?.product.variants[0].photo })
@@ -31,10 +19,10 @@ const Product = (props) => {
     }
     console.log(foto.color)
     borrarRepe(props?.product.variants)
-
+    const url = foto.color.replace(LOCAL_HOST,IMAGE)
     return (
         <Arcticulo>
-            <ImageShop source={{ uri: 'http://181.44.131.8:4000/uploads/T-shirt.jpg' }} />
+            <ImageShop source={{ uri: url }} />
             <FotosChicas>
                 <View style={{ alignSelf: 'center' }}>
                     <Text>{props?.product.title}</Text>
