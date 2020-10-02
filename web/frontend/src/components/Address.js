@@ -44,7 +44,7 @@ class Address extends React.Component {
         let address = this.state.address
         let postalCode = this.state.postalCode
         let phoneNumber = this.state.phoneNumber
-        await this.props.contact(country, city,address, postalCode, phoneNumber, this.props.userlogged.token)
+        await this.props.contact(country, city, address, postalCode, phoneNumber, this.props.userlogged.token)
         toast.success("Thank you for signing up")
     }
 
@@ -60,42 +60,47 @@ class Address extends React.Component {
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: '100vw', height: '20vh', background: '#111111', color: 'white', textAlign: 'center', fontSize: '60px', fontWeight: 'bold' }}>
                     <p>My Account</p>
                 </div>
-                <div style={{ display: "flex", margin: '4em', justifyContent: "space-around"}}>
-                    <div className="loginRegister" style={{ display: "flex", flexDirection:'column', padding:'1vh 0vh'  }}>
+                <div style={{ display: "flex", margin: '4em', justifyContent: "space-around" }}>
+                    <div className="loginRegister" style={{ display: "flex", flexDirection: 'column', padding: '1vh 0vh' }}>
                         <NavLink to="/profile"><h3>Profile</h3></NavLink>
                         <h3>Address</h3>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', width:'70%'}}>
-                    <h2 style= {{ padding:'1vh 0vh'}}>Your info</h2>
-                    <div>
-                        <div style={{ boxShadow:'-1px 1px 13px -4px rgba(0,0,0,0.15)', padding:'5vh'}}>
-                            <h4>Contact information</h4>
-                            {this.props.userlogged.contact.map((x) => {
-                            return (
-                            <div style= {{fontWeight:'lighter'}}>
-                                <p>{x.country}</p>
-                                <p>{x.city}</p>
-                                <p>{x.address}</p>
-                                <p>{x.postalCode}</p>
-                                <p>{x.phoneNumber}</p>
-                                <hr/>
+                    <div style={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
+                        <h2 style={{ padding: '1vh 0vh' }}>Your info</h2>
+                        <div>
+                            <div style={{ boxShadow: '-1px 1px 13px -4px rgba(0,0,0,0.15)', padding: '5vh' }}>
+                                <h4>Contact information</h4>
+                                {this.props.userlogged.contact &&
+                                    <>
+
+                                        {this.props.userlogged.contact.map((x) => {
+                                            return (
+                                                <div style={{ fontWeight: 'lighter' }}>
+                                                    <p>{x.country}</p>
+                                                    <p>{x.city}</p>
+                                                    <p>{x.address}</p>
+                                                    <p>{x.postalCode}</p>
+                                                    <p>{x.phoneNumber}</p>
+                                                    <hr />
+                                                </div>
+                                            )
+                                        })}
+                                    </>}
                             </div>
-                            )
-                        })}
+
+                            <div id="divFormulario" style={{ display: 'flex', flexDirection: 'column', boxShadow: '-1px 1px 13px -4px rgba(0,0,0,0.15)', padding: '5vh', margin: '2vh 0vh' }}>
+                                <h4>Add your contact information</h4>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', margin: '2vh' }}>
+                                    <input style={{ width: '45%' }} onChange={this.readContact} type="text" id="city" name="city" placeholder="Write your city here" />
+                                    <input style={{ width: '45%' }} onChange={this.readContact} type="text" id="address" name="address" placeholder="Write your address here" />
+                                </div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', margin: '2vh' }}>
+                                    <input style={{ width: '45%' }} onChange={this.readContact} type="number" id="postalCode" name="postalCode" placeholder="Write your postal code here" />
+                                    <input style={{ width: '45%' }} onChange={this.readContact} type="number" id="phoneNumber" name="phoneNumber" placeholder="Write your phone number here" />
+                                </div>
+                                <button onClick={this.sendContact} className="createAccount button" style={{ width: '20%', margin: '2vh auto' }}>Send information</button>
+                            </div>
                         </div>
-                        <div id="divFormulario" style={{display: 'flex', flexDirection:'column',  boxShadow:'-1px 1px 13px -4px rgba(0,0,0,0.15)', padding:'5vh', margin:'2vh 0vh'}}>
-                        <h4>Add your contact information</h4>
-                            <div style={{display: 'flex',justifyContent:'space-between', margin:'2vh'}}>
-                                <input style={{width:'45%'}} onChange={this.readContact} type="text" id="city" name="city" placeholder="Write your city here" />
-                                <input style={{width:'45%'}} onChange={this.readContact} type="text" id="address" name="address" placeholder="Write your address here" />
-                            </div>
-                            <div style={{display: 'flex',justifyContent:'space-between', margin:'2vh'}}>
-                                <input style={{width:'45%'}} onChange={this.readContact} type="number" id="postalCode" name="postalCode" placeholder="Write your postal code here" />
-                                <input style={{width:'45%'}} onChange={this.readContact} type="number" id="phoneNumber" name="phoneNumber" placeholder="Write your phone number here" />
-                            </div>
-                            <button onClick={this.sendContact} className="createAccount button" style={{width:'20%', margin:'2vh auto'}}>Send information</button>
-                        </div>
-                    </div>
                     </div>
                     {/* <select>
                         {this.props.countries.map(country => {
