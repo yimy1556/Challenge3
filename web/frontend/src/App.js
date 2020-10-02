@@ -54,6 +54,7 @@ function App(props) {
         <Route path="/selectProduct/:id" component={SelectProduct} />
         <Route path="/profile" component={Profile} />
         <Route path="/lowNewsletter" component={LowNewsletter} />
+        <Route path="/buy" component={Buy} />
         <Route path="/address" component={Address} />
         <Route path="/faqs" component={Faqs} />
         <Redirect to="/" />
@@ -70,6 +71,7 @@ function App(props) {
       <Route exact path="/shop" component={Shop} />
       <Route path="/selectProduct/:id" component={SelectProduct} />
       <Route path="/lowNewsletter" component={LowNewsletter} />
+      <Route path="/buy" component={Buy} />
       <Route path="/faqs" component={Faqs} />
       <Redirect to="/" />
     </Switch>
