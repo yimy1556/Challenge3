@@ -12,6 +12,7 @@ import LogInt from '../Components/LogInt'
 import { FontAwesome } from '@expo/vector-icons';
 import OneProduct from '../Views/OneProduct'
 import SignUp from '../Components/SignUp';
+import Profile from '../Views/Profile';
 
 const About = () => <Container><Text>About</Text></Container>
 
@@ -33,8 +34,9 @@ const HomeStack = createStackNavigator();
 const HomeStackScreen = () => (
     <HomeStack.Navigator>
         <HomeStack.Screen name="Home" component={Home}
-            options={{ headerTitle: props => <Header {...props} /> }}
-        />
+            options={{ headerTitle: props => <Header {...props} /> }} />
+        <ShopStack.Screen name="Products" component={Products} />
+
     </HomeStack.Navigator>
 );
 
@@ -76,8 +78,9 @@ export default function TabV() {
         <NavigationContainer>
             <Drawer.Navigator>
                 <Drawer.Screen name="Home" component={TabsScreen} />
-                <Drawer.Screen name="Sign In" component={LogInt} />
-                <Drawer.Screen name="Sign Up" component={SignUp} />
+                <Drawer.Screen name="LogIn" component={LogInt} />
+                <Drawer.Screen name="SignUp" component={SignUp} />
+                <Drawer.Screen name="Profile" component={Profile} />
             </Drawer.Navigator>
         </NavigationContainer>
     );
