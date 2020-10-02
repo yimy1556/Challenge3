@@ -1,7 +1,7 @@
 const initialState = { product: [], countries: [] }
 
 const itemReducer = (state = initialState, action) => {
-    console.log(action.payload)
+   
     switch (action.type) {
         case 'ADD_ITEM':
             return {

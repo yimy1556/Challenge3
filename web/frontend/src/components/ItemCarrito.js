@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import '../styles/carrito.css'
 import Tooltip from '@material-ui/core/Tooltip'
@@ -8,16 +8,6 @@ import Add from '@material-ui/icons/Add'
 import Remove from '@material-ui/icons/Remove'
 import shoppingCartActions from '../redux/actions/shoppingCartActions'
 const ItemCarrito = (props) => {
-    const  [button, setButton] = useState(true)
-    
-    useEffect( ()=> {
-    },[button])
-
-    const modStock = (cant) => {
-        props.updateQuantity(props.product, cant)
-        setButton(!button)
-    }
-
     return (
         <>
             <div id="unelEmentoCarrito" style={{ marginBottom: '20px' }}>
@@ -26,10 +16,10 @@ const ItemCarrito = (props) => {
                 <div id="tituloCantidad">
                     <p>{props.product.title}</p>
                     <div id="cantidad">
-                        <button onClick={() => modStock(-1)}
+                        <button onClick={() => props.updateQuantity(props.product, -1)}
                             style={{ backgroundColor: 'white', border: 'none' }}><Remove /></button>
                         <p>{props.product.cant}</p>
-                        <button onClick={() => modStock(1)}
+                        <button onClick={() => props.updateQuantity(props.product, 1)}
                             style={{ backgroundColor: 'white', border: 'none' }}><Add /></button>
                     </div>
                 </div>
@@ -50,7 +40,7 @@ const ItemCarrito = (props) => {
 
 const mapDispatchToProps = {
     updateQuantity: shoppingCartActions.updateQuantity,
-    removeProduct: shoppingCartActions.removeProduct,
+    removeProduct: shoppingCartActions.removeProduct
 }
 
 export default connect(null, mapDispatchToProps)(ItemCarrito)    

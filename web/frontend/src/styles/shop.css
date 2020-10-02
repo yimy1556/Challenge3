@@ -16,7 +16,7 @@
     justify-content: space-evenly;
 }
 
-.articulo{
+#articulo{
     height: 410px;
     width: 330px;
     background-color: white;
@@ -27,7 +27,7 @@
     padding: 2vh 1vw;
 }
 
-.articulo h3 {
+#articulo h3 {
     align-self: center;
     margin-bottom: 2vh;
 
@@ -45,20 +45,7 @@
     border: 1px solid white;
 }
 
-#imagenShopList{
-    align-self: center;
-    display: flex;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    height: 150px;
-    width: 100%;
-    border: 1px solid white;
-}
-
-
-.articulo p {
+#articulo p {
     margin-top: 0vh;
     display: flex;
     flex-direction: column;
@@ -119,29 +106,6 @@ button.createAccount:hover{
     color:#111111 !important;
     border: 1px #111111 solid;
   }
-.articulo > a{
+#articulo > a{
     text-decoration: none;
 }
-
-.listArticle a{
-    display: block;
-
-}
-.scrollProduts::-webkit-scrollbar{
-    display: flex;
-    overflow-x: scroll;
-}
-
-.orderButton{
-    color: #ffffff !important;
-    font-size: 20px;
-    font-weight: 500;
-    padding: 0.3em 1em;
-    background: #111111;
-    margin: 0.2em;
-    border:none;
-    transition: all 1s ease;
-    position: relative;
-    text-decoration: none;
-}
-

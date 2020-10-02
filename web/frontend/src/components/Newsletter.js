@@ -29,7 +29,7 @@ const Newsletter = (props) => {
         }
     }
 
-
+    console.log(mail)
     const onKeyDownHandler = e => {
         if (e.keyCode === 13) {
             sendMail()

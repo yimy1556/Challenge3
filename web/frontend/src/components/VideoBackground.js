@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactPlayer from "react-player"
 import '../styles/about.css'
+import video from '../images/guiño.mp4'
 
 class VideoBackground extends React.Component {
     render() {
@@ -14,7 +15,7 @@ class VideoBackground extends React.Component {
                             width={"100%"}
                             playing={true}
                             muted={true}
-
+                            url={video}
                         />
                     </div>
                     <p>
