@@ -1,15 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from "styled-components"
 import { getValue } from '../Constants/FuncAsyncStorage'
 import {ScrollView, TouchableOpacity, FlatList } from "react-native";
 import Product from '../Components/Product'
 //import { ImageShop } from '../Constants/index'
-const ScrollProducts = ({ navigation }) => {
-    const [products,setProducts] = useState([]) 
-    getValue('products', true)
-    .then(prod => setProducts(prod))
-    
-    console.log(products)
+const ScrollProducts = (props) => {
+    console.log(props)
+    const [products,setProducts] = useState([])
+    useEffect(() => {
+        getValue('products', true)
+        .then(prod => setProducts(prod))
+    },[])
     return (
         <ScrollView horizontal={true}>
             <FlatList
@@ -18,7 +19,8 @@ const ScrollProducts = ({ navigation }) => {
                 renderItem={({ item }) =>
                     (<TouchableOpacity 
                         title="Go to product"
-                    onPress={() => navigation.navigate('OneProduct', {item:item})}>
+                        onPress={() => { props.navigation.navigate('OneProduct', {item:item})
+                        }}>
                         <Product product={item} />
                     </TouchableOpacity>)}
                 keyExtractor={item => item._id}

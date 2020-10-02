@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { colors, IMAGE, LOCAL_HOST } from '../Constants/index'
 
 const Product = (props) => {
-    console.log('-----','asñalñalsñalñslañslñlañs','++++')
     const [foto, setfoto] = useState({ color: props?.product.variants[0].photo })
     //const cambiarFoto = (foto) => setfoto({...foto, color: foto})
 

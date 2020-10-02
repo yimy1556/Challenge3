@@ -26,7 +26,7 @@ export default function OneProduct(props){
                 <ImageShop source={{uri:image}} margin={30} width={250} height={290}/>
             </View> 
             <Text style={styles.title}>{product.price}</Text>
-            <ScrollProducts/>
+            <ScrollProducts {...props}/>
         </ScrollView>
     )
 } 
