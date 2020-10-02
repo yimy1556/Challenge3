@@ -54,7 +54,6 @@ const ShopStackScreen = () => (
 
 const Tab = createBottomTabNavigator();
 const TabsScreen = (props) => {
-    console.log(props.route)
     return (
         <Tab.Navigator initialRouteName={props.route.name}
             screenOptions={({ route }) => ({
@@ -79,8 +78,8 @@ export default function TabV() {
         <NavigationContainer>
             <Drawer.Navigator>
                 <Drawer.Screen name="Home" component={TabsScreen} />
-                <Drawer.Screen name="Registro" component={LogInt} />
-                <Drawer.Screen name="SignUp" component={SignUp} />
+                <Drawer.Screen name="Sign In" component={LogInt} />
+                <Drawer.Screen name="Sign Up" component={SignUp} />
             </Drawer.Navigator>
         </NavigationContainer>
     );

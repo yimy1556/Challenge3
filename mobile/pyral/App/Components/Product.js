@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import { colors, IMAGE, LOCAL_HOST } from '../Constants/index'
 
 const Product = (props) => {
+    console.log('-----','asñalñalsñalñslañslñlañs','++++')
     const [foto, setfoto] = useState({ color: props?.product.variants[0].photo })
-    console.log(props)
     //const cambiarFoto = (foto) => setfoto({...foto, color: foto})
 
     const variantsAux = []
@@ -17,7 +17,6 @@ const Product = (props) => {
         })
         return variantsAux
     }
-    console.log(foto.color)
     borrarRepe(props?.product.variants)
     const url = foto.color.replace(LOCAL_HOST,IMAGE)
     return (
