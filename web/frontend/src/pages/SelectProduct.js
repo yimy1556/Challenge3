@@ -64,17 +64,17 @@ const SelectProduct = (props) => {
         props.postRating(productId, value, props.userlogged.token)
 
     }
-    const addProducts = () =>{
+    const addProducts = () => {
         props.addProduct(prod)
         setBottom(!bottom)
     }
-    
+
     var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
 
     if (product === {}) return <></>
     props.product.map(product => console.log(`${product.stars}`))
     return (<>
-        <Header bott = {bottom}/>
+        <Header bott={bottom} />
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '3em' }}>
             <div style={{ display: 'flex' }}>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
@@ -106,14 +106,14 @@ const SelectProduct = (props) => {
                 <WhatsappShareButton
                     url={"https://scapeteamred.herokuapp.com/"}
                     quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#camperstribe"
+                    hashtag={`${product.title}`}
                 >
                     <WhatsappIcon2 style={{ fontSize: 40 }} />
                 </WhatsappShareButton>
                 <FacebookShareButton
                     url={"https://scapeteamred.herokuapp.com/"}
                     quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#camperstribe"
+                    hashtag={`${product.title}`}
                 >
                     <FacebookIcon2 style={{ fontSize: 40 }} />
                 </FacebookShareButton>
@@ -137,7 +137,7 @@ const SelectProduct = (props) => {
                 <button onClick={() => addProducts()} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
             </div>
         </div>
-        <ScrollProducts/>
+        <ScrollProducts />
         <div>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <h3 >Reviews</h3>

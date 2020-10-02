@@ -15,34 +15,44 @@ import itemActions from '../redux/actions/itemActions'
 class Profile extends React.Component {
 
     state = {
-        address: [],
+        country: '',
+        address: '',
+        postalCode: '',
+        phoneNumber: '',
     }
 
     componentDidMount() {
         this.scrollToTop()
         this.props.getCountries()
+
     }
 
     scrollToTop() {
         scroll.scrollToTop();
     }
 
-    readAddress = e => {
+    readContact = e => {
         this.setState({
             ...this.state,
-            address: e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
-    sendAddress = async () => {
-        await this.props.address(this.state.address, this.props.userlogged.token)
+    sendContact = async () => {
+        let country = this.state.country
+        let city = this.state.city
+        let address = this.state.address
+        let postalCode = this.state.postalCode
+        let phoneNumber = this.state.phoneNumber
+        await this.props.contact(country, city, address, postalCode, phoneNumber, this.props.userlogged.token)
         toast.success("Thank you for signing up")
     }
 
     render() {
-        console.log(this.props.userlogged);
-        console.log(this.props.userlogged.direction);
-        console.log(this.props.countries)
+        // console.log(this.state);
+        // console.log(this.props.userlogged);
+        console.log(this.props.userlogged.contact);
+        // console.log(this.props.countries)
         return (
             <>
 
@@ -50,31 +60,23 @@ class Profile extends React.Component {
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: '100vw', height: '20vh', background: '#111111', color: 'white', textAlign: 'center', fontSize: '60px', fontWeight: 'bold' }}>
                     <p>My Account</p>
                 </div>
-                <div style={{ margin: '4em' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', margin: '1vh' }}>
-                        <div style={{ margin: 'auto 5vh' }}>
-                            <h3 style={{ color: 'gray' }}>Name and Last name</h3>
-                            <h3>{this.props.userlogged.firstName} {this.props.userlogged.lastName}</h3>
-                            <h3 style={{ color: 'gray' }}>Mail</h3>
-                            <p>{this.props.userlogged.mail}</p>
-                            <ChangePass />
-                        </div>
-                        <div>
-                            <h3 style={{ margin: '3vh auto' }}>Order History</h3>
-                            <h3>Your address</h3>
-                            <h4>{this.props.userlogged.direction}</h4>
-                            <input onChange={this.readAddress} type="text" id="address" name="address" placeholder="Write your address here" />
-                            <button onClick={this.sendAddress}>Enviar dirección</button>
+                <div style={{ display: "flex", margin: '4em', justifyContent: "space-around" }}>
+                    <div className="loginRegister" style={{ display: "flex", flexDirection: 'column' }}>
+                        <h3>Profile</h3>
+                        <NavLink to="/address"><h3>Address</h3></NavLink>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
+                        <h2 style={{ padding: '1vh 0vh' }}>Your info</h2>
+                        <div style={{ boxShadow: '-1px 1px 13px -4px rgba(0,0,0,0.15)', padding: '5vh' }}>
+                            <p style={{ color: 'gray' }}>Name and last name</p>
+                            <h5>{this.props.userlogged.firstName} {this.props.userlogged.lastName}</h5>
+                            <p style={{ color: 'gray' }}>Mail</p>
+                            <h5>{this.props.userlogged.mail}</h5>
+                            <div>
+                                <ChangePass />
+                            </div>
                             <NavLink to="/logOut">Logout</NavLink>
                         </div>
-                    </div>
-                    <select>
-                        {this.props.countries.map(country => {
-                            return <option>{country.country}</option>
-                        })}
-                    </select>
-                    <div>
-
                     </div>
                 </div>
                 <ChatBotComponent />
@@ -91,8 +93,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    address: authActions.postDirection,
-    getCountries: itemActions.getCountries
+    contact: authActions.postContact,
+    getCountries: itemActions.getCountries,
+    getUser: authActions.logUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

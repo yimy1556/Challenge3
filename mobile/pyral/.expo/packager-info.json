@@ -2,9 +2,13 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
+<<<<<<< HEAD
   "packagerPid": 15654,
+=======
+  "packagerPid": 59206,
+>>>>>>> e480f5cc02e8040f70508292bd88f3b712b492b6
   "expoServerNgrokUrl": "https://bi-ftd.anonymous.pyral.exp.direct",
   "packagerNgrokUrl": "https://packager.bi-ftd.anonymous.pyral.exp.direct",
-  "ngrokPid": 48351,
+  "ngrokPid": 62160,
   "webpackServerPort": null
 }

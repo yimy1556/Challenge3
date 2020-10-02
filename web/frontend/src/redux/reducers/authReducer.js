@@ -4,7 +4,7 @@ const initialState = {
     mail: '',
     token: '',
     rol: '',
-    direction: '',
+    contact: [],
     success: '',
     rating: '',
     productId: ''
@@ -22,7 +22,7 @@ const authReducer = (state = initialState, action) => {
                 mail: action.payload.mail,
                 token: action.payload.token,
                 rol: action.payload.rol,
-                direction: action.payload.direction,          
+                contact: action.payload.contact,
                 success: action.payload.success,
                 rating: action.payload.rating,
             }

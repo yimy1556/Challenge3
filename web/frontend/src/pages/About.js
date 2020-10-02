@@ -2,11 +2,7 @@ import React from 'react'
 import Header from '../components/Header'
 import '../styles/about.css'
 import { animateScroll as scroll } from 'react-scroll'
-import ChatBotComponent from '../components/ChatBotComponent'
 import Footer from '../components/Footer'
-import Faqs from '../components/Faqs'
-import VideoBackground from '../components/VideoBackground'
-
 
 class About extends React.Component {
 
@@ -23,11 +19,9 @@ class About extends React.Component {
     render() {
         return (
             <>
-
                 <Header />
-                <Faqs />
-                <ChatBotComponent />
-                <VideoBackground />
+
+                <h1>Este es la pagina about</h1>
                 <Footer />
             </>
         )

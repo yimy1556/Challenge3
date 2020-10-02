@@ -24,15 +24,21 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		// required: true
 	},
-	direction: {
+	contact: {
 		type: Array,
-		default: []
+		default: [{
+			country: String,
+			city: String,
+			address: String,
+			postalCode: Number,
+			phoneNumber: Number
+		}]
 	},
 	rating: {
 		type: Array,
 		default: [{
-			productId: {type: String}, 
-			ratingNumber: {type: Number}
+			productId: { type: String },
+			ratingNumber: { type: Number }
 		}]
 	}
 })

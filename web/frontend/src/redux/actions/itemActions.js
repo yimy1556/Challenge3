@@ -51,7 +51,6 @@ const itemActions = {
             dispatch({
                 type: 'GET_COUNTRIES',
                 payload: info
-
             })
 
         }
