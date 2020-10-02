@@ -12,6 +12,7 @@ import FacebookIcon2 from '@material-ui/icons/Facebook';
 import TwitterIcon2 from '@material-ui/icons/Twitter';
 import WhatsappIcon2 from '@material-ui/icons/WhatsApp';
 import TelegramIcon2 from '@material-ui/icons/Telegram';
+import { animateScroll as scroll } from 'react-scroll'
 import {
     FacebookShareButton,
     TelegramShareButton,
@@ -41,6 +42,7 @@ const SelectProduct = (props) => {
     const ratingNum = props.rating
 
     useEffect(() => {
+        scrollToTop()
         const productId = props.match.params.id
         props.upViews(productId)
         props.selectProductId(productId)
@@ -68,6 +70,11 @@ const SelectProduct = (props) => {
         props.addProduct(prod)
         setBottom(!bottom)
     }
+
+    const scrollToTop = () => {
+        scroll.scrollToTop();
+    }
+
 
     var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
 
