@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React ,{useState } from 'react';
 import { View, Text } from 'react-native';
 import styled from 'styled-components'
 
@@ -12,7 +12,7 @@ const colors = {
 }
 
 const Product = (props) => {
-    const [foto, setfoto] = useState({ color: props.product.variants[0].photo })
+    const [foto, setfoto] = useState({ color: props?.product.variants[0].photo })
     console.log(props)
     //const cambiarFoto = (foto) => setfoto({...foto, color: foto})
 
@@ -26,14 +26,15 @@ const Product = (props) => {
         return variantsAux
     }
     console.log(foto.color)
-    borrarRepe(props.product.variants)
+    borrarRepe(props?.product.variants)
+
     return (
         <Arcticulo>
             <ImageShop source={{ uri: 'http://181.44.131.8:4000/uploads/T-shirt.jpg' }} />
             <FotosChicas>
                 <View style={{ alignSelf: 'center' }}>
-                    <Text>{props.product.title}</Text>
-                    <Text>{props.product.price}</Text>
+                    <Text>{props?.product.title}</Text>
+                    <Text>{props?.product.price}</Text>
                 </View>
                 <ContainerColors>
                     {variantsAux.map(variant => <ImageShopChica key={variant.stock} color={colors[variant.color]} />)}

@@ -198,6 +198,24 @@ const userController = {
 				response: "error in change password"
 			})
 		}
+	},
+
+	lowNewsletter: async (req, res) => {
+		mailUser = req.body.mail
+		
+		try{
+			await Newsletter.findOneAndDelete({mail:mailUser})
+			res.json({
+				success: true,
+				response:" delete newsletter DB"
+			})
+		}
+		catch{
+			res.json({
+				success: false,
+				response:"error in low newsletter"
+			})
+		}
 	}
 
 }

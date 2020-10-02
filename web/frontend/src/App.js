@@ -20,7 +20,9 @@ import './styles/RegisterLogIn.css'
 import LogOut from './components/LogOut';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Address from './components/Address';
+import LowNewsletter from './pages/LowNewsletter'
+import Faqs from './pages/Faqs';
+import Address from './components/Address'
 
 
 function App(props) {
@@ -52,6 +54,8 @@ function App(props) {
         <Route path="/selectProduct/:id" component={SelectProduct} />
         <Route path="/profile" component={Profile} />
         <Route path="/address" component={Address} />
+        <Route path= "/lowNewsletter" component={LowNewsletter}/>
+        <Route path= "/faqs" component={Faqs}/>
         <Redirect to="/" />
       </Switch>
       )
@@ -65,6 +69,8 @@ function App(props) {
       <Route exact path="/forgotPass" component={ForgotPass} />
       <Route exact path="/shop" component={Shop} />
       <Route path="/selectProduct/:id" component={SelectProduct} />
+      <Route path= "/lowNewsletter" component={LowNewsletter}/>
+      <Route path= "/faqs" component={Faqs}/>
       <Redirect to="/" />
     </Switch>
     )
