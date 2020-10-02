@@ -115,17 +115,10 @@ const authActions = {
    lowNewsletter: mail => {
         return async (dispatch, getState) => {
             const response = await axios.put(path + '/newsletter', { mail })
-<<<<<<< HEAD
             dispatch({
                 type: 'LOW_NEWSLETTER'
             })
             return response
-=======
-            console.log(response)
-            dispatch({
-                type: 'LOW_NEWSLETTER'
-            })
->>>>>>> c5a41175344492eb77c110b1dd330f1b47b82363
         }
     },
 
