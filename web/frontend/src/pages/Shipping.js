@@ -5,7 +5,7 @@ import ItemCarrito from '../components/ItemCarrito'
 import { connect } from 'react-redux'
 import { Stepper } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
-
+import banner from '../images/bannerShop.jpg'
 
 
 const Shipping = (props) => {
@@ -16,15 +16,34 @@ const Shipping = (props) => {
         list.forEach(prod => total += prod.cant * prod.price)
         return total
     }
-
+    console.log(props.userlogged)
     return (
 
         <>
             <Header />
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${banner})`, width: '100%', height: '25vh', backgroundPosition: 'center 35%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                <h2 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>SHIPPING</h2>
+            </div>
             <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                 <div>
 
-                    <p>Elegi el envio</p>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', width: '40vw', paddingTop: '40px' }}>
+                        {props.userlogged.contact ?
+                            <>
+                                <h2>My addresses</h2>
+                                {props.userlogged.contact.map((x) => {
+                                    return (
+                                        <div style={{ fontWeight: 'lighter', padding: '15px', border: '1px solid #EEEEEE', borderRadius: '10px', margin: '5px 0' }}>
+                                            <h3>{x.address}</h3>
+                                            <p>{x.country}</p>
+                                            <p>{x.city}</p>
+                                            <p>{x.postalCode}</p>
+                                            <p>{x.phoneNumber}</p>
+                                        </div>
+                                    )
+                                })}
+                            </> : <p>Put your direction</p>}
+                    </div>
                     <NavLink to="/payments">  <button>Continue</button></NavLink>
                 </div>
                 <div style={{ backgroundColor: '#F5F5F5', width: '30vw', height: '70vh', padding: '20px 40px' }}>
@@ -56,6 +75,7 @@ const Shipping = (props) => {
 const mapStateToProps = state => {
     return {
         listProduct: state.shoppingCartReducer.listProduct,
+        userlogged: state.authReducer,
     }
 }
 const mapDispatchToProps = {

@@ -98,15 +98,18 @@ class Address extends React.Component {
                                     <input style={{ width: '45%' }} onChange={this.readContact} type="number" id="postalCode" name="postalCode" placeholder="Write your postal code here" />
                                     <input style={{ width: '45%' }} onChange={this.readContact} type="number" id="phoneNumber" name="phoneNumber" placeholder="Write your phone number here" />
                                 </div>
+                                <div>
+                                    <select>
+                                        {this.props.countries.map(country => {
+                                            return <option onChange={this.readContact} name="country">{country.country}</option>
+                                        })}
+                                    </select>
+                                </div>
                                 <button onClick={this.sendContact} className="createAccount button" style={{ width: '20%', margin: '2vh auto' }}>Send information</button>
                             </div>
                         </div>
                     </div>
-                    {/* <select>
-                        {this.props.countries.map(country => {
-                            return <option onChange={this.readContact} name="country">{country.country}</option>
-                        })}
-                    </select> */}
+
                 </div>
                 <ChatBotComponent />
                 <Footer />
