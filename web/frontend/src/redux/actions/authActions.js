@@ -109,18 +109,17 @@ const authActions = {
                 }
             })
             dispatch({
-                    type: 'LOG_USER',
-                    payload: {
-                        firstName: response.data.firstName,
-                        lastName: response.data.lastName,
-                        mail: response.data.mail,
-                        token: response.data.token,
-                        contact: response.data.contact,
-                        rol: response.data.rol,
-                        rating: response.data.rating,
-                    }
-                })
-
+                type: 'LOG_USER',
+                payload: {
+                    firstName: response.data.firstName,
+                    lastName: response.data.lastName,
+                    mail: response.data.mail,
+                    token: tokenLS,
+                    rol: response.data.rol,
+                    rating: response.data.rating,
+                    contact: response.data.contact
+                }
+            })
 
 
         }
@@ -234,24 +233,6 @@ const authActions = {
 
         }
     },
-
-    // getContact: token => {
-    //     return async (dispatch, getState) => {
-    //         const response = await axios.get(path+`/user/direction`, {
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`
-    //             }
-    //         })
-    //         if (!response.data.success) {
-    //             toast('Something went wrong')
-    //         } else {
-    //             dispatch({
-    //                 type: 'GET_CONTACT',
-    //                 payload:{contact: response.data.contact}
-    //             })
-    //         }
-    //     }
-    // },
 
     changePassword: (mail, password) => {
         return async (dispatch, getState) => {

@@ -97,8 +97,13 @@ class Address extends React.Component {
                             <div id="divFormulario" style={{ display: 'flex', flexDirection: 'column', boxShadow: '-1px 1px 13px -4px rgba(0,0,0,0.15)', padding: '5vh', margin: '2vh 0vh' }}>
                                 <h4>Add your contact information</h4>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', margin: '2vh' }}>
-                                    <input style={{ width: '45%' }} onChange={this.readContact} type="text" id="city" name="city" placeholder="Write your city here" />
-                                    <input style={{ width: '45%' }} onChange={this.readContact} type="text" id="address" name="address" placeholder="Write your address here" />
+                                    <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="city" name="city" placeholder="Write your city here" />
+                                    <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="address" name="address" placeholder="Write your address here" />
+                                    <select style={{ width: '30%' }}>
+                                        {this.props.countries.map(country => {
+                                            return <option onChange={this.readContact} name="country">{country.country}</option>
+                                        })}
+                                    </select>
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', margin: '2vh' }}>
                                     <input style={{ width: '45%' }} onChange={this.readContact} type="number" id="postalCode" name="postalCode" placeholder="Write your postal code here" />
@@ -108,11 +113,6 @@ class Address extends React.Component {
                             </div>
                         </div>
                     </div>
-                    {/* <select>
-                        {this.props.countries.map(country => {
-                            return <option onChange={this.readContact} name="country">{country.country}</option>
-                        })}
-                    </select> */}
                 </div>
                 <ChatBotComponent />
                 <Footer />

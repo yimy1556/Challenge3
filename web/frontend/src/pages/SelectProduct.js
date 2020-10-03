@@ -41,21 +41,29 @@ const SelectProduct = (props) => {
         remeraActual: '', color: '', size: '', cant: 1
     })
 
+    // RATING 
+
     const [value, setValue] = useState(0)
     const ratingNum = props.rating
     var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
-    const [revandstars, setRevandstars] = useState({
-        stars: props.product.stars,
-        reviews: props.product.reviews
-    })
+
+    const ratingSet = () => {
+        const productId = props.match.params.id
+
+        props.postRating(productId, value, props.userlogged.token)
+        swal({
+            title:'Pyral',
+            text: 'The rating was sent successfully!',
+            buttons: {
+                confirm: true,
+            }
+        })
+
+    }
+
     useEffect(() => {
         scrollToTop()
         const productId = props.match.params.id
-        setRevandstars({
-            ...revandstars,
-            stars: arrayFiltrado[0].stars,
-            reviews: arrayFiltrado[0].reviews
-        })
         props.upViews(productId)
         props.selectProductId(productId)
             .then(prodc => {
@@ -70,20 +78,6 @@ const SelectProduct = (props) => {
             })
     }, [props.match.params.id])
 
-    const ratingSet = () => {
-        alert(value)
-        const productId = props.match.params.id
-
-        props.postRating(productId, value, props.userlogged.token)
-        swal({
-            title:'Pyral',
-            text: 'The rating was sent successfully!',
-            buttons: {
-                confirm: true,
-            }
-        })
-
-    }
     const addProducts = () => {
         props.addProduct(prod)
         setBottom(!bottom)
