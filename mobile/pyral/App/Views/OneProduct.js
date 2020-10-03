@@ -1,14 +1,14 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from "react-native"
 import {LOCAL_HOST, IMAGE} from '../Constants/index'
 import styled from 'styled-components'
 import ScrollProducts from '../Components/ScrollProducts'
+
 export default function OneProduct(props){
     const product = props.route.params.item
     const [products, setProducts] = useState({photo:product.variants[0].photo,
             stock:product.variants[0].stock    
         })
-
     const image = products.photo.replace(LOCAL_HOST,IMAGE)
     return(
         <ScrollView style={{alignSelf:'center', marginTop:30}}>
@@ -18,7 +18,8 @@ export default function OneProduct(props){
                     {product.variants.map((variant,index) => (
                     <TouchableOpacity key={index} 
                         style={variant.photo === products.photo? {borderColor:'#17272C',borderWidth:1,borderRadius: 10}:{}} 
-                            onPress={() =>setProducts({...products,...variant}) }>
+                        onPress={() =>{
+                            return setProducts({...products,...variant}) }}>
                             <ImageShop source={{uri:variant.photo.replace(LOCAL_HOST,IMAGE)}}  
                                 width={100} margin={5} height={70} key={variant.photo}/>
                         </TouchableOpacity>))}
