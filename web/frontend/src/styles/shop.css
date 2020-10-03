@@ -1,5 +1,6 @@
 #paginaShop{
     background-color: rgb(255, 255, 255);
+    padding: 50px 0;
 }
 
 #paginaShop h2{
@@ -10,7 +11,7 @@
 }
 
 #todoShop{
-    padding: 5vh 4vw;
+    padding: 2vh 4vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;

@@ -227,3 +227,6 @@ height: 60%;
     background-color: red;
   }
 
+  .slick-side {
+    position: relative;
+  }

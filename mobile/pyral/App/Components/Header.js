@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { StatusBar, StyleSheet } from "react-native";
 
 export default function Header(props) {
-    console.log(props)
     return (
         <Container>
             <Img condicion={false} source={require('../Assets/botLogo.png')} />

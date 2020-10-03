@@ -9,6 +9,8 @@ import Photo1 from '../images/1.jpg'
 import Photo2 from '../images/2.jpg'
 import Photo3 from '../images/3.jpg'
 import Photo4 from '../images/4.jpg'
+import cloth from '../images/clothing.jpg'
+import mens from '../images/mens.jpg'
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { animateScroll as scroll } from 'react-scroll'
@@ -78,8 +80,8 @@ class Home extends React.Component {
                 </div>
                 <InfoContainer />
                 <div id="dosfotos">
-                    <div className="fotosHome" style={{ backgroundImage: `url(https://static.zara.net/photos///mkt/spots/ss20-south-collection-man/subhome-xmedia-39//w/552/portrait_0.jpg?ts=1600705575855)`, height: '40vw', width: '41vw' }}></div>
-                    <div className="fotosHome" style={{ backgroundImage: `url(https://static.zara.net/photos///mkt/spots/ss20-south-collection-man/subhome-xmedia-39//w/552/portrait_0.jpg?ts=1600705575855)`, height: '40vw', width: '41vw' }}></div>
+                    <div className="fotosHome" style={{ backgroundImage: `url(${cloth})`, height: '40vw', width: '41vw' }}></div>
+                    <div className="fotosHome" style={{ backgroundImage: `url(${mens})`, height: '40vw', width: '41vw' }}></div>
                 </div>
 
 

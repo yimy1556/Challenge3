@@ -23,7 +23,7 @@ const Carrito = (props) => {
     const [menuShow, setmenuShow] = useState({
         show: false
     })
-    useEffect(() => {},[props.ddd])
+    useEffect(() => { }, [props.ddd])
 
     const menuHamburguesa = e => {
         setmenuShow({
@@ -31,6 +31,7 @@ const Carrito = (props) => {
             show: !menuShow.show
         })
     }
+    console.log("hola", props.listProduct)
 
     if (props.listProduct === null) return <></>
     return (
@@ -50,12 +51,21 @@ const Carrito = (props) => {
                 <button onClick={menuHamburguesa} style={{ backgroundColor: 'transparent', border: 'none' }} ><CancelIcon style={{ color: "white", fontSize: 40 }}></CancelIcon></button>
                 <h3>Shopping Cart</h3>
                 <div id="ropaDelCarrito">
-                    {props.listProduct.map(prod => <ItemCarrito product={prod} />)}
-                    <div id="totalPrecio">
-                        <p>Total</p>
-                        <p>{compraTotal(props.listProduct)}</p>
-                    </div>
+                    {props.listProduct.length == 0 ?
 
+                        <>
+                            <div style={{ backgroundColor: 'transparent' }}>
+                                <h2>El carrito esta vacio</h2>
+                            </div>
+                        </> :
+                        <>
+                            {props.listProduct.map(prod => <ItemCarrito product={prod} />)}
+                            < div id="totalPrecio">
+                                <p>Total</p>
+                                <p>{compraTotal(props.listProduct)}</p>
+                            </div>
+                        </>
+                    }
                 </div>
 
                 <button id="butButton"><NavLink to="/buy">Buy</NavLink></button>
