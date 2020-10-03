@@ -2,13 +2,21 @@
 {}
 =======
 {
+<<<<<<< HEAD
   "packagerPort": 19001,
   "packagerPid": 15564,
   "expoServerNgrokUrl": "https://79-hfb.anonymous.pyral.exp.direct",
   "packagerNgrokUrl": "https://packager.79-hfb.anonymous.pyral.exp.direct",
   "ngrokPid": 17100,
+=======
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+>>>>>>> parent of 86c8ed5... antes de merge con yimy
   "webpackServerPort": null,
-  "expoServerPort": 19000,
+  "expoServerPort": null,
   "devToolsPort": 19002
 }
 >>>>>>> parent of 8102587... arreglando errores con yimy
