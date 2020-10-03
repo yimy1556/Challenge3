@@ -27,7 +27,6 @@ const Container = styled.View`
     borderRadius: 5px;
     justifyContent: space-between;
     width : 100%;
-      
 `; 
 
 
