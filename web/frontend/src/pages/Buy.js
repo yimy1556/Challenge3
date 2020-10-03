@@ -22,7 +22,7 @@ const Buy = (props) => {
     return (
         <>
             <Header />
-            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-around', borderTop: '1px solid black' }}>
                 <div>
 
                     <div id="buyCloth">

@@ -21,7 +21,7 @@ header{
     align-items: center;
     padding: 0 3vw;
     padding-right: 8vw;
-    
+    box-shadow: 0vw 0vw 0.3vw 0vw rgb(116, 116, 116);
     max-height: 13vh;
 }
 header a {

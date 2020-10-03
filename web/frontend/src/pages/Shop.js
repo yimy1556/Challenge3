@@ -22,7 +22,7 @@ const Shop = (props) => {
 
     useEffect(() => {
         props.getProducts()
-    }, [props.products])
+    }, [...props.products])
 
     const scrollToTop = () => {
         scroll.scrollToTop();
@@ -67,6 +67,7 @@ const Shop = (props) => {
     // Muestra productos en forma de lista
     const viewList = (params) => {
         setState({
+            ...state,
             viewList: true
         })
     }
@@ -74,10 +75,11 @@ const Shop = (props) => {
     // Muestra productos en forma de modulos
     const viewModule = (params) => {
         setState({
+            ...state,
             viewList: false
         })
     }
-
+    console.log(state.list)
     return (
         <>
             <Header />

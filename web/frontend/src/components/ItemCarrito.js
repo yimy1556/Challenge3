@@ -30,10 +30,10 @@ const ItemCarrito = (props) => {
                     <p>{props.product.title}</p>
                     <div id="cantidad">
                         <button onClick={() => modStock(-1)}
-                            style={{ backgroundColor: 'white', border: 'none' }}><Remove /></button>
+                            style={{ backgroundColor: 'whitesmoke', border: 'none' }}><Remove /></button>
                         <p>{props.product.cant}</p>
                         <button onClick={() => modStock(1)}
-                            style={{ backgroundColor: 'white', border: 'none' }}><Add /></button>
+                            style={{ backgroundColor: 'whitesmoke', border: 'none' }}><Add /></button>
                     </div>
                 </div>
 

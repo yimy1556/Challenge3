@@ -54,7 +54,7 @@ class Home extends React.Component {
 
                 <Carousel>
                     <Carousel.Item>
-                        <div style={{ backgroundImage: 'url(https://static.pullandbear.net/2/static2/itxwebstandard/images/home/2020-09/24/1400/Newin_man.jpg?ver=20200927021501)', height: '80vh', maxWidth: '100vw', backgroundPosition: 'cover' }}>
+                        <div style={{ backgroundImage: 'url(https://static.pullandbear.net/2/static2/itxwebstandard/images/home/2020-09/24/1400/Newin_man.jpg?ver=20200927021501)', height: '80vh', maxWidth: '100vw', backgroundPosition: 'cover', backgroundRepeat: 'no-repeat' }}>
                             <div id="buttonContainer">
                                 <h1 style={{ color: 'white' }}>Spring 2020</h1>
                                 <button id="buttonShop"><NavLink to="/shop">Shop Now</NavLink></button>
