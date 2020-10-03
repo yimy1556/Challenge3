@@ -5,7 +5,14 @@ const cors = require('cors')
 const router = require('./routes/router')
 const fileUpload = require('express-fileupload')
 const app = express()
+const mercadopago = require('mercadopago');
+
 app.use('/uploads', express.static(`${__dirname}/uploads`))
+
+// Agrega credenciales
+mercadopago.configure({
+    access_token: 'PROD_ACCESS_TOKEN'
+});
 
 app.use(express.json())
 app.use(cors())

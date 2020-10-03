@@ -1,5 +1,3 @@
-
-
 .DivCerrarCarrito {
 	position: fixed;
 	right: 0;
@@ -54,8 +52,13 @@
     background-color: white;
     padding: 2vh 1vw;
     overflow-y: scroll;
+}
 
-
+#buyCloth{
+    width: 30vw;
+    margin-top: 5vh;
+    background-color: white;
+    padding: 2vh 1vw;
 }
 
 #unelEmentoCarrito{

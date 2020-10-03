@@ -1,4 +1,6 @@
-export const API = "http://bcdb88294f97.ngrok.io/api"
+import styled from 'styled-components'
+
+export const API = "http://afa019f4568c.ngrok.io/api"
 
 export const colors = {
     Wine: '#44282D',
@@ -9,6 +11,19 @@ export const colors = {
     Grey: '#303B4F'
 }
 
-export const  LOCAL_HOST = "http://localhost:4000" 
+export const LOCAL_HOST = "http://localhost:4000"
 
-export const IMAGE = "http://bcdb88294f97.ngrok.io"
+export const IMAGE = "http://afa019f4568c.ngrok.io"
+
+
+/*Styles Components*/
+
+export const ImageShop = styled.Image`
+    height: 120px;
+    width: 150px;
+    resizeMode: contain;
+    alignSelf:center;
+    borderRadius: 30px;
+    marginBottom: 10px ;
+`;
+

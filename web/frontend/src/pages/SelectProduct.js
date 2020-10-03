@@ -15,6 +15,13 @@ import TelegramIcon2 from '@material-ui/icons/Telegram';
 import { animateScroll as scroll } from 'react-scroll'
 import swal from 'sweetalert';
 import {
+    MagnifierContainer,
+    MagnifierPreview,
+    MagnifierZoom,
+    SideBySideMagnifier,
+    MOUSE_ACTIVATION,
+} from "react-image-magnifiers";
+import {
     FacebookShareButton,
     TelegramShareButton,
     TwitterShareButton,
@@ -22,6 +29,10 @@ import {
 
 } from "react-share";
 import ScrollProducts from '../components/ScrollProduts'
+import { ImageZoom } from 'react-simple-image-zoom';
+const largeCatImg = 'https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/d/domestic-cat_thumb.ngsversion.1472140774957.adapt.1900.1.jpg';
+
+
 
 const SelectProduct = (props) => {
     const borrarRepe = (variants) => {
@@ -78,9 +89,29 @@ const SelectProduct = (props) => {
             })
     }, [props.match.params.id])
 
+    const ratingSet = () => {
+        alert(value)
+        const productId = props.match.params.id
+
+        props.postRating(productId, value, props.userlogged.token)
+        swal({
+            title: 'Pyral',
+            text: 'The rating was sent successfully!',
+            buttons: {
+                confirm: true,
+            }
+        })
+
+    }
     const addProducts = () => {
-        props.addProduct(prod)
-        setBottom(!bottom)
+        console.log(prod.size === "")
+        if (prod.size === "") {
+            alert('llena todo')
+        } else {
+            props.addProduct(prod)
+            setBottom(!bottom)
+        }
+
     }
 
     const scrollToTop = () => {
@@ -97,7 +128,28 @@ const SelectProduct = (props) => {
                 <div style={{ display: 'flex', flexDirection: 'column' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
                     src={vari.photo} alt={vari.title} style={{ width: '3em', height: '4em' }} />)}
                 </div>
-                <img src={prod?.remeraActual} alt="remeraActual" style={{ width: '28vw', height: '76vh' }} />
+                {/* <img src={prod?.remeraActual} alt="remeraActual" style={{ width: '28vw', height: '76vh' }} /> */}
+
+                {/* <MagnifierContainer>
+                    <div className="example-class">
+                        <MagnifierPreview imageSrc={prod?.remeraActual} style={{ width: '30em'}}
+                          mouseActivation={MOUSE_ACTIVATION.DOUBLE_CLICK} fillGapRight // Optional
+                          />
+                    </div>
+                    <MagnifierZoom imageSrc={prod?.remeraActual} style={{ width: '28vw', height: '76vh' }} fillGapRight/>
+                </MagnifierContainer> */}
+
+                <SideBySideMagnifier
+                    className="input-position"
+                    style={{ width: '28vw', height: '76vh' }}
+                    imageSrc={prod?.remeraActual}
+                    mouseActivation={MOUSE_ACTIVATION.CLICK}
+                    overlayOpacity={0.2}
+                    alwaysInPlace={true}
+                    fillGap={true}
+                    cursorStyle={'SideBySideMagnifier'}
+                />
+
 
             </div>
             <div style={{ width: '50vw', height: '76vh' }}>
@@ -187,7 +239,6 @@ const SelectProduct = (props) => {
                 }
             </div>
         </div>
-
     </>
     )
 }
