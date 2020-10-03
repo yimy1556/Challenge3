@@ -98,14 +98,8 @@ const SelectProduct = (props) => {
 
     }
     const addProducts = () => {
-        console.log(prod.size === "")
-        if (prod.size === "") {
-            alert('llena todo')
-        } else {
-            props.addProduct(prod)
-            setBottom(!bottom)
-        }
-
+        props.addProduct(prod)
+        setBottom(!bottom)
     }
 
     const scrollToTop = () => {
