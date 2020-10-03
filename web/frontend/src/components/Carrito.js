@@ -54,8 +54,10 @@ const Carrito = (props) => {
                     {props.listProduct.length == 0 ?
 
                         <>
-                            <div style={{ backgroundColor: 'transparent' }}>
-                                <h2>El carrito esta vacio</h2>
+                            <div>
+                                <h2 style={{ color: 'black' }} >Your cart is empty</h2>
+
+                                <NavLink to="/shop"> <button>Shop now</button></NavLink >
                             </div>
                         </> :
                         <>
@@ -64,11 +66,12 @@ const Carrito = (props) => {
                                 <p>Total</p>
                                 <p>{compraTotal(props.listProduct)}</p>
                             </div>
+                            <button id="butButton"><NavLink to="/buy">Buy</NavLink></button>
                         </>
                     }
                 </div>
 
-                <button id="butButton"><NavLink to="/buy">Buy</NavLink></button>
+
             </div>
 
         </>

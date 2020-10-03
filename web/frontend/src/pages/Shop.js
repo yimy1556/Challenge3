@@ -81,7 +81,7 @@ const Shop = (props) => {
     return (
         <>
             <Header />
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${banner})`, width: '100%', height: '45vh', backgroundPosition: 'center 35%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(https://cdn.shopify.com/s/files/1/0238/2821/collections/HP_Hero_Banner_Blanco2_2020_2000x.jpg?v=1588902043)`, minWidth: '100%', height: '45vh', backgroundPosition: 'center 85%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                 <h2 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>ALL PRODUCTS</h2>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-around', verticalAlign: 'center' }}>
