@@ -15,7 +15,7 @@ const authActions = {
                 toast.error('Incorrect mail or password')
             } else {
                 swal({
-                    title:'Pyral',
+                    title: 'Pyral',
                     text: 'Welcome',
                     closeOnClickOutside: false,
                     buttons: false,
@@ -44,7 +44,7 @@ const authActions = {
                 toast.error('Incorrect mail or password')
             } else {
                 swal({
-                    title:'Pyral',
+                    title: 'Pyral',
                     text: 'Welcome back',
                     closeOnClickOutside: false,
                     buttons: false,
@@ -76,7 +76,7 @@ const authActions = {
                 alert('Something went wrong')
             } else {
                 swal({
-                    title:'Pyral',
+                    title: 'Pyral',
                     text: 'Welcome!',
                     closeOnClickOutside: false,
                     buttons: false,
@@ -103,23 +103,25 @@ const authActions = {
 
     forcedLogIn: tokenLS => {
         return async (dispatch, getState) => {
+
             const response = await axios.get(path + `/user/login`, {
                 headers: {
                     Authorization: `Bearer ${tokenLS}`
                 }
             })
+            console.log(response.data.token)
             dispatch({
-                    type: 'LOG_USER',
-                    payload: {
-                        firstName: response.data.firstName,
-                        lastName: response.data.lastName,
-                        mail: response.data.mail,
-                        token: response.data.token,
-                        contact: response.data.contact,
-                        rol: response.data.rol,
-                        rating: response.data.rating,
-                    }
-                })
+                type: 'LOG_USER',
+                payload: {
+                    firstName: response.data.firstName,
+                    lastName: response.data.lastName,
+                    mail: response.data.mail,
+                    token: response.data.token,
+                    contact: response.data.contact,
+                    rol: response.data.rol,
+                    rating: response.data.rating,
+                }
+            })
 
 
 

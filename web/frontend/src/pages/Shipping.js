@@ -33,7 +33,8 @@ const Shipping = (props) => {
                                 <h2>My addresses</h2>
                                 {props.userlogged.contact.map((x) => {
                                     return (
-                                        <div style={{ fontWeight: 'lighter', padding: '15px', border: '1px solid #EEEEEE', borderRadius: '10px', margin: '5px 0' }}>
+                                        <div style={{ fontWeight: 'lighter', padding: '15px', border: '1px solid grey', borderRadius: '10px', margin: '5px 0', background: 'whitesmoke' }}>
+                                            <input type="radio"></input>
                                             <h3>{x.address}</h3>
                                             <p>{x.country}</p>
                                             <p>{x.city}</p>
@@ -46,7 +47,7 @@ const Shipping = (props) => {
                     </div>
                     <NavLink to="/payments">  <button>Continue</button></NavLink>
                 </div>
-                <div style={{ backgroundColor: '#F5F5F5', width: '30vw', height: '70vh', padding: '20px 40px' }}>
+                <div style={{ backgroundColor: '#F5F5F5', width: '30vw', height: '100vh', padding: '20px 40px' }}>
                     <h3 style={{ textAlign: 'center' }}>Purchase summary</h3>
                     <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
