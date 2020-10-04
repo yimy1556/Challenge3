@@ -51,29 +51,14 @@ const SelectProduct = (props) => {
         _id: props.match.params.id,
         remeraActual: '', color: '', size: '', cant: 1
     })
+    // RATING
 
-    // RATING 
 
     const [value, setValue] = useState(0)
-    const ratingNum = props.rating
-    var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
-
-    const ratingSet = () => {
-        const productId = props.match.params.id
-
-        props.postRating(productId, value, props.userlogged.token)
-        swal({
-            title:'Pyral',
-            text: 'The rating was sent successfully!',
-            buttons: {
-                confirm: true,
-            }
-        })
-
-    }
 
     useEffect(() => {
         scrollToTop()
+        rickyfort()
         const productId = props.match.params.id
         props.upViews(productId)
         props.selectProductId(productId)
@@ -87,22 +72,24 @@ const SelectProduct = (props) => {
                     price: prodc.price
                 })
             })
-    }, [props.match.params.id])
-
-    const ratingSet = () => {
-        alert(value)
-        const productId = props.match.params.id
-
-        props.postRating(productId, value, props.userlogged.token)
-        swal({
-            title: 'Pyral',
-            text: 'The rating was sent successfully!',
-            buttons: {
-                confirm: true,
-            }
-        })
-
+    }, [props.match.params.id, props.productRating.stars])
+    
+    var arrayFiltrado2 = props.productRating.productId === props.match.params.id
+    
+    const rickyfort = () =>{
+            
+    if(!arrayFiltrado2){
+        return arrayFiltrado2 = arrayFiltrado
     }
+
+        }
+    
+
+    const sendRating = () => {
+        props.postRating(props.match.params.id, value, props.userlogged.token)
+        props.mandarRating(props.match.params.id, value)
+    }
+
     const addProducts = () => {
         console.log(prod.size === "")
         if (prod.size === "") {
@@ -111,16 +98,21 @@ const SelectProduct = (props) => {
             props.addProduct(prod)
             setBottom(!bottom)
         }
-
     }
+    var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
+
+
+    console.log(arrayFiltrado2);
 
     const scrollToTop = () => {
         scroll.scrollToTop();
     }
 
+    console.log(props.product);
+    console.log(props.productRating);
 
     if (product === {}) return <></>
-    props.product.map(product => console.log(`${product.stars}`))
+    // props.product.map(product => console.log(`${product.stars}`))
     return (<>
         <Header bott={bottom} />
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '3em' }}>
@@ -158,11 +150,17 @@ const SelectProduct = (props) => {
                     <h3>{product.title}</h3>
                     <h3>${product.price}</h3>
                 </div>
+                {!arrayFiltrado2 ? 
                 <div style={{ display: 'flex' }}>
                     <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
                     <p>{arrayFiltrado[0].reviews} reviews</p>
                 </div>
-
+                :
+                <div style={{ display: 'flex' }}>
+                    <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    <p>{props.productRating.reviews} reviews</p>
+                </div>
+                }
                 <p style={{ maxWidth: '20em', padding: '20px 0' }}>{product.description}</p>
 
                 <div style={{ display: 'flex', flexDirection: 'column' }} >
@@ -210,11 +208,22 @@ const SelectProduct = (props) => {
         <div>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <h3 >Reviews</h3>
+                {/* {props.productRating.productId === props.match.params.id &&
+                <> */}
+                {!arrayFiltrado2 ?
                 <div style={{ display: 'flex' }}>
                     <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
                     <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                    <p>{arrayFiltrado[0].reviews} reviews</p>
+                    <p>{arrayFiltrado[0].reviews} reviews</p> 
                 </div>
+                :                 
+                <div style={{ display: 'flex' }}>
+                    <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
+                        <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    <p>{props.productRating.reviews} reviews</p> 
+                </div>
+                }
+                {/* </>} */}
             </div>
             <div style={{ display: 'flex' }}>
                 {props.userlogged.token &&
@@ -227,14 +236,14 @@ const SelectProduct = (props) => {
                                         name="simple-controlled"
                                         value={value}
                                         onChange={(event, newValue) => {
-                                            setValue(newValue);
+                                            setValue(newValue)
 
                                         }}
                                         style={{ color: 'black' }}
                                     />
 
                                 </Box>
-                                <button onClick={ratingSet}>Send Rating</button>  </>}
+                                <button onClick={sendRating}>Send Rating</button>  </>}
                     </>
                 }
             </div>
@@ -247,6 +256,7 @@ const mapDispatchToProps = {
     selectProductId: itemActions.selectProductId,
     addProduct: shoppingCartActions.addProduct,
     postRating: authActions.rating,
+    mandarRating: itemActions.rating,
     upViews: itemActions.upViews
 }
 
@@ -255,6 +265,7 @@ const mapStateToProps = state => {
         rating: state.authReducer.rating,
         productId: state.authReducer.productId,
         product: state.itemReducer.product,
+        productRating: state.itemReducer.rating,
         userlogged: state.authReducer,
 
     }

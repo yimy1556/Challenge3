@@ -1,7 +1,6 @@
-const initialState = { product: [], countries: [] }
+const initialState = { product: [], rating: [],countries: [] }
 
 const itemReducer = (state = initialState, action) => {
-    console.log(action.payload)
     switch (action.type) {
         case 'ADD_ITEM':
             return {
@@ -10,12 +9,14 @@ const itemReducer = (state = initialState, action) => {
 
             }
         case 'GET_COUNTRIES':
-
             return {
-
                 ...state,
                 countries: action.payload
-
+            }        
+        case 'RATING':
+            return {
+                ...state,
+                rating: action.payload.rating
             }
         default:
             return state

@@ -37,10 +37,11 @@ const itemActions = {
                 console.log(911)
                 return
             }
-            console.log('ssdsdw')
+
             const response = await axios.get(path + `/product/getProducts`);
-            const info = response.data;
-            console.log(info.product, 'yimyyy')
+            var info = response.data;
+            console.log(info);
+
             localStorage.setItem("listProduct", JSON.stringify(info.product))
             localStorage.setItem("carito", JSON.stringify([]))
             dispatch({
@@ -71,7 +72,6 @@ const itemActions = {
         }
     },
     deleteItem: (product) => {
-        console.log(product)
         return async (dispatch, getState) => {
 
             const response = await axios.put(path + `/product/deleteProduct`, product)
@@ -104,7 +104,23 @@ const itemActions = {
                 type: 'UP_VIEWS'
             })
         }
-    }
+    },
+    rating: (productId, stars) => {
+
+        return async (dispatch, getState) => {
+            const response = await axios.post(path + `/product/ratingProduct`, { productId, stars })
+            console.log(response.data);
+            if (!response.data.success) {
+                swal('Something went wrong')
+            } else {
+                dispatch({
+                    type: 'RATING',
+                    payload: {  rating: response.data.rating }
+                })
+                swal('Rating mandado')
+            }
+        }
+    },
 }
 
 export default itemActions
