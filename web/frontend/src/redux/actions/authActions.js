@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { toast } from 'react-toastify';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2'
 
 
 var path = 'http://localhost:4000/api'
@@ -14,25 +14,16 @@ const authActions = {
             if (!response.data.success) {
                 toast.error('Incorrect mail or password')
             } else {
-                swal({
-                    title: 'Pyral',
-                    text: 'Welcome',
-                    closeOnClickOutside: false,
-                    buttons: false,
-                    timer: 1500,
+                dispatch({
+                    type: 'LOG_USER',
+                    payload: {
+                        firstName: response.data.firstName,
+                        lastName: response.data.lastName,
+                        mail: response.data.mail,
+                        token: response.data.token,
+                        contact: response.data.contact
+                    }
                 })
-                setTimeout(() => {
-                    dispatch({
-                        type: 'LOG_USER',
-                        payload: {
-                            firstName: response.data.firstName,
-                            lastName: response.data.lastName,
-                            mail: response.data.mail,
-                            token: response.data.token,
-                            contact: response.data.contact,
-                        }
-                    })
-                }, 1500)
             }
         }
     },
@@ -43,28 +34,20 @@ const authActions = {
             if (!response.data.success) {
                 toast.error('Incorrect mail or password')
             } else {
-                swal({
-                    title: 'Pyral',
-                    text: 'Welcome back',
-                    closeOnClickOutside: false,
-                    buttons: false,
-                    timer: 1500,
+                toast('Welcome')
+                dispatch({
+                    type: 'LOG_USER',
+                    payload: {
+                        firstName: response.data.firstName,
+                        lastName: response.data.lastName,
+                        mail: response.data.mail,
+                        token: response.data.token,
+                        contact: response.data.contact,
+                        rol: response.data.rol,
+                        rating: response.data.rating,
+                        success: response.data.success
+                    }
                 })
-                setTimeout(() => {
-                    dispatch({
-                        type: 'LOG_USER',
-                        payload: {
-                            firstName: response.data.firstName,
-                            lastName: response.data.lastName,
-                            mail: response.data.mail,
-                            token: response.data.token,
-                            contact: response.data.contact,
-                            rol: response.data.rol,
-                            rating: response.data.rating,
-                            success: response.data.success
-                        }
-                    })
-                }, 1500)
             }
         }
     },
@@ -75,54 +58,42 @@ const authActions = {
             if (!response.data.success) {
                 alert('Something went wrong')
             } else {
-                swal({
-                    title: 'Pyral',
-                    text: 'Welcome!',
-                    closeOnClickOutside: false,
-                    buttons: false,
-                    timer: 1500,
+                dispatch({
+                    type: 'LOG_USER',
+                    payload: {
+                        firstName: response.data.firstName,
+                        lastName: response.data.lastName,
+                        mail: response.data.mail,
+                        token: response.data.token,
+                        rol: response.data.rol,
+                        rating: response.data.rating,
+                        success: response.data.success,
+                        contact: response.data.contact
+                    }
                 })
-                setTimeout(() => {
-                    dispatch({
-                        type: 'LOG_USER',
-                        payload: {
-                            firstName: response.data.firstName,
-                            lastName: response.data.lastName,
-                            mail: response.data.mail,
-                            token: response.data.token,
-                            contact: response.data.contact,
-                            rol: response.data.rol,
-                            rating: response.data.rating,
-                            success: response.data.success
-                        }
-                    })
-                }, 1500)
             }
         }
     },
 
     forcedLogIn: tokenLS => {
         return async (dispatch, getState) => {
-
             const response = await axios.get(path + `/user/login`, {
                 headers: {
                     Authorization: `Bearer ${tokenLS}`
                 }
             })
-            console.log(response.data.token)
             dispatch({
                 type: 'LOG_USER',
                 payload: {
                     firstName: response.data.firstName,
                     lastName: response.data.lastName,
                     mail: response.data.mail,
-                    token: response.data.token,
-                    contact: response.data.contact,
+                    token: tokenLS,
                     rol: response.data.rol,
                     rating: response.data.rating,
+                    contact: response.data.contact
                 }
             })
-
 
 
         }
@@ -175,11 +146,12 @@ const authActions = {
 
     lowNewsletter: mail => {
         return async (dispatch, getState) => {
-            const response = await axios.put(path + '/newsletter', { mail })
+
+            const response = await axios.delete(path + '/newsletter', { mail })
+            console.log(response)
             dispatch({
                 type: 'LOW_NEWSLETTER'
             })
-            return response
         }
     },
 
@@ -236,24 +208,6 @@ const authActions = {
 
         }
     },
-
-    // getContact: token => {
-    //     return async (dispatch, getState) => {
-    //         const response = await axios.get(path+`/user/direction`, {
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`
-    //             }
-    //         })
-    //         if (!response.data.success) {
-    //             toast('Something went wrong')
-    //         } else {
-    //             dispatch({
-    //                 type: 'GET_CONTACT',
-    //                 payload:{contact: response.data.contact}
-    //             })
-    //         }
-    //     }
-    // },
 
     changePassword: (mail, password) => {
         return async (dispatch, getState) => {
