@@ -59,6 +59,7 @@ const Carrito = (props) => {
                             <p style={{ color: 'black' }}>Not sure what to buy? Thousands of products await you!</p>
                             <button> <NavLink to="/shop">Shop now</NavLink ></button>
                         </div>
+
                     </> :
                     <>
                         <div id="ropaDelCarrito">
