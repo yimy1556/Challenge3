@@ -24,7 +24,7 @@ const ItemCarrito = (props) => {
     return (
         <>
             <div id="unelEmentoCarrito" style={{ marginBottom: '20px' }}>
-                <div id="imageCarrito" style={{ backgroundImage: `url(${props.product.remeraActual})`, width: "8vw", height: "8vw" }}></div>
+                <div id="imageCarrito" style={{ backgroundImage: `url(${props.product.remeraActual})`, width: "6vw", height: "6vw" }}></div>
 
                 <div id="tituloCantidad">
                     <p>{props.product.title}</p>

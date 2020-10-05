@@ -8,11 +8,6 @@ import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import authActions from '../redux/actions/authActions'
-import { NavLink } from 'react-router-dom'
-import FacebookIcon2 from '@material-ui/icons/Facebook';
-import TwitterIcon2 from '@material-ui/icons/Twitter';
-import WhatsappIcon2 from '@material-ui/icons/WhatsApp';
-import TelegramIcon2 from '@material-ui/icons/Telegram';
 import { animateScroll as scroll } from 'react-scroll'
 import swal from 'sweetalert';
 import {
@@ -117,26 +112,27 @@ const SelectProduct = (props) => {
     // props.product.map(product => console.log(`${product.stars}`))
     return (<>
         <Header bott={bottom} />
-        <div style={{ display: 'flex', justifyContent: 'space-around', padding: '3em' }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-evenly', padding: '1em 2em ' }}>
+
+            <div style={{ display: 'flex', alignItems: 'center', width: '50vw', justifyContent: 'center' }}>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
-                    src={vari.photo} alt={vari.title} style={{ width: '3em', height: '4em' }} />)}
+                    src={vari.photo} alt={vari.title} style={{ width: '4em', height: '5em' }} />)}
                 </div>
 
                 <SideBySideMagnifier
                     className="input-position"
-                    style={{ width: '28vw', height: '70vh' }}
+                    style={{ width: '31vw' }}
                     imageSrc={prod?.remeraActual}
                     mouseActivation={MOUSE_ACTIVATION.CLICK}
-                    overlayOpacity={0.2}
+                    overlayOpacity={0.4}
                     alwaysInPlace={true}
-                    fillGap={true}
+                    fillGap={false}
                     cursorStyle={'SideBySideMagnifier'}
                 />
 
 
             </div>
-            <div style={{ width: '50vw', height: '70vh' }}>
+            <div style={{ width: '50vw', padding: '2em', justifyContent: 'center', alignItems: 'center' }}>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', paddingRight: '7em' }}>
                     <h3>{product.title}</h3>
@@ -153,50 +149,54 @@ const SelectProduct = (props) => {
                         <p>{props.productRating.reviews} reviews</p>
                     </div>
                 }
-                <p style={{ maxWidth: '20em', padding: '20px 0' }}>{product.description}</p>
+                <p style={{ maxWidth: '80%', padding: '20px 0' }}>{product.description}</p>
+
                 <div style={{ display: 'flex', flexDirection: 'column' }} >
                     <label>Size</label>
                     <select name="size" id="size" onChange={(e) => setProd({ ...prod, size: e.target.value })}>
-                        <option >Choose the size</option>
                         {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <option>{vari.size}</option>)}
                     </select>
                 </div>
-                <WhatsappShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag={`${product.title}`}
-                >
-                    <WhatsappIcon size={35} round={true} />
-                </WhatsappShareButton>
-                <FacebookShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag={`${product.title}`}
-                >
-                    <FacebookIcon size={35} round={true} />
-                </FacebookShareButton>
-                <TwitterShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#camperstribe"
-                >
-                    <TwitterIcon size={35} round={true} />
-                </TwitterShareButton>
-                <TelegramShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#camperstribe"
-                >
-                    <TelegramIcon size={35} round={true} />
-                </TelegramShareButton>
+
+                <div>
+                    <WhatsappShareButton
+                        url={"https://scapeteamred.herokuapp.com/"}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag={`${product.title}`}
+                    >
+                        <WhatsappIcon size={35} round={true} />
+                    </WhatsappShareButton>
+                    <FacebookShareButton
+                        url={"https://scapeteamred.herokuapp.com/"}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag={`${product.title}`}
+                    >
+                        <FacebookIcon size={35} round={true} />
+                    </FacebookShareButton>
+                    <TwitterShareButton
+                        url={"https://scapeteamred.herokuapp.com/"}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag="#camperstribe"
+                    >
+                        <TwitterIcon size={35} round={true} />
+                    </TwitterShareButton>
+                    <TelegramShareButton
+                        url={"https://scapeteamred.herokuapp.com/"}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag="#camperstribe"
+                    >
+                        <TelegramIcon size={35} round={true} />
+                    </TelegramShareButton>
+                </div>
 
                 {(prod.size !== '' || prod.size !== 'Choose the size') &&
-                    <h3>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</h3>}
+                    <>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</>}
 
-                <button onClick={() => addProducts()} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
+                <button onClick={() => addProducts()} className="addToCart" style={{ margin: '1em auto', }}>Add to cart</button>
             </div>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '4em' }}>
             <h3 >Reviews</h3>
             {!arrayFiltrado2 ?
                 <div style={{ display: 'flex' }}>
@@ -211,7 +211,6 @@ const SelectProduct = (props) => {
                     <p>{props.productRating.reviews} reviews</p>
                 </div>
             }
-            {/* </>} */}
         </div>
         <div style={{ display: 'flex' }}>
             {props.userlogged.token &&

@@ -24,7 +24,7 @@ const Shipping = (props) => {
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${banner})`, width: '100%', height: '25vh', backgroundPosition: 'center 35%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                 <h2 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>SHIPPING</h2>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-around', background: '#EEEEEE' }}>
                 <div>
 
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', width: '40vw', paddingTop: '40px' }}>
@@ -33,7 +33,7 @@ const Shipping = (props) => {
                                 <h2>My addresses</h2>
                                 {props.userlogged.contact.map((x) => {
                                     return (
-                                        <div style={{ fontWeight: 'lighter', padding: '15px', border: '1px solid #EEEEEE', borderRadius: '10px', margin: '5px 0' }}>
+                                        <div style={{ fontWeight: 'lighter', padding: '15px', border: '1px solid #EEEEEE', backgroundColor: '#FFFFFF', borderRadius: '5px', margin: '5px 0' }}>
                                             <h3>{x.address}</h3>
                                             <p>{x.country}</p>
                                             <p>{x.city}</p>

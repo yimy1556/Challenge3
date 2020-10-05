@@ -10,6 +10,9 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import banner from '../images/bannerShop.jpg'
 import CreditCard from '../components/CreditCard'
+import logoPayPal from '../images/paypal.png'
+import logoCash from '../images/money.png'
+import logoCards from '../images/cards.png'
 
 const Shipping = (props) => {
 
@@ -51,14 +54,27 @@ const Shipping = (props) => {
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${banner})`, width: '100%', height: '25vh', backgroundPosition: 'center 35%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                 <h2 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>Payment</h2>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                <div>
+            <div style={{ display: 'flex', justifyContent: 'space-around', background: '#EEEEEE' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', width: '60vw', margin: '0 auto', padding: '3em 0' }}>
 
-                    <p>Elegi el metodo de pago</p>
-
-                    <button>Cash</button>
-                    <button onClick={() => { setFlagCreditCard(!flagCreditCard) }}>Credit Card</button>
-                    <button onClick={() => { setFlagPayPal(!flagPayPal) }}>PayPal</button>
+                    <h3 style={{ textAlign: 'left' }}>How do you want to pay?</h3>
+                    <div className="payLogoContainer">
+                        <div className="payLogo">
+                            <img src={logoCash} >
+                            </img>
+                            <p>Cash</p>
+                        </div>
+                        <div className="payLogo" onClick={() => { setFlagCreditCard(!flagCreditCard) }}>
+                            <img src={logoCards} >
+                            </img>
+                            <p>Credit Card</p>
+                        </div>
+                        <div className="payLogo" onClick={() => { setFlagPayPal(!flagPayPal) }}>
+                            <img src={logoPayPal}>
+                            </img>
+                            <p>PayPal</p>
+                        </div>
+                    </div>
                     {flagCreditCard && (
                         <CreditCard total={compraTotal(props.listProduct)} />
                     )}
@@ -66,28 +82,8 @@ const Shipping = (props) => {
                         <PayPal total={compraTotal(props.listProduct)} />
                     )}
 
-                    <button onClick={handleOpen}>Buy</button>
-                    <Modal
-                        aria-labelledby="transition-modal-title"
-                        aria-describedby="transition-modal-description"
-                        className={classes.modal}
-                        open={open}
-                        onClose={handleClose}
-                        closeAfterTransition
-                        BackdropComponent={Backdrop}
-                        BackdropProps={{
-                            timeout: 500,
-                        }}
-                    >
-                        <Fade in={open}>
-                            <div className={classes.paper} style={{ height: '50vh', width: '70vw', textAlign: 'center' }}>
-                                <h2 id="transition-modal-title">Thank you for shopping at pyral</h2>
-                                <p id="transition-modal-description">your order will arrive in the next few days</p>
-                            </div>
-                        </Fade>
-                    </Modal>
                 </div>
-                <div style={{ backgroundColor: '#F5F5F5', width: '30vw', height: '70vh', padding: '20px 40px' }}>
+                <div style={{ backgroundColor: '#F5F5F5', width: '30vw', height: '70vh', padding: '20px 40px', marginRight: '5em' }}>
                     <h3 style={{ textAlign: 'center' }}>Purchase summary</h3>
                     <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
