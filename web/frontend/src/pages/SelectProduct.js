@@ -101,7 +101,6 @@ const SelectProduct = (props) => {
     }
     var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
 
-
     console.log(arrayFiltrado2);
 
     const scrollToTop = () => {
