@@ -12,11 +12,12 @@ import Picker from "react-native-picker-select";
 
 export default function adress(){
 
-    const [paises, setpaises] = React.useState("")
+    const [paises, setpaises] = React.useState([])
+    console.log("chauee",paises) 
 
 
-    useEffect(() => {
-        const respuestaIt =  axios.get('https://restcountries.eu/rest/v2/all')
+    useEffect(async() => {
+        const respuestaIt = await axios.get(`https://restcountries.eu/rest/v2/all`);
         const infoIt = respuestaIt.data
         setpaises(infoIt)
       });
@@ -24,7 +25,7 @@ export default function adress(){
 
       const [country, setcountry] = React.useState("")
       const [city, setcity] = React.useState("")
-      const [address, setaddress] = React.useState("")
+      const [adress, setadress] = React.useState("")
       const [postalCode, setpostalCode] = React.useState("")
       const [phoneNumber, setphoneNumber] = React.useState("")
       const [token, settoken] = React.useState("22")
@@ -32,7 +33,7 @@ export default function adress(){
      
      const sendContact = async () => {
 
-        await axios.post(`${API}/user/direction`, { country, city, address, postalCode, phoneNumber, token })
+        await axios.post(`${API}/user/direction`, { country, city, adress, postalCode, phoneNumber, token })
         // await this.props.getContact(this.props.userlogged.token)
         alert("Your information was sent")
      }
@@ -65,7 +66,7 @@ export default function adress(){
                             style={styles.TextInput}
                             placeholder="Write your address here"
                             placeholderTextColor="#ffffffa9" 
-                            onChangeText={(val) => setaddress(val)}
+                            onChangeText={(val) => setadress(val)}
                         />               
                         
                      </View>
@@ -85,19 +86,16 @@ export default function adress(){
                             />     
                      </View>
 
-                        {/*<View>
+                       {/* <View>
                             <Picker
                                 onValueChange={(val) =>  setcountry(val)}
                                 iosHeader="Select one"
                                 mode="dropdown"
                                 >
-                                    <FlatList
-                                            data={paises}
-                                            renderItem={({ pais }) => <Item label={pais.country} value={pais.country}/>}
-                                            keyExtractor={pais => pais.country}
-                                        />  
+                                {paises.map(pais => <Item label={pais.name} value={pais.name} key={pais.name}/>)}
+                                   
                             </Picker>
-                        </View>*/}
+                        </View> */ } 
                         <Text onPress={sendContact}>Send information</Text>
                  </View>
             </View>
