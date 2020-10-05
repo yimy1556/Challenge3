@@ -24,7 +24,7 @@ class Profile extends React.Component {
 
     componentDidMount() {
         this.scrollToTop()
-        // this.props.getCountries()
+        this.props.getCountries()
         // this.props.getContact()
     }
 

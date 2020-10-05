@@ -116,16 +116,15 @@ const userController = {
 		const { _id } = req.user
 		// Está harcodeada la id por ahora, después se cambia
 		const productRating = await User.findOneAndUpdate({ _id }, { $push: { rating: { productId: productId, ratingNumber: rating } } })
-		const productR = await Product.findOneAndUpdate({ _id: productId }, { $inc: { stars: +rating, reviews: +1 } })
-			.then(console.log('bien'))
-			.catch(console.log('mal'))
+		// const productR = await Product.findOneAndUpdate({ _id: productId }, { $inc: { stars: +rating, reviews: +1 } })
 	},
 
 	postContact: async (req, res) => {
 		const { country, city, address, postalCode, phoneNumber } = req.body
 		const { _id } = req.user
-		const newDirection = await User.findOneAndUpdate({ _id }, { $push: { contact: { country: country, city: city, address: address, postalCode: postalCode, phoneNumber: phoneNumber } } })
-		// res.json({ success: true, newDirection })
+		const contact = await User.findOneAndUpdate({ _id }, {  contact: { country: country, city: city, address: address, postalCode: postalCode, phoneNumber: phoneNumber } })
+		res.json({ success: true, contact: [{country: country, city: city, address: address, postalCode: postalCode, phoneNumber: phoneNumber}] })
+		console.log(newDirection);
 	},
 
 	// getContact: (req, res) => {

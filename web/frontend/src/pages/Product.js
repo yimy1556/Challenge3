@@ -30,9 +30,6 @@ const Product = (props) => {
     }
 
     borrarRepe(props.product.variants)
-
-
-    console.log(props.view)
     return (
         <>
             {props.view ? <><div className='listArticle' style={{ display: 'flex', flexDirection: 'column' }}>
