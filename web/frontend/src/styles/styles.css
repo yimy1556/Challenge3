@@ -43,6 +43,18 @@ header a:hover,header a:focus {
     text-decoration: none;
     
 }
+#shopNow{
+  background-image: none;
+  color: white;
+}
+#menuCostado > div.cartEmpty > div > button{
+  padding: 5px;
+  text-align: center;
+  width: 50%;
+  border: 2px solid white;
+  color: white;
+  background: none;
+}
 
 
 #buttonContainer{

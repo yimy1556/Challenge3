@@ -161,28 +161,28 @@ const SelectProduct = (props) => {
                     quote={"CampersTribe - World is yours to explore"}
                     hashtag={`${product.title}`}
                 >
-                    <WhatsappIcon style={{ widht: '2vw' }} />
+                    <WhatsappIcon size={35} round={true} />
                 </WhatsappShareButton>
                 <FacebookShareButton
                     url={"https://scapeteamred.herokuapp.com/"}
                     quote={"CampersTribe - World is yours to explore"}
                     hashtag={`${product.title}`}
                 >
-                    <FacebookIcon style={{ widht: '2vw' }} />
+                    <FacebookIcon size={35} round={true} />
                 </FacebookShareButton>
                 <TwitterShareButton
                     url={"https://scapeteamred.herokuapp.com/"}
                     quote={"CampersTribe - World is yours to explore"}
                     hashtag="#camperstribe"
                 >
-                    <TwitterIcon style={{ widht: '2vw' }} />
+                    <TwitterIcon size={35} round={true} />
                 </TwitterShareButton>
                 <TelegramShareButton
                     url={"https://scapeteamred.herokuapp.com/"}
                     quote={"CampersTribe - World is yours to explore"}
                     hashtag="#camperstribe"
                 >
-                    <TelegramIcon style={{ widht: '2vw' }} />
+                    <TelegramIcon size={35} round={true} />
                 </TelegramShareButton>
                 <WhatsappShareButton
                     url={"https://scapeteamred.herokuapp.com/"}
