@@ -154,7 +154,6 @@ const SelectProduct = (props) => {
                     </div>
                 }
                 <p style={{ maxWidth: '20em', padding: '20px 0' }}>{product.description}</p>
-
                 <div style={{ display: 'flex', flexDirection: 'column' }} >
                     <label>Size</label>
                     <select name="size" id="size" onChange={(e) => setProd({ ...prod, size: e.target.value })}>
@@ -197,49 +196,49 @@ const SelectProduct = (props) => {
                 <button onClick={() => addProducts()} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
             </div>
         </div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <h3 >Reviews</h3>
+            {!arrayFiltrado2 ?
+                <div style={{ display: 'flex' }}>
+                    <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
+                    <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    <p>{arrayFiltrado[0].reviews} reviews</p>
+                </div>
+                :
+                <div style={{ display: 'flex' }}>
+                    <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
+                    <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    <p>{props.productRating.reviews} reviews</p>
+                </div>
+            }
+            {/* </>} */}
+        </div>
+        <div style={{ display: 'flex' }}>
+            {props.userlogged.token &&
+                <>
+                    {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 &&
+                        <>
+                            <Box component="fieldset" mb={3} borderColor="transparent">
+                                <Typography component="legend">Rating</Typography>
+                                <Rating
+                                    name="simple-controlled"
+                                    value={value}
+                                    onChange={(event, newValue) => {
+                                        setValue(newValue)
+
+                                    }}
+                                    style={{ color: 'black' }}
+                                />
+
+                            </Box>
+                            <button onClick={sendRating}>Send Rating</button>  </>}
+                </>
+            }
+        </div>
         <ScrollProducts />
         <div>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <h3 >Reviews</h3>
-                {/* {props.productRating.productId === props.match.params.id &&
-                <> */}
-                {!arrayFiltrado2 ?
-                    <div style={{ display: 'flex' }}>
-                        <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
-                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                        <p>{arrayFiltrado[0].reviews} reviews</p>
-                    </div>
-                    :
-                    <div style={{ display: 'flex' }}>
-                        <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
-                        <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                        <p>{props.productRating.reviews} reviews</p>
-                    </div>
-                }
-                {/* </>} */}
-            </div>
-            <div style={{ display: 'flex' }}>
-                {props.userlogged.token &&
-                    <>
-                        {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 &&
-                            <>
-                                <Box component="fieldset" mb={3} borderColor="transparent">
-                                    <Typography component="legend">Rating</Typography>
-                                    <Rating
-                                        name="simple-controlled"
-                                        value={value}
-                                        onChange={(event, newValue) => {
-                                            setValue(newValue)
 
-                                        }}
-                                        style={{ color: 'black' }}
-                                    />
 
-                                </Box>
-                                <button onClick={sendRating}>Send Rating</button>  </>}
-                    </>
-                }
-            </div>
             <div style={{ display: 'flex', padding: '50px' }}>
                 <div className="fotosHome" style={{ backgroundImage: `url(${mens})`, height: '40vw', width: '41vw' }}></div>
                 <div style={{ width: '60vw', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', }}>

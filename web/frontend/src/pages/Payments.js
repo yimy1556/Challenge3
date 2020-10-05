@@ -9,11 +9,12 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import banner from '../images/bannerShop.jpg'
+import CreditCard from '../components/CreditCard'
 
 const Shipping = (props) => {
 
     const [flagPayPal, setFlagPayPal] = useState(false)
-
+    const [flagCreditCard, setFlagCreditCard] = useState(false)
     const useStyles = makeStyles((theme) => ({
         modal: {
             display: 'flex',
@@ -56,8 +57,11 @@ const Shipping = (props) => {
                     <p>Elegi el metodo de pago</p>
 
                     <button>Cash</button>
-                    <button>Credit Card</button>
+                    <button onClick={() => { setFlagCreditCard(!flagCreditCard) }}>Credit Card</button>
                     <button onClick={() => { setFlagPayPal(!flagPayPal) }}>PayPal</button>
+                    {flagCreditCard && (
+                        <CreditCard total={compraTotal(props.listProduct)} />
+                    )}
                     {flagPayPal && (
                         <PayPal total={compraTotal(props.listProduct)} />
                     )}

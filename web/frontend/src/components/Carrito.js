@@ -32,7 +32,6 @@ const Carrito = (props) => {
             show: !menuShow.show
         })
     }
-    console.log("hola", props.listProduct)
 
     if (props.listProduct === null) return <></>
     return (
@@ -71,7 +70,7 @@ const Carrito = (props) => {
                         </div>
                         < div id="totalPrecio">
                             <p>Total</p>
-                            <p>{compraTotal(props.listProduct)}</p>
+                            <p>${compraTotal(props.listProduct)}</p>
                         </div>
                         <button id="butButton"><NavLink to="/buy">Buy</NavLink></button>
                     </>

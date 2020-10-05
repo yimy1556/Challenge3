@@ -124,6 +124,7 @@ margin: 1vh ;
 
 #totalPrecio{
     display: flex;
+    width: 70%;
     color: black;
     justify-content: space-between;
     padding-top: 2vh;
