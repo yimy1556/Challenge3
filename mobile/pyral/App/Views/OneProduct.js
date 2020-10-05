@@ -34,7 +34,7 @@ export default function OneProduct(props){
     return(
         <ScrollView style={{alignSelf:'center',backgroundColor:'white'}}>
             <Text style={styles.title} >{product.title}</Text>
-            <View style={{flexDirection:'row', alignItems:'center'}}>
+            <View style={{flexDirection:'row', alignItems:'center', backgroundColor:'red'}}>
                 <ScrollView style={{width:60, height:185 , alignSelf:'center', marginLeft:10}}>
                     {product.variants.map((variant,index) => (
                     <TouchableOpacity key={index} 
@@ -54,13 +54,12 @@ export default function OneProduct(props){
             <Text style={styles.title}>{`$ ${product.price}`}</Text>
             <View style={{flexDirection:'row', justifyContent:'space-around'}}>
                 <Picker
-                    mode='dropdown'
                     selectedValue={products.size}
-                    style={{height: 50, width: 100, alignSelf:'center'}}
+                    style={{height: 50, width: 150, alignSelf:'center'}}
                     onValueChange={(itemValue) => setProducts({...products,size: itemValue})
                 }>
                     {(product?.variants?.filter(vari => vari.color === products.color))?.map((vari,index) =>( 
-                        <Picker.Item key={index} label={vari.size} value={vari.size}/>))}
+                        <Picker.Item key={index} label={`size ${vari.size}`} value={vari.size}/>))}
                 </Picker>        
                 <Icon raised name='share-alt'  type='font-awesome' style={{alignSelf:'center'}}
                     color='#080808' onPress={() => onShare(product.title)} 

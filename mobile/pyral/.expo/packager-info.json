@@ -1,1 +1,9 @@
-{}
+{
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://bv-kev.anonymous.pyral.exp.direct",
+  "packagerNgrokUrl": "https://packager.bv-kev.anonymous.pyral.exp.direct",
+  "ngrokPid": 26151,
+  "devToolsPort": 19002,
+  "packagerPort": 19003,
+  "packagerPid": 26083
+}

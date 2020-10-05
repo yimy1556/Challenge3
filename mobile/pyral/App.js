@@ -27,7 +27,7 @@ const [listProduct, setListProduct ] = useState([])
             <MaterialCommunityIcons style={styles.cart} onPress={toggleOverlay} name="cart-outline" size={24} color="black" />
             <Overlay  isVisible={visible} onBackdropPress={toggleOverlay} >
                 <View style={styles.ropaDelCarrito}>
-                    <ScrollView alignSelf='center' style={{marginTop:5}}>
+                    <ScrollView alignSelf='center' style={{marginTop:5, height:'50%'}}>
                        {listProduct.map((prod,index) => <ItemCarrito product={prod} key={index}/>)}
                     </ScrollView >
                     <View style={styles.totalPrecio}>
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
    },
     ropaDelCarrito:{
         backgroundColor:'#F3F7F8',
-        height: 365,
+        height: '70%',
         width: 300,
         borderRadius:15,
         alignSelf:'center',
