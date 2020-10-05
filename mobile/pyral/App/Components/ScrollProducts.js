@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import styled from "styled-components"
 import { getValue } from '../Constants/FuncAsyncStorage'
 import {ScrollView, TouchableOpacity, FlatList } from "react-native";
 import Product from '../Components/Product'
@@ -19,7 +18,9 @@ const ScrollProducts = (props) => {
                 renderItem={({ item }) =>
                     (<TouchableOpacity 
                         title="Go to product"
-                        onPress={() => { props.navigation.navigate('OneProduct', {item:item})
+                        onPress={() => {
+                            props.navigation.goBack()
+                            return props.navigation.navigate('OneProduct', {item:item})
                         }}>
                         <Product product={item} />
                     </TouchableOpacity>)}

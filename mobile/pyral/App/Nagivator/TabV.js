@@ -34,10 +34,10 @@ const HomeStack = createStackNavigator();
 const HomeStackScreen = () => (
     <HomeStack.Navigator>
         <HomeStack.Screen name="Home" component={Home}
-        options={{ headerTitle: props => <Header {...props} /> }}/>
-         <ShopStack.Screen name="Products" component={Products}/>
+            options={{ headerTitle: props => <Header {...props} /> }} />
+        <ShopStack.Screen name="Products" component={Products} />
 
-    </HomeStack.Navigator>  
+    </HomeStack.Navigator>
 );
 
 
@@ -80,7 +80,7 @@ export default function TabV() {
                 <Drawer.Screen name="Home" component={TabsScreen} />
                 <Drawer.Screen name="LogIn" component={LogInt} />
                 <Drawer.Screen name="SignUp" component={SignUp} />
-                <Drawer.Screen name="Profile" component={Profile} />       
+                <Drawer.Screen name="Profile" component={Profile} />
             </Drawer.Navigator>
         </NavigationContainer>
     );
