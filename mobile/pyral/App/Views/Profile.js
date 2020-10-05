@@ -8,8 +8,19 @@ import Adress from "../Components/Adress";
 
 
 
-
 export default function Profile(){
+    const [paises, setpaises] = React.useState([])
+
+    useEffect(() => {
+        getData()
+    }, [])
+
+    const getData = async () => {
+        const data = await fetch('https://restcountries.eu/rest/v2/all')
+        const countries = await data.json()
+        setpaises(countries)
+    }
+
 
     const [pass, setPass] = React.useState("")
     const [mail, setMail] = React.useState("a@hotmail.com")
@@ -66,7 +77,7 @@ export default function Profile(){
               
             </View>
 
-        : <Adress/>}
+        : <Adress paises={paises}/>}
 
         </View>
     </View>
@@ -108,11 +119,6 @@ const styles = StyleSheet.create({
     },
 
     nombreymail:{
-        shadowColor: "#000",
-        shadowOffset: {  width: 0,  height: 1, },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-        elevation: 3,
         marginLeft: 10,
         display:"flex",
         flexDirection:"row",

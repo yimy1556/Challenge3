@@ -1,1 +1,9 @@
-{}
+{
+  "devToolsPort": 19006,
+  "expoServerPort": 19004,
+  "packagerPort": 19005,
+  "packagerPid": 7961,
+  "expoServerNgrokUrl": "https://wa-f5c.anonymous.pyral.exp.direct",
+  "packagerNgrokUrl": "https://packager.wa-f5c.anonymous.pyral.exp.direct",
+  "ngrokPid": 7982
+}
