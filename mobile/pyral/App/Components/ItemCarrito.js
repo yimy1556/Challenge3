@@ -1,14 +1,15 @@
 import React,{useState, useEffect} from 'react';
 import { EvilIcons, AntDesign, Entypo, Ionicons } from '@expo/vector-icons'; 
 import { View, Text, Button, StyleSheet } from 'react-native';
+import {LOCAL_HOST, IMAGE} from '../Constants/index'
 import { MaterialIcons } from '@expo/vector-icons'; 
-
+import styled from 'styled-components'
 
 
 const ItemCarrito = (props) => {
    
 
-    const  [cantidad, setcantidad] = useState(props.product.cant)
+    const  [cantidad, setcantidad] = useState(0)
     console.log(cantidad)
    const sumar = () => {
     setcantidad({
@@ -25,16 +26,14 @@ const ItemCarrito = (props) => {
             })
         }
     }
-        
-    
+console.log(props)
+    const url = props.product.variants[0].photo.replace(LOCAL_HOST,IMAGE)
+    console.log()
     return (
-        <>
             <View style={styles.unelEmentoCarrito}>
-                <View style={{ backgroundImage: `url(${props.product.remeraActual})`, width: 100, height: 100, borderColor:"black", borderWidth: 1 }}></View>
-
+                <ImageShop source={{uri:`${url}`}} width={100} height={80} margin={1}/>
                 <View style={styles.tituloCantidad}>
-                    <Text style={styles.titulo}>{props.product.title}</Text>
-                   
+                    <Text style={styles.titulo}>{props.product.title}</Text> 
                     <View style={styles.cantidad}>
                         <MaterialIcons name="remove" size={24} color="black" onPress={sumar}/>
                         <Text style={styles.numerocantidad}>{cantidad}</Text>
@@ -45,16 +44,24 @@ const ItemCarrito = (props) => {
 
                 <EvilIcons name="trash" size={35} color="black" />
             </View>
-        </>
     )
 
 
 }
+            
+const ImageShop = styled.Image`
+    height: ${props => `${props.height}px`};
+    width: ${props => `${props.width}px`};
+    resizeMode: contain;
+    alignSelf:center;
+    borderRadius: 5px;
+    marginBottom: ${props => `${props.margin}px`};
+`;
+
+
 const styles = StyleSheet.create({
     unelEmentoCarrito:{
-        width: 300,
-        marginRight: 15,
-        marginLeft: 15,
+        width: 270,
         display:"flex",
         flexDirection: "row",
         justifyContent: "space-between",
@@ -62,8 +69,8 @@ const styles = StyleSheet.create({
         backgroundColor:"white",
         borderBottomColor: "black",
         borderBottomWidth:1,
-        paddingBottom:20,
-        paddingTop:20,
+        paddingBottom:5,
+        paddingTop:5,
         paddingRight:10,
         paddingLeft:10,
 
@@ -92,3 +99,4 @@ const styles = StyleSheet.create({
 })
 
 export default ItemCarrito 
+

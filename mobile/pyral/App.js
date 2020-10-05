@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { Button, Overlay } from 'react-native-elements';
 import Tab from './App/Nagivator/TabV'
 import ItemCarrito from './App/Components/ItemCarrito';
+import {getValue} from './App/Constants/FuncAsyncStorage'
 import { ScrollView } from 'react-native-gesture-handler';
 
 
@@ -15,84 +16,26 @@ export default function App() {
       setVisible(!visible);
     };
  
-    const listProduct =[
-                {
-            cant: 4,
-            color: "Wine",
-            price: "1500",
-            remeraActual: "http://ec77d2c642ee.ngrok.io/uploads/T-shirt.jpg",
-            size: "S",
-            title: "T-shirt",
-            _id: "5f6ffae4782ad21ed0d0f5af",
-            __proto__: Object,
-        },
-        {
-            cant: 1,
-            color: "Black",
-            price: "1000",
-            remeraActual: "http://ec77d2c642ee.ngrok.io/uploads/WovenHatBlack.jpg",
-            size: "S",
-            title: "Woven Hat",
-            _id: "5f6ffae4782ad21ed0d0f5af"
-        },
-        {
-            cant: 4,
-            color: "Wine",
-            price: "1500",
-            remeraActual: "http://ec77d2c642ee.ngrok.io/uploads/T-shirt.jpg",
-            size: "S",
-            title: "T-shirt",
-            _id: "5f6ffae4782ad21ed0d0f5af",
-            __proto__: Object,
-        },
-        {
-            cant: 1,
-            color: "Black",
-            price: "1000",
-            remeraActual: "http://ec77d2c642ee.ngrok.io/uploads/WovenHatBlack.jpg",
-            size: "S",
-            title: "Woven Hat",
-            _id: "5f6ffae4782ad21ed0d0f5af"
-        },
-        {
-            cant: 4,
-            color: "Wine",
-            price: "1500",
-            remeraActual: "http://ec77d2c642ee.ngrok.io/uploads/T-shirt.jpg",
-            size: "S",
-            title: "T-shirt",
-            _id: "5f6ffae4782ad21ed0d0f5af",
-            __proto__: Object,
-        },
-        {
-            cant: 1,
-            color: "Black",
-            price: "1000",
-            remeraActual: "http://ec77d2c642ee.ngrok.io/uploads/WovenHatBlack.jpg",
-            size: "S",
-            title: "Woven Hat",
-            _id: "5f6ffae4782ad21ed0d0f5af"
-        }
-        ]
-
+const [listProduct, setListProduct ] = useState([])
+    useEffect(() => {
+        getValue('products',true)
+        .then((products => setListProduct(products)))
+    },[])
     return (<>
         <Tab/>
         <View >
-        <MaterialCommunityIcons style={styles.cart} onPress={toggleOverlay} name="cart-outline" size={24} color="black" />
-
-          <Overlay  isVisible={visible} onBackdropPress={toggleOverlay}>
-              <View style={styles.ropaDelCarrito}>
-                   <ScrollView>
-                       {listProduct.map(prod => <ItemCarrito product={prod} />)}
-                    </ScrollView>
+            <MaterialCommunityIcons style={styles.cart} onPress={toggleOverlay} name="cart-outline" size={24} color="black" />
+            <Overlay  isVisible={visible} onBackdropPress={toggleOverlay} >
+                <View style={styles.ropaDelCarrito}>
+                    <ScrollView alignSelf='center' style={{marginTop:5}}>
+                       {listProduct.map((prod,index) => <ItemCarrito product={prod} key={index}/>)}
+                    </ScrollView >
                     <View style={styles.totalPrecio}>
                         <Text style={styles.Textprecio}>Total</Text>
                         <Text style={styles.Textprecio}>$120</Text>
                     </View>
                     <Text style={styles.butButton}>Buy</Text>
                 </View>
-
-                
           </Overlay>
        </View>
     </>);
@@ -104,10 +47,12 @@ const styles = StyleSheet.create({
         right:   10,
         bottom: 690,
    },
-   ropaDelCarrito:{
-       backgroundColor:"black",
-       paddingTop:15,
-       height: 600
+    ropaDelCarrito:{
+        backgroundColor:'#F3F7F8',
+        height: 365,
+        width: 300,
+        borderRadius:15,
+        alignSelf:'center',
    },
    totalPrecio:{
        display:"flex",
@@ -119,22 +64,24 @@ const styles = StyleSheet.create({
        marginBottom: 15,
    },
    Textprecio:{
-       color:"white",
+       color:"black",
        fontWeight: "bold",
        fontSize:20
 
    },
    butButton:{
-       color:"black",
-       textAlign:"center",
-       fontWeight:"bold",
-       backgroundColor: "white",
-       marginRight:135,
-       marginLeft:135,
-       marginBottom:20,
-       paddingTop:4,
-       paddingBottom:4,
-       marginTop: 20
+        color:"black",
+        textAlign:"center",
+        fontWeight:"bold",
+        backgroundColor: "white",
+        borderRadius:5,
+        marginRight:100,
+        marginLeft:100,
+        marginBottom:5,
+        paddingTop:4,
+        paddingBottom:4,
+        marginTop: 5
    }
 })
+
 
