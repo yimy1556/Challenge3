@@ -128,9 +128,10 @@ const userController = {
 		// res.json({ success: true, newDirection })
 	},
 
-	// getDirection: (req, res) => {
-	// 	const { direction } = req.body
-	// 	res.json({ success: true, direction })
+	// getContact: (req, res) => {
+	// 	const { contact } = req.user
+	// 	console.log(contact);
+	// 	res.json({ success: true, contact })
 	// },
 	//Subscription mail is recorded and notified by mail.
 	createSuscription: async (req, res) => {
@@ -156,7 +157,7 @@ const userController = {
 							<p style="color: #0D195A; font-size:18px;">Thank you for subscribing,
 							 we will notify you when a discount or promotion is available! <a style="color: #152657; font-size:25px;" 
 							 href="http://localhost:3000/shop">Visit us </a> </p>
-							 <a style="color: #0D195A; font-size:9px;" href="http://www.google.com">Unsuscribe</a>
+							 <a style="color: #0D195A; font-size:9px;" href="http://localhost:3000/lowNewsletter">Unsuscribe</a>
 						   <hr/>
        					<h2>Team Pyral</h2>`
 			}

@@ -3,6 +3,7 @@ import itemActions from '../redux/actions/itemActions'
 import { connect } from 'react-redux'
 import shoppingCartActions from '../redux/actions/shoppingCartActions'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -12,14 +13,28 @@ import FacebookIcon2 from '@material-ui/icons/Facebook';
 import TwitterIcon2 from '@material-ui/icons/Twitter';
 import WhatsappIcon2 from '@material-ui/icons/WhatsApp';
 import TelegramIcon2 from '@material-ui/icons/Telegram';
+import { animateScroll as scroll } from 'react-scroll'
+import swal from 'sweetalert';
+import {
+    MagnifierContainer,
+    MagnifierPreview,
+    MagnifierZoom,
+    SideBySideMagnifier,
+    MOUSE_ACTIVATION,
+} from "react-image-magnifiers";
 import {
     FacebookShareButton,
     TelegramShareButton,
     TwitterShareButton,
     WhatsappShareButton,
-
+    FacebookIcon,
+    TwitterIcon,
+    WhatsappIcon,
+    TelegramIcon
 } from "react-share";
 import ScrollProducts from '../components/ScrollProduts'
+import mens from '../images/mens.jpg'
+
 
 const SelectProduct = (props) => {
     const borrarRepe = (variants) => {
@@ -38,10 +53,22 @@ const SelectProduct = (props) => {
         _id: props.match.params.id,
         remeraActual: '', color: '', size: '', cant: 1
     })
-    const ratingNum = props.rating
 
+    const [value, setValue] = useState(0)
+    const ratingNum = props.rating
+    var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
+    const [revandstars, setRevandstars] = useState({
+        stars: props.product.stars,
+        reviews: props.product.reviews
+    })
     useEffect(() => {
+        scrollToTop()
         const productId = props.match.params.id
+        setRevandstars({
+            ...revandstars,
+            stars: arrayFiltrado[0].stars,
+            reviews: arrayFiltrado[0].reviews
+        })
         props.upViews(productId)
         props.selectProductId(productId)
             .then(prodc => {
@@ -55,21 +82,36 @@ const SelectProduct = (props) => {
                 })
             })
     }, [props.match.params.id])
-    const [value, setValue] = useState(0)
 
     const ratingSet = () => {
         alert(value)
         const productId = props.match.params.id
 
         props.postRating(productId, value, props.userlogged.token)
+        swal({
+            title: 'Pyral',
+            text: 'The rating was sent successfully!',
+            buttons: {
+                confirm: true,
+            }
+        })
 
     }
     const addProducts = () => {
-        props.addProduct(prod)
-        setBottom(!bottom)
+        console.log(prod.size === "")
+        if (prod.size === "") {
+            alert('llena todo')
+        } else {
+            props.addProduct(prod)
+            setBottom(!bottom)
+        }
+
     }
 
-    var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
+    const scrollToTop = () => {
+        scroll.scrollToTop();
+    }
+
 
     if (product === {}) return <></>
     props.product.map(product => console.log(`${product.stars}`))
@@ -80,7 +122,18 @@ const SelectProduct = (props) => {
                 <div style={{ display: 'flex', flexDirection: 'column' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
                     src={vari.photo} alt={vari.title} style={{ width: '3em', height: '4em' }} />)}
                 </div>
-                <img src={prod?.remeraActual} alt="remeraActual" style={{ width: '28vw', height: '76vh' }} />
+
+                <SideBySideMagnifier
+                    className="input-position"
+                    style={{ width: '28vw', height: '76vh' }}
+                    imageSrc={prod?.remeraActual}
+                    mouseActivation={MOUSE_ACTIVATION.CLICK}
+                    overlayOpacity={0.2}
+                    alwaysInPlace={true}
+                    fillGap={true}
+                    cursorStyle={'SideBySideMagnifier'}
+                />
+
 
             </div>
             <div style={{ width: '50vw', height: '76vh' }}>
@@ -103,6 +156,34 @@ const SelectProduct = (props) => {
                         {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <option>{vari.size}</option>)}
                     </select>
                 </div>
+                <WhatsappShareButton
+                    url={"https://scapeteamred.herokuapp.com/"}
+                    quote={"CampersTribe - World is yours to explore"}
+                    hashtag={`${product.title}`}
+                >
+                    <WhatsappIcon style={{ widht: '2vw' }} />
+                </WhatsappShareButton>
+                <FacebookShareButton
+                    url={"https://scapeteamred.herokuapp.com/"}
+                    quote={"CampersTribe - World is yours to explore"}
+                    hashtag={`${product.title}`}
+                >
+                    <FacebookIcon style={{ widht: '2vw' }} />
+                </FacebookShareButton>
+                <TwitterShareButton
+                    url={"https://scapeteamred.herokuapp.com/"}
+                    quote={"CampersTribe - World is yours to explore"}
+                    hashtag="#camperstribe"
+                >
+                    <TwitterIcon style={{ widht: '2vw' }} />
+                </TwitterShareButton>
+                <TelegramShareButton
+                    url={"https://scapeteamred.herokuapp.com/"}
+                    quote={"CampersTribe - World is yours to explore"}
+                    hashtag="#camperstribe"
+                >
+                    <TelegramIcon style={{ widht: '2vw' }} />
+                </TelegramShareButton>
                 <WhatsappShareButton
                     url={"https://scapeteamred.herokuapp.com/"}
                     quote={"CampersTribe - World is yours to explore"}
@@ -169,8 +250,17 @@ const SelectProduct = (props) => {
                     </>
                 }
             </div>
-        </div>
+            <div style={{ display: 'flex', padding: '50px' }}>
+                <div className="fotosHome" style={{ backgroundImage: `url(${mens})`, height: '40vw', width: '41vw' }}></div>
+                <div style={{ width: '60vw', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', }}>
+                    <h3>Products That Wear in Not Out</h3>
+                    <p style={{ padding: '2em 5em' }}>We’ve always considered ourselves a shirting company at our very core. Always have. Always will. In fact, when we were just getting our vision for Taylor Stitch off the ground ten years ago, we turned to the country’s oldest family of shirtmakers to learn from the very best. And we were spared no lesson of construction—from fit and balance to the importance of French seams to why 22 stitches-per-inch matters on a shirt.</p>
+                    <p style={{ padding: '1em 5em' }}>You can bet this technical DNA is central to every single product we make. Build for the long haul, design products that wear in not out, and use the best most sustainable fabrics available—even if that means making them yourself.</p>
+                </div>
 
+            </div>
+            <Footer />
+        </div>
     </>
     )
 }

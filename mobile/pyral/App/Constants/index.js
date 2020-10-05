@@ -11,7 +11,7 @@ export const colors = {
     Grey: '#303B4F'
 }
 
-export const  LOCAL_HOST = "http://localhost:4000" 
+export const LOCAL_HOST = "http://localhost:4000"
 
 export const IMAGE = "http://b7e663876ce5.ngrok.io"
 

@@ -55,7 +55,7 @@ const TabsScreen = (props) => {
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ size, color }) => <FontAwesome name={iconos[route.name]} size={size} color={color} />
             })}
-                tabBarOptions={{    
+            tabBarOptions={{
                 activeTintColor: '#201F22',
                 inactiveTintColor: 'gray',
             }}
