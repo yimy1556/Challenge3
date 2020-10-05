@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import itemActions from '../redux/actions/itemActions'
 import '../styles/shop.css'
 import Header from '../components/Header'
-import Slider from '../components/Slider'
+import banner from '../images/bannerShop.jpg'
 import Product from '../pages/Product'
 import Footer from '../components/Footer'
 import { animateScroll as scroll } from 'react-scroll'
@@ -27,62 +27,54 @@ class Shop extends React.Component {
         scroll.scrollToTop();
     }
 
+    // Muestra productos de menor precio
     lowestPrice = () => {
         var lowestPrice = this.props.products.sort(function (a, b) {
             return (a.price - b.price)
         })
-        console.log('hola')
         this.setState({
             list: lowestPrice
         })
     }
+
+    // Muestra productos de mayor precio
     highestPrice = (params) => {
         var highestPrice = this.props.products.sort(function (a, b) {
             return (b.price - a.price)
         })
-        console.log('hola')
         this.setState({
             list: highestPrice
         })
     }
+
+    // Muestra productos de menor relevancia
     lessRelevant = (params) => {
         var mostVisited = this.props.products.sort((a, b) => a.views - b.views)
-        console.log('hola')
         this.setState({
             list: mostVisited
         })
     }
+
+    // Muestra productos de mayor relevancia
     mostRelevant = (params) => {
         var lessVisited = this.props.products.sort((a, b) => b.views - a.views)
-        console.log('hola')
         this.setState({
             list: lessVisited
         })
     }
+
+    // Muestra productos en forma de lista
     viewList = (params) => {
         this.setState({
             viewList: true
         })
     }
+
+    // Muestra productos en forma de modulos
     viewModule = (params) => {
         this.setState({
             viewList: false
         })
-    }
-    sort = (e) => {
-        var value = e.target.value
-        if (value !== "") {
-            console.log(value)
-            this.setState({
-                sortFlag: true,
-                sort: value
-            })
-        } else {
-            this.setState({
-                sortFlag: false,
-            })
-        }
-
     }
 
     render() {
@@ -91,8 +83,10 @@ class Shop extends React.Component {
         return (
             <>
                 <Header />
-
-                <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${banner})`, width: '100%', height: '45vh', backgroundPosition: 'center 35%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                    <h2 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>ALL PRODUCTS</h2>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-around', verticalAlign: 'center' }}>
                     <div style={{ flex: '1', padding: '50px', display: 'flex', flexDirection: 'column' }}>
                         <h4>Order products</h4>
 
@@ -107,8 +101,7 @@ class Shop extends React.Component {
                     </div>
 
                     <div id="paginaShop" style={{ flex: '8' }}>
-                        <h2 style={{ color: 'black' }}>All Products</h2>
-                        <div id={!this.state.viewList && "todoShop"}>
+                        <div id={!this.state.viewList && "todoShop"} >
                             {this.props.products == 0 ? <p>no products yet</p> :
                                 <>
                                     {this.state.list.map(product => {

@@ -23,6 +23,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import LowNewsletter from './pages/LowNewsletter'
 import Address from './components/Address'
 import Faqs from './pages/Faqs';
+import Shipping from './pages/Shipping';
+import Payments from './pages/Payments';
 
 
 function App(props) {
@@ -54,6 +56,9 @@ function App(props) {
         <Route path="/selectProduct/:id" component={SelectProduct} />
         <Route path="/profile" component={Profile} />
         <Route path="/lowNewsletter" component={LowNewsletter} />
+        <Route path="/buy" component={Buy} />
+        <Route path="/shipping" component={Shipping} />
+        <Route path="/payments" component={Payments} />
         <Route path="/address" component={Address} />
         <Route path="/faqs" component={Faqs} />
         <Redirect to="/" />
@@ -70,6 +75,7 @@ function App(props) {
       <Route exact path="/shop" component={Shop} />
       <Route path="/selectProduct/:id" component={SelectProduct} />
       <Route path="/lowNewsletter" component={LowNewsletter} />
+      <Route path="/buy" component={Buy} />
       <Route path="/faqs" component={Faqs} />
       <Redirect to="/" />
     </Switch>

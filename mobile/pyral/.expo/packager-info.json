@@ -1,6 +1,10 @@
 {
-  "devToolsPort": 19002,
-  "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 18395
+  "packagerPid": 23606,
+  "expoServerNgrokUrl": "https://79-hfb.anonymous.pyral.exp.direct",
+  "packagerNgrokUrl": "https://packager.79-hfb.anonymous.pyral.exp.direct",
+  "ngrokPid": 23639,
+  "webpackServerPort": null,
+  "expoServerPort": 19000,
+  "devToolsPort": 19002
 }

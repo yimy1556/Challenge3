@@ -3,7 +3,8 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import ItemCarrito from '../components/ItemCarrito'
 import { connect } from 'react-redux'
-import HorizontalLabelPositionBelowStepper from '../components/Stepper'
+import { Stepper } from '@material-ui/core'
+import { NavLink } from 'react-router-dom'
 
 class Buy extends React.Component {
     compraTotal = (list) => {
@@ -18,8 +19,8 @@ class Buy extends React.Component {
                 <Header />
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                     <div>
-                        {/* <HorizontalLabelPositionBelowStepper /> */}
-                        <div id="ropaDelCarrito">
+
+                        <div id="buyCloth">
                             {this.props.listProduct.map(prod => <ItemCarrito product={prod} />)}
 
                             <div id="totalPrecio">
@@ -27,14 +28,16 @@ class Buy extends React.Component {
                                 <p>{this.compraTotal(this.props.listProduct)}</p>
                             </div>
                         </div>
-                        <button>Continue</button>
+                        <NavLink to="/shipping">  <button>Continue</button></NavLink>
                     </div>
                     <div style={{ backgroundColor: '#F5F5F5', width: '30vw', height: '70vh', padding: '20px 40px' }}>
                         <h3 style={{ textAlign: 'center' }}>Purchase summary</h3>
                         <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <p>{this.props.listProduct.map(prod => `Products(${prod.cant})`)}</p>
-                            <p>${this.compraTotal(this.props.listProduct)}</p>
+                            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                                {this.props.listProduct.map(prod => <p>Products({prod.cant}) </p>)}
+                                <p>${this.compraTotal(this.props.listProduct)}</p>
+                            </div>
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <p>Shipping</p>

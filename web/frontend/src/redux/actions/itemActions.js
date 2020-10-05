@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import swal from 'sweetalert';
 var path = `http://localhost:4000/api`
 
 const itemActions = {
@@ -16,7 +16,13 @@ const itemActions = {
             if (!response.data.success) {
                 alert('Something went wrong')
             } else {
-                alert('the product was uploaded successfully')
+                swal({
+                    title:'Pyral',
+                    text: 'The product was uploaded successfully!',
+                    buttons: {
+                        confirm: true,
+                    }
+                })
                 // dispatch({
                 //     type: 'ADD_ITEM',
                 //     payload: { title: item.title, description: item.description, photo: item.photo, price: item.price, stock: item.stock, type: item.type }

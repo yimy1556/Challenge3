@@ -3,13 +3,16 @@ import axios from 'axios'
 import Product from '../Components/Product'
 import { ScrollView,FlatList, TouchableOpacity } from 'react-native'
 import {API} from '../Constants/index'
+import { seveKeyValue} from '../Constants/FuncAsyncStorage'
+import AsyncStorage from '@react-native-community/async-storage'
+
 
 export default function Products( {navigation}) {
     const [products, setProducts] = useState([])
-
     useEffect(() => {
         const pedido = async () => {
             const response = await axios.get(`${API}/product/getProducts`)
+            seveKeyValue('products',response.data.product,true)
             setProducts(response.data.product)
         }         
         pedido()
