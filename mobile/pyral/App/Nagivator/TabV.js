@@ -12,6 +12,7 @@ import LogInt from '../Components/LogInt'
 import { FontAwesome } from '@expo/vector-icons';
 import OneProduct from '../Views/OneProduct'
 import SignUp from '../Components/SignUp';
+import Profile from '../Views/Profile';
 
 const About = () => <Container><Text>About</Text></Container>
 
@@ -32,9 +33,8 @@ const iconos = {
 const HomeStack = createStackNavigator();
 const HomeStackScreen = () => (
     <HomeStack.Navigator>
-        <HomeStack.Screen name="Home" component={Home}
-        options={{ headerTitle: props => <Header {...props} /> }}
-        />
+        <HomeStack.Screen name="Home" component={Home}/>
+        <ShopStack.Screen name="Products" component={Products}/>
     </HomeStack.Navigator>  
 );
 
@@ -42,19 +42,14 @@ const HomeStackScreen = () => (
 const ShopStack = createStackNavigator();
 const ShopStackScreen = () => (
     <ShopStack.Navigator>
-        <ShopStack.Screen name="Products" component={Products} 
-            options={{ headerTitle: props => <Header {...props} /> }}
-        />
-        <ShopStack.Screen name="OneProduct" component={OneProduct} 
-            options={{ headerTitle: props => <Header {...props} /> }}     
-        />
+        <ShopStack.Screen name="Products" component={Products}/>
+        <ShopStack.Screen name="OneProduct" component={OneProduct}/>
 
     </ShopStack.Navigator>
 )
 
 const Tab = createBottomTabNavigator();
 const TabsScreen = (props) => {
-    console.log(props.route)
     return (
         <Tab.Navigator initialRouteName={props.route.name}
             screenOptions={({ route }) => ({
@@ -79,10 +74,15 @@ export default function TabV() {
         <NavigationContainer>
             <Drawer.Navigator>
                 <Drawer.Screen name="Home" component={TabsScreen} />
-                <Drawer.Screen name="Registro" component={LogInt} />
+                <Drawer.Screen name="LogIn" component={LogInt} />
                 <Drawer.Screen name="SignUp" component={SignUp} />
+                <Drawer.Screen name="Profile" component={Profile} />
             </Drawer.Navigator>
         </NavigationContainer>
     );
 }
+
+
+
+
 

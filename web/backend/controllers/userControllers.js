@@ -124,7 +124,7 @@ const userController = {
 	postContact: async (req, res) => {
 		const { country, city, address, postalCode, phoneNumber } = req.body
 		const { _id } = req.user
-		const newDirection = await User.findOneAndUpdate({ _id }, {$push: { contact: { country: country, city: city, address: address, postalCode: postalCode, phoneNumber: phoneNumber }  }})
+		const newDirection = await User.findOneAndUpdate({ _id }, { $push: { contact: { country: country, city: city, address: address, postalCode: postalCode, phoneNumber: phoneNumber } } })
 		// res.json({ success: true, newDirection })
 	},
 
@@ -202,18 +202,18 @@ const userController = {
 
 	lowNewsletter: async (req, res) => {
 		mailUser = req.body.mail
-		
-		try{
-			await Newsletter.findOneAndDelete({mail:mailUser})
+
+		try {
+			await Newsletter.findOneAndDelete({ mail: mailUser })
 			res.json({
 				success: true,
-				response:" delete newsletter DB"
+				response: " delete newsletter DB"
 			})
 		}
-		catch{
+		catch {
 			res.json({
 				success: false,
-				response:"error in low newsletter"
+				response: "error in low newsletter"
 			})
 		}
 	}

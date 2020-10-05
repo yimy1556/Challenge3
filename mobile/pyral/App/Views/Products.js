@@ -1,115 +1,35 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import axios from 'axios'
 import Product from '../Components/Product'
 import { ScrollView,FlatList, TouchableOpacity } from 'react-native'
-
-const PR = [{
-    price: "1500",
-    title: "T-shirt",
-    variants: [
-        {
-            stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg"
-        },
-        { stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg" },
-        { stock: "15", color: "Black", size: "S", photo: "http://localhost:4000/uploads/T-shirtBlack.jpg" }
-    ],
-}, {
-    price: "1501",
-    title: "T-shirt",
-    variants: [
-        {
-            stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg"
-        },
-        { stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg" },
-        { stock: "15", color: "Black", size: "S", photo: "http://localhost:4000/uploads/T-shirtBlack.jpg" }
-    ],
-}, {
-    price: "1502",
-    title: "T-shirt",
-    variants: [
-        {
-            stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg"
-        },
-        { stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg" },
-        { stock: "15", color: "Black", size: "S", photo: "http://localhost:4000/uploads/T-shirtBlack.jpg" }
-    ],
-}, {
-    price: "1503",
-    title: "T-shirt",
-    variants: [
-        {
-            stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg"
-        },
-        { stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg" },
-        { stock: "15", color: "Black", size: "S", photo: "http://localhost:4000/uploads/T-shirtBlack.jpg" }
-    ],
-}, {
-    price: "10",
-    title: "T-shirt",
-    variants: [
-        {
-            stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg"
-        },
-        { stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg" },
-        { stock: "15", color: "Black", size: "S", photo: "http://localhost:4000/uploads/T-shirtBlack.jpg" }
-    ],
-}, {
-    price: "1543",
-    title: "T-shirt",
-    variants: [
-        {
-            stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg"
-        },
-        { stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg" },
-        { stock: "15", color: "Black", size: "S", photo: "http://localhost:4000/uploads/T-shirtBlack.jpg" }
-    ],
-}, {
-    price: "104",
-    title: "T-shirt",
-    variants: [
-        {
-            stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg"
-        },
-        { stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg" },
-        { stock: "15", color: "Black", size: "S", photo: "http://localhost:4000/uploads/T-shirtBlack.jpg" }
-    ],
-}, {
-    price: "15400",
-    title: "T-shirt",
-    variants: [
-        {
-            stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg"
-        },
-        { stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg" },
-        { stock: "15", color: "Black", size: "S", photo: "http://localhost:4000/uploads/T-shirtBlack.jpg" }
-    ],
-}, {
-    price: "102",
-    title: "T-shirt",
-    variants: [
-        {
-            stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg"
-        },
-        { stock: "25", size: "S", color: "Wine", photo: "http://localhost:4000/uploads/T-shirt.jpg" },
-        { stock: "15", color: "Black", size: "S", photo: "http://localhost:4000/uploads/T-shirtBlack.jpg" }
-    ],
-}]
-
+import {API} from '../Constants/index'
+import { seveKeyValue} from '../Constants/FuncAsyncStorage'
+import AsyncStorage from '@react-native-community/async-storage'
 
 
 export default function Products( {navigation}) {
-
+    const [products, setProducts] = useState([])
+    useEffect(() => {
+        const pedido = async () => {
+            const response = await axios.get(`${API}/product/getProducts`)
+            seveKeyValue('products',response.data.product,true)
+            setProducts(response.data.product)
+        }         
+        pedido()
+    },[])
+    
     return (<>
 
         <ScrollView>
             <FlatList
                 style={{ flex: 1, alignSelf: 'center' }}
                 numColumns={2}
-                data={PR}
+                data={products}
                 renderItem={({ item }) =>
-                    (<TouchableOpacity title="Go to product" onPress={() => navigation.navigate('OneProduct', { item: item })}>
+                    (<TouchableOpacity title="Go to product" onPress={() => navigation.navigate('OneProduct', {item:item})}>
                         <Product product={item} />
                     </TouchableOpacity>)}
-                keyExtractor={item => item.price}
+                keyExtractor={item => item._id}
             />
         </ScrollView>
 
