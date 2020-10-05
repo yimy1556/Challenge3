@@ -8,7 +8,7 @@ import Adress from "../Components/Adress";
 
 
 
-export default function Profile(){
+export default function Profile(props){
     const [paises, setpaises] = React.useState([])
 
     useEffect(() => {
@@ -26,10 +26,8 @@ export default function Profile(){
     const [mail, setMail] = React.useState("a@hotmail.com")
 
     const sendInfo = async() => {
-        
        await axios.put(`${API}/changePassword`, { mail, pass })
        alert("Your password was changed")
-       
     }
 
     const [profile, setprofile] = useState(true)

@@ -14,9 +14,9 @@ import OneProduct from '../Views/OneProduct'
 import SignUp from '../Components/SignUp';
 import Profile from '../Views/Profile';
 import FAQs from '../Views/FAQs';
+import About from '../Views/About';
 
 
-const About = () => <Container><Text>About</Text></Container>
 
 const Container = styled.View`
     flex: 1;
