@@ -1,1 +1,9 @@
-{}
+{
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://sq-pdf.anonymous.pyral.exp.direct",
+  "packagerNgrokUrl": "https://packager.sq-pdf.anonymous.pyral.exp.direct",
+  "ngrokPid": 7292,
+  "devToolsPort": 19002,
+  "packagerPort": 19001,
+  "packagerPid": 13804
+}
