@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React,{useState, useEffect} from 'react';
 import { connect } from 'react-redux'
 import '../styles/carrito.css'
 import Tooltip from '@material-ui/core/Tooltip'
@@ -8,15 +8,12 @@ import Add from '@material-ui/icons/Add'
 import Remove from '@material-ui/icons/Remove'
 import shoppingCartActions from '../redux/actions/shoppingCartActions'
 const ItemCarrito = (props) => {
-    const [button, setButton] = useState(true)
-
-    useEffect(() => {
-    }, [button])
+    const  [button, setButton] = useState(true)
+    
+    useEffect( ()=> {
+    },[button])
 
     const modStock = (cant) => {
-        if (props.render !== undefined) {
-            props.setRender(!props.render)
-        }
         props.updateQuantity(props.product, cant)
         setButton(!button)
     }
@@ -30,10 +27,10 @@ const ItemCarrito = (props) => {
                     <p>{props.product.title}</p>
                     <div id="cantidad">
                         <button onClick={() => modStock(-1)}
-                            style={{ backgroundColor: 'white', border: 'none' }}><Remove /></button>
+                            style={{ backgroundColor: 'whitesmoke', border: 'none' }}><Remove /></button>
                         <p>{props.product.cant}</p>
                         <button onClick={() => modStock(1)}
-                            style={{ backgroundColor: 'white', border: 'none' }}><Add /></button>
+                            style={{ backgroundColor: 'whitesmoke', border: 'none' }}><Add /></button>
                     </div>
                 </div>
 

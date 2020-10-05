@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import itemActions from '../redux/actions/itemActions'
 import '../styles/shop.css'
@@ -11,116 +11,119 @@ import ChatBotComponent from '../components/ChatBotComponent'
 import ViewListIcon from '@material-ui/icons/ViewList';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
 
-const Shop = (props) => {
+class Shop extends React.Component {
+    state = {
+        list: this.props.products,
+        viewList: false
+    }
 
-    const [state, setState] = useState(
-        {
-            list: props.products,
-            viewList: false
-        }
-    )
+    async componentDidMount() {
+        this.scrollToTop()
+        this.props.getProducts()
 
-    useEffect(() => {
-        props.getProducts()
-    }, [props.products])
+    }
 
-    const scrollToTop = () => {
+    scrollToTop() {
         scroll.scrollToTop();
     }
 
     // Muestra productos de menor precio
-    const lowestPrice = () => {
-        var lowestPrice = props.products.sort(function (a, b) {
+    lowestPrice = () => {
+        var lowestPrice = this.props.products.sort(function (a, b) {
             return (a.price - b.price)
         })
-        setState({
+        this.setState({
             list: lowestPrice
         })
     }
 
     // Muestra productos de mayor precio
-    const highestPrice = (params) => {
-        var highestPrice = props.products.sort(function (a, b) {
+    highestPrice = (params) => {
+        var highestPrice = this.props.products.sort(function (a, b) {
             return (b.price - a.price)
         })
-        setState({
+        this.setState({
             list: highestPrice
         })
     }
 
     // Muestra productos de menor relevancia
-    const lessRelevant = (params) => {
-        var mostVisited = props.products.sort((a, b) => a.views - b.views)
-        setState({
+    lessRelevant = (params) => {
+        var mostVisited = this.props.products.sort((a, b) => a.views - b.views)
+        this.setState({
             list: mostVisited
         })
     }
 
     // Muestra productos de mayor relevancia
-    const mostRelevant = (params) => {
-        var lessVisited = props.products.sort((a, b) => b.views - a.views)
-        setState({
+    mostRelevant = (params) => {
+        var lessVisited = this.props.products.sort((a, b) => b.views - a.views)
+        this.setState({
             list: lessVisited
         })
     }
 
     // Muestra productos en forma de lista
-    const viewList = (params) => {
-        setState({
+    viewList = (params) => {
+        this.setState({
             viewList: true
         })
     }
 
     // Muestra productos en forma de modulos
-    const viewModule = (params) => {
-        setState({
+    viewModule = (params) => {
+        this.setState({
             viewList: false
         })
     }
 
-    return (
-        <>
-            <Header />
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${banner})`, width: '100%', height: '45vh', backgroundPosition: 'center 35%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-                <h2 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>ALL PRODUCTS</h2>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-around', verticalAlign: 'center' }}>
-                <div style={{ flex: '1', padding: '50px', display: 'flex', flexDirection: 'column' }}>
-                    <h4>Order products</h4>
+    render() {
+        console.log(this.state)
 
-                    <button onClick={lowestPrice} className="orderButton">Lowest Price</button>
-                    <button onClick={highestPrice} className="orderButton">Highest Price</button>
-                    <button onClick={mostRelevant} className="orderButton">Most Relevant</button>
-                    <button onClick={lessRelevant} className="orderButton">Less Relevant</button>
-                    <div>
-                        <ViewListIcon onClick={viewList} />
-                        <ViewModuleIcon onClick={viewModule} />
-                    </div>
+        return (
+            <>
+                <Header />
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${banner})`, width: '100%', height: '45vh', backgroundPosition: 'center 35%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                    <h2 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>ALL PRODUCTS</h2>
                 </div>
+                <div style={{ display: 'flex', justifyContent: 'space-around', verticalAlign: 'center' }}>
+                    <div style={{ flex: '1', padding: '50px', display: 'flex', flexDirection: 'column' }}>
+                        <h4>Order products</h4>
 
-                <div id="paginaShop" style={{ flex: '8' }}>
-                    <div id={!state.viewList && "todoShop"} >
+                        <button onClick={this.lowestPrice} className="orderButton">Lowest Price</button>
+                        <button onClick={this.highestPrice} className="orderButton">Highest Price</button>
+                        <button onClick={this.mostRelevant} className="orderButton">Most Relevant</button>
+                        <button onClick={this.lessRelevant} className="orderButton">Less Relevant</button>
+                        <div>
+                            <ViewListIcon onClick={this.viewList} />
+                            <ViewModuleIcon onClick={this.viewModule} />
+                        </div>
+                    </div>
 
-
-                        {state.list.map(product => {
-                            return (
+                    <div id="paginaShop" style={{ flex: '8' }}>
+                        <div id={!this.state.viewList && "todoShop"} >
+                            {this.props.products == 0 ? <p>no products yet</p> :
                                 <>
-                                    <Product product={product} view={state.viewList} />
+                                    {this.state.list.map(product => {
+                                        return (
+                                            <>
+                                                <Product product={product} view={this.state.viewList} />
+                                            </>
+                                        )
+                                    })
+                                    }
+
                                 </>
-                            )
-                        })
-                        }
-
-
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-            <ChatBotComponent />
-            <Footer></Footer>
-        </>
-    )
+                <ChatBotComponent />
+                <Footer></Footer>
+            </>
+        )
+    }
 }
-
 
 const mapStateToProps = state => {
     return {

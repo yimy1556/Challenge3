@@ -38,7 +38,7 @@
     right: -40vw;
     transition: right .3s linear;
     z-index: 100;
-    background-color: rgb(0, 0, 0);
+    background-color: whitesmoke;
     margin-top: -12vh;
 }
 
@@ -49,15 +49,17 @@
 #ropaDelCarrito{
     width: 30vw;
     margin-top: 5vh;
-    background-color: white;
+    background-color: whitesmoke;
     padding: 2vh 1vw;
     overflow-y: scroll;
+    border: 1px solid black;
+    max-width: 55vh;
 }
 
 #buyCloth{
     width: 30vw;
     margin-top: 5vh;
-    background-color: white;
+    background-color: whitesmoke;
     padding: 2vh 1vw;
 }
 
@@ -134,3 +136,9 @@ span.MuiBadge-badge.MuiBadge-anchorOriginTopRightRectangle{
     color: white;
     font-weight: bold;
 }
+
+.cartEmpty{
+    border: 1px solid black;
+    padding: 20px 55px;
+    margin: 2em;
+  }

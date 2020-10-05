@@ -91,8 +91,8 @@ const AddItem = props => {
             label: 'Wine',
         },
         {
-            value: 'Darkgrey',
-            label: 'Darkgrey',
+            value: 'DarkGrey',
+            label: 'DarkGrey',
         },
         {
             value: 'Grey',

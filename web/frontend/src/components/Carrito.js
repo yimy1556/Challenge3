@@ -38,7 +38,7 @@ const Carrito = (props) => {
         <>
             <div className='DivCerrarCarrito' onClick={menuHamburguesa} style={!menuShow.show ? { display: 'none', opacity: 0 } : { display: 'block' }}></div>
 
-            <div id="menuCostado" style={menuShow.show ? { right: 0 } : {}}>
+            <div id="menuCostado" style={menuShow.show ? { right: 0, boxShadow: '0.5vw 0vw 0vw 0vw black' } : {}} >
                 <div onClick={menuHamburguesa} id="botonCarrito" style={{ border: `none` }} style={menuShow.show ? { display: 'none' } : { display: 'block' }}>
                     <div id="carrito" >
                         <Badge badgeContent={cantTotal(props.listProduct)}>
@@ -48,27 +48,35 @@ const Carrito = (props) => {
                 </div>
 
 
-                <button onClick={menuHamburguesa} style={{ backgroundColor: 'transparent', border: 'none' }} ><CancelIcon style={{ color: "white", fontSize: 40 }}></CancelIcon></button>
-                <h3>Shopping Cart</h3>
-                <div id="ropaDelCarrito">
-                    {props.listProduct.length == 0 ?
+                <button onClick={menuHamburguesa} style={{ backgroundColor: 'transparent', border: 'none' }} ><CancelIcon style={{ color: "black", fontSize: 40 }}></CancelIcon></button>
+                <h3 style={{ color: '#111111' }}>Shopping Cart</h3>
 
-                        <>
-                            <div style={{ backgroundColor: 'transparent' }}>
-                                <h2>El carrito esta vacio</h2>
-                            </div>
-                        </> :
-                        <>
+                {props.listProduct.length == 0 ?
+
+                    <>
+                        <div className="cartEmpty" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', }}>
+                            <h4 style={{ color: 'black' }} >Your cart is empty</h4>
+                            <p style={{ color: 'black' }}>Not sure what to buy? Thousands of products await you!</p>
+                            <button> <NavLink to="/shop">Shop now</NavLink ></button>
+                        </div>
+
+                    </> :
+                    <>
+                        <div id="ropaDelCarrito">
                             {props.listProduct.map(prod => <ItemCarrito product={prod} />)}
-                            < div id="totalPrecio">
-                                <p>Total</p>
-                                <p>{compraTotal(props.listProduct)}</p>
-                            </div>
-                        </>
-                    }
-                </div>
 
-                <button id="butButton"><NavLink to="/buy">Buy</NavLink></button>
+
+                        </div>
+                        < div id="totalPrecio">
+                            <p>Total</p>
+                            <p>{compraTotal(props.listProduct)}</p>
+                        </div>
+                        <button id="butButton"><NavLink to="/buy">Buy</NavLink></button>
+                    </>
+                }
+
+
+
             </div>
 
         </>

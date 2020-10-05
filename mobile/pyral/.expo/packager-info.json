@@ -1,9 +1,22 @@
+<<<<<<< HEAD
+{}
+=======
 {
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://g6-y3e.anonymous.pyral.exp.direct",
-  "packagerNgrokUrl": "https://packager.g6-y3e.anonymous.pyral.exp.direct",
-  "ngrokPid": 18864,
-  "devToolsPort": 19002,
+<<<<<<< HEAD
   "packagerPort": 19001,
-  "packagerPid": 17636
+  "packagerPid": 15564,
+  "expoServerNgrokUrl": "https://79-hfb.anonymous.pyral.exp.direct",
+  "packagerNgrokUrl": "https://packager.79-hfb.anonymous.pyral.exp.direct",
+  "ngrokPid": 17100,
+=======
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+>>>>>>> parent of 86c8ed5... antes de merge con yimy
+  "webpackServerPort": null,
+  "expoServerPort": null,
+  "devToolsPort": 19002
 }
+>>>>>>> parent of 8102587... arreglando errores con yimy
