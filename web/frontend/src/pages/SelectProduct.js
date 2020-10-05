@@ -75,17 +75,17 @@ const SelectProduct = (props) => {
                 })
             })
     }, [props.match.params.id, props.productRating.stars])
-    
+
     var arrayFiltrado2 = props.productRating.productId === props.match.params.id
-    
-    const rickyfort = () =>{
-            
-    if(!arrayFiltrado2){
-        return arrayFiltrado2 = arrayFiltrado
+
+    const rickyfort = () => {
+
+        if (!arrayFiltrado2) {
+            return arrayFiltrado2 = arrayFiltrado
+        }
+
     }
 
-        }
-    
 
     const sendRating = () => {
         props.postRating(props.match.params.id, value, props.userlogged.token)
@@ -118,14 +118,14 @@ const SelectProduct = (props) => {
     return (<>
         <Header bott={bottom} />
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '3em' }}>
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
                     src={vari.photo} alt={vari.title} style={{ width: '3em', height: '4em' }} />)}
                 </div>
 
                 <SideBySideMagnifier
                     className="input-position"
-                    style={{ width: '28vw', height: '76vh' }}
+                    style={{ width: '28vw', height: '70vh' }}
                     imageSrc={prod?.remeraActual}
                     mouseActivation={MOUSE_ACTIVATION.CLICK}
                     overlayOpacity={0.2}
@@ -136,22 +136,22 @@ const SelectProduct = (props) => {
 
 
             </div>
-            <div style={{ width: '50vw', height: '76vh' }}>
+            <div style={{ width: '50vw', height: '70vh' }}>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', paddingRight: '7em' }}>
                     <h3>{product.title}</h3>
                     <h3>${product.price}</h3>
                 </div>
-                {!arrayFiltrado2 ? 
-                <div style={{ display: 'flex' }}>
-                    <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                    <p>{arrayFiltrado[0].reviews} reviews</p>
-                </div>
-                :
-                <div style={{ display: 'flex' }}>
-                    <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                    <p>{props.productRating.reviews} reviews</p>
-                </div>
+                {!arrayFiltrado2 ?
+                    <div style={{ display: 'flex' }}>
+                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                        <p>{arrayFiltrado[0].reviews} reviews</p>
+                    </div>
+                    :
+                    <div style={{ display: 'flex' }}>
+                        <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                        <p>{props.productRating.reviews} reviews</p>
+                    </div>
                 }
                 <p style={{ maxWidth: '20em', padding: '20px 0' }}>{product.description}</p>
 
@@ -190,34 +190,7 @@ const SelectProduct = (props) => {
                 >
                     <TelegramIcon size={35} round={true} />
                 </TelegramShareButton>
-                <WhatsappShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag={`${product.title}`}
-                >
-                    <WhatsappIcon2 style={{ fontSize: 40 }} />
-                </WhatsappShareButton>
-                <FacebookShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag={`${product.title}`}
-                >
-                    <FacebookIcon2 style={{ fontSize: 40 }} />
-                </FacebookShareButton>
-                <TwitterShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#camperstribe"
-                >
-                    <TwitterIcon2 style={{ fontSize: 40 }} />
-                </TwitterShareButton>
-                <TelegramShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#camperstribe"
-                >
-                    <TelegramIcon2 style={{ fontSize: 40 }} />
-                </TelegramShareButton>
+
                 {(prod.size !== '' || prod.size !== 'Choose the size') &&
                     <h3>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</h3>}
 
@@ -231,17 +204,17 @@ const SelectProduct = (props) => {
                 {/* {props.productRating.productId === props.match.params.id &&
                 <> */}
                 {!arrayFiltrado2 ?
-                <div style={{ display: 'flex' }}>
-                    <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
-                    <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                    <p>{arrayFiltrado[0].reviews} reviews</p> 
-                </div>
-                :                 
-                <div style={{ display: 'flex' }}>
-                    <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
+                    <div style={{ display: 'flex' }}>
+                        <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
+                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                        <p>{arrayFiltrado[0].reviews} reviews</p>
+                    </div>
+                    :
+                    <div style={{ display: 'flex' }}>
+                        <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
                         <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                    <p>{props.productRating.reviews} reviews</p> 
-                </div>
+                        <p>{props.productRating.reviews} reviews</p>
+                    </div>
                 }
                 {/* </>} */}
             </div>
