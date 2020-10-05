@@ -59,10 +59,10 @@ export default function OneProduct(props){
                     style={{height: 50, width: 100, alignSelf:'center'}}
                     onValueChange={(itemValue) => setProducts({...products,size: itemValue})
                 }>
-                    {(product?.variants?.filter(vari => vari.color === products.color))?.map(vari =>( 
-                        <Picker.Item key label={vari.size} value={vari.size}/>))}
+                    {(product?.variants?.filter(vari => vari.color === products.color))?.map((vari,index) =>( 
+                        <Picker.Item key={index} label={vari.size} value={vari.size}/>))}
                 </Picker>        
-                <Icon raised name='share-alt' type='font-awesome' style={{alignSelf:'center'}}
+                <Icon raised name='share-alt'  type='font-awesome' style={{alignSelf:'center'}}
                     color='#080808' onPress={() => onShare(product.title)} 
                 />
             </View>
