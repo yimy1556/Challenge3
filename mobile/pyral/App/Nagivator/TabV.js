@@ -13,6 +13,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import OneProduct from '../Views/OneProduct'
 import SignUp from '../Components/SignUp';
 import Profile from '../Views/Profile';
+import FAQs from '../Views/FAQs';
+
 
 const About = () => <Container><Text>About</Text></Container>
 
@@ -77,6 +79,7 @@ export default function TabV() {
                 <Drawer.Screen name="LogIn" component={LogInt} />
                 <Drawer.Screen name="SignUp" component={SignUp} />
                 <Drawer.Screen name="Profile" component={Profile} />
+                <Drawer.Screen name="FAQs" component={FAQs} />
             </Drawer.Navigator>
         </NavigationContainer>
     );
