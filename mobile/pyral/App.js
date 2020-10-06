@@ -7,14 +7,12 @@ import {getValue, seveKeyValue} from './App/Constants/FuncAsyncStorage'
 const cartAndListProducts = () => {
     getValue('cart',true) 
     .then(value => {
-        if(value === null) return
         seveKeyValue('cart',[],true)
     })
 } 
 
 export default function App() {
-    cartAndListProducts()
-    
+    cartAndListProducts() 
     return (<>
         <Tab/>
         <Carrito/>

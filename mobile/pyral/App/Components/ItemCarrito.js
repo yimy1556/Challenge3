@@ -1,6 +1,6 @@
-import React,{useState, useEffect} from 'react';
-import { EvilIcons, AntDesign, Entypo, Ionicons } from '@expo/vector-icons'; 
-import { View, Text, Button, StyleSheet } from 'react-native';
+import React from 'react';
+import { EvilIcons, Entypo} from '@expo/vector-icons'; 
+import { View, Text, StyleSheet } from 'react-native';
 import {LOCAL_HOST, IMAGE} from '../Constants/index'
 import { MaterialIcons } from '@expo/vector-icons';
 import {UpdateCart} from '../Constants/funcionesCarrito'
@@ -10,7 +10,7 @@ import styled from 'styled-components'
 const ItemCarrito = (props) => {
     const updateQuantityProduct = (quantity) => {
         UpdateCart(props.product, quantity)
-        setTimeout(() => props.setUpdate(props.update), 300)
+        props.setUpdate(!props.update)
     }
     const url = props.product.photo.replace(LOCAL_HOST,IMAGE)
     return (
@@ -23,13 +23,10 @@ const ItemCarrito = (props) => {
                         <Text style={styles.numerocantidad}>{props.product.quantity}</Text>
                             <Entypo name="plus" size={24} color="black" onPress={() => updateQuantityProduct(1)} />
                     </View>
-
                 </View>
                 <EvilIcons name="trash" size={35} color="black" />
             </View>
     )
-
-
 }
             
 const ImageShop = styled.Image`

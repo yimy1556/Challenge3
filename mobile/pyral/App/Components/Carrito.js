@@ -22,7 +22,6 @@ export default function Carrito(){
         .then(products => {
             setListProduct(products)
         })
-        console.log("yimy")
     },[update])
 
     return (<>

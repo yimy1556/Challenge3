@@ -35,8 +35,23 @@ export default function OneProduct(props){
     const rating = product.stars/product.reviews
     return(
         <ScrollView style={{alignSelf:'center',backgroundColor:'white'}}>
-            <View style={{flexDirection:'row', alignItems:'center'}}>
-                <ScrollView style={{width:50, height:185 , alignSelf:'center', marginLeft:20}}>
+            <View style={{flexDirection:'row' , justifyContent:'space-between'}}>
+                <View style={{alignSelf:'center'}}>
+                    <Text style={{fontWeight:'bold', fontSize:20,marginLeft : 20}}
+                        >{product.title}
+                    </Text>
+                    <Rating startingValue={rating} 
+                        style={{width:125}} 
+                        imageSize={17} type='custom' ratingColor="#060B0C" 
+                    />
+                </View>
+                <Icon raised name='share-alt'  type='font-awesome' style={{alignSelf:'center'}}
+                    color='#080808' onPress={() => onShare(product.title)} 
+                />
+            </View>            
+            <View style={{ alignItems:'center'}}>
+                <ImageShop source={{uri:image}} margin={0} width={310} height={350}/>
+                <ScrollView horizontal={true} style={{width:150, height:50 , alignSelf:'center', marginLeft:20}}>
                     {product.variants.map((variant,index) => (
                     <TouchableOpacity key={index} 
                         style={{width:50}}
@@ -46,25 +61,17 @@ export default function OneProduct(props){
                                 width={50} margin={0} height={60} key={variant.photo}/>
                         </TouchableOpacity>))}
                 </ScrollView>             
-                <ImageShop source={{uri:image}} margin={0} width={290} height={290}/>
             </View>
-            <Rating startingValue={rating} 
-                style={{alignSelf:'center',width:200}} 
-                imageSize={17} type='custom' ratingColor="#060B0C" 
-            />
             <Text style={styles.title}>{`$ ${product.price}`}</Text>
             <View style={{flexDirection:'row', justifyContent:'space-around'}}>
                 <Picker
                     selectedValue={true}
-                    style={{height: 50, width: 150, alignSelf:'center'}}
+                    style={{height: 50, width: 150, alignSelf:'center', backgroundColor:'whitesmoke', borderRadius:5}}
                     onValueChange={(itemValue) => setProducts({...products,size: itemValue})
                 }>
                     {(product?.variants?.filter(vari => vari.color === products.color))?.map((vari,index) =>( 
-                        <Picker.Item key={index} label={`size ${vari.size}`} value={vari.size}/>))}
+                    <Picker.Item key={index} label={`Size ${vari.size}`} value={vari.size}/>))}
                 </Picker>        
-                <Icon raised name='share-alt'  type='font-awesome' style={{alignSelf:'center'}}
-                    color='#080808' onPress={() => onShare(product.title)} 
-                />
             </View>
             <Button
                 title="   Add To Cart"
@@ -82,7 +89,6 @@ export default function OneProduct(props){
 const ImageShop = styled.Image`
     height: ${props => `${props.height}px`};
     width: ${props => `${props.width}px`};
-    resizeMode: contain;
     alignSelf:center;
     borderRadius: 5px;
     marginBottom: ${props => `${props.margin}px`};
@@ -97,10 +103,10 @@ const styles = StyleSheet.create({
         marginTop: 50,
     },
     title:{
-        fontWeight:'bold',
-        fontSize:20,
+        fontWeight:'500',
+        fontSize:30,
         alignSelf:'center',
-        marginBottom : 20
+        marginBottom : 5
     },
     imagen:{
         height: 200,
