@@ -7,6 +7,7 @@ import banner from '../images/bannerShop.jpg'
 import cloth from '../images/clothing2.jpg'
 import ChatBotComponent from '../components/ChatBotComponent'
 
+
 class About extends React.Component {
 
 

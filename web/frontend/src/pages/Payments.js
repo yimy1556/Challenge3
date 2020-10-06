@@ -5,8 +5,7 @@ import PayPal from '../components/PayPal'
 import ItemCarrito from '../components/ItemCarrito'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
-import payment from '../images/payment.jpg'
-import banner from '../images/bannerShop.jpg'
+import cloth from '../images/clothing2.jpg'
 import CreditCard from '../components/CreditCard'
 import logoPayPal from '../images/paypal.png'
 import logoCash from '../images/money.png'
@@ -52,8 +51,7 @@ const Shipping = (props) => {
     return (
 
         <>
-            <Header />
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${payment})`, width: '100%', height: '30vh', backgroundPosition: 'center 35%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${cloth})`, width: '100%', height: '40vh', backgroundPosition: 'center 45%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                 <h2 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>Payment</h2>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-around', background: '#EEEEEE' }}>
@@ -93,7 +91,7 @@ const Shipping = (props) => {
                     <h3 style={{ textAlign: 'center' }}>Purchase summary</h3>
                     <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
 
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', padding: '0.7em 0' }}>
                         {props.listProduct.map(prod => <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}> <p>{prod.title} {prod.color} ({prod.cant}) </p>
                             <p>${prod.price * prod.cant}</p>
                         </div>)}
@@ -101,7 +99,7 @@ const Shipping = (props) => {
 
                     {compraTotal(props.listProduct) > 250 ?
                         <>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', textDecoration: 'line-through' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', textDecoration: 'line-through', padding: '0.7em 0' }}>
                                 <p>Shipping</p>
                                 <p>$36</p>
                             </div> <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
@@ -111,7 +109,7 @@ const Shipping = (props) => {
                             </div>
                         </> :
                         <>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0em 0 0.7em 0' }}>
                                 <p>Shipping</p>
                                 <p>$36</p>
                             </div>

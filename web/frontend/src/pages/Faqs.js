@@ -5,7 +5,6 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import '../styles/about.css'
-import VideoBackground from '../components/VideoBackground'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { animateScroll as scroll } from 'react-scroll'
@@ -162,7 +161,6 @@ export default function Faqs() {
             </AccordionDetails>
           </Accordion>
         </div>
-        <VideoBackground />
       </div>
       <Footer></Footer>
     </>
