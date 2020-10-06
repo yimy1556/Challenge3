@@ -1,11 +1,7 @@
 import React from 'react'
-import Header from './Header'
-import Footer from './Footer'
 import '../styles/home.css'
-import InfoContainer from './InfoContainer'
 import ChatBot from 'react-simple-chatbot'
 import { ThemeProvider } from 'styled-components';
-import ChatBubbleIcon from '@material-ui/icons/Comment';
 import botLogo from "../images/botLogo.png"
 
 class ChatBotComponent extends React.Component {

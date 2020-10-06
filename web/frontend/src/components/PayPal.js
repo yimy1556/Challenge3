@@ -32,7 +32,7 @@ const PayPal = (props) => {
 
     return (
         <>
-            <div ref={paypal} className='buttonsPaypal'></div>
+            <div ref={paypal} className='buttonsPaypal' style={{ width: '40%', display: 'flex', justifyContent: 'center' }}></div>
         </>
     )
 }

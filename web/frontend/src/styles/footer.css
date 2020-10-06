@@ -1,11 +1,11 @@
 footer {
-    background-color: black;
+    background-color: #111111;
 }
 
 #container__links__news__scroll__footer {
     display: flex;
     justify-content: space-around;
-    background-color: rgb(0, 0, 0);
+    background-color:#111111;
     font-size: 1rem;
 }
 

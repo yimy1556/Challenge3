@@ -239,6 +239,7 @@ height: 60%;
   }
   .payLogo:hover{
     background: #D8D8D8;
+    cursor: pointer;
   }
 
 .payLogo img{
