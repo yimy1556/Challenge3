@@ -72,7 +72,7 @@ const Carrito = (props) => {
                             <p>Total</p>
                             <p>${compraTotal(props.listProduct)}</p>
                         </div>
-                        <button id="butButton"><NavLink to="/buy">Buy</NavLink></button>
+                        <button id="buyButton"><NavLink to="/buy">Buy</NavLink></button>
                     </>
                 }
 
