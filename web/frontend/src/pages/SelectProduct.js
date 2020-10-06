@@ -114,8 +114,8 @@ const SelectProduct = (props) => {
         <Header bott={bottom} />
         <div style={{ display: 'flex', justifyContent: 'space-evenly', padding: '1em 2em ' }}>
 
-            <div style={{ display: 'flex', alignItems: 'center', width: '50vw', justifyContent: 'center' }}>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
+            <div style={{ display: 'flex', width: '50vw', justifyContent: 'center' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '5em' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
                     src={vari.photo} alt={vari.title} style={{ width: '4em', height: '5em' }} />)}
                 </div>
 
@@ -132,7 +132,7 @@ const SelectProduct = (props) => {
 
 
             </div>
-            <div style={{ width: '50vw', padding: '2em', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ width: '50vw', padding: '2em', justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', paddingRight: '7em' }}>
                     <h3>{product.title}</h3>
@@ -154,6 +154,7 @@ const SelectProduct = (props) => {
                 <div style={{ display: 'flex', flexDirection: 'column' }} >
                     <label>Size</label>
                     <select name="size" id="size" onChange={(e) => setProd({ ...prod, size: e.target.value })}>
+                        <option >Choose the size</option>
                         {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <option>{vari.size}</option>)}
                     </select>
                 </div>

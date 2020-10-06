@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { TextareaAutosize } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
-
+import mens from '../images/mens.jpg'
 
 const Register = (props) => {
 
@@ -135,8 +135,7 @@ const Register = (props) => {
     return (
         <>
             <div style={{ display: 'flex' }}>
-                <div style={{ backgroundImage: 'url(https://www.onlygfx.com/wp-content/uploads/2017/07/paint-texture-black-and-white-3.jpeg)', width: '40%', maxHeight: '100vh', backgroundPosition: 'top right', backgroundSize: 'cover' }}>
-                    <h1>PYRAL</h1>
+                <div style={{ backgroundImage: `url(${mens})`, width: '40%', maxHeight: '100vh', backgroundPosition: 'top right', backgroundSize: 'cover' }}>
                 </div>
                 <div id="divFormulario" style={{ background: ' whitesmoke', width: '60%', maxHeight: '100vh' }}>
                     <form>

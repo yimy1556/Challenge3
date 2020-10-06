@@ -56,25 +56,6 @@ header a:hover,header a:focus {
   background: none;
 }
 
-
-#buttonContainer{
-    flex-direction: column;
-    margin-left: 10vw;
-}
-#buttonContainer2{
-  flex-direction: column;
-}
-#buttonContainer h1{
-padding-top: 150px;
-font-size: 80px;
-margin-left: -8vw;
-color: black;
-}
-#buttonContainer2 h1{
-  padding-top: 150px;
-  font-size: 80px;
-  color: black;
-  }
   
 #buttonShop {
     color: #111111 !important;
@@ -85,18 +66,18 @@ color: black;
     border:none;
     transition: all 1s ease;
     position: relative;
-    margin-top: 80px;
+  
   }
   #buttonShop2 {
     color: #b6b6b6 !important;
     font-size: 30px;
     font-weight: 500;
     padding: 0.3em 1em;
-    background: rgba(255, 255, 255);
+    background: #111111;
     border:none;
     transition: all 1s ease;
     position: relative;
-    margin-top: 80px;
+  
   }  
   #buttonShop:hover {
     background: #111111;
@@ -112,7 +93,7 @@ color: black;
   }
   #buttonShop2 a{
     text-decoration: none;
-    color:  #111111;
+    color:  #fffefe;
   }
   #buttonShop a:hover{
     text-decoration: none;
@@ -121,7 +102,7 @@ color: black;
   
   #buttonShop2 a:hover{
     text-decoration: none;
-    color:  white;
+    color:  #ffffff;
   }
   .button {
     color: #ffffff !important;
@@ -264,4 +245,11 @@ height: 60%;
   width: 2.5em;
   height: 2.5em;
   margin: 3em;
+}
+
+.continue{
+  border:none;
+  background: #111111;
+  color: white;
+  padding: 0.6em;
 }

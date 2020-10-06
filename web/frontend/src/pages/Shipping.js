@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { Stepper } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import banner from '../images/bannerShop.jpg'
-
+import CreateIcon from '@material-ui/icons/Create';
 
 const Shipping = (props) => {
 
@@ -30,40 +30,63 @@ const Shipping = (props) => {
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', width: '40vw', paddingTop: '40px' }}>
                         {props.userlogged.contact ?
                             <>
-                                <h2>My addresses</h2>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <h2>My addresses</h2>
+                                    <NavLink to="address">
+                                        <CreateIcon />
+                                    </NavLink>
+                                </div>
                                 {props.userlogged.contact.map((x) => {
                                     return (
-                                        <div style={{ fontWeight: 'lighter', padding: '15px', border: '1px solid #EEEEEE', backgroundColor: '#FFFFFF', borderRadius: '5px', margin: '5px 0' }}>
-                                            <h3>{x.address}</h3>
-                                            <p>{x.country}</p>
-                                            <p>{x.city}</p>
-                                            <p>{x.postalCode}</p>
-                                            <p>{x.phoneNumber}</p>
-                                        </div>
+                                        <>
+                                            <div style={{ fontWeight: 'lighter', padding: '15px', border: '1px solid #EEEEEE', backgroundColor: '#FFFFFF', borderRadius: '5px', margin: '5px 0' }}>
+                                                <h3>{x.address}</h3>
+                                                <p>{x.city}, {x.country}</p>
+                                                <p>C.P{x.postalCode}</p>
+                                                <p>{x.phoneNumber}</p>
+                                            </div>
+
+                                        </>
                                     )
                                 })}
-                            </> : <p>Put your direction</p>}
+                            </> : <p>Set your direction of shipping <NavLink to="address">Here</NavLink></p>}
+                        <NavLink to="/payments">  <button className="continue">Continue</button></NavLink>
                     </div>
-                    <NavLink to="/payments">  <button>Continue</button></NavLink>
+
                 </div>
-                <div style={{ backgroundColor: '#F5F5F5', width: '30vw', height: '70vh', padding: '20px 40px' }}>
+                <div style={{ backgroundColor: '#F5F5F5', width: '30vw', height: '70vh', padding: '20px 40px', marginRight: '5em' }}>
                     <h3 style={{ textAlign: 'center' }}>Purchase summary</h3>
                     <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                            {props.listProduct.map(prod => <p>Products({prod.cant}) </p>)}
-                            <p>${compraTotal(props.listProduct)}</p>
-                        </div>
+
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        {props.listProduct.map(prod => <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}> <p>{prod.title} {prod.color} ({prod.cant}) </p>
+                            <p>${prod.price * prod.cant}</p>
+                        </div>)}
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <p>Shipping</p>
-                        <p>$100</p>
-                    </div>
-                    <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <h4>Total</h4>
-                        <h4>${compraTotal(props.listProduct) + 100} </h4>
-                    </div>
+
+                    {compraTotal(props.listProduct) > 250 ?
+                        <>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', textDecoration: 'line-through' }}>
+                                <p>Shipping</p>
+                                <p>$36</p>
+                            </div> <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <h4>Total</h4>
+                                <h4>${compraTotal(props.listProduct)} </h4>
+                            </div>
+                        </> :
+                        <>
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <p>Shipping</p>
+                                <p>$36</p>
+                            </div>
+                            <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <h4>Total</h4>
+                                <h4>${compraTotal(props.listProduct) + 36}  </h4>
+                            </div>
+                        </>
+                    }
                 </div>
             </div>
             <Footer />
