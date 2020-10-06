@@ -3,6 +3,10 @@
   "lanType": "ip",
   "dev": true,
   "minify": false,
+<<<<<<< HEAD
   "urlRandomness": "ib-c37",
+=======
+  "urlRandomness": "sq-pdf",
+>>>>>>> 77f0bc7c034b654c9a73cedfd2dcd6015b455d32
   "https": false
 }

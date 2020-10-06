@@ -35,17 +35,17 @@ const iconos = {
 const HomeStack = createStackNavigator();
 const HomeStackScreen = () => (
     <HomeStack.Navigator>
-        <HomeStack.Screen name="Home" component={Home}/>
-        <ShopStack.Screen name="Products" component={Products}/>
-    </HomeStack.Navigator>  
+        <HomeStack.Screen name="Home" component={Home} />
+        <ShopStack.Screen name="Products" component={Products} />
+    </HomeStack.Navigator>
 );
 
 
 const ShopStack = createStackNavigator();
 const ShopStackScreen = () => (
     <ShopStack.Navigator>
-        <ShopStack.Screen name="Products" component={Products}/>
-        <ShopStack.Screen name="OneProduct" component={OneProduct}/>
+        <ShopStack.Screen name="Products" component={Products} />
+        <ShopStack.Screen name="OneProduct" component={OneProduct} />
 
     </ShopStack.Navigator>
 )

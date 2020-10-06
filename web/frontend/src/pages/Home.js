@@ -54,21 +54,23 @@ class Home extends React.Component {
 
                 <Carousel>
                     <Carousel.Item>
-                        <div style={{ backgroundImage: 'url(https://static.pullandbear.net/2/static2/itxwebstandard/images/home/2020-09/24/1400/Newin_man.jpg?ver=20200927021501)', height: '80vh', maxWidth: '100vw', backgroundPosition: 'cover', backgroundRepeat: 'no-repeat' }}>
-                            <div id="buttonContainer">
-                                <h1 style={{ color: 'white' }}>Spring 2020</h1>
+                        <div style={{ display: 'flex', backgroundImage: 'url(https://static.pullandbear.net/2/static2/itxwebstandard/images/home/2020-09/24/1400/Newin_man.jpg?ver=20200927021501)', height: '80vh', maxWidth: '100vw', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <h1 style={{ fontSize: '6.5em', color: '#111111', fontWeight: "600" }}>NEW IN</h1>
                                 <button id="buttonShop"><NavLink to="/shop">Shop Now</NavLink></button>
                             </div>
                         </div>
                     </Carousel.Item>
                     <Carousel.Item>
-                        <div style={{ backgroundImage: `url(https://s7d2.scene7.com/is/image/aeo/20200915-mhp-matchup-lg?scl=1&qlt=60&fmt=jpeg)`, backgroundSize: "cover", height: '80vh', maxWidth: '100vw' }}>
-                            <div id="buttonContainer2" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                <h1 >Spring 2020</h1>
+                        <div style={{ display: 'flex', backgroundImage: `url(https://s7d2.scene7.com/is/image/aeo/20200915-mhp-matchup-lg?scl=1&qlt=60&fmt=jpeg)`, backgroundSize: "cover", height: '80vh', maxWidth: '100vw', alignItems: 'center', justifyContent: 'center', alignContent: 'center' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <h1 style={{ fontSize: '6.5em', color: '#111111', fontWeight: "600" }} >NEW IN</h1>
                                 <button id="buttonShop2"><NavLink to="/shop">Shop Now</NavLink></button>
                             </div>
                         </div>
                     </Carousel.Item>
+
+
                 </Carousel>
 
 

@@ -94,10 +94,25 @@ const userController = {
 				sender: "Pyral <your.pyral@gmail.com>",
 				to: `${user.mail}`,
 				subject: "New Password",
-				html: `<h4>Hello ${user.firstName},</h4>
-						   <h3>Your new password is: <span style="color: #0D195A; font-size:20px;">${newPass}</span></h3>
-       					Thanks. <hr/>
-       					<h2>Team Pyral</h2>`
+				html: `<!DOCTYPE html>
+			<html lang="en">
+			<head>
+			  <meta charset="UTF-8">
+			  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+			  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+			  <title>Document</title>
+			</head>
+			<body style="margin: 0px; padding: 0px; font-family: 'Roboto'; background-color: whitesmoke;">
+			  <div style="padding: 2%;">
+				<h3 style="color: rgb(2, 2, 2);">Hello ${user.firstName},</h3>
+				<p style="color:  rgb(2, 2, 2);">Your new password is: <span style="color: #0D195A; font-size:20px;">${newPass}</span></p>
+				<p style="color:  rgb(2, 2, 2);">Thanks.</p>  <hr/>
+			  </div>
+			  <div style="text-align: center;">
+				<h2 style="color: rgb(2, 2, 2);">Team Pyral</h2>
+			  </div>  
+			</body>
+			</html>`
 			}
 			transport.sendMail(mailOptions, (error, info) => {
 				res.send("send email")
@@ -116,16 +131,15 @@ const userController = {
 		const { _id } = req.user
 		// Está harcodeada la id por ahora, después se cambia
 		const productRating = await User.findOneAndUpdate({ _id }, { $push: { rating: { productId: productId, ratingNumber: rating } } })
-		const productR = await Product.findOneAndUpdate({ _id: productId }, { $inc: { stars: +rating, reviews: +1 } })
-			.then(console.log('bien'))
-			.catch(console.log('mal'))
+		// const productR = await Product.findOneAndUpdate({ _id: productId }, { $inc: { stars: +rating, reviews: +1 } })
 	},
 
 	postContact: async (req, res) => {
 		const { country, city, address, postalCode, phoneNumber } = req.body
 		const { _id } = req.user
-		const newDirection = await User.findOneAndUpdate({ _id }, { $push: { contact: { country: country, city: city, address: address, postalCode: postalCode, phoneNumber: phoneNumber } } })
-		// res.json({ success: true, newDirection })
+		const contact = await User.findOneAndUpdate({ _id }, { contact: { country: country, city: city, address: address, postalCode: postalCode, phoneNumber: phoneNumber } })
+		res.json({ success: true, contact: [{ country: country, city: city, address: address, postalCode: postalCode, phoneNumber: phoneNumber }] })
+		console.log(newDirection);
 	},
 
 	// getContact: (req, res) => {
@@ -153,13 +167,38 @@ const userController = {
 				sender: "Pyral <your.pyral@gmail.com>",
 				to: `${mail}`,
 				subject: "Pyral Newsletter",
-				html: `<h4>Welcome to Pyral</h4>
-							<p style="color: #0D195A; font-size:18px;">Thank you for subscribing,
-							 we will notify you when a discount or promotion is available! <a style="color: #152657; font-size:25px;" 
-							 href="http://localhost:3000/shop">Visit us </a> </p>
-							 <a style="color: #0D195A; font-size:9px;" href="http://localhost:3000/lowNewsletter">Unsuscribe</a>
-						   <hr/>
-       					<h2>Team Pyral</h2>`
+				html:
+					`<!DOCTYPE html>
+			<html lang="en">
+			<head>
+			  <meta charset="UTF-8">
+			  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+			  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+			  <title>Document</title>
+			</head>
+			<body style="margin: 0px; padding: 0px; font-family: 'Roboto';">
+			  <div style="text-align: center; margin: 0px;">
+				<h1 style="background-color: whitesmoke; color: rgb(2, 2, 2); margin: 0px; padding: 15px;">Welcome to Pyral</h1>
+			  </div>
+			  <div style="text-align: center; background-image: url('https://images.pexels.com/photos/2951457/pexels-photo-2951457.jpeg?cs=srgb&dl=pexels-eben-odonkor-2951457.jpg&fm=jpg');
+			   height: 81.5vh; background-position: center; background-repeat: no-repeat; background-size:100%; margin: 0px;">
+			  <button style="margin-top: 45vh; background-color: black; color: whitesmoke; padding: 10px; font-size: 30px; border-color: black;">
+			  <a href="http://localhost:3000/shop" style="text-decoration: none; color: whitesmoke;">Go Shop!</a>
+			  </button>
+			  <p style="color: whitesmoke; font-size:12px; font-size:25px; margin: 0px; padding: 10px; font-weight: bold;">Thank you for subscribing, <br>
+				we will notify you when a discount or promotion is available! 
+			  </p>
+			  </div>
+			  <div style="text-align: center; background-color: rgb(2, 2, 2); padding: 5px; height: 5vh;">
+				<span style="color: rgb(255, 255, 255); font-size: small;">Want to change how you receive these emails?</span>
+				<a style="color: rgb(240, 231, 231); font-size:small; text-decoration: none;" href="http://localhost:3000/lowNewsletter"> -  unsubscribe from this list.</a>
+			  </div>
+			  <div style="background-color: black; text-align: center; height: 5vh;">
+				<h3 style="color: whitesmoke;margin: 0px; font-size: 20px; padding: 10px;">Team Pyral</h3>
+			  </div>
+			</body>
+			</html>
+		  `
 			}
 			transport.sendMail(mailOptions, (error, info) => {
 				res.send("send email")

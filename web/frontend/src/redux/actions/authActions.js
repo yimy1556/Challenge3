@@ -82,6 +82,7 @@ const authActions = {
                     Authorization: `Bearer ${tokenLS}`
                 }
             })
+            console.log(response.data.rating);
             dispatch({
                 type: 'LOG_USER',
                 payload: {
@@ -195,15 +196,22 @@ const authActions = {
     },
 
     postContact: (country, city, address, postalCode, phoneNumber, token) => {
-        console.log(country, city, address, postalCode, phoneNumber);
+        console.log(country, city, address, postalCode, phoneNumber, token);
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/direction`, { country, city, address, postalCode, phoneNumber }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
+            console.log(response);
             if (!response.data.success) {
                 toast('Something went wrong')
+            } else {
+                dispatch({
+                    type: 'GET_CONTACT',
+                    payload: { contact: response.data.contact }
+                    // {country: response.data.country, city: response.data.city, address: response.data.address, postalCode: response.data.postalCode, phoneNumber: response.data.phoneNumber}
+                })
             }
 
         }

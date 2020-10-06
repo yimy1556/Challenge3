@@ -8,11 +8,6 @@ import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import authActions from '../redux/actions/authActions'
-import { NavLink } from 'react-router-dom'
-import FacebookIcon2 from '@material-ui/icons/Facebook';
-import TwitterIcon2 from '@material-ui/icons/Twitter';
-import WhatsappIcon2 from '@material-ui/icons/WhatsApp';
-import TelegramIcon2 from '@material-ui/icons/Telegram';
 import { animateScroll as scroll } from 'react-scroll'
 import swal from 'sweetalert';
 import {
@@ -53,22 +48,15 @@ const SelectProduct = (props) => {
         _id: props.match.params.id,
         remeraActual: '', color: '', size: '', cant: 1
     })
+    // RATING
+
 
     const [value, setValue] = useState(0)
-    const ratingNum = props.rating
-    var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
-    const [revandstars, setRevandstars] = useState({
-        stars: props.product.stars,
-        reviews: props.product.reviews
-    })
+
     useEffect(() => {
         scrollToTop()
+        rickyfort()
         const productId = props.match.params.id
-        setRevandstars({
-            ...revandstars,
-            stars: arrayFiltrado[0].stars,
-            reviews: arrayFiltrado[0].reviews
-        })
         props.upViews(productId)
         props.selectProductId(productId)
             .then(prodc => {
@@ -81,22 +69,24 @@ const SelectProduct = (props) => {
                     price: prodc.price
                 })
             })
-    }, [props.match.params.id])
+    }, [props.match.params.id, props.productRating.stars])
 
-    const ratingSet = () => {
-        alert(value)
-        const productId = props.match.params.id
+    var arrayFiltrado2 = props.productRating.productId === props.match.params.id
 
-        props.postRating(productId, value, props.userlogged.token)
-        swal({
-            title: 'Pyral',
-            text: 'The rating was sent successfully!',
-            buttons: {
-                confirm: true,
-            }
-        })
+    const rickyfort = () => {
+
+        if (!arrayFiltrado2) {
+            return arrayFiltrado2 = arrayFiltrado
+        }
 
     }
+
+
+    const sendRating = () => {
+        props.postRating(props.match.params.id, value, props.userlogged.token)
+        props.mandarRating(props.match.params.id, value)
+    }
+
     const addProducts = () => {
         console.log(prod.size === "")
         if (prod.size === "") {
@@ -105,151 +95,151 @@ const SelectProduct = (props) => {
             props.addProduct(prod)
             setBottom(!bottom)
         }
-
     }
+    var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
+
+
+    console.log(arrayFiltrado2);
 
     const scrollToTop = () => {
         scroll.scrollToTop();
     }
 
+    console.log(props.product);
+    console.log(props.productRating);
 
     if (product === {}) return <></>
-    props.product.map(product => console.log(`${product.stars}`))
+    // props.product.map(product => console.log(`${product.stars}`))
     return (<>
         <Header bott={bottom} />
-        <div style={{ display: 'flex', justifyContent: 'space-around', padding: '3em' }}>
-            <div style={{ display: 'flex' }}>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
-                    src={vari.photo} alt={vari.title} style={{ width: '3em', height: '4em' }} />)}
+        <div style={{ display: 'flex', justifyContent: 'space-evenly', padding: '0.1em 1em ' }}>
+
+            <div style={{ display: 'flex', width: '50vw', justifyContent: 'center' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '5em' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
+                    src={vari.photo} alt={vari.title} style={{ width: '4em', height: '5em' }} />)}
                 </div>
 
                 <SideBySideMagnifier
                     className="input-position"
-                    style={{ width: '28vw', height: '76vh' }}
+                    style={{ width: '31vw' }}
                     imageSrc={prod?.remeraActual}
                     mouseActivation={MOUSE_ACTIVATION.CLICK}
-                    overlayOpacity={0.2}
+                    overlayOpacity={0.4}
                     alwaysInPlace={true}
-                    fillGap={true}
+                    fillGap={false}
                     cursorStyle={'SideBySideMagnifier'}
                 />
 
 
             </div>
-            <div style={{ width: '50vw', height: '76vh' }}>
+            <div style={{ width: '50vw', padding: '2em', justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', paddingRight: '7em' }}>
                     <h3>{product.title}</h3>
                     <h3>${product.price}</h3>
                 </div>
-                <div style={{ display: 'flex' }}>
-                    <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                    <p>{arrayFiltrado[0].reviews} reviews</p>
-                </div>
-
-                <p style={{ maxWidth: '20em', padding: '20px 0' }}>{product.description}</p>
+                {!arrayFiltrado2 ?
+                    <div style={{ display: 'flex' }}>
+                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                        <p>{arrayFiltrado[0].reviews} reviews</p>
+                    </div>
+                    :
+                    <div style={{ display: 'flex' }}>
+                        <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                        <p>{props.productRating.reviews} reviews</p>
+                    </div>
+                }
+                <p style={{ maxWidth: '80%', padding: '20px 0' }}>{product.description}</p>
 
                 <div style={{ display: 'flex', flexDirection: 'column' }} >
-                    <label>Size</label>
+                    <h5>Size</h5>
                     <select name="size" id="size" onChange={(e) => setProd({ ...prod, size: e.target.value })}>
                         <option >Choose the size</option>
                         {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <option>{vari.size}</option>)}
                     </select>
                 </div>
-                <WhatsappShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag={`${product.title}`}
-                >
-                    <WhatsappIcon style={{ widht: '2vw' }} />
-                </WhatsappShareButton>
-                <FacebookShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag={`${product.title}`}
-                >
-                    <FacebookIcon style={{ widht: '2vw' }} />
-                </FacebookShareButton>
-                <TwitterShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#camperstribe"
-                >
-                    <TwitterIcon style={{ widht: '2vw' }} />
-                </TwitterShareButton>
-                <TelegramShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#camperstribe"
-                >
-                    <TelegramIcon style={{ widht: '2vw' }} />
-                </TelegramShareButton>
-                <WhatsappShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag={`${product.title}`}
-                >
-                    <WhatsappIcon2 style={{ fontSize: 40 }} />
-                </WhatsappShareButton>
-                <FacebookShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag={`${product.title}`}
-                >
-                    <FacebookIcon2 style={{ fontSize: 40 }} />
-                </FacebookShareButton>
-                <TwitterShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#camperstribe"
-                >
-                    <TwitterIcon2 style={{ fontSize: 40 }} />
-                </TwitterShareButton>
-                <TelegramShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#camperstribe"
-                >
-                    <TelegramIcon2 style={{ fontSize: 40 }} />
-                </TelegramShareButton>
-                {(prod.size !== '' || prod.size !== 'Choose the size') &&
-                    <h3>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</h3>}
 
-                <button onClick={() => addProducts()} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
+                <div style={{ margin: '1em 0' }}>
+                    <h6>Share this product:</h6>
+                    <WhatsappShareButton
+                        url={"https://scapeteamred.herokuapp.com/"}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag={`${product.title}`}
+                    >
+                        <WhatsappIcon size={30} round={true} />
+                    </WhatsappShareButton>
+                    <FacebookShareButton
+                        url={"https://scapeteamred.herokuapp.com/"}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag={`${product.title}`}
+                    >
+                        <FacebookIcon size={30} round={true} />
+                    </FacebookShareButton>
+                    <TwitterShareButton
+                        url={"https://scapeteamred.herokuapp.com/"}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag="#camperstribe"
+                    >
+                        <TwitterIcon size={30} round={true} />
+                    </TwitterShareButton>
+                    <TelegramShareButton
+                        url={"https://scapeteamred.herokuapp.com/"}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag="#camperstribe"
+                    >
+                        <TelegramIcon size={35} round={true} />
+                    </TelegramShareButton>
+                </div>
+
+                {(prod.size !== '' || prod.size !== 'Choose the size') &&
+                    <>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</>}
+
+                <button onClick={() => addProducts()} className="addToCart" style={{ margin: '1em 5em 0 0', }}>Add to cart</button>
             </div>
         </div>
-        <ScrollProducts />
-        <div>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <h3 >Reviews</h3>
+
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '4em' }}>
+            <h3 >Reviews</h3>
+            {!arrayFiltrado2 ?
                 <div style={{ display: 'flex' }}>
                     <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
                     <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
                     <p>{arrayFiltrado[0].reviews} reviews</p>
                 </div>
-            </div>
-            <div style={{ display: 'flex' }}>
-                {props.userlogged.token &&
-                    <>
-                        {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 &&
-                            <>
-                                <Box component="fieldset" mb={3} borderColor="transparent">
-                                    <Typography component="legend">Rating</Typography>
-                                    <Rating
-                                        name="simple-controlled"
-                                        value={value}
-                                        onChange={(event, newValue) => {
-                                            setValue(newValue);
+                :
+                <div style={{ display: 'flex' }}>
+                    <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
+                    <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    <p>{props.productRating.reviews} reviews</p>
+                </div>
+            }
+        </div>
+        <div style={{ display: 'flex' }}>
+            {props.userlogged.token &&
+                <>
+                    {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 &&
+                        <>
+                            <Box component="fieldset" mb={3} borderColor="transparent">
+                                <Typography component="legend">Rating</Typography>
+                                <Rating
+                                    name="simple-controlled"
+                                    value={value}
+                                    onChange={(event, newValue) => {
+                                        setValue(newValue)
 
-                                        }}
-                                        style={{ color: 'black' }}
-                                    />
+                                    }}
+                                    style={{ color: 'black' }}
+                                />
 
-                                </Box>
-                                <button onClick={ratingSet}>Send Rating</button>  </>}
-                    </>
-                }
-            </div>
+                            </Box>
+                            <button onClick={sendRating}>Send Rating</button>  </>}
+                </>
+            }
+        </div>
+        <ScrollProducts />
+        <div>
+
+
             <div style={{ display: 'flex', padding: '50px' }}>
                 <div className="fotosHome" style={{ backgroundImage: `url(${mens})`, height: '40vw', width: '41vw' }}></div>
                 <div style={{ width: '60vw', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', }}>
@@ -269,6 +259,7 @@ const mapDispatchToProps = {
     selectProductId: itemActions.selectProductId,
     addProduct: shoppingCartActions.addProduct,
     postRating: authActions.rating,
+    mandarRating: itemActions.rating,
     upViews: itemActions.upViews
 }
 
@@ -277,6 +268,7 @@ const mapStateToProps = state => {
         rating: state.authReducer.rating,
         productId: state.authReducer.productId,
         product: state.itemReducer.product,
+        productRating: state.itemReducer.rating,
         userlogged: state.authReducer,
 
     }
