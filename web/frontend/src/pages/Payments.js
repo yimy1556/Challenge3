@@ -55,36 +55,40 @@ const Shipping = (props) => {
                 <h2 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>Payment</h2>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-around', background: '#EEEEEE' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', width: '60vw', margin: '0 auto', padding: '3em 0' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', width: '60vw', margin: '0 auto', padding: '0em 0 3em 0' }}>
 
-                    <h3 style={{ textAlign: 'left' }}>How do you want to pay?</h3>
+
                     <div className="payLogoContainer">
-                        {!flagPayPal &&
+                        <h3 style={{ textAlign: 'left', padding: '1em 0', fontSize: '2.2em' }}>How do you want to pay?</h3>
+                        {!flagPayPal && !flagCreditCard &&
                             <>
                                 <div className="payLogo">
                                     <img src={logoCash} >
                                     </img>
-                                    <p>Cash</p>
+                                    <h4>Cash</h4>
                                 </div>
                             </>}
                         {!flagPayPal &&
                             <><div className="payLogo" onClick={() => { setFlagCreditCard(!flagCreditCard) }}>
                                 <img src={logoCards} >
                                 </img>
-                                <p>Credit Card</p>
+                                <h4>Credit Card</h4>
                             </div> </>}
-                        <div className="payLogo" onClick={() => { setFlagPayPal(!flagPayPal) }}>
+                        {!flagCreditCard && <div className="payLogo" onClick={() => { setFlagPayPal(!flagPayPal) }}>
                             <img src={logoPayPal}>
                             </img>
-                            <p>PayPal</p>
+                            <h4>PayPal</h4>
                         </div>
+                        }
+                        {flagPayPal && (
+                            <PayPal total={compraTotal(props.listProduct)} redirect={redirect} />
+                        )}
+                        {flagCreditCard && (
+                            <CreditCard total={compraTotal(props.listProduct)} />
+                        )}
                     </div>
-                    {flagCreditCard && (
-                        <CreditCard total={compraTotal(props.listProduct)} />
-                    )}
-                    {flagPayPal && (
-                        <PayPal total={compraTotal(props.listProduct)} redirect={redirect} />
-                    )}
+
+
 
                 </div>
                 <div style={{ backgroundColor: '#F5F5F5', width: '30vw', height: '70vh', padding: '20px 40px', marginRight: '5em' }}>

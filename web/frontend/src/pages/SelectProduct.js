@@ -120,7 +120,7 @@ const SelectProduct = (props) => {
                     className="input-position"
                     style={{ width: '31vw' }}
                     imageSrc={prod?.remeraActual}
-                    mouseActivation={MOUSE_ACTIVATION.CLICK}
+
                     overlayOpacity={0.4}
                     alwaysInPlace={true}
                     fillGap={false}

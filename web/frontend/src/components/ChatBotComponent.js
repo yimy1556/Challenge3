@@ -16,7 +16,7 @@ class ChatBotComponent extends React.Component {
     }
     theme = {
         background: '#f5f8fb',
-        fontFamily: 'Helvetica Neue',
+        fontFamily: 'Roboto',
         headerBgColor: ' #111111',
         headerFontColor: '#fff',
         headerFontSize: '15px',
@@ -41,7 +41,7 @@ class ChatBotComponent extends React.Component {
                             },
                             {
                                 id: '2',
-                                message: ' what is your name?',
+                                message: ' What\'s your name?',
                                 trigger: '3',
                             },
                             {
