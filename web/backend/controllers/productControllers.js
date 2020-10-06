@@ -67,7 +67,16 @@ const productController = {
             .then(() => res.json({ success: true, response: 'The data has been modified successfully' }))
             .catch(error => res.json({ success: false, error }))
     },
-
+    updateListProduct: (req, res) => {
+        const listProduct = req.body.listProduct
+        listProduct.map(async (product) => {
+            const pro = await Product.findOne({_id:product._id})
+            const variant = pro.variants.filter(vari => (vari.color === product.color && vari.size === product.size))
+            var poc = pro.variants.indexOf(variant[0])
+            pro.variants[poc].stock = Number(pro.variants[poc].stock) - product.cant
+            await Product.update({_id:pro._id}, pro)
+        })
+    },
     //Select product by "id"
     getSelectProductId: async (req, res) => {
         var id = req.params.id
