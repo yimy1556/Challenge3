@@ -183,7 +183,7 @@ const userController = {
 				<h1 style="background-color: whitesmoke; color: rgb(2, 2, 2); margin: 0px; padding: 15px;">Welcome to Pyral</h1>
 			  </div>
 			  <div style="text-align: center; background-image: url('https://images.pexels.com/photos/2951457/pexels-photo-2951457.jpeg?cs=srgb&dl=pexels-eben-odonkor-2951457.jpg&fm=jpg');
-			   height: 81.5vh; background-position: center; background-repeat: no-repeat; background-size:100%; margin: 0px;">
+			   height: 70vh; background-position: center; background-repeat: no-repeat; background-size:100%; margin: 0px;">
 			  <button style="margin-top: 45vh; background-color: black; color: whitesmoke; padding: 10px; font-size: 30px; border-color: black;">
 			  <a href="http://localhost:3000/shop" style="text-decoration: none; color: whitesmoke;">Go Shop!</a>
 			  </button>

@@ -247,9 +247,15 @@ height: 60%;
   margin: 3em;
 }
 
-.continue{
+.continue, #buyButton{
   border:none;
   background: #111111;
   color: white;
   padding: 0.6em;
 }
+#buyButton a{
+  text-decoration: none;
+  background: none;
+  color: white;
+}
+

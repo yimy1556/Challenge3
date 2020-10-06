@@ -47,6 +47,10 @@ const Shipping = (props) => {
     const handleClose = () => {
         setOpen(false);
     };
+    console.log(props.history)
+    const redirect = destiny => {
+        props.history.push(destiny)
+    }
     return (
 
         <>
@@ -83,7 +87,7 @@ const Shipping = (props) => {
                         <CreditCard total={compraTotal(props.listProduct)} />
                     )}
                     {flagPayPal && (
-                        <PayPal total={compraTotal(props.listProduct)} />
+                        <PayPal total={compraTotal(props.listProduct)} redirect={redirect} />
                     )}
 
                 </div>

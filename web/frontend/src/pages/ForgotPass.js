@@ -1,9 +1,11 @@
-
 import React from 'react'
 import { connect } from 'react-redux'
 import authActions from '../redux/actions/authActions'
 import { animateScroll as scroll } from 'react-scroll'
 import Swal from 'sweetalert2'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import '../styles/forgotPass.css'
 
 class ForgotPass extends React.Component {
 
@@ -14,7 +16,6 @@ class ForgotPass extends React.Component {
     scrollToTop() {
         scroll.scrollToTop();
     }
-
 
     state = {
         email: "",
@@ -65,22 +66,22 @@ class ForgotPass extends React.Component {
     render() {
         return (
             <>
-                <h3 className="title">Change your password</h3>
-
-                <div style={{ marginTop: "2rem", marginBottom: "2rem" }} className="signContainer">
-                    <h4 style={{ color: "whitesmoke", textAlign: "center", fontSize: "3rem", margin: "2rem" }}></h4>
-                    <div className="inputs">
-                        <span className={this.state.error === "" ? "" : "logError"}>{this.state.error}</span>
-                        <input className="account" onChange={this.getForm} name="email" type="text" placeholder="Your email"></input>
-                        <button disabled={this.state.disabled} style={{ margin: "auto" }} className="send" onClick={this.submit}>Submit</button>
+                <Header />
+                <div id="container__primary" >
+                    <p id="title__container" >Enter your recovery email address:</p>
+                    <div id="container__form" className="signContainer">
+                        <div>
+                            <span className={this.state.error === "" ? "" : "logError"}>{this.state.error}</span>
+                            <input className="account" onChange={this.getForm} name="email" type="text" placeholder="Your email"></input>
+                            <button disabled={this.state.disabled} onClick={this.submit}>Send new password.</button>
+                        </div>
                     </div>
                 </div>
-
+                <Footer />
             </>
         )
     }
 }
-
 
 const mapDispatchToProps = {
     sendMail: authActions.sendMail

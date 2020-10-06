@@ -5,9 +5,16 @@ import Newsletter from '../components/Newsletter'
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import { animateScroll as scroll } from 'react-scroll'
+import GooglePlay from '../images/google-play-badge.svg'
 
 
 class Footer extends React.Component {
+
+    scrollToTop() {
+        scroll.scrollToTop();
+    }
 
     render() {
         const logo = require('../images/pyral.png')
@@ -15,32 +22,49 @@ class Footer extends React.Component {
         return (
             <>
                 <footer >
-
-                    <div>
-                        <NavLink to="/" className="brand"><h1>Pyral</h1></NavLink>
-                    </div>
-                    <div className="container__items__footer">
-                        <div>
+                    <div id="container__links__news__scroll__footer">
+                        <div id="logo__footer">
+                            <NavLink to="/">Pyral</NavLink>
+                        </div>
+                        <div id="links__footer__one">
+                            <span>Site</span>
                             <NavLink to="/">Home</NavLink>
                             <NavLink to="/about">About</NavLink>
                             <NavLink to="/shop">Shop</NavLink>
                             <NavLink to="/faqs">FAQs</NavLink>
                         </div>
-                        <div className="container__icons__social" >
-                            <div> <NavLink to="/" id="icon__whatsapp"><WhatsAppIcon style={{ color: 'white', fontSize: 35 }} /></NavLink></div>
-                            <div> <NavLink to="/" ><InstagramIcon style={{ color: 'white', fontSize: 35 }} /></NavLink></div>
-                            <div><NavLink to="/" ><FacebookIcon style={{ color: 'white', fontSize: 35 }} /></NavLink></div>
+                        <div id="links__footer__two">
+                            <span>Team</span>
+                            <NavLink to="/">Yimy</NavLink>
+                            <NavLink to="/about">Ale</NavLink>
+                            <NavLink to="/shop">Pau</NavLink>
+                            <NavLink to="/faqs">Luu</NavLink>
+                            <NavLink to="/faqs">Rus</NavLink>
                         </div>
-
+                        <div id="news__rowScroll">
+                            <div>
+                                <Newsletter />
+                            </div>
+                            <div>
+                                <ArrowUpwardIcon style={{ backgroundColor: 'white', borderRadius: '50%', fontSize: '2.5rem' }} onClick={this.scrollToTop} />
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <Newsletter />
+                    <div id="icons__social">
+                        <div>
+                            <NavLink to="/" ><WhatsAppIcon style={{ color: 'white', fontSize: '35px' }} /></NavLink>
+                            <NavLink to="/" ><InstagramIcon style={{ color: 'white', fontSize: '35px' }} /></NavLink>
+                            <NavLink to="/" ><FacebookIcon style={{ color: 'white', fontSize: '35px' }} /></NavLink>
+                        </div>
+                        <div>
+                            <img src={GooglePlay}></img>
+                        </div>
+                    </div>
+                    <hr id="hr"></hr>
+                    <div id="reserved__footer">
+                        <span>© Pyral, A mindhub Company  -  All rights reserved</span>
                     </div>
                 </footer>
-                <div className="all__reserved">
-                    <hr className="hr" />
-                    <span>© Pyral, A mindhub Company  -  All rights reserved</span>
-                </div>
 
             </>
         )
