@@ -26,33 +26,52 @@ const Buy = (props) => {
                 <div>
 
                     <div id="buyCloth">
-                        {props.listProduct.map(prod => <ItemCarrito product={prod} render={render} setRender={setRender} />)}
+                        <div style={{ width: '50%' }}>
+                            {props.listProduct.map(prod => <ItemCarrito product={prod} render={render} setRender={setRender} />)}
 
-                        <div id="totalPrecio">
-                            <p>Total</p>
-                            <p>{compraTotal(props.listProduct)}</p>
+                            <div id="totalPrecio">
+                                <p>Total</p>
+                                <p>${compraTotal(props.listProduct)}</p>
+                            </div>
                         </div>
+                        <NavLink to="/shipping"> <button className="continue">Continue</button></NavLink>
                     </div>
-                    <NavLink to="/shipping">  <button>Continue</button></NavLink>
+
                 </div>
-                <div style={{ backgroundColor: '#F5F5F5', width: '30vw', height: '70vh', padding: '20px 40px' }}>
+                <div style={{ backgroundColor: '#F5F5F5', width: '30vw', height: '70vh', padding: '20px 40px', marginRight: '5em' }}>
                     <h3 style={{ textAlign: 'center' }}>Purchase summary</h3>
                     <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                            {props.listProduct.map(prod => <p>Products({prod.cant}) </p>)}
-                            <p>${compraTotal(props.listProduct)}</p>
-                        </div>
+
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        {props.listProduct.map(prod => <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}> <p>{prod.title} {prod.color} ({prod.cant}) </p>
+                            <p>${prod.price * prod.cant}</p>
+                        </div>)}
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <p>Shipping</p>
-                        <p>$100</p>
-                    </div>
-                    <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <h4>Total</h4>
-                        <h4>${compraTotal(props.listProduct) + 100} </h4>
-                    </div>
+
+                    {compraTotal(props.listProduct) > 250 ?
+                        <>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', textDecoration: 'line-through' }}>
+                                <p>Shipping</p>
+                                <p>$36</p>
+                            </div> <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <h4>Total</h4>
+                                <h4>${compraTotal(props.listProduct)} </h4>
+                            </div>
+                        </> :
+                        <>
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <p>Shipping</p>
+                                <p>$36</p>
+                            </div>
+                            <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <h4>Total</h4>
+                                <h4>${compraTotal(props.listProduct) + 36}  </h4>
+                            </div>
+                        </>
+                    }
+
                 </div>
             </div>
             <Footer />

@@ -112,10 +112,10 @@ const SelectProduct = (props) => {
     // props.product.map(product => console.log(`${product.stars}`))
     return (<>
         <Header bott={bottom} />
-        <div style={{ display: 'flex', justifyContent: 'space-evenly', padding: '1em 2em ' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-evenly', padding: '0.1em 1em ' }}>
 
-            <div style={{ display: 'flex', alignItems: 'center', width: '50vw', justifyContent: 'center' }}>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
+            <div style={{ display: 'flex', width: '50vw', justifyContent: 'center' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '5em' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
                     src={vari.photo} alt={vari.title} style={{ width: '4em', height: '5em' }} />)}
                 </div>
 
@@ -132,7 +132,7 @@ const SelectProduct = (props) => {
 
 
             </div>
-            <div style={{ width: '50vw', padding: '2em', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ width: '50vw', padding: '2em', justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', paddingRight: '7em' }}>
                     <h3>{product.title}</h3>
@@ -152,33 +152,35 @@ const SelectProduct = (props) => {
                 <p style={{ maxWidth: '80%', padding: '20px 0' }}>{product.description}</p>
 
                 <div style={{ display: 'flex', flexDirection: 'column' }} >
-                    <label>Size</label>
+                    <h5>Size</h5>
                     <select name="size" id="size" onChange={(e) => setProd({ ...prod, size: e.target.value })}>
+                        <option >Choose the size</option>
                         {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <option>{vari.size}</option>)}
                     </select>
                 </div>
 
-                <div>
+                <div style={{ margin: '1em 0' }}>
+                    <h6>Share this product:</h6>
                     <WhatsappShareButton
                         url={"https://scapeteamred.herokuapp.com/"}
                         quote={"CampersTribe - World is yours to explore"}
                         hashtag={`${product.title}`}
                     >
-                        <WhatsappIcon size={35} round={true} />
+                        <WhatsappIcon size={30} round={true} />
                     </WhatsappShareButton>
                     <FacebookShareButton
                         url={"https://scapeteamred.herokuapp.com/"}
                         quote={"CampersTribe - World is yours to explore"}
                         hashtag={`${product.title}`}
                     >
-                        <FacebookIcon size={35} round={true} />
+                        <FacebookIcon size={30} round={true} />
                     </FacebookShareButton>
                     <TwitterShareButton
                         url={"https://scapeteamred.herokuapp.com/"}
                         quote={"CampersTribe - World is yours to explore"}
                         hashtag="#camperstribe"
                     >
-                        <TwitterIcon size={35} round={true} />
+                        <TwitterIcon size={30} round={true} />
                     </TwitterShareButton>
                     <TelegramShareButton
                         url={"https://scapeteamred.herokuapp.com/"}
@@ -192,7 +194,7 @@ const SelectProduct = (props) => {
                 {(prod.size !== '' || prod.size !== 'Choose the size') &&
                     <>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</>}
 
-                <button onClick={() => addProducts()} className="addToCart" style={{ margin: '1em auto', }}>Add to cart</button>
+                <button onClick={() => addProducts()} className="addToCart" style={{ margin: '1em 5em 0 0', }}>Add to cart</button>
             </div>
         </div>
 

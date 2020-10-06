@@ -56,16 +56,19 @@
 }
 
 #buyCloth{
-    width: 30vw;
+    width: 60vw;
     margin-top: 5vh;
-    background-color: whitesmoke;
     padding: 2vh 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #unelEmentoCarrito{
     display: flex;
     justify-content: space-between;
     color: black;
+    background: white;
     border-bottom: 1px solid #D8D8D8;
     padding-bottom: 2vh;
 }
@@ -94,7 +97,7 @@
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-margin: 1vh auto;
+margin: 1vh ;
 }
 
 
@@ -124,10 +127,11 @@ margin: 1vh ;
 
 #totalPrecio{
     display: flex;
-    width: 70%;
     color: black;
+    border-bottom: 2px black solid;
     justify-content: space-between;
-    padding-top: 2vh;
+    padding: 2vh 0 1vh 0;
+    margin-bottom: 1em;
     font-weight: bold;
 }
 
