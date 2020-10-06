@@ -1,15 +1,20 @@
 import React, { useEffect, useRef } from 'react'
 import Header from '../components/Header'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-
+import { connect } from 'react-redux'
+import shoppingCartActions from '../redux/actions/shoppingCartActions'
 const Success = (props) => {
 
     function sumarDias(fecha, dias) {
         fecha.setDate(fecha.getDate() + dias);
         return fecha;
     }
+    useEffect(()=>{
+        props.removeListProduct()
+    },[])
+
     var d = new Date();
-    console.log(d.date)
+
     return (
         <>
             <Header />
@@ -27,5 +32,8 @@ const Success = (props) => {
         </>
     )
 }
+const mapDispatchToProps = {
+    removeListProduct: shoppingCartActions.removeListProduct
+}
 
-export default Success
+export default connect(null, mapDispatchToProps)(Success)

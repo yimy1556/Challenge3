@@ -67,13 +67,16 @@ const shoppingCartActions = {
             payload: updateListProduct
         })
     },
+    removeListProduct: () => (dispatch, getState) => {
+        dispatch({
+            type: 'REMOVE_LIST_PRODUCT'
+        })
+    },
     finishBuying: () => async (dispatch, getState) => {
         const { listProduct } = getState().shoppingCartReducer
-        console.log('paso por aqui',listProduct)
         const response = await axios.put(path + `/finishBuying`, {listProduct})
-        localStorage.removeItem("carrito")
-        localStorage.setItem("carito", JSON.stringify([]))
-        dispatch({ type: 'FINISH', payload: [] })
+        console.log('yimi paso por aqui')
+        dispatch({type:'ADD_PRODUCT',})
     },
     forcedCart: (cart) => (dispatch, getState) => {
         const cartParse = JSON.parse(cart)
