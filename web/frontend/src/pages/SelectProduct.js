@@ -29,6 +29,7 @@ import {
 } from "react-share";
 import ScrollProducts from '../components/ScrollProduts'
 import mens from '../images/mens.jpg'
+import ChatBotComponent from '../components/ChatBotComponent'
 
 
 const SelectProduct = (props) => {
@@ -214,7 +215,7 @@ const SelectProduct = (props) => {
             </div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '4em' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1em' }}>
             <h3 >Reviews</h3>
             {!arrayFiltrado2 ?
                 <div style={{ display: 'flex' }}>
@@ -253,6 +254,7 @@ const SelectProduct = (props) => {
             }
         </div>
         <ScrollProducts />
+        <ChatBotComponent />
         <div>
 
 

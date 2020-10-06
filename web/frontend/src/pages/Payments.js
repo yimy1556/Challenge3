@@ -5,9 +5,7 @@ import PayPal from '../components/PayPal'
 import ItemCarrito from '../components/ItemCarrito'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+import payment from '../images/payment.png'
 import banner from '../images/bannerShop.jpg'
 import CreditCard from '../components/CreditCard'
 import logoPayPal from '../images/paypal.png'
@@ -55,7 +53,7 @@ const Shipping = (props) => {
 
         <>
             <Header />
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${banner})`, width: '100%', height: '25vh', backgroundPosition: 'center 35%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${payment})`, width: '100%', height: '30vh', backgroundPosition: 'center 35%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                 <h2 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>Payment</h2>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-around', background: '#EEEEEE' }}>
@@ -126,6 +124,8 @@ const Shipping = (props) => {
                     }
                 </div>
             </div>
+
+
             <Footer />
         </>
     )

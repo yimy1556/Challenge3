@@ -24,7 +24,7 @@ const Header = (props) => {
                                 <NavLink to="/shop">Shop</NavLink>
                                 <NavLink to="/profile"><PersonIcon style={{ color: 'black', fontSize: 40 }}></PersonIcon><span style={{ textTransform: 'capitalize', fontSize: '0.8em' }}>{props.userlogged.firstName}</span> </NavLink>
                             </div>
-                            <Carrito />
+                            <Carrito bott={props.bott} />
                         </>
                         :
                         <>
