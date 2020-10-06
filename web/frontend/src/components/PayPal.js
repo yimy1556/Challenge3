@@ -1,4 +1,6 @@
 import React, { useEffect, useRef } from 'react'
+import { connect } from 'react-redux'
+import shoppingCartActions from '../redux/actions/shoppingCartActions'
 
 const PayPal = (props) => {
     const paypal = useRef()
@@ -21,8 +23,8 @@ const PayPal = (props) => {
             },
             onApprove: async (data, actions) => {
                 const order = await actions.order.capture()
+                props.finishBuying()
                 props.redirect('success')
-
             },
             onError: (err) => {
                 console.log(err)
@@ -37,4 +39,8 @@ const PayPal = (props) => {
     )
 }
 
-export default PayPal
+const mapDispatchToProps = {
+    finishBuying: shoppingCartActions.finishBuying
+}
+
+export default connect(null, mapDispatchToProps)(PayPal)

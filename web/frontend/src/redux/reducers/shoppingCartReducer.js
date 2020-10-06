@@ -14,6 +14,11 @@ const shoppingCartReducer = (state = initialState, action) => {
                 ...state,
                 listProduct: action.payload
             }
+        case 'FINISH':
+            return {
+                ...state,
+                listProduct: action.payload
+            }
         default:
             return state
     }

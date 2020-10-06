@@ -54,7 +54,6 @@ const Carrito = (props) => {
                 {props.listProduct.length == 0 ?
 
                     <>
-
                         <div className="cartEmpty" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', }}>
                             <h4 style={{ color: '#111111' }} >Your cart is empty</h4>
                             <p style={{ color: '#111111' }}>Not sure what to buy? Thousands of products await you!</p>

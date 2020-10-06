@@ -1,3 +1,6 @@
+import axios from 'axios'
+var path = `http://localhost:4000/api`
+
 const key1 = ['_id', 'size', 'color']
 const key2 = ['size', 'color']
 
@@ -64,8 +67,12 @@ const shoppingCartActions = {
             payload: updateListProduct
         })
     },
-    finishBuying: () => (dispatch, getState) => {
-        /// agregar alerta     
+    finishBuying: () => async (dispatch, getState) => {
+        const { listProduct } = getState().shoppingCartReducer
+        console.log('paso por aqui',listProduct)
+        const response = await axios.put(path + `/finishBuying`, {listProduct})
+        localStorage.removeItem("carrito")
+        localStorage.setItem("carito", JSON.stringify([]))
         dispatch({ type: 'FINISH', payload: [] })
     },
     forcedCart: (cart) => (dispatch, getState) => {
