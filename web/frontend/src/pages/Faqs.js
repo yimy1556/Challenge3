@@ -24,7 +24,7 @@ export default function Faqs() {
   return (
     <>
       <Header></Header>
-      <div className="container__super__faqs" style={{ borderTop: '1px solid black' }}>
+      <div className="container__super__faqs" style={{ borderTop: '1px solid #111111' }}>
         <p id="title_accordeon">FREQUENTLY ASKED QUESTIONS</p>
         <div className="container__accordion">
           <Accordion>

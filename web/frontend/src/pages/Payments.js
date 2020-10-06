@@ -5,7 +5,7 @@ import PayPal from '../components/PayPal'
 import ItemCarrito from '../components/ItemCarrito'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
-import payment from '../images/payment.png'
+import payment from '../images/payment.jpg'
 import banner from '../images/bannerShop.jpg'
 import CreditCard from '../components/CreditCard'
 import logoPayPal from '../images/paypal.png'

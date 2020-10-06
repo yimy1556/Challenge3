@@ -11,9 +11,6 @@ import authActions from '../redux/actions/authActions'
 import { animateScroll as scroll } from 'react-scroll'
 import swal from 'sweetalert';
 import {
-    MagnifierContainer,
-    MagnifierPreview,
-    MagnifierZoom,
     SideBySideMagnifier,
     MOUSE_ACTIVATION,
 } from "react-image-magnifiers";
@@ -43,14 +40,13 @@ const SelectProduct = (props) => {
         })
         return variantsAux
     }
+    const variantsAux = []
     const [bottom, setBottom] = useState(true)
     const [product, setProduct] = useState({})
     const [prod, setProd] = useState({
         _id: props.match.params.id,
         remeraActual: '', color: '', size: '', cant: 1
     })
-    // RATING
-
 
     const [value, setValue] = useState(0)
 
@@ -141,12 +137,12 @@ const SelectProduct = (props) => {
                 </div>
                 {!arrayFiltrado2 ?
                     <div style={{ display: 'flex' }}>
-                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
                         <p>{arrayFiltrado[0].reviews} reviews</p>
                     </div>
                     :
                     <div style={{ display: 'flex' }}>
-                        <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                        <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
                         <p>{props.productRating.reviews} reviews</p>
                     </div>
                 }
@@ -204,13 +200,13 @@ const SelectProduct = (props) => {
             {!arrayFiltrado2 ?
                 <div style={{ display: 'flex' }}>
                     <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
-                    <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
                     <p>{arrayFiltrado[0].reviews} reviews</p>
                 </div>
                 :
                 <div style={{ display: 'flex' }}>
                     <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
-                    <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
                     <p>{props.productRating.reviews} reviews</p>
                 </div>
             }
@@ -229,7 +225,7 @@ const SelectProduct = (props) => {
                                         setValue(newValue)
 
                                     }}
-                                    style={{ color: 'black' }}
+                                    style={{ color: '#111111' }}
                                 />
 
                             </Box>
