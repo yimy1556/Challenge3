@@ -11,9 +11,6 @@ import authActions from '../redux/actions/authActions'
 import { animateScroll as scroll } from 'react-scroll'
 import swal from 'sweetalert';
 import {
-    MagnifierContainer,
-    MagnifierPreview,
-    MagnifierZoom,
     SideBySideMagnifier,
     MOUSE_ACTIVATION,
 } from "react-image-magnifiers";
@@ -29,6 +26,7 @@ import {
 } from "react-share";
 import ScrollProducts from '../components/ScrollProduts'
 import mens from '../images/mens.jpg'
+import ChatBotComponent from '../components/ChatBotComponent'
 
 
 const SelectProduct = (props) => {
@@ -42,14 +40,13 @@ const SelectProduct = (props) => {
         })
         return variantsAux
     }
+    const variantsAux = []
     const [bottom, setBottom] = useState(true)
     const [product, setProduct] = useState({})
     const [prod, setProd] = useState({
         _id: props.match.params.id,
         remeraActual: '', color: '', size: '', cant: 1
     })
-    // RATING
-
 
     const [value, setValue] = useState(0)
 
@@ -140,17 +137,45 @@ const SelectProduct = (props) => {
                 </div>
                 {!arrayFiltrado2 ?
                     <div style={{ display: 'flex' }}>
-                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
                         <p>{arrayFiltrado[0].reviews} reviews</p>
                     </div>
                     :
                     <div style={{ display: 'flex' }}>
-                        <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                        <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
                         <p>{props.productRating.reviews} reviews</p>
                     </div>
                 }
                 <p style={{ maxWidth: '80%', padding: '20px 0' }}>{product.description}</p>
 
+                <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 10, width: '50%' }}>
+                    <div>
+                        <h5>Colors:</h5>
+                        <div style={{ display: 'flex' }}>
+
+                            {borrarRepe(product.variants).map(variant => {
+                                return (<div id="imagenShopChica2" style={{
+                                    border: `${variant.color === 'White' ? '1px solid black' : ''}`,
+                                    backgroundColor: `${variant.color === 'Wine' ? '#44282D' :
+                                        variant.color === 'Black' ? '#111111' :
+                                            variant.color === 'DarkGrey' ? '#34343D' :
+                                                variant.color === 'White' ? 'whitesmoke' :
+                                                    variant.color === 'Blush' ? '##EFC6B4' :
+                                                        variant.color === 'Flint' ? '#C2B1C1' :
+                                                            variant.color === 'Honeycomb' ? '#C98E2A' :
+                                                                variant.color === 'Paloma' ? '#F2BBBE' :
+                                                                    variant.color === 'Salt' ? '#ECE9E2' :
+                                                                        variant.color === 'Sage' ? '#737B7D' :
+                                                                            variant.color === 'Anchor' ? '#4B4545' :
+                                                                                variant.color === 'Red Rum' ? '#774A47' :
+                                                                                    variant.color === 'Golden Harvest' ? '#E6B968' :
+                                                                                        variant.color === 'Military Moss' ? '#695530' :
+                                                                                            variant.color === 'Grey' ? '#303B4F' : ''}`
+                                }} > </div>)
+                            })}
+                        </div>
+                    </div>
+                </div>
                 <div style={{ display: 'flex', flexDirection: 'column' }} >
                     <h5>Size</h5>
                     <select name="size" id="size" onChange={(e) => setProd({ ...prod, size: e.target.value })}>
@@ -198,18 +223,18 @@ const SelectProduct = (props) => {
             </div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '4em' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1em' }}>
             <h3 >Reviews</h3>
             {!arrayFiltrado2 ?
                 <div style={{ display: 'flex' }}>
                     <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
-                    <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
                     <p>{arrayFiltrado[0].reviews} reviews</p>
                 </div>
                 :
                 <div style={{ display: 'flex' }}>
                     <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
-                    <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
                     <p>{props.productRating.reviews} reviews</p>
                 </div>
             }
@@ -228,7 +253,7 @@ const SelectProduct = (props) => {
                                         setValue(newValue)
 
                                     }}
-                                    style={{ color: 'black' }}
+                                    style={{ color: '#111111' }}
                                 />
 
                             </Box>
@@ -237,6 +262,7 @@ const SelectProduct = (props) => {
             }
         </div>
         <ScrollProducts />
+        <ChatBotComponent />
         <div>
 
 

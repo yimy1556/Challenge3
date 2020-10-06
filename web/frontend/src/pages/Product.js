@@ -46,7 +46,7 @@ const Product = (props) => {
                             <div style={{ display: 'flex' }}>
                                 {variantsAux.map(variant => {
                                     return (<div id="imagenShopChica" onClick={e => cambiarFoto(variant.photo)} style={{
-                                        border: `${variant.color === 'White' ? '1px solid black' : ''}`,
+                                        border: `${variant.color === 'White' ? '1px solid #111111' : ''}`,
                                         backgroundColor: `${variant.color === 'Wine' ? '#44282D' :
                                             variant.color === 'Black' ? '#111111' :
                                                 variant.color === 'DarkGrey' ? '#34343D' :
@@ -81,7 +81,7 @@ const Product = (props) => {
                         <div style={{ display: 'flex' }}>
                             {variantsAux.map(variant => {
                                 return (<div id="imagenShopChica" onClick={e => cambiarFoto(variant.photo)} style={{
-                                    border: `${variant.color === 'White' ? '1px solid black' : ''}`,
+                                    border: `${variant.color === 'White' ? '1px solid #111111' : ''}`,
                                     backgroundColor: `${variant.color === 'Wine' ? '#44282D' :
                                         variant.color === 'Black' ? '#111111' :
                                             variant.color === 'DarkGrey' ? '#34343D' :

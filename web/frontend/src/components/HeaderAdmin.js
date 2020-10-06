@@ -16,7 +16,7 @@ const HeaderAdmin = (props) => {
                         <div style={{ display: 'flex', alignItems: 'center' }}>
                             <NavLink to="/new">New</NavLink>
                             <NavLink to="/modify">Modify</NavLink>
-                            <NavLink to="/profile"> <PersonIcon style={{ color: 'black', fontSize: 40 }}></PersonIcon></NavLink>
+                            <NavLink to="/profile"> <PersonIcon style={{ color: '#111111', fontSize: 40 }}></PersonIcon></NavLink>
                             <NavLink to="/logOut">Logout</NavLink>
                         </div>
                     </>

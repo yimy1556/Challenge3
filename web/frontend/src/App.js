@@ -6,6 +6,7 @@ import About from './pages/About';
 import Buy from './pages/Buy';
 import Shop from './pages/Shop';
 import Profile from './pages/Profile';
+import Success from './pages/Success';
 import SelectProduct from './pages/SelectProduct'
 import ForgotPass from './pages/ForgotPass'
 import AddItem from './pages/AddItem'
@@ -23,7 +24,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import LowNewsletter from './pages/LowNewsletter'
 import Address from './components/Address'
 import Faqs from './pages/Faqs';
-import Shipping from './pages/Shipping';
 import Payments from './pages/Payments';
 
 
@@ -57,7 +57,7 @@ function App(props) {
         <Route path="/profile" component={Profile} />
         <Route path="/lowNewsletter" component={LowNewsletter} />
         <Route path="/buy" component={Buy} />
-        <Route path="/shipping" component={Shipping} />
+        <Route path="/success" component={Success} />
         <Route path="/payments" component={Payments} />
         <Route path="/address" component={Address} />
         <Route path="/faqs" component={Faqs} />

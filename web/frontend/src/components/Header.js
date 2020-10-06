@@ -23,9 +23,9 @@ const Header = (props) => {
                                 <NavLink to="/">Home</NavLink>
                                 <NavLink to="/about">About</NavLink>
                                 <NavLink to="/shop">Shop</NavLink>
-                                <NavLink to="/profile"><PersonIcon style={{ color: 'black', fontSize: 40 }}></PersonIcon><span style={{ textTransform: 'capitalize', fontSize: '0.8em' }}>{props.userlogged.firstName}</span> </NavLink>
+                                <NavLink to="/profile"><PersonIcon style={{ color: '#111111', fontSize: 40 }}></PersonIcon><span style={{ textTransform: 'capitalize', fontSize: '0.8em' }}>{props.userlogged.firstName}</span> </NavLink>
                             </div>
-                            <Carrito />
+                            <Carrito bott={props.bott} />
                         </>
                         :
                         <>
@@ -33,7 +33,7 @@ const Header = (props) => {
                                 <NavLink to="/">Home</NavLink>
                                 <NavLink to="/about">About</NavLink>
                                 <NavLink to="/shop">Shop</NavLink>
-                                <NavLink to="/register"> <PersonIcon style={{ color: 'black', fontSize: 40 }}></PersonIcon></NavLink>
+                                <NavLink to="/register"> <PersonIcon style={{ color: '#111111', fontSize: 40 }}></PersonIcon></NavLink>
 
                             </div>
                             <Carrito bott={props.bott} />
