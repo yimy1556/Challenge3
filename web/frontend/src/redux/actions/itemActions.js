@@ -50,16 +50,16 @@ const itemActions = {
             })
         }
     },
+    
     getCountries: () => {
         return async (dispatch, getState) => {
-            const response = await axios.get('http://127.0.0.1:5000/countries')
+            const response = await axios.get('https://quiet-savannah-25909.herokuapp.com/api/countries')
             var info = response.data
-
+            console.log(info)
             dispatch({
                 type: 'GET_COUNTRIES',
                 payload: info
             })
-
         }
     },
     putVariant: (formItem) => {

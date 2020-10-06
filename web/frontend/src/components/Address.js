@@ -56,7 +56,7 @@ class Address extends React.Component {
     }
 
     render() {
-
+        console.log(this.state)
         return (
             <>
 
@@ -66,19 +66,19 @@ class Address extends React.Component {
                 </div>
                 <div style={{ display: "flex", margin: '4em', justifyContent: "space-around" }}>
                     <div className="loginRegister" style={{ display: "flex", flexDirection: 'column', padding: '1vh 0vh' }}>
-                        <NavLink to="/profile" style={{textDecoration:'none', color:'gray'}}><h3>Profile</h3></NavLink>
-                        <h3>Address<ChevronRightIcon fontSize="medium"/></h3>
+                        <NavLink to="/profile" style={{ textDecoration: 'none', color: 'gray' }}><h3>Profile</h3></NavLink>
+                        <h3>Address<ChevronRightIcon fontSize="medium" /></h3>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', width:'70%'}}>
-                    <h2 style= {{ padding:'1vh 0vh'}}>Your info</h2>
-                    <div>
-                        <div style={{ boxShadow:'-1px 1px 13px -4px rgba(0,0,0,0.15)', padding:'5vh'}}>
-                            <h4>Contact information</h4>
-                            {this.props.userlogged.contact &&
+                    <div style={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
+                        <h2 style={{ padding: '1vh 0vh' }}>Your info</h2>
+                        <div>
+                            <div style={{ boxShadow: '-1px 1px 13px -4px rgba(0,0,0,0.15)', padding: '5vh' }}>
+                                <h4>Contact information</h4>
+                                {this.props.userlogged.contact &&
                                     <>
                                         {this.props.userlogged.contact.map((x) => {
                                             return (
-                                                <div style={{margin: '1vh 0vh'}}>
+                                                <div style={{ margin: '1vh 0vh' }}>
                                                     <p><strong>Country:</strong> {x.country}</p>
                                                     <p><strong>City:</strong> {x.city}</p>
                                                     <p><strong>Address:</strong> {x.address}</p>
@@ -87,24 +87,9 @@ class Address extends React.Component {
                                                     <hr />
                                                 </div>
                                             )
-                                        })} 
+                                        })}
                                     </>
-                                //     :
-                                //     <>
-                                //     {this.props.userlogged.contact.contact.map((x) => {
-                                //         return (
-                                //             <div style={{margin: '1vh 0vh'}}>
-                                //                 <p><strong>Country:</strong> {x.country}</p>
-                                //                 <p><strong>City:</strong> {x.city}</p>
-                                //                 <p><strong>Address:</strong> {x.address}</p>
-                                //                 <p><strong>Postal code:</strong> {x.postalCode}</p>
-                                //                 <p><strong>Phone number:</strong> {x.phoneNumber}</p>
-                                //                 <hr />
-                                //             </div>
-                                //         )
-                                //     })} 
-                                // </>
-                                    }
+                                }
                             </div>
 
                             <div id="divFormulario" style={{ display: 'flex', flexDirection: 'column', boxShadow: '-1px 1px 13px -4px rgba(0,0,0,0.15)', padding: '5vh', margin: '2vh 0vh' }}>
@@ -112,9 +97,9 @@ class Address extends React.Component {
                                 <div style={{ display: 'flex', justifyContent: 'space-between', margin: '2vh' }}>
                                     <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="city" name="city" placeholder="Write your city here" />
                                     <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="address" name="address" placeholder="Write your address here" />
-                                    <select id='country' onChange={this.readContact} style={{ width: '30%' }}>
+                                    <select style={{ width: '30%' }} name="country" onChange={this.readContact} >
                                         {this.props.countries.map(country => {
-                                            return <option>{country.country}</option>
+                                            return <option name="country">{country.country}</option>
                                         })}
                                     </select>
                                 </div>

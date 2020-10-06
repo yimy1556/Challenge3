@@ -8,11 +8,6 @@ import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import authActions from '../redux/actions/authActions'
-import { NavLink } from 'react-router-dom'
-import FacebookIcon2 from '@material-ui/icons/Facebook';
-import TwitterIcon2 from '@material-ui/icons/Twitter';
-import WhatsappIcon2 from '@material-ui/icons/WhatsApp';
-import TelegramIcon2 from '@material-ui/icons/Telegram';
 import { animateScroll as scroll } from 'react-scroll'
 import swal from 'sweetalert';
 import {
@@ -34,6 +29,7 @@ import {
 } from "react-share";
 import ScrollProducts from '../components/ScrollProduts'
 import mens from '../images/mens.jpg'
+import ChatBotComponent from '../components/ChatBotComponent'
 
 
 const SelectProduct = (props) => {
@@ -118,26 +114,27 @@ const SelectProduct = (props) => {
     // props.product.map(product => console.log(`${product.stars}`))
     return (<>
         <Header bott={bottom} />
-        <div style={{ display: 'flex', justifyContent: 'space-around', padding: '3em' }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
-                    src={vari.photo} alt={vari.title} style={{ width: '3em', height: '4em' }} />)}
+        <div style={{ display: 'flex', justifyContent: 'space-evenly', padding: '0.1em 1em ' }}>
+
+            <div style={{ display: 'flex', width: '50vw', justifyContent: 'center' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '5em' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
+                    src={vari.photo} alt={vari.title} style={{ width: '4em', height: '5em' }} />)}
                 </div>
 
                 <SideBySideMagnifier
                     className="input-position"
-                    style={{ width: '28vw', height: '70vh' }}
+                    style={{ width: '31vw' }}
                     imageSrc={prod?.remeraActual}
                     mouseActivation={MOUSE_ACTIVATION.CLICK}
-                    overlayOpacity={0.2}
+                    overlayOpacity={0.4}
                     alwaysInPlace={true}
-                    fillGap={true}
+                    fillGap={false}
                     cursorStyle={'SideBySideMagnifier'}
                 />
 
 
             </div>
-            <div style={{ width: '50vw', height: '70vh' }}>
+            <div style={{ width: '50vw', padding: '2em', justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', paddingRight: '7em' }}>
                     <h3>{product.title}</h3>
@@ -154,93 +151,98 @@ const SelectProduct = (props) => {
                         <p>{props.productRating.reviews} reviews</p>
                     </div>
                 }
-                <p style={{ maxWidth: '20em', padding: '20px 0' }}>{product.description}</p>
+                <p style={{ maxWidth: '80%', padding: '20px 0' }}>{product.description}</p>
 
                 <div style={{ display: 'flex', flexDirection: 'column' }} >
-                    <label>Size</label>
+                    <h5>Size</h5>
                     <select name="size" id="size" onChange={(e) => setProd({ ...prod, size: e.target.value })}>
                         <option >Choose the size</option>
                         {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <option>{vari.size}</option>)}
                     </select>
                 </div>
-                <WhatsappShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag={`${product.title}`}
-                >
-                    <WhatsappIcon size={35} round={true} />
-                </WhatsappShareButton>
-                <FacebookShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag={`${product.title}`}
-                >
-                    <FacebookIcon size={35} round={true} />
-                </FacebookShareButton>
-                <TwitterShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#camperstribe"
-                >
-                    <TwitterIcon size={35} round={true} />
-                </TwitterShareButton>
-                <TelegramShareButton
-                    url={"https://scapeteamred.herokuapp.com/"}
-                    quote={"CampersTribe - World is yours to explore"}
-                    hashtag="#camperstribe"
-                >
-                    <TelegramIcon size={35} round={true} />
-                </TelegramShareButton>
+
+                <div style={{ margin: '1em 0' }}>
+                    <h6>Share this product:</h6>
+                    <WhatsappShareButton
+                        url={"https://scapeteamred.herokuapp.com/"}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag={`${product.title}`}
+                    >
+                        <WhatsappIcon size={30} round={true} />
+                    </WhatsappShareButton>
+                    <FacebookShareButton
+                        url={"https://scapeteamred.herokuapp.com/"}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag={`${product.title}`}
+                    >
+                        <FacebookIcon size={30} round={true} />
+                    </FacebookShareButton>
+                    <TwitterShareButton
+                        url={"https://scapeteamred.herokuapp.com/"}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag="#camperstribe"
+                    >
+                        <TwitterIcon size={30} round={true} />
+                    </TwitterShareButton>
+                    <TelegramShareButton
+                        url={"https://scapeteamred.herokuapp.com/"}
+                        quote={"CampersTribe - World is yours to explore"}
+                        hashtag="#camperstribe"
+                    >
+                        <TelegramIcon size={35} round={true} />
+                    </TelegramShareButton>
+                </div>
 
                 {(prod.size !== '' || prod.size !== 'Choose the size') &&
-                    <h3>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</h3>}
+                    <>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</>}
 
-                <button onClick={() => addProducts()} className="createAccount" style={{ display: 'flex', margin: '7em auto', }}>Add to cart</button>
+                <button onClick={() => addProducts()} className="addToCart" style={{ margin: '1em 5em 0 0', }}>Add to cart</button>
             </div>
         </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1em' }}>
+            <h3 >Reviews</h3>
+            {!arrayFiltrado2 ?
+                <div style={{ display: 'flex' }}>
+                    <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
+                    <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    <p>{arrayFiltrado[0].reviews} reviews</p>
+                </div>
+                :
+                <div style={{ display: 'flex' }}>
+                    <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
+                    <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    <p>{props.productRating.reviews} reviews</p>
+                </div>
+            }
+        </div>
+        <div style={{ display: 'flex' }}>
+            {props.userlogged.token &&
+                <>
+                    {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 &&
+                        <>
+                            <Box component="fieldset" mb={3} borderColor="transparent">
+                                <Typography component="legend">Rating</Typography>
+                                <Rating
+                                    name="simple-controlled"
+                                    value={value}
+                                    onChange={(event, newValue) => {
+                                        setValue(newValue)
+
+                                    }}
+                                    style={{ color: 'black' }}
+                                />
+
+                            </Box>
+                            <button onClick={sendRating}>Send Rating</button>  </>}
+                </>
+            }
+        </div>
         <ScrollProducts />
+        <ChatBotComponent />
         <div>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <h3 >Reviews</h3>
-                {/* {props.productRating.productId === props.match.params.id &&
-                <> */}
-                {!arrayFiltrado2 ?
-                    <div style={{ display: 'flex' }}>
-                        <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
-                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                        <p>{arrayFiltrado[0].reviews} reviews</p>
-                    </div>
-                    :
-                    <div style={{ display: 'flex' }}>
-                        <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
-                        <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                        <p>{props.productRating.reviews} reviews</p>
-                    </div>
-                }
-                {/* </>} */}
-            </div>
-            <div style={{ display: 'flex' }}>
-                {props.userlogged.token &&
-                    <>
-                        {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 &&
-                            <>
-                                <Box component="fieldset" mb={3} borderColor="transparent">
-                                    <Typography component="legend">Rating</Typography>
-                                    <Rating
-                                        name="simple-controlled"
-                                        value={value}
-                                        onChange={(event, newValue) => {
-                                            setValue(newValue)
 
-                                        }}
-                                        style={{ color: 'black' }}
-                                    />
 
-                                </Box>
-                                <button onClick={sendRating}>Send Rating</button>  </>}
-                    </>
-                }
-            </div>
             <div style={{ display: 'flex', padding: '50px' }}>
                 <div className="fotosHome" style={{ backgroundImage: `url(${mens})`, height: '40vw', width: '41vw' }}></div>
                 <div style={{ width: '60vw', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', }}>

@@ -5,6 +5,7 @@ import { animateScroll as scroll } from 'react-scroll'
 import Footer from '../components/Footer'
 import banner from '../images/bannerShop.jpg'
 import cloth from '../images/clothing2.jpg'
+import ChatBotComponent from '../components/ChatBotComponent'
 
 class About extends React.Component {
 
@@ -59,7 +60,7 @@ class About extends React.Component {
                         <p style={{ padding: '1em 5em' }}>You can bet this technical DNA is central to every single product we make. Build for the long haul, design products that wear in not out, and use the best most sustainable fabrics available—even if that means making them yourself.</p>
                     </div>
                 </div>
-
+                <ChatBotComponent />
                 <Footer />
             </>
         )

@@ -20,17 +20,18 @@ const ItemCarrito = (props) => {
 
     return (
         <>
-            <div id="unelEmentoCarrito" style={{ marginBottom: '20px' }}>
-                <div id="imageCarrito" style={{ backgroundImage: `url(${props.product.remeraActual})`, width: "8vw", height: "8vw" }}></div>
+            <div id="unelEmentoCarrito" >
+                <div id="imageCarrito" style={{ backgroundImage: `url(${props.product.remeraActual})`, width: "6vw", height: "6vw" }}></div>
 
                 <div id="tituloCantidad">
                     <p>{props.product.title}</p>
+                    <p>{props.product.size}</p>
                     <div id="cantidad">
                         <button onClick={() => modStock(-1)}
-                            style={{ backgroundColor: 'whitesmoke', border: 'none' }}><Remove /></button>
+                            style={{ backgroundColor: 'white', border: 'none' }}><Remove /></button>
                         <p>{props.product.cant}</p>
                         <button onClick={() => modStock(1)}
-                            style={{ backgroundColor: 'whitesmoke', border: 'none' }}><Add /></button>
+                            style={{ backgroundColor: 'white', border: 'none' }}><Add /></button>
                     </div>
                 </div>
 

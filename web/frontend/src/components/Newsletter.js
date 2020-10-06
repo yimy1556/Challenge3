@@ -4,6 +4,7 @@ import authActions from '../redux/actions/authActions'
 import { connect } from 'react-redux'
 
 
+
 const Newsletter = (props) => {
 
     const [mail, setMail] = useState('')
@@ -47,9 +48,6 @@ const Newsletter = (props) => {
                 </div>
                 <span style={{ fontSize: '0.8em' }}>{errorInput} </span>
             </div>
-
-
-
         </>
     )
 }

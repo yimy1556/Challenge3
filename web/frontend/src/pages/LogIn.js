@@ -4,7 +4,7 @@ import authActions from '../redux/actions/authActions'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { toast } from 'react-toastify';
-
+import mens from '../images/mens.jpg'
 
 const LogIn = props => {
 
@@ -43,8 +43,8 @@ const LogIn = props => {
     return (
 
         <div style={{ display: 'flex' }}>
-            <div style={{ backgroundImage: 'url(https://www.onlygfx.com/wp-content/uploads/2017/07/paint-texture-black-and-white-3.jpeg)', width: '40%', maxHeight: '100vh', backgroundPosition: 'top right', backgroundSize: 'cover' }}>
-                <h1>PYRAL</h1>
+            <div style={{ backgroundImage: `url(${mens})`, width: '40%', maxHeight: '100vh', backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+
             </div>
             <div id="divFormulario" style={{ background: ' whitesmoke', width: '60%', height: '100vh' }}>
                 <form>

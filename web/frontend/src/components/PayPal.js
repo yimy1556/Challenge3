@@ -21,17 +21,18 @@ const PayPal = (props) => {
             },
             onApprove: async (data, actions) => {
                 const order = await actions.order.capture()
-                console.log(data)
+                props.redirect('success')
+
             },
             onError: (err) => {
                 console.log(err)
             }
         }).render(paypal.current)
     }, [])
+
     return (
         <>
-            <div ref={paypal}></div>
-            <h1>pago</h1>
+            <div ref={paypal} className='buttonsPaypal' style={{ width: '40%', display: 'flex', justifyContent: 'center' }}></div>
         </>
     )
 }
