@@ -6,6 +6,7 @@ import ItemCarrito from './ItemCarrito'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import CancelIcon from '@material-ui/icons/Cancel'
 import Badge from '@material-ui/core/Badge'
+import shopNow from '../images/shopNow.jpg'
 
 
 const compraTotal = (list) => {
@@ -49,7 +50,7 @@ const Carrito = (props) => {
 
 
                 <button onClick={menuHamburguesa} style={{ backgroundColor: 'transparent', border: 'none' }} ><CancelIcon style={{ color: "black", fontSize: 40 }}></CancelIcon></button>
-                <h3 style={{ color: '#111111' }}>Shopping Cart</h3>
+                <h3 style={{ color: '#111111', textDecoration: 'underline' }}>Shopping Cart</h3>
 
                 {props.listProduct.length == 0 ?
 
@@ -57,15 +58,15 @@ const Carrito = (props) => {
                         <div className="cartEmpty" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', }}>
                             <h4 style={{ color: 'black' }} >Your cart is empty</h4>
                             <p style={{ color: 'black' }}>Not sure what to buy? Thousands of products await you!</p>
-                            <button> <NavLink to="/shop">Shop now</NavLink ></button>
+                            <div style={{ backgroundImage: `url(${shopNow})`, width: '100%', height: '350px', backgroundSize: "cover", textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
+                                <button> <NavLink to="/shop" id='shopNow'>Shop now</NavLink ></button>
+                            </div>
                         </div>
 
                     </> :
                     <>
                         <div id="ropaDelCarrito">
                             {props.listProduct.map(prod => <ItemCarrito product={prod} />)}
-
-
                         </div>
                         < div id="totalPrecio">
                             <p>Total</p>

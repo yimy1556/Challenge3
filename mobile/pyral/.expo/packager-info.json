@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 {}
 =======
 {
@@ -20,3 +21,14 @@
   "devToolsPort": 19002
 }
 >>>>>>> parent of 8102587... arreglando errores con yimy
+=======
+{
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://sq-pdf.anonymous.pyral.exp.direct",
+  "packagerNgrokUrl": "https://packager.sq-pdf.anonymous.pyral.exp.direct",
+  "ngrokPid": 7292,
+  "devToolsPort": 19002,
+  "packagerPort": 19001,
+  "packagerPid": 13804
+}
+>>>>>>> efc9f7c20d4cbab48e5128839e6b010cccb0eb83

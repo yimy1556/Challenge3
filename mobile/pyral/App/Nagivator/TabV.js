@@ -33,10 +33,8 @@ const iconos = {
 const HomeStack = createStackNavigator();
 const HomeStackScreen = () => (
     <HomeStack.Navigator>
-        <HomeStack.Screen name="Home" component={Home}
-            options={{ headerTitle: props => <Header {...props} /> }} />
+        <HomeStack.Screen name="Home" component={Home} />
         <ShopStack.Screen name="Products" component={Products} />
-
     </HomeStack.Navigator>
 );
 
@@ -44,9 +42,7 @@ const HomeStackScreen = () => (
 const ShopStack = createStackNavigator();
 const ShopStackScreen = () => (
     <ShopStack.Navigator>
-        <ShopStack.Screen name="Products" component={Products}
-            options={{ headerTitle: props => <Header {...props} /> }}
-        />
+        <ShopStack.Screen name="Products" component={Products} />
         <ShopStack.Screen name="OneProduct" component={OneProduct} />
 
     </ShopStack.Navigator>

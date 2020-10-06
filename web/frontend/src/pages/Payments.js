@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import PayPal from '../components/PayPal'
 import ItemCarrito from '../components/ItemCarrito'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,6 +11,9 @@ import Fade from '@material-ui/core/Fade';
 import banner from '../images/bannerShop.jpg'
 
 const Shipping = (props) => {
+
+    const [flagPayPal, setFlagPayPal] = useState(false)
+
     const useStyles = makeStyles((theme) => ({
         modal: {
             display: 'flex',
@@ -50,6 +54,13 @@ const Shipping = (props) => {
                 <div>
 
                     <p>Elegi el metodo de pago</p>
+
+                    <button>Cash</button>
+                    <button>Credit Card</button>
+                    <button onClick={() => { setFlagPayPal(!flagPayPal) }}>PayPal</button>
+                    {flagPayPal && (
+                        <PayPal total={compraTotal(props.listProduct)} />
+                    )}
 
                     <button onClick={handleOpen}>Buy</button>
                     <Modal

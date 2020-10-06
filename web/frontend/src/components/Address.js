@@ -37,8 +37,10 @@ class Address extends React.Component {
     }
 
     readContact = e => {
+        let oneCountry = document.getElementById("country")
         this.setState({
             ...this.state,
+            country: oneCountry.options[oneCountry.selectedIndex].text,
             [e.target.name]: e.target.value
         })
     }
@@ -110,9 +112,9 @@ class Address extends React.Component {
                                 <div style={{ display: 'flex', justifyContent: 'space-between', margin: '2vh' }}>
                                     <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="city" name="city" placeholder="Write your city here" />
                                     <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="address" name="address" placeholder="Write your address here" />
-                                    <select style={{ width: '30%' }}>
+                                    <select id='country' onChange={this.readContact} style={{ width: '30%' }}>
                                         {this.props.countries.map(country => {
-                                            return <option onChange={this.readContact} name="country">{country.country}</option>
+                                            return <option>{country.country}</option>
                                         })}
                                     </select>
                                 </div>

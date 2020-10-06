@@ -6,6 +6,7 @@ import itemActions from '../redux/actions/itemActions'
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem'
 import { toast } from 'react-toastify';
+import swal from 'sweetalert';
 
 
 const AddItem = props => {
@@ -28,7 +29,14 @@ const AddItem = props => {
         e.preventDefault()
         if (item.title === '' || item.description === '' || item.photo === '' || item.price === '' || item.stock === '' || item.type === '') {
 
-            toast.error('air can\'t be sold... yet')
+            swal({
+                title:'Pyral',
+                text: 'air can\'t be sold... yet',
+                icon:'error',
+                buttons: {
+                    confirm: true,
+                }
+            })
 
         } else {
 
@@ -49,7 +57,7 @@ const AddItem = props => {
         e.preventDefault()
         if (item.title === '' || item.photo === '' || item.stock === '' || item.color === '') {
 
-            alert('air can\'t be sold... yet')
+            swal('air can\'t be sold... yet')
 
         } else {
 
