@@ -26,7 +26,6 @@ class Address extends React.Component {
     componentDidMount() {
         this.scrollToTop()
         this.props.getCountries()
-        // this.props.getContact()
     }
 
     // componentWillReceiveProps(){
@@ -52,14 +51,10 @@ class Address extends React.Component {
         let phoneNumber = this.state.phoneNumber
         await this.props.contact(country, city, address, postalCode, phoneNumber, this.props.userlogged.token)
         // await this.props.getContact(this.props.userlogged.token)
-        toast.success("Thank you for signing up")
     }
 
     render() {
-        // console.log(this.state);
-        // console.log(this.props.userlogged);
-        console.log(this.props.userlogged.contact);
-        // console.log(this.props.countries)
+        console.log(this.state)
         return (
             <>
 
@@ -69,20 +64,19 @@ class Address extends React.Component {
                 </div>
                 <div style={{ display: "flex", margin: '4em', justifyContent: "space-around" }}>
                     <div className="loginRegister" style={{ display: "flex", flexDirection: 'column', padding: '1vh 0vh' }}>
-                        <NavLink to="/profile" style={{textDecoration:'none', color:'gray'}}><h3>Profile</h3></NavLink>
-                        <h3>Address<ChevronRightIcon fontSize="medium"/></h3>
+                        <NavLink to="/profile" style={{ textDecoration: 'none', color: 'gray' }}><h3>Profile</h3></NavLink>
+                        <h3>Address<ChevronRightIcon fontSize="medium" /></h3>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', width:'70%'}}>
-                    <h2 style= {{ padding:'1vh 0vh'}}>Your info</h2>
-                    <div>
-                        <div style={{ boxShadow:'-1px 1px 13px -4px rgba(0,0,0,0.15)', padding:'5vh'}}>
-                            <h4>Contact information</h4>
-                            {this.props.userlogged.contact &&
+                    <div style={{ display: 'flex', flexDirection: 'column', width: '70%' }}>
+                        <h2 style={{ padding: '1vh 0vh' }}>Your info</h2>
+                        <div>
+                            <div style={{ boxShadow: '-1px 1px 13px -4px rgba(0,0,0,0.15)', padding: '5vh' }}>
+                                <h4>Contact information</h4>
+                                {this.props.userlogged.contact &&
                                     <>
-
                                         {this.props.userlogged.contact.map((x) => {
                                             return (
-                                                <div style={{margin: '1vh 0vh'}}>
+                                                <div style={{ margin: '1vh 0vh' }}>
                                                     <p><strong>Country:</strong> {x.country}</p>
                                                     <p><strong>City:</strong> {x.city}</p>
                                                     <p><strong>Address:</strong> {x.address}</p>
@@ -92,30 +86,36 @@ class Address extends React.Component {
                                                 </div>
                                             )
                                         })}
-                                    </>}
+                                    </>
+                                }
                             </div>
+
                             <div id="divFormulario" style={{ display: 'flex', flexDirection: 'column', boxShadow: '-1px 1px 13px -4px rgba(0,0,0,0.15)', padding: '5vh', margin: '2vh 0vh' }}>
                                 <h4>Add your contact information</h4>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', margin: '2vh' }}>
-                                    <input style={{ width: '45%' }} onChange={this.readContact} type="text" id="city" name="city" placeholder="Write your city here" />
-                                    <input style={{ width: '45%' }} onChange={this.readContact} type="text" id="address" name="address" placeholder="Write your address here" />
+                                    <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="city" name="city" placeholder="Write your city here" />
+                                    <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="address" name="address" placeholder="Write your address here" />
+                                    <select style={{ width: '30%' }} name="country" onChange={this.readContact} >
+                                        {this.props.countries.map(country => {
+                                            return <option name="country">{country.country}</option>
+                                        })}
+                                    </select>
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', margin: '2vh' }}>
                                     <input style={{ width: '45%' }} onChange={this.readContact} type="number" id="postalCode" name="postalCode" placeholder="Write your postal code here" />
                                     <input style={{ width: '45%' }} onChange={this.readContact} type="number" id="phoneNumber" name="phoneNumber" placeholder="Write your phone number here" />
                                 </div>
-                                <div>
+                                {/* <div>
                                     <select>
                                         {this.props.countries.map(country => {
                                             return <option onChange={this.readContact} name="country">{country.country}</option>
                                         })}
                                     </select>
-                                </div>
+                                </div> */}
                                 <button onClick={this.sendContact} className="createAccount button" style={{ width: '20%', margin: '2vh auto' }}>Send information</button>
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <ChatBotComponent />
                 <Footer />
@@ -126,7 +126,8 @@ class Address extends React.Component {
 const mapStateToProps = (state) => {
     return {
         userlogged: state.authReducer,
-        countries: state.itemReducer.countries
+        countries: state.itemReducer.countries,
+        contact: state.authReducer
     }
 }
 

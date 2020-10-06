@@ -57,17 +57,20 @@
 }
 
 #buyCloth{
-    width: 30vw;
+    width: 60vw;
     margin-top: 5vh;
-    background-color: whitesmoke;
     padding: 2vh 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #unelEmentoCarrito{
     display: flex;
     justify-content: space-between;
     color: black;
-    border-bottom: 1px solid black;
+    background: white;
+    border-bottom: 1px solid #D8D8D8;
     padding-bottom: 2vh;
 }
 
@@ -126,8 +129,10 @@ margin: 1vh ;
 #totalPrecio{
     display: flex;
     color: black;
+    border-bottom: 2px black solid;
     justify-content: space-between;
-    padding-top: 2vh;
+    padding: 2vh 0 1vh 0;
+    margin-bottom: 1em;
     font-weight: bold;
 }
 
@@ -138,7 +143,6 @@ span.MuiBadge-badge.MuiBadge-anchorOriginTopRightRectangle{
 }
 
 .cartEmpty{
-    border: 1px solid black;
     padding: 20px 55px;
     margin: 2em;
   }

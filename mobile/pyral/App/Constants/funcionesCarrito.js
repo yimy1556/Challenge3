@@ -21,7 +21,7 @@ export const UpdateCart = async (cart, cant) => {
     getValue('cart', true)
     .then(value => {
         let pertenece = value?.filter(prod => sonIguales(prod, cart, key1))
-        if(pertenece.length !== 0)
+        if(pertenece?.length !== 0)
             modificarCant(pertenece[0],value, cant)
         else
             value.push(cart)

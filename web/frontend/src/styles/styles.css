@@ -1,8 +1,8 @@
 html * {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
-    
+font-weight: 400;
+   
 }
 .circulo {
      width: 2em;
@@ -43,26 +43,19 @@ header a:hover,header a:focus {
     text-decoration: none;
     
 }
+#shopNow{
+  background-image: none;
+  color: white;
+}
+#menuCostado > div.cartEmpty > div > button{
+  padding: 5px;
+  text-align: center;
+  width: 50%;
+  border: 2px solid white;
+  color: white;
+  background: none;
+}
 
-
-#buttonContainer{
-    flex-direction: column;
-    margin-left: 10vw;
-}
-#buttonContainer2{
-  flex-direction: column;
-}
-#buttonContainer h1{
-padding-top: 150px;
-font-size: 80px;
-margin-left: -8vw;
-color: black;
-}
-#buttonContainer2 h1{
-  padding-top: 150px;
-  font-size: 80px;
-  color: black;
-  }
   
 #buttonShop {
     color: #111111 !important;
@@ -73,18 +66,18 @@ color: black;
     border:none;
     transition: all 1s ease;
     position: relative;
-    margin-top: 80px;
+  
   }
   #buttonShop2 {
     color: #b6b6b6 !important;
     font-size: 30px;
     font-weight: 500;
     padding: 0.3em 1em;
-    background: rgba(255, 255, 255);
+    background: #111111;
     border:none;
     transition: all 1s ease;
     position: relative;
-    margin-top: 80px;
+  
   }  
   #buttonShop:hover {
     background: #111111;
@@ -100,7 +93,7 @@ color: black;
   }
   #buttonShop2 a{
     text-decoration: none;
-    color:  #111111;
+    color:  #fffefe;
   }
   #buttonShop a:hover{
     text-decoration: none;
@@ -109,7 +102,7 @@ color: black;
   
   #buttonShop2 a:hover{
     text-decoration: none;
-    color:  white;
+    color:  #ffffff;
   }
   .button {
     color: #ffffff !important;
@@ -227,6 +220,36 @@ height: 60%;
     background-color: red;
   }
 
-  .slick-side {
-    position: relative;
+.payLogoContainer{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+  .payLogo{
+    display: flex;
+   align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    width: 80%;
+    height: 25%;
+    border-bottom: 1px solid #D8D8D8;
+  
   }
+  .payLogo:hover{
+    background: #D8D8D8;
+  }
+
+.payLogo img{
+  width: 2.5em;
+  height: 2.5em;
+  margin: 3em;
+}
+
+.continue{
+  border:none;
+  background: #111111;
+  color: white;
+  padding: 0.6em;
+}

@@ -4,8 +4,6 @@ import Product from '../Components/Product'
 import { ScrollView,FlatList, TouchableOpacity } from 'react-native'
 import {API} from '../Constants/index'
 import { seveKeyValue} from '../Constants/FuncAsyncStorage'
-import AsyncStorage from '@react-native-community/async-storage'
-
 
 export default function Products( {navigation}) {
     const [products, setProducts] = useState([])
@@ -17,9 +15,7 @@ export default function Products( {navigation}) {
         }         
         pedido()
     },[])
-    
     return (<>
-
         <ScrollView>
             <FlatList
                 style={{ flex: 1, alignSelf: 'center' }}

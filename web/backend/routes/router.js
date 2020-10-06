@@ -51,6 +51,8 @@ router.route('/changePassword')
 router.route('/viewsProduct/:id')
     .get(productController.upViews)
 
+    router.route('/product/ratingProduct')
+    .post(productController.ratingProduct)
 // Post direction
 router.route('/user/direction')
     // .get(passport.authenticate('jwt', { session: false }),userController.getContact)

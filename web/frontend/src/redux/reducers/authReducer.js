@@ -6,7 +6,7 @@ const initialState = {
     rol: '',
     contact: [],
     success: '',
-    rating: '',
+    rating: [],
     productId: ''
 }
 
@@ -31,11 +31,11 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 productId: action.payload.productId
             }
-        // case 'GET_CONTACT':
-        //     return {
-        //         ...state,
-        //         contact: action.payload.contact
-        //     }
+        case 'GET_CONTACT':
+            return {
+                ...state,
+                contact: action.payload.contact
+            }
         case 'LOGOUT_USER':
             localStorage.clear()
             return {

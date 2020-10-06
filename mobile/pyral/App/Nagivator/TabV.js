@@ -21,7 +21,6 @@ const Container = styled.View`
     alignItems: center;
 `;
 
-
 const Drawer = createDrawerNavigator()
 const iconos = {
     Home: "home",
@@ -32,18 +31,16 @@ const iconos = {
 const HomeStack = createStackNavigator();
 const HomeStackScreen = () => (
     <HomeStack.Navigator>
-        <HomeStack.Screen name="Home" component={Home}/>
-        <ShopStack.Screen name="Products" component={Products}/>
-    </HomeStack.Navigator>  
+        <HomeStack.Screen name="Home" component={Home} />
+        <ShopStack.Screen name="Products" component={Products} />
+    </HomeStack.Navigator>
 );
-
 
 const ShopStack = createStackNavigator();
 const ShopStackScreen = () => (
     <ShopStack.Navigator>
-        <ShopStack.Screen name="Products" component={Products}/>
-        <ShopStack.Screen name="OneProduct" component={OneProduct}/>
-
+        <ShopStack.Screen name="Products" component={Products} />
+        <ShopStack.Screen name="OneProduct" component={OneProduct} />
     </ShopStack.Navigator>
 )
 
@@ -52,7 +49,9 @@ const TabsScreen = (props) => {
     return (
         <Tab.Navigator initialRouteName={props.route.name}
             screenOptions={({ route }) => ({
-                tabBarIcon: ({ size, color }) => <FontAwesome name={iconos[route.name]} size={size} color={color} />
+                tabBarIcon: ({ size, color }) => (
+                    <FontAwesome name={iconos[route.name]} 
+                        size={size} color={color} />)
             })}
             tabBarOptions={{
                 activeTintColor: '#201F22',
@@ -63,13 +62,11 @@ const TabsScreen = (props) => {
             <Tab.Screen name="Shop" component={ShopStackScreen} />
             <Tab.Screen name="About" component={About} />
         </Tab.Navigator>
-
     );
 }
 
 export default function TabV() {
     return (
-
         <NavigationContainer>
             <Drawer.Navigator>
                 <Drawer.Screen name="Home" component={TabsScreen} />

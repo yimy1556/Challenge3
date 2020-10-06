@@ -30,9 +30,6 @@ const Product = (props) => {
     }
 
     borrarRepe(props.product.variants)
-
-
-    console.log(props.view)
     return (
         <>
             {props.view ? <><div className='listArticle' style={{ display: 'flex', flexDirection: 'column' }}>
@@ -45,7 +42,6 @@ const Product = (props) => {
                         <h3 id="descripcionShop">{props.product.title}</h3>
                         <p id="precioShop">${props.product.price}</p>
                         <div style={{ display: 'flex', justifyContent: 'space-between', width: '50%' }}>
-                            <p>Envio con normalidad</p>
                             <div style={{ display: 'flex' }}>
                                 {variantsAux.map(variant => {
                                     return (<div id="imagenShopChica" onClick={e => cambiarFoto(variant.photo)} style={{

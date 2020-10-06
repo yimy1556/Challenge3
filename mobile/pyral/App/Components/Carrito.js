@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
-import {Overlay } from 'react-native-elements';
+import {Overlay, Avatar, Badge, Icon, withBadge } from 'react-native-elements';
 import ItemCarrito from './ItemCarrito';
 import {getValue} from '../Constants/FuncAsyncStorage'
 import { ScrollView } from 'react-native-gesture-handler';
@@ -28,7 +28,7 @@ export default function Carrito(){
     return (<>
         <View >
             <MaterialCommunityIcons style={styles.cart} onPress={toggleOverlay} name="cart-outline" size={24} color="black" />
-                <Overlay  isVisible={visible} onBackdropPress={toggleOverlay} >
+            <Overlay  isVisible={visible} onBackdropPress={toggleOverlay} overlayStyle={{height:'67%'}}>
                 <View style={styles.ropaDelCarrito}>
                     <ScrollView alignSelf='center' style={{marginTop:5, height:'50%'}}>
                        {listProduct?.map((prod,index) => <ItemCarrito product={prod} key={index} update={update} setUpdate={setUpdate}/>)}
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
    },
     ropaDelCarrito:{
         backgroundColor:'#F3F7F8',
-        height: '70%',
+        height: '100%',
         width: 300,
         borderRadius:15,
         alignSelf:'center',
