@@ -4,7 +4,6 @@ import {ScrollView, TouchableOpacity, FlatList } from "react-native";
 import Product from '../Components/Product'
 //import { ImageShop } from '../Constants/index'
 const ScrollProducts = (props) => {
-    console.log(props)
     const [products,setProducts] = useState([])
     useEffect(() => {
         getValue('products', true)

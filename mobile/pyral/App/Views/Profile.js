@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import {API} from '../Constants/index'
 import axios from 'axios'
-import Adress from "../Components/Adress";
+import {set} from "react-native-reanimated";
+//import Adress from "../Components/Adress";
 
 
 
@@ -27,7 +28,13 @@ export default function Profile(){
         setprofile (truefalse)
     }
 
-    
+   useEffect(() => {
+        const pe = async  () => {
+            const ped = axios.get()
+            setPaises(ped.data)
+        }
+        pe()
+   }) 
 
 
     return(
@@ -66,7 +73,7 @@ export default function Profile(){
               
             </View>
 
-        : <Adress/>}
+                : <></>}
 
         </View>
     </View>

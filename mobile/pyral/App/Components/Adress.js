@@ -7,9 +7,6 @@ import RNPickerSelect from 'react-native-picker-select';
 import Picker from "react-native-picker-select";
 
 
-
-
-
 export default function adress(){
 
     const [paises, setpaises] = React.useState("")

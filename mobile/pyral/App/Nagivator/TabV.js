@@ -3,7 +3,6 @@ import { Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from '@react-navigation/native';
-import Header from '../Components/Header'
 import { createStackNavigator } from "@react-navigation/stack";
 import styled from "styled-components"
 import Home from '../Views/Home'

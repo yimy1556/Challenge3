@@ -53,6 +53,7 @@
     padding: 2vh 1vw;
     overflow-y: scroll;
     border: 1px solid black;
+    max-width: 55vh;
 }
 
 #buyCloth{
