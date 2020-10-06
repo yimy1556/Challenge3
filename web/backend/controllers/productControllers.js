@@ -98,13 +98,13 @@ const productController = {
             })
         }
     },
-	ratingProduct: async (req, res) => {
+    ratingProduct: async (req, res) => {
         const { productId, stars } = req.body
-        const aProduct = await Product.findOne({_id: productId})
-        var newreviews = aProduct.reviews +=1
-        var newstars = aProduct.stars +stars
+        const aProduct = await Product.findOne({ _id: productId })
+        var newreviews = aProduct.reviews += 1
+        var newstars = aProduct.stars + stars
         const productRat = await Product.findOneAndUpdate({ _id: productId }, { stars: newstars, reviews: newreviews })
-		// Está harcodeada la id por ahora, después se cambia
+        // Está harcodeada la id por ahora, después se cambia
         // const productR = await Product.findOneAndUpdate({ _id: productId },  })
         res.json({
             success: true,
@@ -115,7 +115,7 @@ const productController = {
             }
 
         })
-	},
+    },
 
 
 }
