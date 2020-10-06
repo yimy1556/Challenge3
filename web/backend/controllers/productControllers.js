@@ -59,9 +59,10 @@ const productController = {
         const archivo = req.files.photo
         var extension = archivo.name.split('.')[1]
         var nombreArchivo = req.body.title + req.body.color + '.' + extension
-        const serverURL = `uploads/${nombreArchivo}`
-
-        const photo = `http://localhost:4000/uploads/${nombreArchivo}`
+        var photoTrimed = nombreArchivo.replace(/ /g,'')
+        const serverURL = `uploads/${photoTrimed}`
+        
+        const photo = `http://localhost:4000/uploads/${photoTrimed}`
 
         archivo.mv(serverURL)
 

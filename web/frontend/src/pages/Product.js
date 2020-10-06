@@ -51,8 +51,17 @@ const Product = (props) => {
                                             variant.color === 'Black' ? '#111111' :
                                                 variant.color === 'DarkGrey' ? '#34343D' :
                                                     variant.color === 'White' ? 'whitesmoke' :
-                                                        variant.color === 'Cream' ? '#EBE4D4' :
-                                                            variant.color === 'Grey' ? '#303B4F' : ''}`
+                                                        variant.color === 'Blush' ? '##EFC6B4' :
+                                                            variant.color === 'Flint' ? '#C2B1C1' :
+                                                                variant.color === 'Honeycomb' ? '#C98E2A' :
+                                                                    variant.color === 'Paloma' ? '#F2BBBE' :
+                                                                        variant.color === 'Salt' ? '#ECE9E2' :
+                                                                            variant.color === 'Sage' ? '#737B7D' :
+                                                                                variant.color === 'Anchor' ? '#4B4545' :
+                                                                                    variant.color === 'Red Rum' ? '#774A47' :
+                                                                                        variant.color === 'Golden Harvest' ? '#E6B968' :
+                                                                                            variant.color === 'Military Moss' ? '#695530' :
+                                                                                                variant.color === 'Grey' ? '#303B4F' : ''}`
                                     }} > </div>)
                                 })}
                             </div>
@@ -77,8 +86,18 @@ const Product = (props) => {
                                         variant.color === 'Black' ? '#111111' :
                                             variant.color === 'DarkGrey' ? '#34343D' :
                                                 variant.color === 'White' ? 'whitesmoke' :
-                                                    variant.color === 'Cream' ? '#EBE4D4' :
-                                                        variant.color === 'Grey' ? '#303B4F' : ''}`
+                                                    variant.color === 'Blush' ? '##EFC6B4' :
+                                                        variant.color === 'Flint' ? '#C2B1C1' :
+                                                            variant.color === 'Honeycomb' ? '#C98E2A' :
+                                                                variant.color === 'Paloma' ? '#F2BBBE' :
+                                                                    variant.color === 'Salt' ? '#ECE9E2' :
+                                                                        variant.color === 'Sage' ? '#737B7D' :
+                                                                            variant.color === 'Anchor' ? '#4B4545' :
+                                                                                variant.color === 'Red Rum' ? '#774A47' :
+                                                                                variant.color === 'Egg Shell' ? '#EBE5D7' :
+                                                                                    variant.color === 'Golden Harvest' ? '#E6B968' :
+                                                                                        variant.color === 'Military Moss' ? '#695530' :
+                                                                                            variant.color === 'Grey' ? '#303B4F' : ''}`
                                 }} > </div>)
                             })}
                         </div>

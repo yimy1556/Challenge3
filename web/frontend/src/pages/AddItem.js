@@ -98,9 +98,50 @@ const AddItem = props => {
             label: 'Grey',
         },
         {
-            value: 'Cream',
-            label: 'Cream',
+            value: 'Blush',
+            label: 'Blush'
         },
+        {
+            value: 'Flint',
+            label: 'Flint'
+        },
+        {
+            value: 'Honeycomb',
+            label: 'Honeycomb'
+        },
+        {
+            value: 'Paloma',
+            label: 'Paloma'
+        },
+        {
+            value: 'Salt',
+            label: 'Salt'
+        },
+        {
+            value: 'Sage',
+            label: 'Sage'
+        },
+        {
+            value: 'Anchor',
+            label: 'Anchor'
+        },
+        {
+            value: 'Red Rum',
+            label: 'Red Rum'
+        },
+        {
+            value: 'Golden Harvest',
+            label: 'Golden Harvest'
+        },
+        {
+            value: 'Military Moss',
+            label: 'Military Moss'
+        },
+        {
+            value: 'Egg Shell',
+            label: 'Egg Shell'
+        }
+
     ];
 
     return (
