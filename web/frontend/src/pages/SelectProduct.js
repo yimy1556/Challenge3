@@ -120,7 +120,6 @@ const SelectProduct = (props) => {
                     className="input-position"
                     style={{ width: '31vw' }}
                     imageSrc={prod?.remeraActual}
-                    mouseActivation={MOUSE_ACTIVATION.CLICK}
                     overlayOpacity={0.4}
                     alwaysInPlace={true}
                     fillGap={false}
@@ -155,7 +154,7 @@ const SelectProduct = (props) => {
 
                             {borrarRepe(product.variants).map(variant => {
                                 return (<div id="imagenShopChica2" style={{
-                                    border: `${variant.color === 'White' ? '1px solid black' : ''}`,
+
                                     backgroundColor: `${variant.color === 'Wine' ? '#44282D' :
                                         variant.color === 'Black' ? '#111111' :
                                             variant.color === 'DarkGrey' ? '#34343D' :

@@ -247,3 +247,6 @@ input[type="file"] {
   color: white;
 }
 
+.paypal-powered-by{
+  display: none!important;
+}
