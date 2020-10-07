@@ -5,8 +5,7 @@ import PayPal from '../components/PayPal'
 import ItemCarrito from '../components/ItemCarrito'
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
-import payment from '../images/payment.jpg'
-import banner from '../images/bannerShop.jpg'
+import cloth from '../images/clothing2.jpg'
 import CreditCard from '../components/CreditCard'
 import logoPayPal from '../images/paypal.png'
 import logoCash from '../images/money.png'
@@ -52,48 +51,51 @@ const Shipping = (props) => {
     return (
 
         <>
-            <Header />
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${payment})`, width: '100%', height: '30vh', backgroundPosition: 'center 35%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${cloth})`, width: '100%', height: '40vh', backgroundPosition: 'center 45%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                 <h2 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>Payment</h2>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-around', background: '#EEEEEE' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', width: '60vw', margin: '0 auto', padding: '3em 0' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', width: '60vw', margin: '0 auto', padding: '0em 0 3em 0' }}>
 
-                    <h3 style={{ textAlign: 'left' }}>How do you want to pay?</h3>
+
                     <div className="payLogoContainer">
-                        {!flagPayPal &&
+                        <h3 style={{ textAlign: 'left', padding: '1em 0', fontSize: '2.2em' }}>How do you want to pay?</h3>
+                        {!flagPayPal && !flagCreditCard &&
                             <>
                                 <div className="payLogo">
                                     <img src={logoCash} >
                                     </img>
-                                    <p>Cash</p>
+                                    <h4>Cash</h4>
                                 </div>
                             </>}
                         {!flagPayPal &&
                             <><div className="payLogo" onClick={() => { setFlagCreditCard(!flagCreditCard) }}>
                                 <img src={logoCards} >
                                 </img>
-                                <p>Credit Card</p>
+                                <h4>Credit Card</h4>
                             </div> </>}
-                        <div className="payLogo" onClick={() => { setFlagPayPal(!flagPayPal) }}>
+                        {!flagCreditCard && <div className="payLogo" onClick={() => { setFlagPayPal(!flagPayPal) }}>
                             <img src={logoPayPal}>
                             </img>
-                            <p>PayPal</p>
+                            <h4>PayPal</h4>
                         </div>
+                        }
+                        {flagPayPal && (
+                            <PayPal total={compraTotal(props.listProduct)} redirect={redirect} />
+                        )}
+                        {flagCreditCard && (
+                            <CreditCard total={compraTotal(props.listProduct)} />
+                        )}
                     </div>
-                    {flagCreditCard && (
-                        <CreditCard total={compraTotal(props.listProduct)} />
-                    )}
-                    {flagPayPal && (
-                        <PayPal total={compraTotal(props.listProduct)} redirect={redirect} />
-                    )}
+
+
 
                 </div>
                 <div style={{ backgroundColor: '#F5F5F5', width: '30vw', height: '70vh', padding: '20px 40px', marginRight: '5em' }}>
                     <h3 style={{ textAlign: 'center' }}>Purchase summary</h3>
                     <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
 
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', padding: '0.7em 0' }}>
                         {props.listProduct.map(prod => <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}> <p>{prod.title} {prod.color} ({prod.cant}) </p>
                             <p>${prod.price * prod.cant}</p>
                         </div>)}
@@ -101,7 +103,7 @@ const Shipping = (props) => {
 
                     {compraTotal(props.listProduct) > 250 ?
                         <>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', textDecoration: 'line-through' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', textDecoration: 'line-through', padding: '0.7em 0' }}>
                                 <p>Shipping</p>
                                 <p>$36</p>
                             </div> <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
@@ -111,7 +113,7 @@ const Shipping = (props) => {
                             </div>
                         </> :
                         <>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0em 0 0.7em 0' }}>
                                 <p>Shipping</p>
                                 <p>$36</p>
                             </div>

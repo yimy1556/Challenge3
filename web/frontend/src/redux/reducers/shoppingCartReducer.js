@@ -13,7 +13,11 @@ const shoppingCartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 listProduct: action.payload
-            }
+        }
+        case 'REMOVE_LIST_PRODUCT':
+            return {
+                listProduct:[]    
+        }
         default:
             return state
     }

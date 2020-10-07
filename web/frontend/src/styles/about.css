@@ -1,6 +1,20 @@
 .containerAbout{
+    animation: transitionIn 0.75s;
+}
+
+@keyframes transitionIn{
+    from{
+        opacity: 0;
+        transform: rotateX(-10deg);
+    }
+    to{
+        opacity: 1;
+        transform: rotateX(0);
+    }
+}
+
+.containerAbout{
     display: flex;
-    padding: 50px;
 }
 #ourStory{
     color: white; 

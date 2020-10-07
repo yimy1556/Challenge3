@@ -36,6 +36,9 @@ router.route('/sendMail')
 
 router.route('/user/rating')
     .post(passport.authenticate('jwt', { session: false }), userController.postRating)
+/// ruta de terminar comprar
+router.route('/finishBuying')
+    .put(productController.updateListProduct)
 
 //subscription newsletter
 router.route('/newsletter')

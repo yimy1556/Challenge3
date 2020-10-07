@@ -3,9 +3,10 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import ItemCarrito from '../components/ItemCarrito'
 import { connect } from 'react-redux'
-import { Stepper } from '@material-ui/core'
+import cloth from '../images/clothing2.jpg'
 import { NavLink } from 'react-router-dom'
 import CreateIcon from '@material-ui/icons/Create';
+import payment from '../images/payment.jpg'
 
 const Buy = (props) => {
     const [render, setRender] = useState(true)
@@ -20,38 +21,45 @@ const Buy = (props) => {
         list.forEach(prod => total += prod.cant * prod.price)
         return total
     }
+    console.log(props.userlogged.contact[0])
+    console.log(props.userlogged.contact[0] === {})
     return (
         <>
-            <Header />
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${cloth})`, width: '100%', height: '40vh', backgroundPosition: 'center 45%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                <h2 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>Payment</h2>
+            </div>
             <div style={{ display: 'flex', justifyContent: 'space-around', borderTop: '1px solid #111111', background: '#EEEEEE' }}>
+
                 <div>
 
                     <div id="buyCloth">
-                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', width: '40vw', paddingTop: '40px' }}>
-                            {props.userlogged.contact ?
-                                <>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <h3>My addresses</h3>
-                                        <NavLink to="address">
-                                            <CreateIcon />
-                                        </NavLink>
-                                    </div>
-                                    {props.userlogged.contact.map((x) => {
-                                        return (
-                                            <>
-                                                <div style={{ fontWeight: 'lighter', padding: '15px', border: '1px solid #EEEEEE', backgroundColor: '#FFFFFF', borderRadius: '5px', margin: '5px 0' }}>
-                                                    <h3>{x.address}</h3>
-                                                    <p>{x.city}, {x.country}</p>
-                                                    <p>C.P{x.postalCode}</p>
-                                                    <p>{x.phoneNumber}</p>
-                                                </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', width: '40vw' }}>
 
-                                            </>
-                                        )
-                                    })}
-                                </> : <p>Set your direction of shipping <NavLink to="address">Here</NavLink></p>}
+
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <h3>My addresses</h3>
+
+                                <NavLink to="address" style={{ color: 'grey', paddingLeft: '2em' }}>
+                                    <CreateIcon />
+                                </NavLink>
+                            </div>
+
+                            {props.userlogged.contact.map((x) => {
+                                return (
+                                    <>
+                                        <div style={{ fontWeight: 'lighter', padding: '15px', border: '1px solid #EEEEEE', backgroundColor: '#FFFFFF', borderRadius: '5px', margin: '5px 0' }}>
+                                            <h3>{x.address}</h3>
+                                            <p>{x.city}, {x.country}</p>
+                                            <p>C.P {x.postalCode}</p>
+                                            <p>{x.phoneNumber}</p>
+                                        </div>
+
+                                    </>
+                                )
+                            })}
+
                         </div>
-                        <div style={{ width: '50%' }}>
+                        <div style={{ width: '40vw' }}>
                             <h3>Your products</h3>
                             {props.listProduct.map(prod => <ItemCarrito product={prod} render={render} setRender={setRender} />)}
 
@@ -68,7 +76,7 @@ const Buy = (props) => {
                     <h3 style={{ textAlign: 'center' }}>Purchase summary</h3>
                     <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
 
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', padding: '0.7em 0' }}>
                         {props.listProduct.map(prod => <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}> <p>{prod.title} {prod.color} ({prod.cant}) </p>
                             <p>${prod.price * prod.cant}</p>
                         </div>)}
@@ -76,7 +84,7 @@ const Buy = (props) => {
 
                     {compraTotal(props.listProduct) > 250 ?
                         <>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', textDecoration: 'line-through' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.7em 0', textDecoration: 'line-through' }}>
                                 <p>Shipping</p>
                                 <p>$36</p>
                             </div> <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
@@ -86,7 +94,7 @@ const Buy = (props) => {
                             </div>
                         </> :
                         <>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0em 0 0.7em 0', }}>
                                 <p>Shipping</p>
                                 <p>$36</p>
                             </div>

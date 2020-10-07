@@ -6,9 +6,11 @@ const productController = {
         const archivo = req.files.photo
         var extension = archivo.name.split('.')[1]
         var nombreArchivo = req.body.title + req.body.color + '.' + extension
-        const serverURL = `uploads/${nombreArchivo}`
+        var photoTrimed = nombreArchivo.replace(/ /g,'')
 
-        const photo = `http://localhost:4000/uploads/${nombreArchivo}`
+        const serverURL = `uploads/${photoTrimed}`
+        const photo = `http://localhost:4000/uploads/${photoTrimed}`
+        console.log(photo)
 
         archivo.mv(serverURL)
 
@@ -57,9 +59,10 @@ const productController = {
         const archivo = req.files.photo
         var extension = archivo.name.split('.')[1]
         var nombreArchivo = req.body.title + req.body.color + '.' + extension
-        const serverURL = `uploads/${nombreArchivo}`
-
-        const photo = `http://localhost:4000/uploads/${nombreArchivo}`
+        var photoTrimed = nombreArchivo.replace(/ /g,'')
+        const serverURL = `uploads/${photoTrimed}`
+        
+        const photo = `http://localhost:4000/uploads/${photoTrimed}`
 
         archivo.mv(serverURL)
 
@@ -67,7 +70,16 @@ const productController = {
             .then(() => res.json({ success: true, response: 'The data has been modified successfully' }))
             .catch(error => res.json({ success: false, error }))
     },
-
+    updateListProduct: (req, res) => {
+        const listProduct = req.body.listProduct
+        listProduct.map(async (product) => {
+            const pro = await Product.findOne({_id:product._id})
+            const variant = pro.variants.filter(vari => (vari.color === product.color && vari.size === product.size))
+            var poc = pro.variants.indexOf(variant[0])
+            pro.variants[poc].stock = Number(pro.variants[poc].stock) - product.cant
+            await Product.update({_id:pro._id}, pro)
+        })
+    },
     //Select product by "id"
     getSelectProductId: async (req, res) => {
         var id = req.params.id
