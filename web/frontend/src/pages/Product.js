@@ -45,7 +45,7 @@ const Product = (props) => {
                             <div style={{ display: 'flex' }}>
                                 {variantsAux.map(variant => {
                                     return (<div id="imagenShopChica" onClick={e => cambiarFoto(variant.photo)} style={{
-                                        border: `${variant.color === 'White' ? '1px solid #111111' : ''}`,
+
                                         backgroundColor: `${variant.color === 'Wine' ? '#44282D' :
                                             variant.color === 'Black' ? '#111111' :
                                                 variant.color === 'DarkGrey' ? '#34343D' :
@@ -93,10 +93,10 @@ const Product = (props) => {
                                                                         variant.color === 'Sage' ? '#737B7D' :
                                                                             variant.color === 'Anchor' ? '#4B4545' :
                                                                                 variant.color === 'Red Rum' ? '#774A47' :
-                                                                                variant.color === 'Egg Shell' ? '#EBE5D7' :
-                                                                                    variant.color === 'Golden Harvest' ? '#E6B968' :
-                                                                                        variant.color === 'Military Moss' ? '#695530' :
-                                                                                            variant.color === 'Grey' ? '#303B4F' : ''}`
+                                                                                    variant.color === 'Egg Shell' ? '#EBE5D7' :
+                                                                                        variant.color === 'Golden Harvest' ? '#E6B968' :
+                                                                                            variant.color === 'Military Moss' ? '#695530' :
+                                                                                                variant.color === 'Grey' ? '#303B4F' : ''}`
                                 }} > </div>)
                             })}
                         </div>
