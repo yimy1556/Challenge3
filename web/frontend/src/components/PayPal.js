@@ -5,7 +5,14 @@ import shoppingCartActions from '../redux/actions/shoppingCartActions'
 const PayPal = (props) => {
     const paypal = useRef()
     useEffect(() => {
+
         window.paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color: 'blue',
+                shape: 'rect',
+                label: 'paypal'
+            },
             createOrder: (data, actions, err) => {
                 return actions.order.create({
                     intent: 'CAPTURE',
