@@ -70,6 +70,22 @@ const Shop = (props) => {
             list: lessVisited
         })
     }
+    // Mas de 50 dolares
+    const moreThanEighty = () => {
+        var filterEighty = props.products.filter(product => product.price > 80)
+        setRender(!render)
+        setState({
+            list: filterEighty
+        })
+    }
+    // Mas de 50 dolares
+    const untilSeventy = () => {
+        var untilSeventy = props.products.filter(product => product.price < 70)
+        setRender(!render)
+        setState({
+            list: untilSeventy
+        })
+    }
 
     // Muestra productos en forma de lista
     const viewList = (params) => {
@@ -86,6 +102,9 @@ const Shop = (props) => {
             viewList: false
         })
     }
+
+
+
     return (
         <>
             <Header />
@@ -93,28 +112,37 @@ const Shop = (props) => {
                 <h2 style={{ color: 'whitesmoke', textAlign: 'left', fontSize: 'bold', fontWeight: '700', marginLeft: '2em', fontSize: '6vh' }}>ALL PRODUCTS</h2>
             </div>
             <div className="orderProducts" style={{ display: 'flex', justifyContent: 'space-around', verticalAlign: 'center' }}>
-                <div style={{ flex: '1', padding: '15vh 1vw', display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid grey' }}>
-                        <h4 style={{ color: 'grey' }}>Order products</h4>
+                <div style={{ flex: '1', padding: '15vh 2vw 15vh 4vw', display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid grey', justifyContent: 'space-between' }}>
+                        <h4 style={{ color: 'grey' }}>Filter</h4>
                         <div>
                             <ViewListIcon onClick={viewList} />
                             <ViewModuleIcon onClick={viewModule} />
                         </div>
                     </div>
-
-
-                    <span onClick={lowestPrice} className="orderFilter">Lowest Price</span>
-                    <span onClick={highestPrice} className="orderFilter">Highest Price</span>
                     <span onClick={mostRelevant} className="orderFilter">Most Relevant</span>
                     <span onClick={lessRelevant} className="orderFilter">Less Relevant</span>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <h4 style={{ borderBottom: '1px solid grey', color: 'grey' }}>Price</h4>
 
+                        <span onClick={lowestPrice} className="orderFilter">Lowest Price</span>
+                        <span onClick={highestPrice} className="orderFilter">Highest Price</span>
+                        <span onClick={untilSeventy} className="orderFilter">Until $70</span>
+                        <span onClick={moreThanEighty} className="orderFilter">More than $80</span>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <h4 style={{ borderBottom: '1px solid grey', color: 'grey' }}>Ranking</h4>
+
+                        <span onClick={lowestPrice} className="orderFilter">Most value</span>
+                        <span onClick={highestPrice} className="orderFilter">Less value</span>
+                    </div>
                     <div>
                         <img src={shopNow} style={{ width: '100%', paddingTop: '3em' }}>
                         </img>
                     </div>
                 </div>
 
-                <div id="paginaShop" style={{ flex: '5' }}>
+                <div id="paginaShop" style={{ flex: '5', paddingTop: '15vh 0' }}>
                     <div id={!state.viewList && "todoShop"} >
 
 
