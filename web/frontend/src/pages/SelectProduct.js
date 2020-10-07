@@ -53,7 +53,7 @@ const SelectProduct = (props) => {
 
     useEffect(() => {
         scrollToTop()
-        rickyfort()
+        setStars()
         const productId = props.match.params.id
         props.upViews(productId)
         props.selectProductId(productId)
@@ -70,15 +70,6 @@ const SelectProduct = (props) => {
     }, [props.match.params.id, props.productRating.stars])
 
     var arrayFiltrado2 = props.productRating.productId === props.match.params.id
-
-    const rickyfort = () => {
-
-        if (!arrayFiltrado2) {
-            return arrayFiltrado2 = arrayFiltrado
-        }
-
-    }
-
 
     const sendRating = () => {
         props.postRating(props.match.params.id, value, props.userlogged.token)
@@ -97,6 +88,13 @@ const SelectProduct = (props) => {
 
     const scrollToTop = () => {
         scroll.scrollToTop();
+    }
+    const setStars = () => {
+
+        if (!arrayFiltrado2) {
+            return arrayFiltrado2 = arrayFiltrado
+        }
+
     }
 
 
@@ -171,15 +169,22 @@ const SelectProduct = (props) => {
                     </div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column' }} >
-                    <h5>Size</h5>
-                    <select name="size" id="size" onChange={(e) => setProd({ ...prod, size: e.target.value })}>
-                        <option >Choose the size</option>
-                        {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <option>{vari.size}</option>)}
-                    </select>
+
+                    <div name="size" id="size" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <h5>Size:{prod.size} </h5>
+                        <div style={{ display: 'flex' }}>
+                            {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <button onClick={(e) => setProd({ ...prod, size: e.target.value })}
+                                value={vari.size} className='buttonSize'>
+                                {vari.size}</button>)}
+                            {(prod.size !== '' || prod.size !== 'Choose the size') &&
+                                <>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</>}
+                        </div>
+
+                    </div>
                 </div>
 
                 <div style={{ margin: '1em 0' }}>
-                    <h6>Share this product:</h6>
+                    <h6 style={{ paddingBottom: '0.3em' }}>Share this product:</h6>
                     <WhatsappShareButton
                         url={"https://scapeteamred.herokuapp.com/"}
                         quote={"CampersTribe - World is yours to explore"}
@@ -209,9 +214,6 @@ const SelectProduct = (props) => {
                         <TelegramIcon size={35} round={true} />
                     </TelegramShareButton>
                 </div>
-
-                {(prod.size !== '' || prod.size !== 'Choose the size') &&
-                    <>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</>}
 
                 <button onClick={() => addProducts()} className="addToCart" style={{ margin: '1em 5em 0 0', }}>Add to cart</button>
             </div>

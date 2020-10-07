@@ -41,3 +41,22 @@
     }
 }
 
+.buttonSize{
+    border: 1px solid #5f5f5f;
+    color: #2c2c2c;
+     width: 2em;
+      height: 2em;
+      display: flex;
+       justify-content: center; 
+       text-align: center;
+       font-size: 1.5em;
+       background: #97979734;
+       align-items: center;
+}
+.buttonSize:hover{
+    border: 1px solid #111111;
+    color:whitesmoke;
+       background: #111111;
+}
+
+
