@@ -43,7 +43,7 @@ class About extends React.Component {
                 </div>
 
                 <div className="containerAbout">
-                    <div className="textAbout" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', }}>
+                    <div className="textAbout" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundColor: 'whitesmoke' }}>
                         <h3>Products That Wear in Not Out</h3>
                         <p style={{ padding: '2em 5em' }}>
                             It wasn’t easy, but after countless hours of research and way too much coffee, we custom engineered our own Pyca™ fabric. We knew we needed something durable yet breathable which our tri-blend fabric delivers and then some.
