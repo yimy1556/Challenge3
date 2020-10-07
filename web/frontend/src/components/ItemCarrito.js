@@ -14,6 +14,9 @@ const ItemCarrito = (props) => {
     }, [button])
 
     const modStock = (cant) => {
+        if (props.render !== undefined) {
+            props.setRender(!props.render)
+        }
         props.updateQuantity(props.product, cant)
         setButton(!button)
     }
