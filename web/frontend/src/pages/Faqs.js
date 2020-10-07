@@ -4,11 +4,17 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import '../styles/about.css'
+import '../styles/faqs.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { animateScroll as scroll } from 'react-scroll'
 import { useEffect } from 'react'
+import callCenter from '../images/callCenter.jpg'
+import shipping from '../images/ship.jpg'
+import costure from '../images/sewing-machine-square.webp'
+import { Card } from 'react-bootstrap'
+
+
 
 export default function Faqs() {
 
@@ -22,6 +28,7 @@ export default function Faqs() {
 
   return (
     <>
+
       <Header></Header>
       <div className="container__super__faqs" style={{ borderTop: '1px solid #111111' }}>
         <p id="title_accordeon">FREQUENTLY ASKED QUESTIONS</p>
@@ -160,8 +167,40 @@ export default function Faqs() {
               </Typography>
             </AccordionDetails>
           </Accordion>
+
         </div>
+        <div style={{ display: 'flex', justifyContent: 'space-around', margin: '2rem 10rem' }}>
+          <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={costure} />
+            <Card.Body>
+              <Card.Text>
+
+                We make quality products, taking into account the highest industry standards. We start from the simplest, a good fabric.
+         </Card.Text>
+            </Card.Body>
+          </Card>
+          <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={shipping} />
+            <Card.Body>
+              <Card.Text>
+                Locate your order without logging in. Enter the order number, email address, and zip code (billing or shipping) associated with the order you wish to find.
+         </Card.Text>
+            </Card.Body>
+          </Card>
+          <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={callCenter} />
+            <Card.Body>
+              <Card.Text>
+
+                Once you have received your order and have any questions, you can contact us. We are via chat or by phone.
+         </Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
+
       </div>
+
+
       <Footer></Footer>
     </>
   )
