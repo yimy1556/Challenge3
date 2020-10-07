@@ -20,7 +20,7 @@ const Shop = (props) => {
             viewList: false
         }
     )
-
+    const [render, setRender] = useState(true)
     useEffect(() => {
         props.getProducts()
     }, [])
@@ -34,6 +34,7 @@ const Shop = (props) => {
         var lowestPrice = props.products.sort(function (a, b) {
             return (a.price - b.price)
         })
+        setRender(!render)
         setState({
             list: lowestPrice
         })
@@ -45,6 +46,7 @@ const Shop = (props) => {
         var highestPrice = props.products.sort(function (a, b) {
             return (b.price - a.price)
         })
+        setRender(!render)
         setState({
             list: highestPrice
         })
@@ -53,6 +55,7 @@ const Shop = (props) => {
     // Muestra productos de menor relevancia
     const lessRelevant = (params) => {
         var mostVisited = props.products.sort((a, b) => a.views - b.views)
+        setRender(!render)
         setState({
             list: mostVisited
         })
@@ -61,6 +64,7 @@ const Shop = (props) => {
     // Muestra productos de mayor relevancia
     const mostRelevant = (params) => {
         var lessVisited = props.products.sort((a, b) => b.views - a.views)
+        setRender(!render)
         setState({
             list: lessVisited
         })
@@ -109,7 +113,7 @@ const Shop = (props) => {
                         {state.list.map(product => {
                             return (
                                 <>
-                                    <Product product={product} view={state.viewList} />
+                                    <Product product={product} render={render} view={state.viewList} />
                                 </>
                             )
                         })
