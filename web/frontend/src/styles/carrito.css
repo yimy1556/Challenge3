@@ -1,0 +1,133 @@
+.DivCerrarCarrito {
+	position: fixed;
+	right: 0;
+	top: 0;
+	height: 100vh;
+    width: 100%;
+    background: rgba(211, 211, 211, 0.5);
+	z-index: 1;
+}
+
+#botonCarrito{
+    position: absolute;
+
+}
+
+#carrito{
+    margin-right: 420px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    margin-top: 15px;
+    padding: 0px 10px;
+    color: #111111;
+}
+
+#menuCostado{
+    position: absolute;
+    position: fixed!important; 
+    background: white;
+    padding-top: 2vh;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    right: -350px;
+    transition: right .3s linear;
+    z-index: 100;
+    margin-top: -12vh;
+}
+
+#ropaDelCarrito{
+    height: 300px;
+    margin-top: 5vh;
+    background-color: #FFFFFF;
+    padding: 2vh 2vw;
+}
+
+#buyCloth{
+    width: 60vw;
+    margin-top: 5vh;
+    padding: 2vh 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#unelEmentoCarrito{
+    display: flex;
+    justify-content: space-between;
+    color: #111111;
+    background: white;
+    padding-bottom: 2vh;
+}
+
+#buyButton{
+    margin-top: 5vh;
+    background-color: white;
+    border: none;
+    padding: 1vh 1vw;
+    font-weight: bold;
+    width: 80%;
+}
+
+#imageCarrito{
+    align-self: center;
+    display: flex;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 8vh;
+    border: 1px solid white;
+    
+}
+
+#tituloCantidad{
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+margin: 1vh ;
+}
+
+
+#cantidad{
+    display: flex;
+    flex-direction: row;
+}
+
+.imageAndSize{
+    display: flex;
+}
+.imageAndSize img{
+width: 6em;
+height: 7.2em;
+}
+
+#totalPrecio{
+    display: flex;
+    color: #111111;
+    border-top: 1px #585858 solid;
+    font-weight: bold!important;
+    justify-content: space-between;
+    padding: 1em 2em;
+}
+#taxes{
+    color: #3d3d3d;
+    text-align: justify;
+    padding: 0 2em;
+}
+
+span.MuiBadge-badge.MuiBadge-anchorOriginTopRightRectangle{
+    background-color: #111111;
+    color: white;
+    font-weight: bold;
+}
+
+.cartEmpty{
+    padding: 20px 55px;
+    margin: 2em;
+  }

@@ -1,0 +1,41 @@
+
+#container__primary{
+    text-align: center;
+    margin-top: 2rem;
+    height: 50vh;
+}
+
+#title__container{
+    font-size: 1.5rem;
+}
+
+#container__form{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#container__form div{
+    display: flex;
+    flex-direction: column;
+    margin: 0rem 30%;
+}
+
+
+#container__form div input{
+    padding: .5rem;
+}
+
+#container__form div button{
+    margin-top: .5rem;
+    background: #111111;
+    color: whitesmoke;
+    padding: .5rem;
+}
+
+@media only screen and (max-width: 768px) {
+    #container__form div{
+        display: flex;
+        flex-direction: column;
+        margin: 0rem 10%;
+    } 
+}

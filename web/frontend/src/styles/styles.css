@@ -1,0 +1,247 @@
+html * {
+    margin: 0;
+    padding: 0;  
+}
+.circulo {
+     width: 2em;
+     height: 2em;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     margin: 0em;
+     padding: 0em;
+}
+header{
+    max-width: 100%;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3vw;
+    padding-right: 8vw;
+    box-shadow: 0vw 0vw 0.3vw 0vw rgb(116, 116, 116);
+    max-height: 13vh;
+}
+header a {
+    color: #111111;
+    justify-content: space-between;
+    padding: 1vw;
+    font-size: 1.3em;
+    text-decoration: none;
+    background-image: linear-gradient( #111111,  #111111);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
+
+header a:hover,header a:focus {
+    color: #111111;
+    background-size: 100% 2px;
+    text-decoration: none;
+    
+}
+#shopNow{
+  text-align: center;
+  background-image: none;
+  color: white;
+  padding: 0;
+}
+
+#menuCostado > div.cartEmpty > div > button{
+  padding: 5px;
+  text-align: center;
+  width: 50%;
+  border: 2px solid white;
+  color: white;
+  background: none;
+}
+
+  
+#buttonShop {
+    color: #111111 !important;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 0.3em 1em;
+    background: rgba(255, 255, 255);
+    border:none;
+    transition: all 1s ease;
+    position: relative;
+  
+  }
+  #buttonShop2 {
+    color: #b6b6b6 !important;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 0.3em 1em;
+    background: #111111;
+    border:none;
+    transition: all 1s ease;
+    position: relative;
+  
+  }  
+  #buttonShop:hover {
+    background: #111111;
+    color: #fff !important;
+  }
+  #buttonShop2:hover {
+    background: #111111;
+    color: #fff !important;
+  }
+  #buttonShop a{
+    text-decoration: none;
+    color:  #111111;
+  }
+  #buttonShop2 a{
+    text-decoration: none;
+    color:  #fffefe;
+  }
+  #buttonShop a:hover{
+    text-decoration: none;
+    color:  white;
+  }
+  
+  #buttonShop2 a:hover{
+    text-decoration: none;
+    color:  #ffffff;
+  }
+  .button {
+    color: #ffffff !important;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0.3em 1em;
+    background: rgba(255, 255, 255);
+    border:none;
+    transition: all 1s ease;
+    position: relative
+  }
+  
+  .button:hover {
+    background: #111111;
+    color: rgb(255, 255, 255)!important;
+  }
+.clickHere a{
+    color: white!important;
+    font-size: 20px;
+}
+
+.brand{
+    font-size: 1em;
+}
+.infoContainer{
+  height: 15vh;
+  padding-top: 60px;
+  text-align: center;
+  margin-bottom: 25vh;
+}
+
+  
+.box {
+  cursor: pointer;
+  position: relative;
+  width: 50%;
+  height: 20%;
+  background-color: #111111;
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  will-change: transform;
+}
+
+
+input:focus, input.form-control:focus {
+
+  outline:none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+#formProduct input,#formProduct select{
+  margin: 5px 0;
+}
+input[type="file"] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  /* overflow: hidden; */
+  position: relative;
+  z-index: -1;
+  }
+  label[for="photo"] {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color:#111111;
+    display: inline-block;
+    transition: all .5s;
+    cursor: pointer;
+    padding: 15px 40px !important;
+    text-transform: uppercase;
+    width: fit-content;
+    text-align: center;
+    margin-left:  auto;
+    margin-right:  auto;
+    margin-top: 10px;
+    }
+
+#menuCostado ::-webkit-scrollbar {
+      width: 10px;     /* Tamaño del scroll en vertical */
+      margin: 2px;
+  }
+
+  #menuCostado ::-webkit-scrollbar-thumb {
+   background: #000;
+   border-radius: 100px;
+   border-right: 2px solid white;
+   
+}
+/* Cambiamos el fondo cuando esté en active */
+#menuCostado ::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}
+
+.payLogoContainer{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 70%;
+  align-items: center;
+}
+  .payLogo{
+    display: flex;
+   align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    width: 80%;
+    height: 25%;
+    border-bottom: 1px solid #D8D8D8;
+  
+  }
+  .payLogo:hover{
+    background: #D8D8D8;
+    cursor: pointer;
+  }
+
+.payLogo img{
+  width: 2.5em;
+  height: 2.5em;
+  margin: 3em;
+}
+
+.continue, #buyButton{
+  border:none;
+  background: #111111;
+  color: white;
+  padding: 0.6em;
+}
+#buyButton a{
+  text-decoration: none;
+  background: none;
+  color: white;
+}
+
+.paypal-powered-by{
+  display: none!important;
+}

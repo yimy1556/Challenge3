@@ -1,0 +1,165 @@
+main {
+    min-height: 65vh !important;
+}
+
+#dosfotos{
+    margin: 15vh 6vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+#dosfotos div:hover{
+    box-shadow: 0vw 0vw 0.4vw 0vw rgb(116, 116, 116);
+
+}
+
+.instaPhotos{
+    margin: 1vh;
+    width: 15vw;
+    height: 15vw;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.anotherPhotos {
+    margin: 3vh;
+    width: 35%;
+    height: 80vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.fotoHome{
+    width: 20vw;
+    height: 35vw;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.imgHomeText {
+    display: flex;
+    justify-content: center;
+}
+
+.imgText{
+    width: 40%;
+    margin: 0vh 3vh;
+}
+
+.imgHome{
+    width: 40%;
+    height: 45vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.hashtags {
+    width: 30%;
+}
+
+ #tresfotos{
+    margin: 10vh 6vw;
+    display: flex;
+    justify-content: space-between;
+} 
+
+.shopnowPhotos{
+    display: flex;
+}
+
+.instaDiv{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.oneDiv {
+    display: flex;
+}
+
+@media (max-width: 800px) {
+    #tresfotos{
+        margin: 8vh 6vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .fotoHome {
+        margin-bottom: 2vh;
+        width: 48%;
+        height: 55vw;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .imgText{
+        margin: 1vh auto;
+        width: 80%;
+    }
+
+    .imgHome{
+        margin: 1vh auto;
+        height: 35vh;
+        width: 80%;
+    }
+}
+
+
+@media (max-width: 900px) {
+    .shopnowPhotos{
+        display: flex;
+        flex-direction: column;
+    }
+    .anotherPhotos{
+        width: 80%;
+        margin: 1vh auto;
+    }
+    .instaDiv {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .oneDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    .instaPhotos {
+        width: 25vw;
+        height: 25vw;
+    }
+}
+
+@media (max-width: 700px) {
+    .instaPhotos {
+        width: 35vw;
+        height: 35vw;
+    }
+    .hashtags {
+        width: 70%;
+    }
+    .imgHome{
+        margin: 1vh auto;
+        height: 30vh !important;
+        width: 75% !important;
+    }
+}
+
+@media (max-width: 1100px) {
+    .imgHomeText{
+        display: flex;
+        flex-direction: column;
+    }
+    .imgText{
+        margin: 1vh auto;
+        width: 80%;
+    }
+
+    .imgHome{
+        margin: 1vh auto;
+        height: 50vh;
+        width: 75%;
+    }
+}

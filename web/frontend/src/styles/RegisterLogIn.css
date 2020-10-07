@@ -1,0 +1,94 @@
+
+#todoelhome{
+    background-color: #111111;
+}
+
+#divFormulario{
+    display: flex;
+    justify-content: center;
+
+}
+
+#divFormulario form{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 2vh 2vw;
+}
+
+#divFormulario h3{
+    margin-bottom: 5vh;
+    color: #111111;
+    margin-top: 10vh;
+}
+
+#divFormulario div{
+    margin-bottom: 2vh;
+}
+
+#divFormulario label{
+    margin-right: 2vw;
+}
+#divFormulario input, #divFormulario select{
+    width: 50vw;
+    height: 7vh;
+    padding: 0vh 1vw;
+}
+
+
+
+#divFormulario button{
+    margin-bottom: 4vh;
+    font-weight: bold;
+    color: white;
+    background-color: #111111;
+    border: 1px solid white;
+    padding: 1vh 1vw;
+}
+    
+
+#divFormulario button.createAccount:hover, #divFormulario button.login:hover{
+    color: #111111;
+    background-color: white;
+}
+
+
+#divFormulario button span  {
+margin-top: -1vh;
+padding-bottom: -1vh;
+}
+
+#divFormulario button svg  {
+    margin-top: 1.4vh;
+    margin-right: -1vw;
+}
+
+#HaveAccount{
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+#HaveAccount button{
+    border: none;
+    margin-top: 3.8vh;
+    color: white;
+}
+
+#HaveAccount button:hover{
+    text-decoration: underline;
+}
+
+#radioContainer input {
+    margin: 0;
+    background: red;
+}
+#HaveAccount > a{
+    text-decoration: none;
+    color: white;
+    padding-left: 2vw;
+}
+#divFormulario > form > div.loginRegister > a{
+    text-decoration: none;
+}
