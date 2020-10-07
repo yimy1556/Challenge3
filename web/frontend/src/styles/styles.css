@@ -187,8 +187,7 @@ input[type="file"] {
     }
 
 #menuCostado ::-webkit-scrollbar {
-      width: 5px;     /* Tamaño del scroll en vertical */
-      height: 20px;
+      width: 10px;     /* Tamaño del scroll en vertical */
       margin: 2px;
   }
 

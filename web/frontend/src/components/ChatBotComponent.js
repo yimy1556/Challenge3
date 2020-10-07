@@ -24,7 +24,8 @@ class ChatBotComponent extends React.Component {
         botFontColor: '#fff',
         userBubbleColor: '#fff',
         userFontColor: '#4a4a4a',
-        position: 'relative'
+        position: 'relative',
+        zIndex: '98',
     };
 
     render() {
