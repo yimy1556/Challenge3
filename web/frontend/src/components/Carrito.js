@@ -74,8 +74,9 @@ const Carrito = (props) => {
                             </div>
                             <p id="taxes">Shipping, taxes, and discounts calculated at checkout.</p>
                         </div>
-
-                        <button id="buyButton"><NavLink to="/buy">Checkout</NavLink></button>
+                        {props.userlogged.token ?
+                            <button id="buyButton"><NavLink to="/buy">Checkout</NavLink></button>
+                            : <button id="buyButton" disabled> Login to buy</button>}
                     </>
                 }
 
@@ -94,7 +95,9 @@ const Carrito = (props) => {
 const mapStateToProps = state => {
     return {
         listProduct: state.shoppingCartReducer.listProduct,
-        ddd: state.shoppingCartReducer
+        ddd: state.shoppingCartReducer,
+        userlogged: state.authReducer
+
     }
 }
 const mapDispatchToProps = {
