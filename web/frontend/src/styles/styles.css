@@ -42,9 +42,12 @@ header a:hover,header a:focus {
     
 }
 #shopNow{
+  text-align: center;
   background-image: none;
   color: white;
+  padding: 0;
 }
+
 #menuCostado > div.cartEmpty > div > button{
   padding: 5px;
   text-align: center;

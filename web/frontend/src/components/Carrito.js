@@ -40,7 +40,7 @@ const Carrito = (props) => {
 
             <div id="menuCostado" style={menuShow.show ? { right: 0, boxShadow: '0.5vw 0vw 0vw 0vw black' } : {}} >
                 <div onClick={menuHamburguesa} id="botonCarrito" style={{ border: `none` }} style={menuShow.show ? { display: 'none' } : { display: 'block' }}>
-                    <div id="carrito" >
+                    <div id="carrito">
                         <Badge badgeContent={cantTotal(props.listProduct)}>
                             <ShoppingCartIcon fontSize='large' />
                         </Badge>
@@ -57,7 +57,7 @@ const Carrito = (props) => {
                         <div className="cartEmpty" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', }}>
                             <h4 style={{ color: '#111111' }} >Your cart is empty</h4>
                             <p style={{ color: '#111111' }}>Not sure what to buy? Thousands of products await you!</p>
-                            <div style={{ backgroundImage: `url(${shopNow})`, width: '100%', height: '350px', backgroundSize: "cover", textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
+                            <div style={{ backgroundImage: `url(${shopNow})`, width: '100%', height: '20em', backgroundSize: "cover", textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
                                 <button> <NavLink to="/shop" id='shopNow'>Shop now</NavLink ></button>
                             </div>
                         </div>
@@ -74,8 +74,9 @@ const Carrito = (props) => {
                             </div>
                             <p id="taxes">Shipping, taxes, and discounts calculated at checkout.</p>
                         </div>
-
-                        <button id="buyButton"><NavLink to="/buy">Checkout</NavLink></button>
+                        {props.userlogged.token ?
+                            <button id="buyButton"><NavLink to="/buy">Checkout</NavLink></button>
+                            : <button id="buyButton" disabled> Login to buy</button>}
                     </>
                 }
 
@@ -94,7 +95,9 @@ const Carrito = (props) => {
 const mapStateToProps = state => {
     return {
         listProduct: state.shoppingCartReducer.listProduct,
-        ddd: state.shoppingCartReducer
+        ddd: state.shoppingCartReducer,
+        userlogged: state.authReducer
+
     }
 }
 const mapDispatchToProps = {

@@ -23,7 +23,7 @@ const Shop = (props) => {
 
     useEffect(() => {
         props.getProducts()
-    }, [...props.products])
+    }, [])
 
     const scrollToTop = () => {
         scroll.scrollToTop();
@@ -37,6 +37,7 @@ const Shop = (props) => {
         setState({
             list: lowestPrice
         })
+
     }
 
     // Muestra productos de mayor precio

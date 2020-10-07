@@ -15,7 +15,6 @@
 
 .containerAbout{
     display: flex;
-    padding: 50px;
 }
 #ourStory{
     color: white; 
@@ -27,7 +26,7 @@
      flex-direction: column;
      justify-content: center;
        align-content: center;
-         width: 30vw;
+         width: 40vw;
           height: 80vh;
            background-position: center 45%;
             background-size: cover;

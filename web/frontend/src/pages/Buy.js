@@ -39,30 +39,26 @@ const Buy = (props) => {
 
                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                 <h3>My addresses</h3>
-                                {props.userlogged.contact === " " &&
-                                    <NavLink to="address">
-                                        <CreateIcon />
-                                    </NavLink>}
-                            </div>
-                            {props.userlogged.contact === "" ?
-                                <>
-                                    {props.userlogged.contact.map((x) => {
-                                        return (
-                                            <>
-                                                <div style={{ fontWeight: 'lighter', padding: '15px', border: '1px solid #EEEEEE', backgroundColor: '#FFFFFF', borderRadius: '5px', margin: '5px 0' }}>
-                                                    <h3>{x.address}</h3>
-                                                    <p>{x.city}, {x.country}</p>
-                                                    <p>C.P {x.postalCode}</p>
-                                                    <p>{x.phoneNumber}</p>
-                                                </div>
 
-                                            </>
-                                        )
-                                    })}
-                                </> :
-                                <div style={{ fontWeight: 'lighter', padding: '15px', border: '1px solid #EEEEEE', backgroundColor: '#FFFFFF', borderRadius: '5px', margin: '5px 0' }}>
-                                    <p>Carga tu info</p>
-                                </div>}
+                                <NavLink to="address" style={{ color: 'grey', paddingLeft: '2em' }}>
+                                    <CreateIcon />
+                                </NavLink>
+                            </div>
+
+                            {props.userlogged.contact.map((x) => {
+                                return (
+                                    <>
+                                        <div style={{ fontWeight: 'lighter', padding: '15px', border: '1px solid #EEEEEE', backgroundColor: '#FFFFFF', borderRadius: '5px', margin: '5px 0' }}>
+                                            <h3>{x.address}</h3>
+                                            <p>{x.city}, {x.country}</p>
+                                            <p>C.P {x.postalCode}</p>
+                                            <p>{x.phoneNumber}</p>
+                                        </div>
+
+                                    </>
+                                )
+                            })}
+
                         </div>
                         <div style={{ width: '40vw' }}>
                             <h3>Your products</h3>

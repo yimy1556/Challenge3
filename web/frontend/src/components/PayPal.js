@@ -30,10 +30,11 @@ const PayPal = (props) => {
             },
             onApprove: async (data, actions) => {
                 const order = await actions.order.capture()
+                props.redirect('success')
                 props.finishBuying()
                 localStorage.removeItem("carito")
                 localStorage.setItem("carito", JSON.stringify([]))
-                props.redirect('success')
+
 
             },
             onError: (err) => {
