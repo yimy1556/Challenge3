@@ -13,16 +13,50 @@ main {
 
 }
 
-
-.fotosHome{
-    
+.instaPhotos{
+    margin: 1vh;
+    width: 15vw;
+    height: 15vw;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-#tresfotos{
+.anotherPhotos {
+    margin: 3vh;
+    width: 35%;
+    height: 80vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.fotoHome{
+    width: 20vw;
+    height: 35vw;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+ #tresfotos{
     margin: 10vh 6vw;
     display: flex;
     justify-content: space-between;
+} 
+
+@media (max-width: 800px) {
+    #tresfotos{
+        margin: 8vh 6vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .fotosHome {
+        margin-bottom: 2vh;
+        width: 48%;
+        height: 55vw;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 }

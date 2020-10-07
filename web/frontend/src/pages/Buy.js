@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
@@ -18,12 +17,9 @@ const Buy = (props) => {
 
     const compraTotal = (list) => {
         let total = 0
-        console.log(list, '1')
         list.forEach(prod => total += prod.cant * prod.price)
         return total
     }
-    console.log(props.userlogged.contact[0])
-    console.log(props.userlogged.contact[0] === {})
     return (
         <>
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${cloth})`, width: '100%', height: '40vh', backgroundPosition: 'center 45%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
@@ -109,6 +105,7 @@ const Buy = (props) => {
 
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

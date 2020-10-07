@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React from 'react'
 import Header from '../components/Header'
 import '../styles/about.css'
 import { animateScroll as scroll } from 'react-scroll'
@@ -37,8 +37,10 @@ class Address extends React.Component {
     }
 
     readContact = e => {
+        let oneCountry = document.getElementById("country")
         this.setState({
             ...this.state,
+            country: oneCountry.options[oneCountry.selectedIndex].text,
             [e.target.name]: e.target.value
         })
     }
@@ -54,7 +56,6 @@ class Address extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <>
 

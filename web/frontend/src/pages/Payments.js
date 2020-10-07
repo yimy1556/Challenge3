@@ -33,7 +33,6 @@ const Shipping = (props) => {
 
     const compraTotal = (list) => {
         let total = 0
-        console.log(list, '1')
         list.forEach(prod => total += prod.cant * prod.price)
         return total
     }
@@ -44,7 +43,6 @@ const Shipping = (props) => {
     const handleClose = () => {
         setOpen(false);
     };
-    console.log(props.history)
     const redirect = destiny => {
         props.history.push(destiny)
     }

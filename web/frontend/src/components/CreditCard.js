@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 
-const PayPal = (props) => {
-    const paypal = useRef()
+const CreditCard = (props) => {
 
     return (
         <>
@@ -10,4 +9,4 @@ const PayPal = (props) => {
     )
 }
 
-export default PayPal
+export default CreditCard

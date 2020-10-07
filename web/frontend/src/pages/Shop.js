@@ -20,7 +20,7 @@ const Shop = (props) => {
             viewList: false
         }
     )
-
+    const [render, setRender] = useState(true)
     useEffect(() => {
         props.getProducts()
     }, [])
@@ -34,6 +34,7 @@ const Shop = (props) => {
         var lowestPrice = props.products.sort(function (a, b) {
             return (a.price - b.price)
         })
+        setRender(!render)
         setState({
             list: lowestPrice
         })
@@ -45,6 +46,7 @@ const Shop = (props) => {
         var highestPrice = props.products.sort(function (a, b) {
             return (b.price - a.price)
         })
+        setRender(!render)
         setState({
             list: highestPrice
         })
@@ -53,6 +55,7 @@ const Shop = (props) => {
     // Muestra productos de menor relevancia
     const lessRelevant = (params) => {
         var mostVisited = props.products.sort((a, b) => a.views - b.views)
+        setRender(!render)
         setState({
             list: mostVisited
         })
@@ -61,6 +64,7 @@ const Shop = (props) => {
     // Muestra productos de mayor relevancia
     const mostRelevant = (params) => {
         var lessVisited = props.products.sort((a, b) => b.views - a.views)
+        setRender(!render)
         setState({
             list: lessVisited
         })
@@ -81,15 +85,14 @@ const Shop = (props) => {
             viewList: false
         })
     }
-    console.log(state.list)
     return (
         <>
             <Header />
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'left', backgroundImage: `url(https://cdn.shopify.com/s/files/1/0238/2821/collections/HP_Hero_Banner_Blanco2_2020_2000x.jpg?v=1588902043)`, minWidth: '100%', height: '45vh', backgroundPosition: 'center 85%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-                <h2 style={{ color: 'whitesmoke', textAlign: 'left', fontSize: 'bold', fontWeight: '700', marginLeft: '2em', fontSize: '4em' }}>ALL PRODUCTS</h2>
+                <h2 style={{ color: 'whitesmoke', textAlign: 'left', fontSize: 'bold', fontWeight: '700', marginLeft: '2em', fontSize: '6vh' }}>ALL PRODUCTS</h2>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-around', verticalAlign: 'center' }}>
-                <div style={{ flex: '1', padding: '50px', display: 'flex', flexDirection: 'column' }}>
+            <div className="orderProducts" style={{ display: 'flex', justifyContent: 'space-around', verticalAlign: 'center' }}>
+                <div style={{ flex: '1', padding: '7vh', display: 'flex', flexDirection: 'column' }}>
                     <h4>Order products</h4>
 
                     <button onClick={lowestPrice} className="orderButton">Lowest Price</button>
@@ -109,7 +112,7 @@ const Shop = (props) => {
                         {state.list.map(product => {
                             return (
                                 <>
-                                    <Product product={product} view={state.viewList} />
+                                    <Product product={product} render={render} view={state.viewList} />
                                 </>
                             )
                         })

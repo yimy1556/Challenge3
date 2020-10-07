@@ -17,7 +17,7 @@ const itemActions = {
                 alert('Something went wrong')
             } else {
                 swal({
-                    title:'Pyral',
+                    title: 'Pyral',
                     text: 'The product was uploaded successfully!',
                     buttons: {
                         confirm: true,
@@ -34,13 +34,11 @@ const itemActions = {
         return async (dispatch, getState) => {
             const { listProduct } = getState().shoppingCartReducer
             if (listProduct.length !== 0) {
-                console.log(911)
                 return
             }
 
             const response = await axios.get(path + `/product/getProducts`);
             var info = response.data;
-            console.log(info);
 
             localStorage.setItem("listProduct", JSON.stringify(info.product))
             localStorage.setItem("carito", JSON.stringify([]))
@@ -50,12 +48,11 @@ const itemActions = {
             })
         }
     },
-    
+
     getCountries: () => {
         return async (dispatch, getState) => {
             const response = await axios.get('https://quiet-savannah-25909.herokuapp.com/api/countries')
             var info = response.data
-            console.log(info)
             dispatch({
                 type: 'GET_COUNTRIES',
                 payload: info
@@ -109,13 +106,12 @@ const itemActions = {
 
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/product/ratingProduct`, { productId, stars })
-            console.log(response.data);
             if (!response.data.success) {
                 swal('Something went wrong')
             } else {
                 dispatch({
                     type: 'RATING',
-                    payload: {  rating: response.data.rating }
+                    payload: { rating: response.data.rating }
                 })
                 swal('Rating mandado')
             }

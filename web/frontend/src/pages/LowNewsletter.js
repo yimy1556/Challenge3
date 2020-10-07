@@ -26,7 +26,6 @@ const LowNewsletter = (props) => {
         }
     }
 
-    console.log(props)
     return (
         <>
             <div className="container__super__lowNewsletter">
