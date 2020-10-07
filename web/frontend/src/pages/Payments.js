@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import PayPal from '../components/PayPal'
@@ -10,39 +10,26 @@ import CreditCard from '../components/CreditCard'
 import logoPayPal from '../images/paypal.png'
 import logoCash from '../images/money.png'
 import logoCards from '../images/cards.png'
+import { animateScroll as scroll } from 'react-scroll'
+import Badge from '@material-ui/core/Badge'
 
 const Shipping = (props) => {
 
     const [flagPayPal, setFlagPayPal] = useState(false)
     const [flagCreditCard, setFlagCreditCard] = useState(false)
-    const useStyles = makeStyles((theme) => ({
-        modal: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-        },
-        paper: {
-            backgroundColor: theme.palette.background.paper,
-            border: '2px solid #000',
-            boxShadow: theme.shadows[5],
-            padding: theme.spacing(2, 4, 3),
-        },
-    }));
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
+    useEffect(() => {
+        scrollToTop()
+    }, [])
+
+    const scrollToTop = () => {
+        scroll.scrollToTop();
+    }
 
     const compraTotal = (list) => {
         let total = 0
         list.forEach(prod => total += prod.cant * prod.price)
         return total
     }
-
-    const handleOpen = () => {
-        setOpen(true);
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
     const redirect = destiny => {
         props.history.push(destiny)
     }
@@ -89,12 +76,16 @@ const Shipping = (props) => {
 
 
                 </div>
-                <div style={{ backgroundColor: '#F5F5F5', width: '30vw', height: '70vh', padding: '20px 40px', marginRight: '5em' }}>
+                <div style={{ backgroundColor: '#FFFFFF', width: '30vw', height: '70vh', padding: '20px 40px', marginRight: '5em' }}>
                     <h3 style={{ textAlign: 'center' }}>Purchase summary</h3>
                     <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
 
                     <div style={{ display: 'flex', flexDirection: 'column', padding: '0.7em 0' }}>
-                        {props.listProduct.map(prod => <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}> <p>{prod.title} {prod.color} ({prod.cant}) </p>
+                        {props.listProduct.map(prod => <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <Badge badgeContent={prod.cant}>
+                                <img src={prod.remeraActual} style={{ width: '4em' }}></img>
+                            </Badge>
+                            <p>{prod.title} {prod.color} ({prod.cant}) </p>
                             <p>${prod.price * prod.cant}</p>
                         </div>)}
                     </div>

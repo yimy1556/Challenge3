@@ -40,7 +40,6 @@ class Address extends React.Component {
         let oneCountry = document.getElementById("country")
         this.setState({
             ...this.state,
-            country: oneCountry.options[oneCountry.selectedIndex].text,
             [e.target.name]: e.target.value
         })
     }
