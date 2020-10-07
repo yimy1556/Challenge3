@@ -70,7 +70,6 @@ const userController = {
 	},
 	getUser: (req, res) => {
 		const { firstName, lastName, mail, contact, rol, rating, token } = req.user
-		console.log('este es el console log')
 		res.json({ firstName, lastName, mail, contact, rol, rating, token })
 		console.log(token)
 	},

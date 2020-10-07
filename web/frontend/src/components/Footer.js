@@ -26,20 +26,11 @@ class Footer extends React.Component {
                         <div id="logo__footer">
                             <NavLink to="/">Pyral</NavLink>
                         </div>
-                        <div id="links__footer__one">
-                            <span>Site</span>
+                        <div id="links__footer">
                             <NavLink to="/">Home</NavLink>
                             <NavLink to="/about">About</NavLink>
                             <NavLink to="/shop">Shop</NavLink>
                             <NavLink to="/faqs">FAQs</NavLink>
-                        </div>
-                        <div id="links__footer__two">
-                            <span>Team</span>
-                            <NavLink to="/">Yimy</NavLink>
-                            <NavLink to="/about">Ale</NavLink>
-                            <NavLink to="/shop">Pau</NavLink>
-                            <NavLink to="/faqs">Luu</NavLink>
-                            <NavLink to="/faqs">Rus</NavLink>
                         </div>
                         <div id="news__rowScroll">
                             <div>

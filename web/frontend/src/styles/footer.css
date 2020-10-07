@@ -10,54 +10,29 @@ footer {
 }
 
 #logo__footer {
-    color: whitesmoke;
     font-size: 3rem;
-    margin-top: 6rem;
+    margin-top: 4rem;
 }
 
-#links__footer__one {
-    margin-top: 3rem;
-    margin-left: 19rem;
-    display: flex;
-    flex-direction: column;
+#logo__footer a{
+ text-decoration: none;
+ color: whitesmoke;
 }
 
-#links__footer__two {
-    margin-top: 3rem;
-    margin-left: 0rem;
-    display: flex;
-    flex-direction: column;
+#links__footer {
+    margin-top: 5rem;
+    margin-left: 15%;
 }
 
-#links__footer__one span{
-   font-weight: 500;
-   color: whitesmoke;
-   font-size: 1.3rem;
-   text-decoration: underline;
-}
-
-#links__footer__two span{
-    font-weight: 500;
-    color: whitesmoke;
-    font-size: 1.3rem;
-    text-decoration: underline;
- }
-
-#links__footer__one a {
-    margin: .2rem;
-    font-size: 1.5rem;
-    color: whitesmoke;
-}
-
-#links__footer__two a {
-    margin: .2rem;
+#links__footer a{
+    margin: 1rem;
     font-size: 1.5rem;
     color: whitesmoke;
 }
 
 #news__rowScroll {
     display: flex;
-    margin-top: 6rem;
+    margin-top: 4rem;
     flex-direction: row;
     justify-content: space-between;
 }
@@ -110,4 +85,9 @@ footer {
     #news__rowScroll div:nth-child(2) {
         margin-top: 1rem;
     }
+    #links__footer {
+        margin-top: 5rem;
+        margin-left: 0%;
+    }
+    
 }
