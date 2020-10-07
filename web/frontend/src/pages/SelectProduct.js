@@ -103,9 +103,9 @@ const SelectProduct = (props) => {
     return (<>
         <Header bott={bottom} />
         <div className="oneProduct" style={{ padding: '0.1em 1em ' }}>
-            <div className="aProduct" style={{ display: 'flex', justifyContent: 'center' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '5em' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
-                    src={vari.photo} alt={vari.title} style={{ width: '4em', height: '5em' }} />)}
+            <div className="aProduct1" style={{ display: 'flex', justifyContent: 'center' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '5em' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px'}} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
+                    src={vari.photo} alt={vari.title} style={{ width: '4em', height: '5em',margin:'0.5vh 2vh', border:'1px solid #F1F1F1' }} />)}
                 </div>
 
                 <SideBySideMagnifier
@@ -121,29 +121,18 @@ const SelectProduct = (props) => {
 
 
             </div>
-            <div className="aProduct" style={{ padding: '2em', justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
+            <div className="aProduct2" style={{ padding: '2em', justifyContent: 'center', alignItems: 'center', alignContent: 'center', margin:'4vh 0vh' }}>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', paddingRight: '7em' }}>
-                    <h3>{product.title}</h3>
-                    <h3>${product.price}</h3>
+                <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+                    <h4>{product.title}</h4>
+                    <h4>${product.price}</h4>
                 </div>
-                {!arrayFiltrado2 ?
-                    <div style={{ display: 'flex' }}>
-                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
-                        <p>{arrayFiltrado[0].reviews} reviews</p>
-                    </div>
-                    :
-                    <div style={{ display: 'flex' }}>
-                        <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                        <p>{props.productRating.reviews} reviews</p>
-                    </div>
-                }
-                <p style={{ maxWidth: '80%', padding: '20px 0' }}>{product.description}</p>
+                <p style={{ padding: '20px 0', fontWeight:'lighter' }}>{product.description}</p>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 10, width: '50%' }}>
                     <div>
-                        <h5>Colors:</h5>
-                        <div style={{ display: 'flex' }}>
+                        <h6 style={{margin:'1.5vh 0vh'}}>Colors:</h6>
+                        <div style={{ display: 'flex'}}>
 
                             {borrarRepe(product.variants).map(variant => {
                                 return (<div id="imagenShopChica2" style={{
@@ -171,40 +160,53 @@ const SelectProduct = (props) => {
                 <div style={{ display: 'flex', flexDirection: 'column' }} >
 
                     <div name="size" id="size" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <h5>Size:{prod.size} </h5>
-                        <div style={{ display: 'flex' }}>
-                            {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <button onClick={(e) => setProd({ ...prod, size: e.target.value })}
+                        <h6 style={{margin:'1.5vh 0vh'}}>Size: {prod.size} </h6>
+                        <div style={{ display: 'flex', width:'10vw' }}>
+                            {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <button id="buttonShop" style={{border: '1px solid #BEBEBE'}} onClick={(e) => setProd({ ...prod, size: e.target.value })}
                                 value={vari.size} className='buttonSize'>
                                 {vari.size}</button>)}
                             {(prod.size !== '' || prod.size !== 'Choose the size') &&
-                                <>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p>Last units</p>)}</>}
+                                <>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p style={{margin:'1vh 0vh'}}>Last units</p>)}</>}
                         </div>
 
                     </div>
                 </div>
-
-                <div style={{ margin: '1em 0' }}>
-                    <h6 style={{ paddingBottom: '0.3em' }}>Share this product:</h6>
-                    <WhatsappShareButton
+                <button onClick={() => addProducts()} className="addToCart"  style={{ margin: '1em 5em 0 0', width:'100%' }}>Add to cart</button>
+                {!arrayFiltrado2 ?
+                    <div style={{ display: 'flex', margin: '3vh 0vh' }}>
+                        <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
+                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
+                        <p>{arrayFiltrado[0].reviews} reviews</p>
+                    </div>
+                    :
+                    <div style={{ display: 'flex' }}>
+                        <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
+                        <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                        <p>{props.productRating.reviews} reviews</p>
+                    </div>
+                }
+                <div style={{ margin: '1em 0', display:'flex', alignItems:'center'}}>
+                    <h6>Share this product:</h6>
+                    <WhatsappShareButton style={{margin: '0vh 1vh'}}
                         url={"https://scapeteamred.herokuapp.com/"}
                         quote={"CampersTribe - World is yours to explore"}
                         hashtag={`${product.title}`}
                     >
-                        <WhatsappIcon size={30} round={true} />
+                        <WhatsappIcon size={35} round={true} />
                     </WhatsappShareButton>
                     <FacebookShareButton
                         url={"https://scapeteamred.herokuapp.com/"}
                         quote={"CampersTribe - World is yours to explore"}
                         hashtag={`${product.title}`}
                     >
-                        <FacebookIcon size={30} round={true} />
+                        <FacebookIcon size={35} round={true} />
                     </FacebookShareButton>
-                    <TwitterShareButton
+                    <TwitterShareButton style={{margin: '0vh 1vh'}}
                         url={"https://scapeteamred.herokuapp.com/"}
                         quote={"CampersTribe - World is yours to explore"}
                         hashtag="#camperstribe"
                     >
-                        <TwitterIcon size={30} round={true} />
+                        <TwitterIcon size={35} round={true} />
                     </TwitterShareButton>
                     <TelegramShareButton
                         url={"https://scapeteamred.herokuapp.com/"}
@@ -214,11 +216,8 @@ const SelectProduct = (props) => {
                         <TelegramIcon size={35} round={true} />
                     </TelegramShareButton>
                 </div>
-
-                <button onClick={() => addProducts()} className="addToCart" style={{ margin: '1em 5em 0 0', }}>Add to cart</button>
             </div>
         </div>
-
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1em' }}>
             <h3 >Reviews</h3>
             {!arrayFiltrado2 ?
@@ -262,15 +261,23 @@ const SelectProduct = (props) => {
         <div>
 
 
-            <div className="bottomText" style={{ padding: '50px', justifyContent: 'center' }}>
-                <div className="fotosHome" style={{ backgroundImage: `url(${mens})`, height: '40vw' }}></div>
-                <div className="foto2Home" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', }}>
-                    <h3>Products That Wear in Not Out</h3>
-                    <p style={{ margin: '0vh 3vh' }}>We’ve always considered ourselves a shirting company at our very core. Always have. Always will. In fact, when we were just getting our vision for Taylor Stitch off the ground ten years ago, we turned to the country’s oldest family of shirtmakers to learn from the very best. And we were spared no lesson of construction—from fit and balance to the importance of French seams to why 22 stitches-per-inch matters on a shirt.</p>
-                    <p style={{ margin: '0vh 3vh' }}>You can bet this technical DNA is central to every single product we make. Build for the long haul, design products that wear in not out, and use the best most sustainable fabrics available—even if that means making them yourself.</p>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width:'100%'}}>
+                {/* <div style={{ backgroundImage: `url(https://cdn-yotpo-images-production.yotpo.com/instagram/30/17842593536342330/standard_resolution.jpg)`, height:'60vh',backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></div> */}
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginBottom:'3vh'}}>
+                        <h3 style={{margin:'2vh auto'}}>#wemakeit</h3>
+                        <h5 className="hashtags" style={{margin:'2vh auto', fontWeight:'lighter', textAlign:'center'}}>Demand versatile performance. Follow the journey for originality and expression at @pyral</h5>
+                        <div className="instaDiv" style={{ textAlign: 'center', justifyContent: 'center', alignContent: 'center', margin:'5vh 0vh'}}>
+                            <div className="oneDiv">
+                                <div className="instaPhotos" style={{ backgroundImage: `url(https://cdn-yotpo-images-production.yotpo.com/instagram/25/17891492716647625/standard_resolution.jpg)` }}></div>
+                                <div className="instaPhotos" style={{ backgroundImage: `url(https://cdn-yotpo-images-production.yotpo.com/instagram/14/17848977176285314/standard_resolution.jpg)` }}></div>
+                            </div>
+                            <div className="oneDiv">
+                                <div className="instaPhotos" style={{ backgroundImage: `url(https://cdn-yotpo-images-production.yotpo.com/instagram/57/17878968142792357/standard_resolution.jpg)` }}></div>
+                                <div className="instaPhotos" style={{ backgroundImage: `url(https://cdn-yotpo-images-production.yotpo.com/instagram/30/17842593536342330/standard_resolution.jpg)` }}></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-            </div>
             <Footer />
         </div>
     </>
