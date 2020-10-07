@@ -40,7 +40,7 @@ class Address extends React.Component {
         let oneCountry = document.getElementById("country")
         this.setState({
             ...this.state,
-            country: oneCountry.options[oneCountry.selectedIndex].text,
+
             [e.target.name]: e.target.value
         })
     }
@@ -56,9 +56,15 @@ class Address extends React.Component {
     }
 
     render() {
+        this.constOrder = this.props.countries
+        this.constOrder.sort(function (a, b) {
+            if (a.country < b.country) { return -1; }
+            if (a.country > b.country) { return 1; }
+            return 0;
+        })
+
         return (
             <>
-
                 <Header />
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: '100vw', height: '20vh', background: '#111111', color: 'white', textAlign: 'center', fontSize: '60px', fontWeight: 'bold' }}>
                     <p>My Account</p>
@@ -97,7 +103,7 @@ class Address extends React.Component {
                                     <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="city" name="city" placeholder="Write your city here" />
                                     <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="address" name="address" placeholder="Write your address here" />
                                     <select style={{ width: '30%' }} name="country" onChange={this.readContact} >
-                                        {this.props.countries.map(country => {
+                                        {this.constOrder.map(country => {
                                             return <option name="country">{country.country}</option>
                                         })}
                                     </select>
