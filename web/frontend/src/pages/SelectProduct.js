@@ -11,6 +11,8 @@ import authActions from '../redux/actions/authActions'
 import { animateScroll as scroll } from 'react-scroll'
 import '../styles/selectProduct.css'
 import swal from 'sweetalert';
+import { toast } from 'react-toastify';
+
 import {
     SideBySideMagnifier,
     MOUSE_ACTIVATION,
@@ -78,10 +80,12 @@ const SelectProduct = (props) => {
 
     const addProducts = () => {
         if (prod.size === "") {
-            alert('llena todo')
+            toast.error("Please complete size and color")
         } else {
             props.addProduct(prod)
             setBottom(!bottom)
+            toast.success("The item was successfully added to your cart ")
+
         }
     }
     var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
