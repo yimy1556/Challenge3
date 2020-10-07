@@ -26,9 +26,32 @@
      flex-direction: column;
      justify-content: center;
        align-content: center;
-         width: 40vw;
-          height: 80vh;
-           background-position: center 45%;
+         width: 30vw;
+          height: 50vh;
+           background-position: center;
             background-size: cover;
              background-repeat: no-repeat
+}
+
+.textAbout{
+    width: 60vw;
+}
+
+@media (max-width: 800px) {
+    .containerAbout {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        margin: 5vh auto;
+        padding: 0;
+    }
+    .photoAbout{
+        width: 80%;
+        margin: 3vh auto;
+    }
+    .textAbout{
+        width: 80%;
+        margin: 3vh auto;
+    }
 }

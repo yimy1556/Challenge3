@@ -173,3 +173,9 @@ button.createAccount:hover{
     text-decoration: none;
 }
 
+@media (max-width: 650px) {
+    .orderProducts{
+        display: flex;
+        flex-direction: column;
+    }
+}
