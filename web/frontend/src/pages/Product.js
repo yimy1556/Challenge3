@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/shop.css'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 
 
@@ -9,7 +9,9 @@ const Product = (props) => {
     const [foto, setfoto] = useState({
         color: props.product.variants[0].photo
     })
-
+    useEffect(() => {
+        setfoto({color:props.product.variants[0].photo})
+    },[props.render])
     const cambiarFoto = (foto) => {
         setfoto({
             ...foto,
@@ -17,7 +19,6 @@ const Product = (props) => {
         })
     }
     const variantsAux = []
-
 
     const borrarRepe = (variants) => {
         if (variants === undefined) return variantsAux
