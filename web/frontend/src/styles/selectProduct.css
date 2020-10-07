@@ -4,4 +4,40 @@
 
 }
 
+.oneProduct{
+    display: flex;
+    width: 100%;
+}
+
+.aProduct {
+    width: 50%;
+}
+
+.bottomText{
+    display: flex;
+    width: 100%;
+}
+
+.fotosHome, .foto2Home {
+    width: 40%;
+}
+
+@media (max-width: 900px) {
+    .oneProduct{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .aProduct {
+        width: 100%;
+    }
+    .bottomText{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .fotosHome, .foto2Home{
+        width: 100%;
+    }
+}
 

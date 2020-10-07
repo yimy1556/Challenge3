@@ -9,11 +9,9 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import authActions from '../redux/actions/authActions'
 import { animateScroll as scroll } from 'react-scroll'
+import '../styles/selectProduct.css'
 import swal from 'sweetalert';
 import {
-    MagnifierContainer,
-    MagnifierPreview,
-    MagnifierZoom,
     SideBySideMagnifier,
     MOUSE_ACTIVATION,
 } from "react-image-magnifiers";
@@ -43,14 +41,13 @@ const SelectProduct = (props) => {
         })
         return variantsAux
     }
+    const variantsAux = []
     const [bottom, setBottom] = useState(true)
     const [product, setProduct] = useState({})
     const [prod, setProd] = useState({
         _id: props.match.params.id,
         remeraActual: '', color: '', size: '', cant: 1
     })
-    // RATING
-
 
     const [value, setValue] = useState(0)
 
@@ -105,8 +102,6 @@ const SelectProduct = (props) => {
         scroll.scrollToTop();
     }
     
-    var promedio = props.productRating.stars / props.productRating.reviews
-
     console.log(props.product);
     console.log(props.productRating);
 
@@ -114,16 +109,15 @@ const SelectProduct = (props) => {
     // props.product.map(product => console.log(`${product.stars}`))
     return (<>
         <Header bott={bottom} />
-        <div style={{ display: 'flex', justifyContent: 'space-evenly', padding: '0.1em 1em ' }}>
-
-            <div style={{ display: 'flex', width: '50vw', justifyContent: 'center' }}>
+        <div className="oneProduct" style={{ padding: '0.1em 1em '}}>
+            <div className="aProduct" style={{ display: 'flex', justifyContent: 'center' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '5em' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
                     src={vari.photo} alt={vari.title} style={{ width: '4em', height: '5em' }} />)}
                 </div>
 
                 <SideBySideMagnifier
                     className="input-position"
-                    style={{ width: '31vw' }}
+                    style={{ width: '60vh' }}
                     imageSrc={prod?.remeraActual}
                     mouseActivation={MOUSE_ACTIVATION.CLICK}
                     overlayOpacity={0.4}
@@ -134,7 +128,7 @@ const SelectProduct = (props) => {
 
 
             </div>
-            <div style={{ width: '50vw', padding: '2em', justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
+            <div className="aProduct" style={{ padding: '2em', justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', paddingRight: '7em' }}>
                     <h3>{product.title}</h3>
@@ -142,12 +136,12 @@ const SelectProduct = (props) => {
                 </div>
                 {!arrayFiltrado2 ?
                     <div style={{ display: 'flex' }}>
-                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
                         <p>{arrayFiltrado[0].reviews} reviews</p>
                     </div>
                     :
                     <div style={{ display: 'flex' }}>
-                        <Rating name="half-rating" defaultValue={promedio} precision={0.1} readOnly style={{ color: 'black' }} />
+                        <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
                         <p>{props.productRating.reviews} reviews</p>
                     </div>
                 }
@@ -205,13 +199,13 @@ const SelectProduct = (props) => {
             {!arrayFiltrado2 ?
                 <div style={{ display: 'flex' }}>
                     <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
-                    <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
                     <p>{arrayFiltrado[0].reviews} reviews</p>
                 </div>
                 :
                 <div style={{ display: 'flex' }}>
                     <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
-                    <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
                     <p>{props.productRating.reviews} reviews</p>
                 </div>
             }
@@ -230,7 +224,7 @@ const SelectProduct = (props) => {
                                         setValue(newValue)
 
                                     }}
-                                    style={{ color: 'black' }}
+                                    style={{ color: '#111111' }}
                                 />
 
                             </Box>
@@ -243,12 +237,12 @@ const SelectProduct = (props) => {
         <div>
 
 
-            <div style={{ display: 'flex', padding: '50px' }}>
-                <div className="fotosHome" style={{ backgroundImage: `url(${mens})`, height: '40vw', width: '41vw' }}></div>
-                <div style={{ width: '60vw', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', }}>
+            <div className="bottomText" style={{padding: '50px', justifyContent:'center' }}>
+                <div className="fotosHome" style={{ backgroundImage: `url(${mens})`, height: '40vw' }}></div>
+                <div className="foto2Home" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', }}>
                     <h3>Products That Wear in Not Out</h3>
-                    <p style={{ padding: '2em 5em' }}>We’ve always considered ourselves a shirting company at our very core. Always have. Always will. In fact, when we were just getting our vision for Taylor Stitch off the ground ten years ago, we turned to the country’s oldest family of shirtmakers to learn from the very best. And we were spared no lesson of construction—from fit and balance to the importance of French seams to why 22 stitches-per-inch matters on a shirt.</p>
-                    <p style={{ padding: '1em 5em' }}>You can bet this technical DNA is central to every single product we make. Build for the long haul, design products that wear in not out, and use the best most sustainable fabrics available—even if that means making them yourself.</p>
+                    <p style={{ margin:'0vh 3vh' }}>We’ve always considered ourselves a shirting company at our very core. Always have. Always will. In fact, when we were just getting our vision for Taylor Stitch off the ground ten years ago, we turned to the country’s oldest family of shirtmakers to learn from the very best. And we were spared no lesson of construction—from fit and balance to the importance of French seams to why 22 stitches-per-inch matters on a shirt.</p>
+                    <p style={{ margin:'0vh 3vh' }}>You can bet this technical DNA is central to every single product we make. Build for the long haul, design products that wear in not out, and use the best most sustainable fabrics available—even if that means making them yourself.</p>
                 </div>
 
             </div>

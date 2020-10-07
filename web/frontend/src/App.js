@@ -24,7 +24,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import LowNewsletter from './pages/LowNewsletter'
 import Address from './components/Address'
 import Faqs from './pages/Faqs';
-import Shipping from './pages/Shipping';
 import Payments from './pages/Payments';
 
 
@@ -59,7 +58,6 @@ function App(props) {
         <Route path="/lowNewsletter" component={LowNewsletter} />
         <Route path="/buy" component={Buy} />
         <Route path="/success" component={Success} />
-        <Route path="/shipping" component={Shipping} />
         <Route path="/payments" component={Payments} />
         <Route path="/address" component={Address} />
         <Route path="/faqs" component={Faqs} />

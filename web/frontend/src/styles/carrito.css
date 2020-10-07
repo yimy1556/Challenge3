@@ -22,7 +22,7 @@
     height: 80%;
     margin-top: 15px;
     padding: 0px 10px;
-    color: black;
+    color: #111111;
 }
 
 #menuCostado{
@@ -30,30 +30,23 @@
     position: fixed!important; 
     background: white;
     padding-top: 2vh;
-    width: 40vw;
+    width: 28vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
-    right: -40vw;
+    right: -35vw;
     transition: right .3s linear;
     z-index: 100;
-    background-color: whitesmoke;
     margin-top: -12vh;
 }
 
-#menuCostado h3{
-    margin-top: 4vh;
-}
-
 #ropaDelCarrito{
-    width: 30vw;
+    width: 28vw;
     margin-top: 5vh;
-    background-color: whitesmoke;
+    background-color: #FFFFFF;
     padding: 2vh 1vw;
     overflow-y: scroll;
-    border: 1px solid black;
-    max-width: 55vh;
 }
 
 #buyCloth{
@@ -68,18 +61,18 @@
 #unelEmentoCarrito{
     display: flex;
     justify-content: space-between;
-    color: black;
+    color: #111111;
     background: white;
-    border-bottom: 1px solid #D8D8D8;
     padding-bottom: 2vh;
 }
 
-#butButton{
+#buyButton{
     margin-top: 5vh;
     background-color: white;
     border: none;
     padding: 1vh 1vw;
     font-weight: bold;
+    width: 80%;
 }
 
 #imageCarrito{
@@ -107,37 +100,30 @@ margin: 1vh ;
     flex-direction: row;
 }
 
-#cantidad p{
-    margin-left: 0.2vw;
-    margin-right: 0.2vw;
-    padding-bottom: 0.5vh;
-
-} 
-
-
-#borrarPrecio{
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-margin: 1vh ;
+.imageAndSize{
+    display: flex;
 }
-
-#borrarPrecio p {
-    font-weight: bold;
+.imageAndSize img{
+width: 6em;
+height: 7.2em;
 }
 
 #totalPrecio{
     display: flex;
-    color: black;
-    border-bottom: 2px black solid;
+    color: #111111;
+    border-top: 1px #585858 solid;
+    font-weight: bold!important;
     justify-content: space-between;
-    padding: 2vh 0 1vh 0;
-    margin-bottom: 1em;
-    font-weight: bold;
+    padding: 1em 2em;
+}
+#taxes{
+    color: #3d3d3d;
+    text-align: justify;
+    padding: 0 2em;
 }
 
 span.MuiBadge-badge.MuiBadge-anchorOriginTopRightRectangle{
-    background-color: black;
+    background-color: #111111;
     color: white;
     font-weight: bold;
 }

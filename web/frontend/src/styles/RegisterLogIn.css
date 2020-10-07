@@ -1,6 +1,6 @@
 
 #todoelhome{
-    background-color: black;
+    background-color: #111111;
 }
 
 #divFormulario{
@@ -42,14 +42,14 @@ padding: 2vh 2vw;
     margin-bottom: 4vh;
     font-weight: bold;
     color: white;
-    background-color: black;
+    background-color: #111111;
     border: 1px solid white;
     padding: 1vh 1vw;
 }
     
 
 #divFormulario button.createAccount:hover, #divFormulario button.login:hover{
-    color: black;
+    color: #111111;
     background-color: white;
 }
 

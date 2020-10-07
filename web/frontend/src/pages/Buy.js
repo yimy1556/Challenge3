@@ -5,6 +5,7 @@ import ItemCarrito from '../components/ItemCarrito'
 import { connect } from 'react-redux'
 import { Stepper } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
+import CreateIcon from '@material-ui/icons/Create';
 
 const Buy = (props) => {
     const [render, setRender] = useState(true)
@@ -22,11 +23,36 @@ const Buy = (props) => {
     return (
         <>
             <Header />
-            <div style={{ display: 'flex', justifyContent: 'space-around', borderTop: '1px solid black', background: '#EEEEEE' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-around', borderTop: '1px solid #111111', background: '#EEEEEE' }}>
                 <div>
 
                     <div id="buyCloth">
+                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', width: '40vw', paddingTop: '40px' }}>
+                            {props.userlogged.contact ?
+                                <>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <h3>My addresses</h3>
+                                        <NavLink to="address">
+                                            <CreateIcon />
+                                        </NavLink>
+                                    </div>
+                                    {props.userlogged.contact.map((x) => {
+                                        return (
+                                            <>
+                                                <div style={{ fontWeight: 'lighter', padding: '15px', border: '1px solid #EEEEEE', backgroundColor: '#FFFFFF', borderRadius: '5px', margin: '5px 0' }}>
+                                                    <h3>{x.address}</h3>
+                                                    <p>{x.city}, {x.country}</p>
+                                                    <p>C.P{x.postalCode}</p>
+                                                    <p>{x.phoneNumber}</p>
+                                                </div>
+
+                                            </>
+                                        )
+                                    })}
+                                </> : <p>Set your direction of shipping <NavLink to="address">Here</NavLink></p>}
+                        </div>
                         <div style={{ width: '50%' }}>
+                            <h3>Your products</h3>
                             {props.listProduct.map(prod => <ItemCarrito product={prod} render={render} setRender={setRender} />)}
 
                             <div id="totalPrecio">
@@ -34,7 +60,7 @@ const Buy = (props) => {
                                 <p>${compraTotal(props.listProduct)}</p>
                             </div>
                         </div>
-                        <NavLink to="/shipping"> <button className="continue">Continue</button></NavLink>
+                        <NavLink to="/payments"> <button className="continue">Continue</button></NavLink>
                     </div>
 
                 </div>
@@ -82,6 +108,7 @@ const Buy = (props) => {
 const mapStateToProps = state => {
     return {
         listProduct: state.shoppingCartReducer.listProduct,
+        userlogged: state.authReducer,
     }
 }
 const mapDispatchToProps = {

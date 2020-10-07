@@ -85,10 +85,10 @@ const Shop = (props) => {
         <>
             <Header />
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'left', backgroundImage: `url(https://cdn.shopify.com/s/files/1/0238/2821/collections/HP_Hero_Banner_Blanco2_2020_2000x.jpg?v=1588902043)`, minWidth: '100%', height: '45vh', backgroundPosition: 'center 85%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-                <h2 style={{ color: 'whitesmoke', textAlign: 'left', fontSize: 'bold', fontWeight: '700', marginLeft: '2em', fontSize: '4em' }}>ALL PRODUCTS</h2>
+                <h2 style={{ color: 'whitesmoke', textAlign: 'left', fontSize: 'bold', fontWeight: '700', marginLeft: '2em', fontSize: '6vh' }}>ALL PRODUCTS</h2>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-around', verticalAlign: 'center' }}>
-                <div style={{ flex: '1', padding: '50px', display: 'flex', flexDirection: 'column' }}>
+            <div className="orderProducts" style={{ display: 'flex', justifyContent: 'space-around', verticalAlign: 'center' }}>
+                <div style={{ flex: '1', padding: '7vh', display: 'flex', flexDirection: 'column' }}>
                     <h4>Order products</h4>
 
                     <button onClick={lowestPrice} className="orderButton">Lowest Price</button>
