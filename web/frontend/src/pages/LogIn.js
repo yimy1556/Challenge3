@@ -23,7 +23,6 @@ const LogIn = props => {
     }
 
     const enviarInfo = async e => {
-        console.log(ingresoUsuario)
         e.preventDefault()
         await props.logUser(ingresoUsuario)
 
@@ -38,8 +37,6 @@ const LogIn = props => {
         })
     }
 
-
-    console.log(props.user);
     return (
 
         <div style={{ display: 'flex' }}>

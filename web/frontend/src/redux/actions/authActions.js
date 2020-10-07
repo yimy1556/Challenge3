@@ -10,7 +10,6 @@ const authActions = {
     newUser: newUser => {
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/register`, newUser)
-            console.log(response.data);
             if (!response.data.success) {
                 toast.error('Incorrect mail or password')
             } else {
@@ -82,7 +81,6 @@ const authActions = {
                     Authorization: `Bearer ${tokenLS}`
                 }
             })
-            console.log(response.data.rating);
             dispatch({
                 type: 'LOG_USER',
                 payload: {
@@ -147,9 +145,7 @@ const authActions = {
 
     lowNewsletter: mail => {
         return async (dispatch, getState) => {
-
             const response = await axios.delete(path + '/newsletter', { mail })
-            console.log(response)
             dispatch({
                 type: 'LOW_NEWSLETTER'
             })
@@ -196,14 +192,12 @@ const authActions = {
     },
 
     postContact: (country, city, address, postalCode, phoneNumber, token) => {
-        console.log(country, city, address, postalCode, phoneNumber, token);
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/direction`, { country, city, address, postalCode, phoneNumber }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
-            console.log(response);
             if (!response.data.success) {
                 toast('Something went wrong')
             } else {

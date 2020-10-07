@@ -54,7 +54,6 @@ const shoppingCartActions = {
         updateProduct(prod, product, -cant)
         modificarCant(prod, listProduct, cant)
         updateLocal(product, listProduct)
-        console.log('pase por aqui')
     },
     removeProduct: (prod) => (dispatch, getState) => {
         const { product } = getState().itemReducer
@@ -74,9 +73,8 @@ const shoppingCartActions = {
     },
     finishBuying: () => async (dispatch, getState) => {
         const { listProduct } = getState().shoppingCartReducer
-        const response = await axios.put(path + `/finishBuying`, {listProduct})
-        console.log('yimi paso por aqui')
-        dispatch({type:'ADD_PRODUCT',})
+        const response = await axios.put(path + `/finishBuying`, { listProduct })
+        dispatch({ type: 'ADD_PRODUCT', })
     },
     forcedCart: (cart) => (dispatch, getState) => {
         const cartParse = JSON.parse(cart)

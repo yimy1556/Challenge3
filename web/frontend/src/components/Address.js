@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React from 'react'
 import Header from '../components/Header'
 import '../styles/about.css'
 import { animateScroll as scroll } from 'react-scroll'
@@ -54,7 +54,6 @@ class Address extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <>
 

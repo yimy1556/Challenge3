@@ -9,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import authActions from '../redux/actions/authActions'
 import { animateScroll as scroll } from 'react-scroll'
-import swal from 'sweetalert';
 import {
     SideBySideMagnifier,
     MOUSE_ACTIVATION,
@@ -85,7 +84,6 @@ const SelectProduct = (props) => {
     }
 
     const addProducts = () => {
-        console.log(prod.size === "")
         if (prod.size === "") {
             alert('llena todo')
         } else {
@@ -95,18 +93,13 @@ const SelectProduct = (props) => {
     }
     var arrayFiltrado = props.product.filter(e => e._id === props.match.params.id)
 
-
-    console.log(arrayFiltrado2);
-
     const scrollToTop = () => {
         scroll.scrollToTop();
     }
 
-    console.log(props.product);
-    console.log(props.productRating);
+
 
     if (product === {}) return <></>
-    // props.product.map(product => console.log(`${product.stars}`))
     return (<>
         <Header bott={bottom} />
         <div style={{ display: 'flex', justifyContent: 'space-evenly', padding: '0.1em 1em ' }}>

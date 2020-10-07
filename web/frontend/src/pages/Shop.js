@@ -85,7 +85,6 @@ const Shop = (props) => {
             viewList: false
         })
     }
-    console.log(state.list)
     return (
         <>
             <Header />
