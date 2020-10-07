@@ -14,7 +14,7 @@
 }
 
 #carrito{
-    margin-right: 50vw;
+    margin-right: 420px;
     font-size: 30px;
     display: flex;
     justify-content: center;
@@ -30,12 +30,12 @@
     position: fixed!important; 
     background: white;
     padding-top: 2vh;
-    width: 40vw;
+    width: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
-    right: -40vw;
+    right: -350px;
     transition: right .3s linear;
     z-index: 100;
     background-color: whitesmoke;
@@ -47,12 +47,13 @@
 }
 
 #ropaDelCarrito{
-    width: 30vw;
+    width: 260px;
+    height: 300px;
     margin-top: 5vh;
     background-color: whitesmoke;
     padding: 2vh 1vw;
-    overflow-y: scroll;
     border: 1px solid black;
+
 }
 
 #buyCloth{

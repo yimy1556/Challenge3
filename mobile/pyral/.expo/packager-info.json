@@ -1,13 +1,4 @@
 {
-<<<<<<< HEAD
-  "devToolsPort": 19006,
-  "expoServerPort": 19004,
-  "packagerPort": 19005,
-  "packagerPid": 12194,
-  "expoServerNgrokUrl": "https://ib-c37.anonymous.pyral.exp.direct",
-  "packagerNgrokUrl": "https://packager.ib-c37.anonymous.pyral.exp.direct",
-  "ngrokPid": 12271
-=======
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://sq-pdf.anonymous.pyral.exp.direct",
   "packagerNgrokUrl": "https://packager.sq-pdf.anonymous.pyral.exp.direct",
@@ -15,5 +6,4 @@
   "devToolsPort": 19002,
   "packagerPort": 19001,
   "packagerPid": 13804
->>>>>>> 77f0bc7c034b654c9a73cedfd2dcd6015b455d32
 }
