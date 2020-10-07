@@ -70,7 +70,6 @@ const userController = {
 	},
 	getUser: (req, res) => {
 		const { firstName, lastName, mail, contact, rol, rating, token } = req.user
-		console.log('este es el console log')
 		res.json({ firstName, lastName, mail, contact, rol, rating, token })
 		console.log(token)
 	},
@@ -144,11 +143,7 @@ const userController = {
 		console.log(newDirection);
 	},
 
-	// getContact: (req, res) => {
-	// 	const { contact } = req.user
-	// 	console.log(contact);
-	// 	res.json({ success: true, contact })
-	// },
+
 	//Subscription mail is recorded and notified by mail.
 	createSuscription: async (req, res) => {
 
@@ -180,7 +175,7 @@ const userController = {
 			</head>
 			<body style="margin: 0px; padding: 0px; font-family: 'Roboto';">
 			  <div style="text-align: center; margin: 0px;">
-				<h1 style="background-color: whitesmoke; color: rgb(2, 2, 2); margin: 0px; padding: 15px;">Welcome to Pyral</h1>
+				<h1 style="background-color: #111111; color: whitesmoke; margin: 0px; padding: 15px;">Welcome to Pyral</h1>
 			  </div>
 			  <div style="text-align: center; background-image: url('https://images.pexels.com/photos/2951457/pexels-photo-2951457.jpeg?cs=srgb&dl=pexels-eben-odonkor-2951457.jpg&fm=jpg');
 			   height: 70vh; background-position: center; background-repeat: no-repeat; background-size:100%; margin: 0px;">
@@ -195,7 +190,7 @@ const userController = {
 				<span style="color: rgb(255, 255, 255); font-size: small;">Want to change how you receive these emails?</span>
 				<a style="color: rgb(240, 231, 231); font-size:small; text-decoration: none;" href="http://localhost:3000/lowNewsletter"> -  unsubscribe from this list.</a>
 			  </div>
-			  <div style="background-color: black; text-align: center; height: 5vh;">
+			  <div style="background-color: black; text-align: center; height: 5vh; padding-bottom:10px">
 				<h3 style="color: whitesmoke;margin: 0px; font-size: 20px; padding: 10px;">Team Pyral</h3>
 			  </div>
 			</body>

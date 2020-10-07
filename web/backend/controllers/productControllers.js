@@ -10,8 +10,7 @@ const productController = {
 
         const serverURL = `uploads/${photoTrimed}`
         const photo = `http://localhost:4000/uploads/${photoTrimed}`
-        console.log(photo)
-
+        
         archivo.mv(serverURL)
 
         const newProduct = new Product({

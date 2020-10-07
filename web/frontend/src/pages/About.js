@@ -26,12 +26,12 @@ class About extends React.Component {
             <>
                 <Header />
 
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${cloth})`, minWidth: '100%', height: '55vh', backgroundPosition: 'center 45%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${cloth})`, minWidth: '100%', height: '80vh', backgroundPosition: 'center 45%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                     <h2 id="ourStory">OUR STORY</h2>
                 </div>
 
 
-                <div className="containerAbout" >
+                <div className="containerAbout" style={{ marginTop: '10px' }}>
                     <div className="photoAbout" style={{ backgroundImage: `url(https://instagram.faep4-1.fna.fbcdn.net/v/t51.2885-15/e35/57400207_851926991853538_7690681489965528085_n.jpg?_nc_ht=instagram.faep4-1.fna.fbcdn.net&_nc_cat=110&_nc_ohc=zksFJsS5JMIAX_OCrLw&_nc_tp=18&oh=f5955111445ca5eb47c4b655c54fe5b8&oe=5FA1B6F6)` }}>
 
                     </div>

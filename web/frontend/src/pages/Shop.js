@@ -10,7 +10,7 @@ import { animateScroll as scroll } from 'react-scroll'
 import ChatBotComponent from '../components/ChatBotComponent'
 import ViewListIcon from '@material-ui/icons/ViewList';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
-
+import shopNow from '../images/shopNow.jpg'
 
 const Shop = (props) => {
 
@@ -23,6 +23,7 @@ const Shop = (props) => {
     const [render, setRender] = useState(true)
     useEffect(() => {
         props.getProducts()
+        scrollToTop()
     }, [])
 
     const scrollToTop = () => {
@@ -92,20 +93,28 @@ const Shop = (props) => {
                 <h2 style={{ color: 'whitesmoke', textAlign: 'left', fontSize: 'bold', fontWeight: '700', marginLeft: '2em', fontSize: '6vh' }}>ALL PRODUCTS</h2>
             </div>
             <div className="orderProducts" style={{ display: 'flex', justifyContent: 'space-around', verticalAlign: 'center' }}>
-                <div style={{ flex: '1', padding: '7vh', display: 'flex', flexDirection: 'column' }}>
-                    <h4>Order products</h4>
+                <div style={{ flex: '1', padding: '15vh 1vw', display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid grey' }}>
+                        <h4 style={{ color: 'grey' }}>Order products</h4>
+                        <div>
+                            <ViewListIcon onClick={viewList} />
+                            <ViewModuleIcon onClick={viewModule} />
+                        </div>
+                    </div>
 
-                    <button onClick={lowestPrice} className="orderButton">Lowest Price</button>
-                    <button onClick={highestPrice} className="orderButton">Highest Price</button>
-                    <button onClick={mostRelevant} className="orderButton">Most Relevant</button>
-                    <button onClick={lessRelevant} className="orderButton">Less Relevant</button>
+
+                    <span onClick={lowestPrice} className="orderFilter">Lowest Price</span>
+                    <span onClick={highestPrice} className="orderFilter">Highest Price</span>
+                    <span onClick={mostRelevant} className="orderFilter">Most Relevant</span>
+                    <span onClick={lessRelevant} className="orderFilter">Less Relevant</span>
+
                     <div>
-                        <ViewListIcon onClick={viewList} />
-                        <ViewModuleIcon onClick={viewModule} />
+                        <img src={shopNow} style={{ width: '100%', paddingTop: '3em' }}>
+                        </img>
                     </div>
                 </div>
 
-                <div id="paginaShop" style={{ flex: '8' }}>
+                <div id="paginaShop" style={{ flex: '5' }}>
                     <div id={!state.viewList && "todoShop"} >
 
 

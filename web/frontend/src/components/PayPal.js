@@ -35,7 +35,6 @@ const PayPal = (props) => {
                 localStorage.removeItem("carito")
                 localStorage.setItem("carito", JSON.stringify([]))
 
-
             },
             onError: (err) => {
                 console.log(err)

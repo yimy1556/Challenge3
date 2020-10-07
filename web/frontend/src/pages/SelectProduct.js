@@ -117,7 +117,8 @@ const SelectProduct = (props) => {
                     overlayOpacity={0.4}
                     alwaysInPlace={true}
                     fillGap={false}
-                    cursorStyle={'SideBySideMagnifier'}
+                    mouseActivation={MOUSE_ACTIVATION.CLICK}
+                    cursorStyle={"zoom-in"}
                 />
 
 
