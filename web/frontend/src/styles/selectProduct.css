@@ -6,12 +6,19 @@
 
 .oneProduct{
     display: flex;
-    width: 100%;
+    margin: 0vh auto;
+    width: 80%;
 }
 
-.aProduct {
+.aProduct1 {
+    margin: 0vh 4vh;
     width: 50%;
 }
+
+.aProduct2 {
+    width: 35%;
+}
+
 
 .bottomText{
     display: flex;
@@ -28,7 +35,10 @@
         flex-direction: column;
         width: 100%;
     }
-    .aProduct {
+    .aProduct1 {
+        width: 100%;
+    }
+    .aProduct2 {
         width: 100%;
     }
     .bottomText{
@@ -40,4 +50,12 @@
         width: 100%;
     }
 }
+
+.buttonSize {
+    width: 6.5vh !important;
+    height: 5.5vh!important;
+    font-size: 2vh!important;
+    font-weight: lighter !important;
+}
+
 

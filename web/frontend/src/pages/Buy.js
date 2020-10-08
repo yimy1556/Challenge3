@@ -7,19 +7,26 @@ import cloth from '../images/clothing2.jpg'
 import { NavLink } from 'react-router-dom'
 import CreateIcon from '@material-ui/icons/Create';
 import payment from '../images/payment.jpg'
+import { animateScroll as scroll } from 'react-scroll'
 
 const Buy = (props) => {
     const [render, setRender] = useState(true)
 
     useEffect(() => {
-
+        scrollToTop()
     }, [render])
+
+    const scrollToTop = () => {
+        scroll.scrollToTop();
+    }
+
 
     const compraTotal = (list) => {
         let total = 0
         list.forEach(prod => total += prod.cant * prod.price)
         return total
     }
+    console.log(props.listProduct)
     return (
         <>
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${cloth})`, width: '100%', height: '40vh', backgroundPosition: 'center 45%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
@@ -61,7 +68,7 @@ const Buy = (props) => {
                             {props.listProduct.map(prod => <ItemCarrito product={prod} render={render} setRender={setRender} />)}
 
                             <div id="totalPrecio">
-                                <p>Total</p>
+                                <p>Subtotal</p>
                                 <p>${compraTotal(props.listProduct)}</p>
                             </div>
                         </div>
@@ -77,6 +84,11 @@ const Buy = (props) => {
                         {props.listProduct.map(prod => <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}> <p>{prod.title} {prod.color} ({prod.cant}) </p>
                             <p>${prod.price * prod.cant}</p>
                         </div>)}
+                    </div>
+                    <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <h6>Subtotal</h6>
+                        <h6>${compraTotal(props.listProduct)} </h6>
                     </div>
 
                     {compraTotal(props.listProduct) > 250 ?

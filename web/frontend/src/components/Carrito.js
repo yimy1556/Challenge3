@@ -65,7 +65,7 @@ const Carrito = (props) => {
                     </> :
                     <>
                         <div>
-                            <div id="ropaDelCarrito">
+                            <div id="ropaDelCarrito" style={{overflow:"scroll", paddingBottom:"-30vh"}}>
                                 {props.listProduct.map(prod => <ItemCarrito product={prod} />)}
                             </div>
                             < div id="totalPrecio">

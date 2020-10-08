@@ -10,8 +10,8 @@ const Product = (props) => {
         color: props.product.variants[0].photo
     })
     useEffect(() => {
-        setfoto({color:props.product.variants[0].photo})
-    },[props.render])
+        setfoto({ color: props.product.variants[0].photo })
+    }, [props.render])
     const cambiarFoto = (foto) => {
         setfoto({
             ...foto,
@@ -40,9 +40,12 @@ const Product = (props) => {
                         </div>
                     </NavLink>
                     <div style={{ width: '50%', display: 'flex', paddingTop: '3em', flexDirection: 'column' }}>
-                        <h3 id="descripcionShop">{props.product.title}</h3>
-                        <p id="precioShop" style={{ fontSize: '1.5em' }}>${props.product.price}</p>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', width: '50%' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <h3 id="descripcionShop">{props.product.title}</h3>
+                            <p id="precioShop" style={{ fontSize: '1.5em' }}>${props.product.price}</p>
+                        </div>
+
+                        <div style={{ display: 'flex', justifyContent: 'space-between', width: '60%' }}>
                             <div style={{ display: 'flex' }}>
                                 {variantsAux.map(variant => {
                                     return (<div id="imagenShopChica2" onClick={e => cambiarFoto(variant.photo)} style={{

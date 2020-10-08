@@ -11,7 +11,7 @@
 }
 
 #todoShop{
-    padding: 2vh 4vw;
+    padding: 2vh 4vw 2vh 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -116,7 +116,6 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    border: 0.4px solid rgba(158, 158, 158, 0.932);
     margin-right: 1vw;
     border-radius: 100%;
     width: 30px;
@@ -160,17 +159,13 @@ button.createAccount:hover{
     overflow-x: scroll;
 }
 
-.orderButton{
-    color: #ffffff !important;
-    font-size: 20px;
-    font-weight: 500;
-    padding: 0.3em 1em;
-    background: #111111;
-    margin: 0.2em;
-    border:none;
-    transition: all 1s ease;
-    position: relative;
-    text-decoration: none;
+.orderFilter:hover{
+    cursor: pointer;
+}
+.orderFilter{
+    font-size: 1.2em;
+    margin:2px 0;
+    font-weight: 600;
 }
 
 @media (max-width: 650px) {

@@ -198,16 +198,12 @@ const authActions = {
                     Authorization: `Bearer ${token}`
                 }
             })
-            if (!response.data.success) {
-                toast('Something went wrong')
-            } else {
                 dispatch({
                     type: 'GET_CONTACT',
                     payload: { contact: response.data.contact }
                     // {country: response.data.country, city: response.data.city, address: response.data.address, postalCode: response.data.postalCode, phoneNumber: response.data.phoneNumber}
                 })
-            }
-
+                return response  
         }
     },
 
