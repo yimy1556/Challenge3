@@ -167,8 +167,7 @@ const Register = (props) => {
                             <TextField onChange={leerImput} type="password" id="pass" name="pass" placeholder="Write your password here"></TextField>
                         </div>
                         <div id="HaveAccount">
-                            <p>Have an account?</p>
-                            <NavLink to="/login" class="clickHere"> Click Here</NavLink>
+                            <p style={{color:'gray'}}>Have an account?<NavLink to="/login" class="clickHere" style={{color:'gray'}}> Click Here</NavLink></p>
                         </div>
                         <button onClick={enviarInfo} className="createAccount button">Create Account</button>
                     </form>
