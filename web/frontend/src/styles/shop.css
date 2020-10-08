@@ -10,6 +10,11 @@
     text-align: center;
 }
 
+.imgShop{
+    visibility: visible;
+    display: block;
+}
+
 #todoShop{
     padding: 2vh 4vw 2vh 0;
     display: flex;
@@ -167,12 +172,16 @@ button.createAccount:hover{
 .orderFilter{
     font-size: 1.2em;
     margin:2px 0;
-    font-weight: 600;
+    font-weight: 200;
 }
 
 @media (max-width: 650px) {
     .orderProducts{
         display: flex;
         flex-direction: column;
+    }
+    .imgShop{
+        display: none;
+        visibility: hidden;
     }
 }

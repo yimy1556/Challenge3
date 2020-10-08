@@ -56,16 +56,15 @@ const LogIn = props => {
                         cookiePolicy={'single_host_origin'}
                     />
 
-                    <div id="divUsuario">
-                        <input onChange={leerImput} type="text" id="mail" name="mail" placeholder="Write your mail here"></input>
+                    <div id="divMail">
+                        <input onChange={leerImput} type="text" id="mail" name="mail" placeholder="Write your mail here" style={{border: '0', background:'none', borderBottom:'1px solid gray'}}></input>
                     </div>
                     <div id="divContraseña">
-                        <input onChange={leerImput} type="password" id="pass" name="pass" placeholder="Write your password here"></input>
+                        <input onChange={leerImput} type="password" id="pass" name="pass" placeholder="Write your password here" style={{border: '0', background:'none', borderBottom:'1px solid gray'}}></input>
                     </div>
-                    <div id="HaveAccount" style={{ color: 'black' }}>
-                        <p>Don't have an account?</p>
-                        <NavLink to="/register" style={{ color: 'black' }}> Sign up</NavLink>
-                        <NavLink to="/forgotPass" style={{ color: 'black' }} s>Forgot password?</NavLink>
+                    <div id="HaveAccount" style={{ color: 'gray' }}>
+                        <p>Don't have an account?<NavLink to="/register" style={{ color: 'gray' }}> Sign up</NavLink></p>
+                        <NavLink to="/forgotPass" style={{ color: 'gray' }} s>Forgot password?</NavLink>
                     </div>
                     <button className="login" onClick={enviarInfo}>Log in</button>
                 </form>

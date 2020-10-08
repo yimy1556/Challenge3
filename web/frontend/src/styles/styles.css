@@ -18,7 +18,7 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 0 3vw;
-    padding-right: 8vw;
+    padding-right: 4em;
     box-shadow: 0vw 0vw 0.3vw 0vw rgb(116, 116, 116);
     max-height: 13vh;
 }
@@ -41,6 +41,12 @@ header a:hover,header a:focus {
     text-decoration: none;
     
 }
+
+.Toastify__toast--success {
+  background: #080808 !important;
+}
+
+
 #shopNow{
   text-align: center;
   background-image: none;

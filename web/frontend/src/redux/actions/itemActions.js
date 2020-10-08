@@ -64,8 +64,9 @@ const itemActions = {
             const response = await axios.put(path + `/product/addProduct`, formItem, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
-                }
+                }      
             })
+            return response
         }
     },
     deleteItem: (product) => {

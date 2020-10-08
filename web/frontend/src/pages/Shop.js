@@ -112,7 +112,7 @@ const Shop = (props) => {
                 <h2 style={{ color: 'whitesmoke', textAlign: 'left', fontSize: 'bold', fontWeight: '700', marginLeft: '2em', fontSize: '6vh' }}>ALL PRODUCTS</h2>
             </div>
             <div className="orderProducts" style={{ display: 'flex', justifyContent: 'space-around', verticalAlign: 'center' }}>
-                <div style={{ flex: '1', padding: '15vh 2vw 15vh 4vw', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ flex: '1', padding: '10vh 2vw 2vh 4vw', display: 'flex', flexDirection: 'column' }}>
                     <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid grey', justifyContent: 'space-between' }}>
                         <h4 style={{ color: 'grey' }}>Filter</h4>
                         <div>
@@ -137,7 +137,7 @@ const Shop = (props) => {
                         <span onClick={highestPrice} className="orderFilter">Less value</span>
                     </div>
                     <div>
-                        <img src={shopNow} style={{ width: '100%', paddingTop: '3em' }}>
+                        <img className="imgShop" src={shopNow} style={{ width: '100%', paddingTop: '3em' }}>
                         </img>
                     </div>
                 </div>

@@ -57,7 +57,14 @@ const AddItem = props => {
         e.preventDefault()
         if (item.title === '' || item.photo === '' || item.stock === '' || item.color === '') {
 
-            swal('air can\'t be sold... yet')
+            swal({
+                title:'Pyral',
+                text: 'air can\'t be sold... yet',
+                icon:'error',
+                buttons: {
+                    confirm: true,
+                }
+            })
 
         } else {
 
@@ -84,6 +91,11 @@ const AddItem = props => {
             value: 'L',
             label: 'L',
         },
+        {
+            value: 'L',
+            label: 'L',
+        },
+        
     ];
     const colors = [
         {
@@ -157,7 +169,7 @@ const AddItem = props => {
         <>
             <HeaderAdmin />
             <main>
-                <h2 style={{ textAlign: 'center' }}>Add a new item</h2>
+                <h2 style={{ textAlign: 'center', marginTop:'2rem' }}>Add a new item</h2>
                 <div>
                     <form id='formProduct' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '35%', margin: '3vh auto' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>

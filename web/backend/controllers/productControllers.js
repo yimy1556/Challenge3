@@ -42,14 +42,11 @@ const productController = {
     },
     modifyProduct: (req, res) => {
         const { _id, title, description, price } = req.body
-        console.log('kdkd', req.body)
         Product.findByIdAndUpdate(_id, { title, description, price }, { new: true })
             .then(product => {
-                console.log("dsd", product, "sdsd")
                 res.json({ success: true, product })
             })
             .catch(error => {
-                console.log("sdsd", error, "ddd")
                 res.json({ success: false, error })
             })
     },

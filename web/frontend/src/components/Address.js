@@ -50,7 +50,16 @@ class Address extends React.Component {
         let phoneNumber = this.state.phoneNumber
         const response = this.props.contact(country, city, address, postalCode, phoneNumber, this.props.userlogged.token)
         if (response !== "") {
-            swal("Your address was successfully changed!")
+            toast.dark('Your address was successfully changed!', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                })
+            
         }
         this.setState({
             country: '',

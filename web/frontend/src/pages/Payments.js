@@ -34,6 +34,7 @@ const Shipping = (props) => {
     const redirect = destiny => {
         props.history.push(destiny)
     }
+    const shipping = 36
     return (
 
         <>
@@ -73,7 +74,9 @@ const Shipping = (props) => {
                                 </div>
                                 }
                                 {flagPayPal && (
-                                    <PayPal total={compraTotal(props.listProduct)} redirect={redirect} />
+                                    compraTotal(props.listProduct) > 250 ?
+                                        <PayPal total={compraTotal(props.listProduct)} redirect={redirect} /> :
+                                        <PayPal total={compraTotal(props.listProduct) + shipping} redirect={redirect} />
                                 )}
                                 {flagCreditCard && (
                                     <CreditCard total={compraTotal(props.listProduct)} />
@@ -107,7 +110,7 @@ const Shipping = (props) => {
                             <hr style={{ border: '0.5px solid #DFDFDF' }}></hr>
                             <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.7em 0', textDecoration: 'line-through' }}>
                                 <p>Shipping</p>
-                                <p>$36</p>
+                                <p>${shipping}</p>
                             </div> <hr style={{ border: '0.5px solid #DFDFDF' }}></hr>
                             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                 <h5>Total</h5>
@@ -118,7 +121,7 @@ const Shipping = (props) => {
                             <hr style={{ border: '0.5px solid #DFDFDF' }}></hr>
                             <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0em 0 0.7em 0', }}>
                                 <p>Shipping</p>
-                                <p>$36</p>
+                                <p>${shipping}</p>
                             </div>
                             <hr style={{ border: '0.5px solid #DFDFDF' }}></hr>
                             <div style={{ display: 'flex', justifyContent: 'space-between' }}>

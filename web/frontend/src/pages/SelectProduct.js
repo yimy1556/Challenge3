@@ -113,7 +113,7 @@ const SelectProduct = (props) => {
         } else {
             props.addProduct(prod)
             setBottom(!bottom)
-            toast.success("The item was successfully added to your cart ")
+            toast.success("you added a product to your cart")
 
         }
     }
@@ -215,7 +215,7 @@ const SelectProduct = (props) => {
 
                                                     </Box>
                                                     <button className="addToCart" style={{ width: '15vh', height: '5vh', fontSize: '2vh' }} onClick={sendRating} onClick={handleClose}>Send Rating</button> </> :
-                                                <p>Ya diste tu opinion</p>}
+                                                <p>You already rated this product</p>}
                                         </>}
                                 </div>
                             </div>
@@ -261,10 +261,7 @@ const SelectProduct = (props) => {
                             {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <BoxSize vari={vari} 
                                 size={prod.size} prod={prod} setProd={setProd}/>)}
                         </div>
-                        <div>
-                            {(prod.size !== '' || prod.size !== 'Choose the size') &&
-                                <>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p style={{ margin: '1vh 0vh' }}>Last units</p>)}</>}
-                        </div>
+
 
                     </div>
                 </div>

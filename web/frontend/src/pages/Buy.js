@@ -37,19 +37,26 @@ const Buy = (props) => {
                                 <h3>Contact information<NavLink to="address" style={{ color: 'grey', paddingLeft: '2em' }}><CreateIcon /></NavLink></h3>
                             </div>
                             <div style={{ fontWeight: 'lighter', borderRadius: '7px', border: '1px solid #DFDFDF', width: '100%', padding: '2vh', margin: '2vh 0vh' }}>
-                                {props.userlogged.contact.map((x) => {
-                                    return (
-                                        <>
-                                            <div>
-                                                <h3>{x.address}</h3>
-                                                <p>{x.city}, {x.country}</p>
-                                                <p>C.P {x.postalCode}</p>
-                                                <p>{x.phoneNumber}</p>
-                                            </div>
-
-                                        </>
-                                    )
-                                })}
+                            {props.userlogged.contact ?
+                                    <>
+                                        {props.userlogged.contact.map((x) => {
+                                            return (
+                                                <div style={{ margin: '1vh 0vh', fontWeight:'lighter' }}>
+                                                    <p>Country: {x.country}</p>
+                                                    <p>City: {x.city}</p>
+                                                    <p>Address: {x.address}</p>
+                                                    <p>Postal code: {x.postalCode}</p>
+                                                    <p>Phone number: {x.phoneNumber}</p>
+                                                    <hr />
+                                                </div>
+                                            )
+                                        })}
+                                    </>
+                                    :
+                                    <>
+                                        <h5>No address yet.</h5>
+                                    </>
+                                }
                             </div>
                         </div>
                         {/* <div style={{ width: '40vw' }}>
