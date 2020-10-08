@@ -51,7 +51,7 @@ const itemActions = {
 
     getCountries: () => {
         return async (dispatch, getState) => {
-            const response = await axios.get('https://quiet-savannah-25909.herokuapp.com/api/countries')
+            const response = await axios.get('https://ancient-brushlands-16914.herokuapp.com/api/countries')
             var info = response.data
             dispatch({
                 type: 'GET_COUNTRIES',

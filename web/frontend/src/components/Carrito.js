@@ -65,7 +65,7 @@ const Carrito = (props) => {
                     </> :
                     <>
                         <div>
-                            <div id="ropaDelCarrito">
+                            <div id="ropaDelCarrito" style={{overflow:"scroll", paddingBottom:"-30vh"}}>
                                 {props.listProduct.map(prod => <ItemCarrito product={prod} />)}
                             </div>
                             < div id="totalPrecio">
@@ -76,7 +76,7 @@ const Carrito = (props) => {
                         </div>
                         {props.userlogged.token ?
                             <button id="buyButton"><NavLink to="/buy">Checkout</NavLink></button>
-                            : <button id="buyButton" disabled> Login to buy</button>}
+                            : <button id="buyButton"><NavLink to="/login" >Login and buy</NavLink></button>}
                     </>
                 }
 
