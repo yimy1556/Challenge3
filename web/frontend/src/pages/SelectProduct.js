@@ -209,13 +209,11 @@ const SelectProduct = (props) => {
                     <div style={{ display: 'flex', margin: '3vh 0vh' }}>
                         <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
                         <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
-                        <p>{arrayFiltrado[0].reviews} reviews</p>
                     </div>
                     :
                     <div style={{ display: 'flex' }}>
                         <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
                         <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                        <p>{props.productRating.reviews} reviews</p>
                     </div>
                 }
                 
