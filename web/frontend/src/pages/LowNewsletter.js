@@ -6,6 +6,7 @@ import '../styles/lowNewsLetter.css'
 import { FormControlLabel, RadioGroup, Radio, Button, Checkbox, responsiveFontSizes, Link } from '@material-ui/core'
 import Swal from 'sweetalert2'
 import { Redirect } from 'react-router-dom'
+import swal from 'sweetalert'
 
 
 
@@ -17,12 +18,11 @@ const LowNewsletter = (props) => {
         const dataMail = e.target.value
         setMail(dataMail)
     }
-
     const sendMail = async e => {
         setMail('')
         const response = await props.lowNewsletter(mail)
-        if (response.data.success) {
-            Swal.fire({ title: 'You are no longer subscribed to our website.' })
+        if(response.data.success){
+            swal('You will no longer receive notifications from Pyral.')
         }
     }
 

@@ -12,7 +12,7 @@ import { useEffect } from 'react'
 import callCenter from '../images/callCenter.jpg'
 import shipping from '../images/ship.jpg'
 import costure from '../images/sewing-machine-square.webp'
-import { Card } from 'react-bootstrap'
+import { Card, Row } from 'react-bootstrap'
 
 
 
@@ -169,8 +169,8 @@ export default function Faqs() {
           </Accordion>
 
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-around', margin: '2rem 10rem' }}>
-          <Card style={{ width: '18rem' }}>
+        <Row style={{ display: 'flex', justifyContent: 'space-around', margin: '2rem 5%' }}>
+          <Card style={{ width: '18rem', margin:'1rem'}}>
             <Card.Img variant="top" src={costure} />
             <Card.Body>
               <Card.Text>
@@ -179,7 +179,7 @@ export default function Faqs() {
          </Card.Text>
             </Card.Body>
           </Card>
-          <Card style={{ width: '18rem' }}>
+          <Card style={{ width: '18rem', margin:'1rem' }}>
             <Card.Img variant="top" src={shipping} />
             <Card.Body>
               <Card.Text>
@@ -187,17 +187,15 @@ export default function Faqs() {
          </Card.Text>
             </Card.Body>
           </Card>
-          <Card style={{ width: '18rem' }}>
+          <Card style={{ width: '18rem', margin:'1rem' }}>
             <Card.Img variant="top" src={callCenter} />
             <Card.Body>
               <Card.Text>
-
                 Once you have received your order and have any questions, you can contact us. We are via chat or by phone.
          </Card.Text>
             </Card.Body>
           </Card>
-        </div>
-
+        </Row>
       </div>
 
 

@@ -152,11 +152,13 @@ const authActions = {
     },
 
     lowNewsletter: mail => {
+       
         return async (dispatch, getState) => {
-            const response = await axios.delete(path + '/newsletter', { mail })
+            const response = await axios.put(path + '/newsletter', { mail })
             dispatch({
                 type: 'LOW_NEWSLETTER'
             })
+            return response
         }
     },
 

@@ -95,24 +95,26 @@ const userController = {
 				to: `${user.mail}`,
 				subject: "New Password",
 				html: `<!DOCTYPE html>
-			<html lang="en">
-			<head>
-			  <meta charset="UTF-8">
-			  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-			  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-			  <title>Document</title>
-			</head>
-			<body style="margin: 0px; padding: 0px; font-family: 'Roboto'; background-color: whitesmoke;">
-			  <div style="padding: 2%;">
-				<h3 style="color: rgb(2, 2, 2);">Hello ${user.firstName},</h3>
-				<p style="color:  rgb(2, 2, 2);">Your new password is: <span style="color: #0D195A; font-size:20px;">${newPass}</span></p>
-				<p style="color:  rgb(2, 2, 2);">Thanks.</p>  <hr/>
-			  </div>
-			  <div style="text-align: center;">
-				<h2 style="color: rgb(2, 2, 2);">Team Pyral</h2>
-			  </div>  
-			</body>
-			</html>`
+				<html lang="en">
+				
+				<head>
+					<meta charset="UTF-8">
+					<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+					<title>Document</title>
+				</head>
+				
+				<body style="margin: 0px; padding: 0px; font-family: 'Roboto'; background-color: whitesmoke;">
+					<div style="padding: 2%;">
+						<h3 style="color: rgb(2, 2, 2);">Hello ${user.firstName},</h3>
+						<p style="color:  rgb(2, 2, 2);">Your new password is: <span
+								style="color: #0D195A; font-size:20px;">${newPass}</span></p>
+						<h3 style="color: black; margin-top: 1rem;">Team Pyral</h3>
+						<a href="http://localhost:3000" style="text-decoration: none; color: rgb(243, 241, 241); background-color: black;
+									font-size: 1.2rem; padding: .4rem; border: 2px solid rgb(246, 246, 248)">Go Pyral</a>
+				</body>
+				
+				</html>`
 			}
 			transport.sendMail(mailOptions, (error, info) => {
 				res.send("send email")
