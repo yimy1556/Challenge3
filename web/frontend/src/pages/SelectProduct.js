@@ -203,7 +203,7 @@ const SelectProduct = (props) => {
 
                                                     </Box>
                                                     <button className="addToCart" style={{ width: '15vh', height: '5vh', fontSize: '2vh' }} onClick={sendRating} onClick={handleClose}>Send Rating</button> </> :
-                                                <p>Ya diste tu opinion</p>}
+                                                <p>You already rated this product</p>}
                                         </>}
                                 </div>
                             </div>
