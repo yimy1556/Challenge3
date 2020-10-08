@@ -35,6 +35,17 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 
+const BoxSize = (props) => {
+    const sizeStyle = (props.vari.size === props.size)? {backgroundColor:'black', color: 'whitesmoke'}:
+        {backgroundColor:'whitesmoke'}
+    return(
+        <button style={{ border: '1px solid #BEBEBE', ...sizeStyle}} 
+            onClick={(e) => props.setProd({ ...props.prod, size: e.target.value })}
+        value={props.vari.size} className='buttonSize'>
+        {props.vari.size}</button>
+    )
+} 
+
 const SelectProduct = (props) => {
     const borrarRepe = (variants) => {
         const variantsAux = []
@@ -82,6 +93,7 @@ const SelectProduct = (props) => {
                     ...prod,
                     remeraActual: prodc.variants[0].photo,
                     color: prodc.variants[0].color,
+                    size:prodc.variants[0].size,
                     title: prodc.title,
                     price: prodc.price
                 })
@@ -219,8 +231,8 @@ const SelectProduct = (props) => {
                         <div style={{ display: 'flex' }}>
 
                             {borrarRepe(product.variants).map(variant => {
-                                return (<div id="imagenShopChica2" style={{
-
+                            return (<div id="imagenShopChica2" onClick={() => setProd({ ...prod, remeraActual: variant.photo,
+                                color: variant.color })} style={{
                                     backgroundColor: `${variant.color === 'Wine' ? '#44282D' :
                                         variant.color === 'Black' ? '#111111' :
                                             variant.color === 'DarkGrey' ? '#34343D' :
@@ -246,9 +258,8 @@ const SelectProduct = (props) => {
                     <div name="size" id="size" style={{ display: 'flex', flexDirection: 'column', width: '55vh' }}>
                         <h6 style={{ margin: '1.5vh 0vh' }}>Size: {prod.size} </h6>
                         <div style={{ display: 'flex', width: '10vw' }}>
-                            {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <button id="buttonShop" style={{ border: '1px solid #BEBEBE' }} onClick={(e) => setProd({ ...prod, size: e.target.value })}
-                                value={vari.size} className='buttonSize'>
-                                {vari.size}</button>)}
+                            {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <BoxSize vari={vari} 
+                                size={prod.size} prod={prod} setProd={setProd}/>)}
                         </div>
                         <div>
                             {(prod.size !== '' || prod.size !== 'Choose the size') &&
