@@ -31,8 +31,8 @@ const ChangePass = (props) => {
 
     return (
         <>
-            <h5 style={{ fontWeight: 'bold' }}>Forgot your password?</h5>
-            <label htmlFor="">Enter your new password</label>
+            <h5>Forgot your password?</h5>
+            <label style={{ fontWeight: 'lighter', fontSize:'2vh', margin:'1vh 0vh' }} htmlFor="">Enter your new password</label>
             <input onChange={readInput} name="password" type="password"></input>
             <button onClick={sendNewPass} className="createAccount button" style={{ width: '60%', margin: '2vh auto' }}>Change Pass</button>
         </>
