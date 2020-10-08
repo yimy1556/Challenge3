@@ -101,7 +101,7 @@ const SelectProduct = (props) => {
         } else {
             props.addProduct(prod)
             setBottom(!bottom)
-            toast.success("The item was successfully added to your cart ")
+            toast.success("you added a product to your cart")
 
         }
     }

@@ -25,17 +25,16 @@ const ChangePass = (props) => {
         const password = dataNewPass.password
         props.changePassword(mail, password)
         const response = await props.changePassword(mail, password)
-        if(response.success){
+        if (response.success) {
             swal("Your password was changed successfully!")
-            setDatanewPass({password:''})
-        }        
+            setDatanewPass({ password: '' })
+        }
     }
 
     return (
         <>
-            <h5>Forgot your password?</h5>
-            <label style={{ fontWeight: 'lighter', fontSize:'2vh', margin:'1vh 0vh' }} htmlFor="">Enter your new password</label>
-            <input onChange={readInput} name="password" type="password" value={dataNewPass.password}></input>
+            <h5>Change your password.</h5>
+            <input onChange={readInput} name="password" type="password" value={dataNewPass.password} placeholder="Enter your new password" style={{padding:'.5rem', margin:'.5rem'}}></input>
             <button onClick={sendNewPass} className="createAccount button" style={{ width: '60%', margin: '2vh auto' }}>Change Pass</button>
         </>
     )
