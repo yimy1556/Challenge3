@@ -11,6 +11,8 @@ import authActions from '../redux/actions/authActions'
 import { toast } from 'react-toastify';
 import itemActions from '../redux/actions/itemActions'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import swal from 'sweetalert'
+
 
 
 class Address extends React.Component {
@@ -27,10 +29,6 @@ class Address extends React.Component {
         this.scrollToTop()
         this.props.getCountries()
     }
-
-    // componentWillReceiveProps(){
-    //     this.props.userlogged()
-    // }   
 
     scrollToTop() {
         scroll.scrollToTop();
@@ -50,14 +48,29 @@ class Address extends React.Component {
         let address = this.state.address
         let postalCode = this.state.postalCode
         let phoneNumber = this.state.phoneNumber
-        await this.props.contact(country, city, address, postalCode, phoneNumber, this.props.userlogged.token)
-        // await this.props.getContact(this.props.userlogged.token)
+        const response = this.props.contact(country, city, address, postalCode, phoneNumber, this.props.userlogged.token)
+        if (response !== "") {
+            swal("Your address was successfully changed!")
+        }
+        this.setState({
+            country: '',
+            city: '',
+            address: '',
+            postalCode: '',
+            phoneNumber: '',
+        })
     }
 
     render() {
+        this.constOrder = this.props.countries
+        this.constOrder.sort(function (a, b) {
+            if (a.country < b.country) { return -1; }
+            if (a.country > b.country) { return 1; }
+            return 0;
+        })
+
         return (
             <>
-
                 <Header />
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: '100vw', height: '20vh', background: '#111111', color: 'white', textAlign: 'center', fontSize: '60px', fontWeight: 'bold' }}>
                     <p>My Account</p>
@@ -93,25 +106,24 @@ class Address extends React.Component {
                             <div id="divFormulario" style={{ display: 'flex', flexDirection: 'column', boxShadow: '-1px 1px 13px -4px rgba(0,0,0,0.15)', padding: '5vh', margin: '2vh 0vh' }}>
                                 <h4>Add your contact information</h4>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', margin: '2vh' }}>
-                                    <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="city" name="city" placeholder="Write your city here" />
-                                    <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="address" name="address" placeholder="Write your address here" />
-                                    <select style={{ width: '30%' }} name="country" onChange={this.readContact} >
-                                        {this.props.countries.map(country => {
+                                    <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="city" name="city" placeholder="Write your city here"
+                                        value={this.state.city} />
+                                    <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="address" name="address" placeholder="Write your address here"
+                                        value={this.state.address} />
+                                    <select style={{ width: '30%' }} name="country" onChange={this.readContact} value={this.state.country}>
+                                        <option value="">
+                                            Select your country</option>
+                                        {this.constOrder.map(country => {
                                             return <option name="country">{country.country}</option>
                                         })}
                                     </select>
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', margin: '2vh' }}>
-                                    <input style={{ width: '45%' }} onChange={this.readContact} type="number" id="postalCode" name="postalCode" placeholder="Write your postal code here" />
-                                    <input style={{ width: '45%' }} onChange={this.readContact} type="number" id="phoneNumber" name="phoneNumber" placeholder="Write your phone number here" />
+                                    <input style={{ width: '45%' }} onChange={this.readContact} type="number" id="postalCode" name="postalCode" placeholder="Write your postal code here"
+                                        value={this.state.postalCode} />
+                                    <input style={{ width: '45%' }} onChange={this.readContact} type="number" id="phoneNumber" name="phoneNumber" placeholder="Write your phone number here"
+                                        value={this.state.phoneNumber} />
                                 </div>
-                                {/* <div>
-                                    <select>
-                                        {this.props.countries.map(country => {
-                                            return <option onChange={this.readContact} name="country">{country.country}</option>
-                                        })}
-                                    </select>
-                                </div> */}
                                 <button onClick={this.sendContact} className="createAccount button" style={{ width: '20%', margin: '2vh auto' }}>Send information</button>
                             </div>
                         </div>

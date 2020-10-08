@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { useState } from 'react'
 import authActions from '../redux/actions/authActions'
+import swal from 'sweetalert'
 
 
 
@@ -13,7 +14,6 @@ const ChangePass = (props) => {
         const dataPassword = e.target.value
         const dataMail = props.userlogged.mail
         setDatanewPass({
-
             password: dataPassword,
             mail: dataMail
         })
@@ -25,15 +25,17 @@ const ChangePass = (props) => {
         const password = dataNewPass.password
         props.changePassword(mail, password)
         const response = await props.changePassword(mail, password)
+        if(response.success){
+            swal("Your password was changed successfully!")
+            setDatanewPass({password:''})
+        }        
     }
-
-
 
     return (
         <>
             <h5 style={{ fontWeight: 'bold' }}>Forgot your password?</h5>
             <label htmlFor="">Enter your new password</label>
-            <input onChange={readInput} name="password" type="password"></input>
+            <input onChange={readInput} name="password" type="password" value={dataNewPass.password}></input>
             <button onClick={sendNewPass} className="createAccount button" style={{ width: '60%', margin: '2vh auto' }}>Change Pass</button>
         </>
     )
