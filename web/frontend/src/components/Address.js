@@ -73,38 +73,25 @@ class Address extends React.Component {
             toast.error("please complete all fields")
 
         } else if (this.state.country.length > 15) {
-            this.setState ({
-                ...this.state.mensajes,
-                 country: true
-              })
+            toast.error("The country you entered in too long")
         } else if (!uname.test(this.state.city)) {
-            this.setState ({
-                ...this.state.mensajes,
-                city1: true
-              })
+            toast.error("The City must contain only uppercase letter and lowercase letter")
+
         }  else if (this.state.city.length > 15) {
-            this.setState ({
-                ...this.state.mensajes,
-                city2: true
-              })
+            toast.error("The City you entered in too long")
         
         } else if (!uname.test(this.state.address)) {
-            this.setState ({
-                ...this.state.mensajes,
-                address1: true
-              })
+            toast.error("The address must contain only uppercase letter, lowercase letter and numbers")
+
        }  else if (this.state.address.length > 25) {
-        this.setState ({
-            ...this.state.mensajes,
-            address2: true
-          })
+        toast.error("The address you entered in too long")
        
        }  else if (this.state.postalCode.length > 5) {
-           this.state.mensajes.postalCode = true
-           toast.error("please ")
+        toast.error("The postalCode you entered in too long")
+
 
         }  else if (this.state.phoneNumber.length > 10) {
-            this.state.mensajes.phoneNumber = true
+            toast.error("The phoneNumber you entered in too long")
 
         }else{
         let country = this.state.country
