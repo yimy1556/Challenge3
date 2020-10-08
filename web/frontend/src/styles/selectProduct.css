@@ -7,16 +7,15 @@
 .oneProduct{
     display: flex;
     margin: 0vh auto;
-    width: 80%;
+    width: 90%;
 }
 
 .aProduct1 {
-    margin: 0vh 4vh;
-    width: 50%;
+    width: 60%;
 }
 
 .aProduct2 {
-    width: 35%;
+    width: 25%;
 }
 
 

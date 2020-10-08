@@ -40,43 +40,45 @@ const Shipping = (props) => {
                 <h2 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>Payment</h2>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-around', background: '#EEEEEE' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', width: '60vw', margin: '0 auto', padding: '0em 0 3em 0' }}>
-
-
+                <div style={{ display: 'flex', margin: '0 auto', padding: '0em 0 3em 0' }}>
                     <div className="payLogoContainer">
-                        <h3 style={{ textAlign: 'left', padding: '1em 0', fontSize: '2.2em' }}>How do you want to pay?</h3>
-                        {!flagPayPal && !flagCreditCard &&
-                            <>
-                                <div className="payLogo">
-                                    <img src={logoCash} >
+                        <p style={{ margin: '2vh 0vh' }}>Information {'>'} <strong>Payment</strong></p>
+                        <h3 style={{ padding: '1em 0', fontSize: '2.2em' }}>How do you want to pay?</h3>
+                        <div style={{ fontWeight: 'lighter', borderRadius: '7px', border: '1px solid #DFDFDF', width: '100%' }}>
+                            {!flagPayPal && !flagCreditCard &&
+                                <>
+                                    <div className="payLogo">
+                                        <img src={logoCash} >
+                                        </img>
+                                        <h4>Cash</h4>
+                                    </div>
+                                </>}
+                            {!flagPayPal &&
+                                <><div className="payLogo" onClick={() => { setFlagCreditCard(!flagCreditCard) }}>
+                                    <img src={logoCards} >
                                     </img>
-                                    <h4>Cash</h4>
-                                </div>
-                            </>}
-                        {!flagPayPal &&
-                            <><div className="payLogo" onClick={() => { setFlagCreditCard(!flagCreditCard) }}>
-                                <img src={logoCards} >
+                                    <h4>Credit Card</h4>
+                                </div> </>}
+                            {!flagCreditCard && <div className="payLogo" onClick={() => { setFlagPayPal(!flagPayPal) }}>
+                                <img src={logoPayPal}>
                                 </img>
-                                <h4>Credit Card</h4>
-                            </div> </>}
-                        {!flagCreditCard && <div className="payLogo" onClick={() => { setFlagPayPal(!flagPayPal) }}>
-                            <img src={logoPayPal}>
-                            </img>
-                            <h4>PayPal</h4>
+                                <h4>PayPal</h4>
+                            </div>
+                            }
+                            {flagPayPal && (
+                                <PayPal total={compraTotal(props.listProduct)} redirect={redirect} />
+                            )}
+                            {flagCreditCard && (
+                                <CreditCard total={compraTotal(props.listProduct)} />
+                            )}
                         </div>
-                        }
-                        {flagPayPal && (
-                            <PayPal total={compraTotal(props.listProduct)} redirect={redirect} />
-                        )}
-                        {flagCreditCard && (
-                            <CreditCard total={compraTotal(props.listProduct)} />
-                        )}
+
                     </div>
 
 
 
                 </div>
-                <div style={{ backgroundColor: '#FFFFFF', width: '30vw', height: '70vh', padding: '20px 40px', marginRight: '5em' }}>
+                <div style={{ backgroundColor: '#F5F5F5', height: '70vh', padding: '20px 40px', marginRight: '5em' }}>
                     <h3 style={{ textAlign: 'center' }}>Purchase summary</h3>
                     <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
 

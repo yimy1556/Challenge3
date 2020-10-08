@@ -106,14 +106,14 @@ const SelectProduct = (props) => {
     if (product === {}) return <></>
     return (<>
         <Header bott={bottom} />
-        <div className="oneProduct" style={{ padding: '0.1em 1em ' }}>
+        <div className="oneProduct" style={{ padding: '0.1em 1em ', margin: '0vh auto', width: '100%' }}>
             <div className="aProduct1" style={{ display: 'flex', justifyContent: 'center' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '5em' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
                     src={vari.photo} alt={vari.title} style={{ width: '4em', height: '5em', margin: '0.5vh 2vh', border: '1px solid #F1F1F1', cursor: 'pointer' }} />)}
                 </div>
                 <SideBySideMagnifier
                     className="input-position"
-                    style={{ width: '60vh' }}
+                    style={{ width: '65vh' }}
                     imageSrc={prod?.remeraActual}
                     overlayOpacity={0.4}
                     alwaysInPlace={true}
@@ -124,13 +124,13 @@ const SelectProduct = (props) => {
 
 
             </div>
-            <div className="aProduct2" style={{ padding: '2em', justifyContent: 'center', alignItems: 'center', alignContent: 'center', margin: '4vh 0vh' }}>
+            <div className="aProduct2" style={{ justifyContent: 'center', alignItems: 'center', alignContent: 'center', margin: '7vh 0vh' }}>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', width: '54vh' }}>
                     <h4>{product.title}</h4>
                     <h4>${product.price}</h4>
                 </div>
-                <p style={{ padding: '20px 0', fontWeight: 'lighter' }}>{product.description}</p>
+                <p style={{ padding: '20px 0', fontWeight: 'lighter', width: '55vh' }}>{product.description}</p>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 10, width: '50%' }}>
                     <div>
@@ -162,34 +162,22 @@ const SelectProduct = (props) => {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column' }} >
 
-                    <div name="size" id="size" style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div name="size" id="size" style={{ display: 'flex', flexDirection: 'column', width: '55vh' }}>
                         <h6 style={{ margin: '1.5vh 0vh' }}>Size: {prod.size} </h6>
                         <div style={{ display: 'flex', width: '10vw' }}>
                             {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <button id="buttonShop" style={{ border: '1px solid #BEBEBE' }} onClick={(e) => setProd({ ...prod, size: e.target.value })}
                                 value={vari.size} className='buttonSize'>
                                 {vari.size}</button>)}
+                        </div>
+                        <div>
                             {(prod.size !== '' || prod.size !== 'Choose the size') &&
                                 <>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p style={{ margin: '1vh 0vh' }}>Last units</p>)}</>}
                         </div>
 
                     </div>
                 </div>
-                <button onClick={() => addProducts()} className="addToCart" style={{ margin: '1em 5em 0 0', width: '100%' }}>Add to cart</button>
-                {!arrayFiltrado2 ?
-                    <div style={{ display: 'flex', margin: '3vh 0vh' }}>
-                        <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
-                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
-                        <p>{arrayFiltrado[0].reviews} reviews</p>
-                    </div>
-                    :
-                    <div style={{ display: 'flex' }}>
-                        <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
-                        <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                        <p>{props.productRating.reviews} reviews</p>
-                    </div>
-                }
-                <div style={{ margin: '1em 0', display: 'flex', alignItems: 'center' }}>
-                    <h6>Share this product:</h6>
+                <div style={{ display: 'flex', alignItems: 'center', margin: '3vh 0vh', width: '55vh' }}>
+                    <h6 style={{}}>Share this product:</h6>
                     <WhatsappShareButton style={{ margin: '0vh 1vh' }}
                         url={"https://scapeteamred.herokuapp.com/"}
                         quote={"CampersTribe - World is yours to explore"}
@@ -219,6 +207,19 @@ const SelectProduct = (props) => {
                         <TelegramIcon size={35} round={true} />
                     </TelegramShareButton>
                 </div>
+                <button onClick={() => addProducts()} className="addToCart" style={{ width: '54vh' }}>Add to cart</button>
+                {!arrayFiltrado2 ?
+                    <div style={{ display: 'flex', margin: '3vh 0vh' }}>
+                        <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
+                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
+                    </div>
+                    :
+                    <div style={{ display: 'flex' }}>
+                        <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
+                        <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                    </div>
+                }
+
             </div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1em' }}>
@@ -236,14 +237,15 @@ const SelectProduct = (props) => {
                     <p>{props.productRating.reviews} reviews</p>
                 </div>
             }
+
         </div>
-        <div style={{ display: 'flex' }}>
+        <div style={{ margin: '2vh auto', display: 'flex', flexDirection: 'column', margin: '5vh 10vh' }}>
             {props.userlogged.token &&
                 <>
                     {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 &&
                         <>
-                            <Box component="fieldset" mb={3} borderColor="transparent">
-                                <Typography component="legend">Rating</Typography>
+                            <Box component="fieldset" borderColor="transparent">
+                                <p>Did you like the product? Rate it!</p>
                                 <Rating
                                     name="simple-controlled"
                                     value={value}
@@ -255,9 +257,8 @@ const SelectProduct = (props) => {
                                 />
 
                             </Box>
-                            <button onClick={sendRating}>Send Rating</button>  </>}
-                </>
-            }
+                            <button className="addToCart" style={{ width: '15vh', height: '5vh', fontSize: '2vh' }} onClick={sendRating}>Send Rating</button>  </>}
+                </>}
         </div>
         <ScrollProducts />
         <ChatBotComponent />
