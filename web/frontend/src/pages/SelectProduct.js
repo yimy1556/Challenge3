@@ -249,12 +249,12 @@ const SelectProduct = (props) => {
                             {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <button id="buttonShop" style={{ border: '1px solid #BEBEBE' }} onClick={(e) => setProd({ ...prod, size: e.target.value })}
                                 value={vari.size} className='buttonSize'>
                                 {vari.size}</button>)}
-                            <div>
-                                {(prod.size !== '' || prod.size !== 'Choose the size') &&
-                                    <>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p style={{ margin: '1vh 1vh' }}>Last units</p>)}</>}
-                            </div>
-                        </div>
 
+                        </div>
+                        <div>
+                            {(prod.size !== '' || prod.size !== 'Choose the size') &&
+                                <>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p style={{ margin: '1vh 1vh' }}>Last units</p>)}</>}
+                        </div>
 
                     </div>
                 </div>
