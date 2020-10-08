@@ -57,7 +57,14 @@ const AddItem = props => {
         e.preventDefault()
         if (item.title === '' || item.photo === '' || item.stock === '' || item.color === '') {
 
-            swal('air can\'t be sold... yet')
+            swal({
+                title:'Pyral',
+                text: 'air can\'t be sold... yet',
+                icon:'error',
+                buttons: {
+                    confirm: true,
+                }
+            })
 
         } else {
 

@@ -49,7 +49,7 @@ const Carrito = (props) => {
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid grey' }}>
                     <button onClick={menuHamburguesa} style={{ backgroundColor: 'transparent', border: 'none' }} ><ArrowBackIcon style={{ color: "#111111", fontSize: 40 }}></ArrowBackIcon></button>
-                    <h3 style={{ color: '#111111' }}>Your Shopping Cart</h3>
+                    <h3 style={{ color: '#111111', margin:'2vh' }}>Your Shopping Cart</h3>
                 </div>
                 {props.listProduct.length == 0 ?
 

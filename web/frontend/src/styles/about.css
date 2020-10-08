@@ -19,7 +19,8 @@
 #ourStory{
     color: white; 
     text-align: center;
-    font-size: bold
+    font-size: 4em;
+    font-weight: bold;
 }
 .photoAbout{
     display: flex;

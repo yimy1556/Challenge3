@@ -7,107 +7,108 @@ import cloth from '../images/clothing2.jpg'
 import { NavLink } from 'react-router-dom'
 import CreateIcon from '@material-ui/icons/Create';
 import payment from '../images/payment.jpg'
-import { animateScroll as scroll } from 'react-scroll'
+import Badge from '@material-ui/core/Badge'
 
 const Buy = (props) => {
     const [render, setRender] = useState(true)
 
     useEffect(() => {
-        scrollToTop()
+
     }, [render])
-
-    const scrollToTop = () => {
-        scroll.scrollToTop();
-    }
-
 
     const compraTotal = (list) => {
         let total = 0
         list.forEach(prod => total += prod.cant * prod.price)
         return total
     }
-    console.log(props.listProduct)
+
+    console.log(props.listProduct);
     return (
         <>
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(${cloth})`, width: '100%', height: '40vh', backgroundPosition: 'center 45%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-                <h2 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>Payment</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(https://cdn-yotpo-images-production.yotpo.com/instagram/85/17967839827327785/standard_resolution.jpg)`, width: '100%', height: '40vh', backgroundPosition: 'center 45%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                <h1 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>INFORMATION</h1>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-around', borderTop: '1px solid #111111', background: '#EEEEEE' }}>
-
-                <div>
-
-                    <div id="buyCloth">
-                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', width: '40vw' }}>
-
-
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <h3>My addresses</h3>
-
-                                <NavLink to="address" style={{ color: 'grey', paddingLeft: '2em' }}>
-                                    <CreateIcon />
-                                </NavLink>
+            <div style={{ display: 'flex', justifyContent: 'center', width: '80%', margin: '2vh auto' }}>
+                <div style={{ borderRight: '1px solid #DFDFDF', padding: '0vh 7vh', margin: '0vh 7vh', width: '60%' }}>
+                    <div >
+                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                <p style={{ margin: '2vh 0vh' }}><strong>Information</strong> {'>'}<NavLink to="payments" style={{ textDecoration: 'none', color: "#111111" }}> Payment</NavLink></p>
+                                <h3>Contact information<NavLink to="address" style={{ color: 'grey', paddingLeft: '2em' }}><CreateIcon /></NavLink></h3>
                             </div>
-
-                            {props.userlogged.contact.map((x) => {
-                                return (
+                            <div style={{ fontWeight: 'lighter', borderRadius: '7px', border: '1px solid #DFDFDF', width: '100%', padding: '2vh', margin: '2vh 0vh' }}>
+                            {props.userlogged.contact ?
                                     <>
-                                        <div style={{ fontWeight: 'lighter', padding: '15px', border: '1px solid #EEEEEE', backgroundColor: '#FFFFFF', borderRadius: '5px', margin: '5px 0' }}>
-                                            <h3>{x.address}</h3>
-                                            <p>{x.city}, {x.country}</p>
-                                            <p>C.P {x.postalCode}</p>
-                                            <p>{x.phoneNumber}</p>
-                                        </div>
-
+                                        {props.userlogged.contact.map((x) => {
+                                            return (
+                                                <div style={{ margin: '1vh 0vh', fontWeight:'lighter' }}>
+                                                    <p>Country: {x.country}</p>
+                                                    <p>City: {x.city}</p>
+                                                    <p>Address: {x.address}</p>
+                                                    <p>Postal code: {x.postalCode}</p>
+                                                    <p>Phone number: {x.phoneNumber}</p>
+                                                    <hr />
+                                                </div>
+                                            )
+                                        })}
                                     </>
-                                )
-                            })}
-
+                                    :
+                                    <>
+                                        <h5>No address yet.</h5>
+                                    </>
+                                }
+                            </div>
                         </div>
-                        <div style={{ width: '40vw' }}>
+                        {/* <div style={{ width: '40vw' }}>
                             <h3>Your products</h3>
                             {props.listProduct.map(prod => <ItemCarrito product={prod} render={render} setRender={setRender} />)}
-
-                            <div id="totalPrecio">
-                                <p>Subtotal</p>
+                            <div id="totalPrecio">  
+                                <p>Total</p>
                                 <p>${compraTotal(props.listProduct)}</p>
                             </div>
-                        </div>
+                        </div> */}
                         <NavLink to="/payments"> <button className="continue">Continue</button></NavLink>
                     </div>
-
                 </div>
-                <div style={{ backgroundColor: '#F5F5F5', width: '30vw', height: '70vh', padding: '20px 40px', marginRight: '5em' }}>
-                    <h3 style={{ textAlign: 'center' }}>Purchase summary</h3>
-                    <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
-
+                <div style={{ width: '35%', height: '70vh', margin: '1vh 0vh' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', padding: '0.7em 0' }}>
-                        {props.listProduct.map(prod => <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}> <p>{prod.title} {prod.color} ({prod.cant}) </p>
-                            <p>${prod.price * prod.cant}</p>
+                        {props.listProduct.map(prod => <div style={{ display: 'flex', width: '100%', margin: '1vh 0 ' }}>
+                            <div style={{ border: '1px solid #DFDFDF', borderRadius: '15%', }}>
+                                <Badge badgeContent={prod.cant}>
+                                    <div style={{ backgroundImage: `url(${prod.remeraActual})`, height: '10vh', width: '10vh', backgroundPosition: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}></div>
+                                </Badge>
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'center', width: '100%' }}>
+                                <div style={{ display: 'flex', margin: '0vh 1vh ', justifyContent: 'space-between' }}>
+                                    <p style={{ fontWeight: 'bold' }}>{prod.color} {prod.title}</p>
+                                    <p style={{ fontWeight: 'bold' }}>${prod.price * prod.cant}</p>
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'column', margin: '0vh 1vh ' }}>
+                                    <p>{prod.size}</p>
+                                </div>
+                            </div>
                         </div>)}
-                    </div>
-                    <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <h6>Subtotal</h6>
-                        <h6>${compraTotal(props.listProduct)} </h6>
                     </div>
 
                     {compraTotal(props.listProduct) > 250 ?
                         <>
+                            <hr style={{ border: '0.5px solid #DFDFDF' }}></hr>
                             <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.7em 0', textDecoration: 'line-through' }}>
                                 <p>Shipping</p>
                                 <p>$36</p>
-                            </div> <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
+                            </div> <hr style={{ border: '0.5px solid #DFDFDF' }}></hr>
                             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <h4>Total</h4>
+                                <h5>Total</h5>
                                 <h4>${compraTotal(props.listProduct)} </h4>
                             </div>
                         </> :
                         <>
+                            <hr style={{ border: '0.5px solid #DFDFDF' }}></hr>
                             <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0em 0 0.7em 0', }}>
                                 <p>Shipping</p>
                                 <p>$36</p>
                             </div>
-                            <hr style={{ border: '1px rgb(230,230,230) solid' }}></hr>
+                            <hr style={{ border: '0.5px solid #DFDFDF' }}></hr>
                             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                 <h4>Total</h4>
                                 <h4>${compraTotal(props.listProduct) + 36}  </h4>
@@ -117,7 +118,6 @@ const Buy = (props) => {
 
                 </div>
             </div>
-            <Footer />
         </>
     )
 }

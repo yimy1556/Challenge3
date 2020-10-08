@@ -62,10 +62,10 @@ const LogIn = props => {
                     <div id="divContraseña">
                         <input onChange={leerImput} type="password" id="pass" name="pass" placeholder="Write your password here"></input>
                     </div>
-                    <div id="HaveAccount" style={{color: 'black'}}>
+                    <div id="HaveAccount" style={{ color: 'black' }}>
                         <p>Don't have an account?</p>
-                        <NavLink to="/register" style={{color: 'black'}}> Sign up</NavLink>
-                        <NavLink to="/forgotPass" style={{color: 'black'}}s>Forgot password?</NavLink>
+                        <NavLink to="/register" style={{ color: 'black' }}> Sign up</NavLink>
+                        <NavLink to="/forgotPass" style={{ color: 'black' }} s>Forgot password?</NavLink>
                     </div>
                     <button className="login" onClick={enviarInfo}>Log in</button>
                 </form>
