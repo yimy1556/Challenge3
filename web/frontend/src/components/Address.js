@@ -50,16 +50,13 @@ class Address extends React.Component {
         let phoneNumber = this.state.phoneNumber
         const response = this.props.contact(country, city, address, postalCode, phoneNumber, this.props.userlogged.token)
         if (response !== "") {
-            toast.dark('Your address was successfully changed!', {
-                position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                })
-            
+            swal({
+                title:'Pyral',
+                text: 'Your address was successfully changed!',
+                buttons: {
+                    confirm: true,
+                }
+            })
         }
         this.setState({
             country: '',
@@ -94,20 +91,24 @@ class Address extends React.Component {
                         <div>
                             <div style={{ boxShadow: '-1px 1px 13px -4px rgba(0,0,0,0.15)', padding: '5vh' }}>
                                 <h4>Contact information</h4>
-                                {this.props.userlogged.contact &&
+                                {this.props.userlogged.contact ?
                                     <>
                                         {this.props.userlogged.contact.map((x) => {
                                             return (
-                                                <div style={{ margin: '1vh 0vh' }}>
-                                                    <p><strong>Country:</strong> {x.country}</p>
-                                                    <p><strong>City:</strong> {x.city}</p>
-                                                    <p><strong>Address:</strong> {x.address}</p>
-                                                    <p><strong>Postal code:</strong> {x.postalCode}</p>
-                                                    <p><strong>Phone number:</strong> {x.phoneNumber}</p>
+                                                <div style={{ margin: '1vh 0vh', fontWeight:'lighter' }}>
+                                                    <p>Country: {x.country}</p>
+                                                    <p>City: {x.city}</p>
+                                                    <p>Address: {x.address}</p>
+                                                    <p>Postal code: {x.postalCode}</p>
+                                                    <p>Phone number: {x.phoneNumber}</p>
                                                     <hr />
                                                 </div>
                                             )
                                         })}
+                                    </>
+                                    :
+                                    <>
+                                        <h5>No address yet.</h5>
                                     </>
                                 }
                             </div>
