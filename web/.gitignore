@@ -1,0 +1,6 @@
+web/frontend/node_modules
+web/backend/node_modules
+web/backend/.env
+mobile/pyral/node_modules
+mobile/pyral/.expo-shared
+mobile/pyral/.expo

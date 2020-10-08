@@ -120,6 +120,7 @@ const Register = (props) => {
     }
 
     const responseGoogle = response => {
+        console.log(response)
         props.newUser({
             firstName: response.profileObj.givenName,
             lastName: response.profileObj.familyName,
