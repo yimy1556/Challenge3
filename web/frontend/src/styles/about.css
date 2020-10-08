@@ -37,6 +37,11 @@
     width: 60vw;
 }
 
+#mensajesadress p{
+    color: red;
+    font-size: 2vh;
+}
+
 @media (max-width: 800px) {
     .containerAbout {
         display: flex;

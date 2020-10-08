@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "lib": ["es6", "dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "rootDir": "./src",
+    "outDir": "./",
+    "sourceMap": true,
+    "target": "es6",
+    "jsx": "react"
+  },
+  "files": [
+    "./src/index.ts"
+  ],
+  "types": [
+    "node"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "**/*.d.ts",
+    "dist"
+  ],
+  "compileOnSave": false
+}

@@ -33,7 +33,6 @@ const Carrito = (props) => {
         })
     }
 
-    if (props.listProduct === null) return <></>
     return (
         <>
             <div className='DivCerrarCarrito' onClick={menuHamburguesa} style={!menuShow.show ? { display: 'none', opacity: 0 } : { display: 'block' }}></div>

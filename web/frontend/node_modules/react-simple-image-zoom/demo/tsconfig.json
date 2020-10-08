@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "lib": ["es6", "dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "target": "es5",
+    "jsx": "react"
+  },
+  "exclude": [
+    "**/*.spec.ts",
+    "node_modules",
+    "assets"
+  ],
+  "compileOnSave": false
+}

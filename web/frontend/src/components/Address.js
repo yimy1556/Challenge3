@@ -21,7 +21,18 @@ class Address extends React.Component {
         address: '',
         postalCode: '',
         phoneNumber: '',
+        mensajes:{
+            country: false,
+            city1: false,
+            city2: false,
+            address1: false,
+            address2: false,
+            postalCode: false,
+            phoneNumber: false,
+        }
     }
+    
+    
 
     componentDidMount() {
         this.scrollToTop()
@@ -37,14 +48,65 @@ class Address extends React.Component {
     }
 
     readContact = e => {
-        let oneCountry = document.getElementById("country")
-        this.setState({
-            ...this.state,
-            [e.target.name]: e.target.value
+        this.setState ({
+          ...this.state,
+         [e.target.name]: e.target.value
         })
+      
     }
 
-    sendContact = async () => {
+
+
+    sendContact = async e => {
+        e.preventDefault()
+        const uname = RegExp(/^[a-zA-Z0-9._]+$/)
+        this.state.mensajes.country = false
+        this.state.mensajes.city1 = false
+        this.state.mensajes.city2 = false
+        this.state.mensajes.address1 = false
+        this.state.mensajes.address2 = false
+        this.state.mensajes.postalCode = false
+        this.state.mensajes.phoneNumber = false
+
+
+        if (this.state.country === '' || this.state.city === '' || this.state.address === '' || this.state.postalCode === '' || this.state.phoneNumber === '') {
+            toast.error("please complete all fields")
+
+        } else if (this.state.country.length > 15) {
+            this.setState ({
+                ...this.state.mensajes,
+                 country: true
+              })
+        } else if (!uname.test(this.state.city)) {
+            this.setState ({
+                ...this.state.mensajes,
+                city1: true
+              })
+        }  else if (this.state.city.length > 15) {
+            this.setState ({
+                ...this.state.mensajes,
+                city2: true
+              })
+        
+        } else if (!uname.test(this.state.address)) {
+            this.setState ({
+                ...this.state.mensajes,
+                address1: true
+              })
+       }  else if (this.state.address.length > 25) {
+        this.setState ({
+            ...this.state.mensajes,
+            address2: true
+          })
+       
+       }  else if (this.state.postalCode.length > 5) {
+           this.state.mensajes.postalCode = true
+           toast.error("please ")
+
+        }  else if (this.state.phoneNumber.length > 10) {
+            this.state.mensajes.phoneNumber = true
+
+        }else{
         let country = this.state.country
         let city = this.state.city
         let address = this.state.address
@@ -52,9 +114,12 @@ class Address extends React.Component {
         let phoneNumber = this.state.phoneNumber
         await this.props.contact(country, city, address, postalCode, phoneNumber, this.props.userlogged.token)
         // await this.props.getContact(this.props.userlogged.token)
+        toast.success("Your adress was successfully updated")
+    }
     }
 
     render() {
+        console.log(this.state)
         return (
             <>
 
@@ -92,19 +157,27 @@ class Address extends React.Component {
 
                             <div id="divFormulario" style={{ display: 'flex', flexDirection: 'column', boxShadow: '-1px 1px 13px -4px rgba(0,0,0,0.15)', padding: '5vh', margin: '2vh 0vh' }}>
                                 <h4>Add your contact information</h4>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', margin: '2vh' }}>
-                                    <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="city" name="city" placeholder="Write your city here" />
-                                    <input style={{ width: '30%' }} onChange={this.readContact} type="text" id="address" name="address" placeholder="Write your address here" />
-                                    <select style={{ width: '30%' }} name="country" onChange={this.readContact} >
+                                <div id="mensajesadress" style={{ display: 'flex', justifyContent: 'space-between', margin: '2vh', flexDirection:"column" }}>
+                               
+                                  {this.state.mensajes.city1 ? <p >*The City must contain only uppercase letter and lowercase letter</p> : this.state.mensajes.city2 ? <p>*The City you entered in too long</p> : <p></p>}
+                                     <input style={{ width: '40vw', marginBottom:"3vh" }} onChange={this.readContact} type="text" id="city" name="city" placeholder="Write your city here" />
+                                   
+                                     {this.state.mensajes.address1 ? <p>*The address must contain only uppercase letter, lowercase letter and numbers</p> : this.state.mensajes.address2 ? <p>*The address you entered in too long</p> : <p></p>}
+                                    <input style={{ width: '40vw',marginBottom:"3vh" }} onChange={this.readContact} type="text" id="address" name="address" placeholder="Write your address here" />
+                                 
+                                    <select style={{ width: '40vw',marginBottom:"3vh" }} name="country" onChange={this.readContact} >
                                         {this.props.countries.map(country => {
                                             return <option name="country">{country.country}</option>
                                         })}
                                     </select>
+
+                                    {this.state.mensajes.postalCode ? <p>*The postalCode you entered in too long</p> : <p></p>}
+                                    <input style={{ width: '40vw',marginBottom:"3vh"  }} onChange={this.readContact} type="number" id="postalCode" name="postalCode" placeholder="Write your postal code here" />
+
+                                    {this.state.mensajes.postalCode ? <p>*The phone number you entered in too long</p> : <p></p>}
+                                    <input style={{ width: '40vw',marginBottom:"3vh"  }} onChange={this.readContact} type="number" id="phoneNumber" name="phoneNumber" placeholder="Write your phone number here" />
                                 </div>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', margin: '2vh' }}>
-                                    <input style={{ width: '45%' }} onChange={this.readContact} type="number" id="postalCode" name="postalCode" placeholder="Write your postal code here" />
-                                    <input style={{ width: '45%' }} onChange={this.readContact} type="number" id="phoneNumber" name="phoneNumber" placeholder="Write your phone number here" />
-                                </div>
+                                   
                                 {/* <div>
                                     <select>
                                         {this.props.countries.map(country => {
@@ -112,7 +185,7 @@ class Address extends React.Component {
                                         })}
                                     </select>
                                 </div> */}
-                                <button onClick={this.sendContact} className="createAccount button" style={{ width: '20%', margin: '2vh auto' }}>Send information</button>
+                                <button onClick={this.sendContact} className="createAccount button" style={{ width: '40vw', margin: '0vh auto', marginLeft:"2vw" }}>Send information</button>
                             </div>
                         </div>
                     </div>
