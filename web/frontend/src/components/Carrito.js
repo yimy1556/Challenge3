@@ -24,8 +24,9 @@ const Carrito = (props) => {
     const [menuShow, setmenuShow] = useState({
         show: false
     })
-    useEffect(() => { }, [props.ddd])
-
+    const [render, setRender] = useState(true)
+    useEffect(() => { }, [props.ddd, render])
+    
     const menuHamburguesa = e => {
         setmenuShow({
             ...menuShow,
@@ -66,7 +67,8 @@ const Carrito = (props) => {
                     <>
                         <div>
                             <div id="ropaDelCarrito" style={{overflow:"scroll", paddingBottom:"-30vh"}}>
-                                {props.listProduct.map(prod => <ItemCarrito product={prod} />)}
+                                {props.listProduct.map(prod => <ItemCarrito product={prod} render={render} 
+                                    setRender={setRender} />)}
                             </div>
                             < div id="totalPrecio">
                                 <p>Total</p>
