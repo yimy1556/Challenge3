@@ -140,7 +140,6 @@ const userController = {
 		const { _id } = req.user
 		const contact = await User.findOneAndUpdate({ _id }, { contact: { country: country, city: city, address: address, postalCode: postalCode, phoneNumber: phoneNumber } })
 		res.json({ success: true, contact: [{ country: country, city: city, address: address, postalCode: postalCode, phoneNumber: phoneNumber }] })
-		console.log(newDirection);
 	},
 
 

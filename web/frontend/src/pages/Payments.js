@@ -65,9 +65,9 @@ const Shipping = (props) => {
                                 <h4>PayPal</h4>
                             </div>
                             }
-                            {flagPayPal && (
+                            {flagPayPal && compraTotal(props.listProduct) > 250 ? (
                                 <PayPal total={compraTotal(props.listProduct)} redirect={redirect} />
-                            )}
+                            ) : <PayPal total={compraTotal(props.listProduct) + 36} redirect={redirect} />}
                             {flagCreditCard && (
                                 <CreditCard total={compraTotal(props.listProduct)} />
                             )}

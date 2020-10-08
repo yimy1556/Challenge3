@@ -46,7 +46,7 @@ class Profile extends React.Component {
                                 <h5>{this.props.userlogged.firstName} {this.props.userlogged.lastName}</h5>
                                 <h5 style={{ fontWeight: 'bold' }}>Mail</h5>
                                 <h5>{this.props.userlogged.mail}</h5>
-                                <button className="createAccount button" style={{ width: '20%', margin: '2vh 0vh' }}><NavLink to="/logOut" style={{ textDecoration: 'none', color:'whitesmoke' }}>Logout</NavLink></button>
+                                <button className="createAccount button" style={{ width: '20%', margin: '2vh 0vh' }}><NavLink to="/logOut" style={{ textDecoration: 'none', color: 'whitesmoke' }}>Logout</NavLink></button>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', width: '30%' }}>
                                 <ChangePass />
