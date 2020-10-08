@@ -71,7 +71,6 @@ const userController = {
 	getUser: (req, res) => {
 		const { firstName, lastName, mail, contact, rol, rating, token } = req.user
 		res.json({ firstName, lastName, mail, contact, rol, rating, token })
-		console.log(token)
 	},
 
 	//A new random password is generated and sent. (forgot password)
@@ -140,7 +139,6 @@ const userController = {
 		const { _id } = req.user
 		const contact = await User.findOneAndUpdate({ _id }, { contact: { country: country, city: city, address: address, postalCode: postalCode, phoneNumber: phoneNumber } })
 		res.json({ success: true, contact: [{ country: country, city: city, address: address, postalCode: postalCode, phoneNumber: phoneNumber }] })
-		console.log(newDirection);
 	},
 
 

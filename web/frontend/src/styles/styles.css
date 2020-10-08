@@ -41,6 +41,12 @@ header a:hover,header a:focus {
     text-decoration: none;
     
 }
+
+.Toastify__toast--success {
+  background: #080808 !important;
+}
+
+
 #shopNow{
   text-align: center;
   background-image: none;

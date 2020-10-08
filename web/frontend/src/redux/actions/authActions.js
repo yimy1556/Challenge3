@@ -33,7 +33,15 @@ const authActions = {
             if (!response.data.success) {
                 toast.error('Incorrect mail or password')
             } else {
-                toast('Welcome')
+                toast.dark('Welcome', {
+                    position: "bottom-center",
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    })
                 dispatch({
                     type: 'LOG_USER',
                     payload: {

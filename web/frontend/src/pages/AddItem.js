@@ -84,6 +84,11 @@ const AddItem = props => {
             value: 'L',
             label: 'L',
         },
+        {
+            value: 'L',
+            label: 'L',
+        },
+        
     ];
     const colors = [
         {
@@ -157,7 +162,7 @@ const AddItem = props => {
         <>
             <HeaderAdmin />
             <main>
-                <h2 style={{ textAlign: 'center' }}>Add a new item</h2>
+                <h2 style={{ textAlign: 'center', marginTop:'2rem' }}>Add a new item</h2>
                 <div>
                     <form id='formProduct' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '35%', margin: '3vh auto' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>

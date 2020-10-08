@@ -112,11 +112,16 @@ const Register = (props) => {
 
         } else {
             await props.newUser(user)
-            toast.error("Thank you for Signing Up")
-
+            toast.dark('Thank you for signing up', {
+                position: "bottom-center",
+                autoClose: 1500,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                })
         }
-
-
     }
 
     const responseGoogle = response => {
@@ -126,7 +131,15 @@ const Register = (props) => {
             mail: response.profileObj.email,
             pass: response.profileObj.googleId,
         })
-        toast.success("Thank you for signing up")
+        toast.dark('Thank you for signing up', {
+            position: "bottom-center",
+            autoClose: 1500,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            })
 
     }
 
@@ -139,7 +152,7 @@ const Register = (props) => {
                 </div>
                 <div id="divFormulario" style={{ background: ' whitesmoke', width: '60%', maxHeight: '100vh' }}>
                     <form>
-                        <div className="loginRegister" style={{ display: "flex" }}>
+                        <div className="loginRegister" style={{ display: "flex"}}>
                             <h3>Register | </h3><NavLink to="/login"> <h3 style={{ paddingLeft: '5px' }}> Log in</h3></NavLink>
                         </div>
                         <GoogleLogin id="GoogleLogin"
@@ -167,8 +180,8 @@ const Register = (props) => {
                             <TextField onChange={leerImput} type="password" id="pass" name="pass" placeholder="Write your password here"></TextField>
                         </div>
                         <div id="HaveAccount">
-                            <p>Have an account?</p>
-                            <NavLink to="/login" class="clickHere"> Click Here</NavLink>
+                            <p  style={{color:'black'}}>Have an account?</p>
+                            <NavLink  style={{color:'black'}} to="/login" class="clickHere"> Click Here</NavLink>
                         </div>
                         <button onClick={enviarInfo} className="createAccount button">Create Account</button>
                     </form>
