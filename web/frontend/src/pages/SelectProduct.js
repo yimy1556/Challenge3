@@ -111,7 +111,6 @@ const SelectProduct = (props) => {
                 <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '5em' }}>{borrarRepe(product?.variants).map(vari => <img style={{ paddingTop: '20px' }} onClick={() => setProd({ ...prod, remeraActual: vari.photo, color: vari.color })}
                     src={vari.photo} alt={vari.title} style={{ width: '4em', height: '5em', margin: '0.5vh 2vh', border: '1px solid #F1F1F1', cursor: 'pointer' }} />)}
                 </div>
-
                 <SideBySideMagnifier
                     className="input-position"
                     style={{ width: '60vh' }}
