@@ -39,6 +39,11 @@
     }
     .aProduct2 {
         width: 100%;
+        display: flex;
+         flex-direction: column;
+          justify-content: center;
+           align-items: center;
+           margin-top: 0;
     }
     .bottomText{
         display: flex;
@@ -51,9 +56,9 @@
 }
 
 .buttonSize {
-    width: 6.5vh !important;
-    height: 5.5vh!important;
-    font-size: 2vh!important;
+    width: 2em!important;
+    height: 2em!important;
+    font-size: 1.2em!important;
     font-weight: lighter !important;
 }
 

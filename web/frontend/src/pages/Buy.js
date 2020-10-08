@@ -37,16 +37,16 @@ const Buy = (props) => {
                                 <h3>Contact information<NavLink to="address" style={{ color: 'grey', paddingLeft: '2em' }}><CreateIcon /></NavLink></h3>
                             </div>
                             <div style={{ fontWeight: 'lighter', borderRadius: '7px', border: '1px solid #DFDFDF', width: '100%', padding: '2vh', margin: '2vh 0vh' }}>
-                            {props.userlogged.contact ?
+                                {props.userlogged.contact ?
                                     <>
                                         {props.userlogged.contact.map((x) => {
                                             return (
-                                                <div style={{ margin: '1vh 0vh', fontWeight:'lighter' }}>
-                                                    <p>Country: {x.country}</p>
-                                                    <p>City: {x.city}</p>
-                                                    <p>Address: {x.address}</p>
-                                                    <p>Postal code: {x.postalCode}</p>
-                                                    <p>Phone number: {x.phoneNumber}</p>
+                                                <div style={{ margin: '1vh 0vh', fontWeight: '400' }}>
+                                                    <p><strong> Country: </strong>{x.country}</p>
+                                                    <p><strong>City: </strong>{x.city}</p>
+                                                    <p><strong>Address: </strong>{x.address}</p>
+                                                    <p><strong>Postal code:</strong> {x.postalCode}</p>
+                                                    <p><strong>Phone number:</strong> {x.phoneNumber}</p>
                                                     <hr />
                                                 </div>
                                             )

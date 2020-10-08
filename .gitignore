@@ -1,6 +1,7 @@
 web/frontend/node_modules
 web/backend/node_modules
 web/backend/.env
+web/backend/client
 mobile/pyral/node_modules
 mobile/pyral/.expo-shared
 mobile/pyral/.expo

@@ -43,10 +43,10 @@ class Profile extends React.Component {
                         <div style={{ boxShadow: '-1px 1px 13px -4px rgba(0,0,0,0.15)', padding: '5vh', display: 'flex', justifyContent: "space-around" }}>
                             <div style={{ display: 'flex', flexDirection: 'column', width: '55%' }}>
                                 <h5>Name and last name</h5>
-                                <h5 style={{ fontWeight: 'lighter', margin:'1vh 0vh'  }}>{this.props.userlogged.firstName} {this.props.userlogged.lastName}</h5>
+                                <h5 style={{ fontWeight: 'lighter', margin: '1vh 0vh' }}>{this.props.userlogged.firstName} {this.props.userlogged.lastName}</h5>
                                 <h5>Mail</h5>
-                                <h5 style={{ fontWeight: 'lighter', margin:'1vh 0vh'  }}>{this.props.userlogged.mail}</h5>
-                                <button className="createAccount button" style={{ width: '40%', margin: '2vh 0vh' }}><NavLink to="/logOut" style={{ textDecoration: 'none' }}>Logout</NavLink></button>
+                                <h5 style={{ fontWeight: 'lighter', margin: '1vh 0vh' }}>{this.props.userlogged.mail}</h5>
+                                <button className="createAccount" style={{ width: '40%', margin: '2vh 0vh' }}><NavLink to="/logOut" style={{ textDecoration: 'none' }}>Log out</NavLink></button>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', width: '30%' }}>
                                 <ChangePass />

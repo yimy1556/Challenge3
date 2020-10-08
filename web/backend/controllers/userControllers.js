@@ -178,7 +178,7 @@ const userController = {
 			  <div style="text-align: center; background-image: url('https://images.pexels.com/photos/2951457/pexels-photo-2951457.jpeg?cs=srgb&dl=pexels-eben-odonkor-2951457.jpg&fm=jpg');
 			   height: 70vh; background-position: center; background-repeat: no-repeat; background-size:100%; margin: 0px;">
 			  <button style="margin-top: 45vh; background-color: black; color: whitesmoke; padding: 10px; font-size: 30px; border-color: black;">
-			  <a href="http://localhost:3000/shop" style="text-decoration: none; color: whitesmoke;">Go Shop!</a>
+			  <a href="https://pyral.herokuapp.com/shop" style="text-decoration: none; color: whitesmoke;">Go Shop!</a>
 			  </button>
 			  <p style="color: whitesmoke; font-size:12px; font-size:25px; margin: 0px; padding: 10px; font-weight: bold;">Thank you for subscribing, <br>
 				we will notify you when a discount or promotion is available! 
@@ -186,7 +186,7 @@ const userController = {
 			  </div>
 			  <div style="text-align: center; background-color: rgb(2, 2, 2); padding: 5px; height: 5vh;">
 				<span style="color: rgb(255, 255, 255); font-size: small;">Want to change how you receive these emails?</span>
-				<a style="color: rgb(240, 231, 231); font-size:small; text-decoration: none;" href="http://localhost:3000/lowNewsletter"> -  unsubscribe from this list.</a>
+				<a style="color: rgb(240, 231, 231); font-size:small; text-decoration: none;" href="https://pyral.herokuapp.com/lowNewsletter"> -  unsubscribe from this list.</a>
 			  </div>
 			  <div style="background-color: black; text-align: center; height: 5vh; padding-bottom:10px">
 				<h3 style="color: whitesmoke;margin: 0px; font-size: 20px; padding: 10px;">Team Pyral</h3>

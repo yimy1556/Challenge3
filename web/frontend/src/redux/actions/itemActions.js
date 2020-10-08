@@ -1,6 +1,6 @@
 import axios from 'axios'
 import swal from 'sweetalert';
-var path = `http://localhost:4000/api`
+var path = `https://pyral.herokuapp.com/api`
 
 const itemActions = {
 
@@ -64,7 +64,7 @@ const itemActions = {
             const response = await axios.put(path + `/product/addProduct`, formItem, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
-                }      
+                }
             })
             return response
         }

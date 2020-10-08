@@ -6,11 +6,11 @@ const productController = {
         const archivo = req.files.photo
         var extension = archivo.name.split('.')[1]
         var nombreArchivo = req.body.title + req.body.color + '.' + extension
-        var photoTrimed = nombreArchivo.replace(/ /g,'')
+        var photoTrimed = nombreArchivo.replace(/ /g, '')
 
         const serverURL = `uploads/${photoTrimed}`
-        const photo = `http://localhost:4000/uploads/${photoTrimed}`
-        
+        const photo = `https://pyral.herokuapp.com/uploads/${photoTrimed}`
+
         archivo.mv(serverURL)
 
         const newProduct = new Product({
@@ -55,10 +55,10 @@ const productController = {
         const archivo = req.files.photo
         var extension = archivo.name.split('.')[1]
         var nombreArchivo = req.body.title + req.body.color + '.' + extension
-        var photoTrimed = nombreArchivo.replace(/ /g,'')
+        var photoTrimed = nombreArchivo.replace(/ /g, '')
         const serverURL = `uploads/${photoTrimed}`
-        
-        const photo = `http://localhost:4000/uploads/${photoTrimed}`
+
+        const photo = `https://pyral.herokuapp.com/uploads/${photoTrimed}`
 
         archivo.mv(serverURL)
 
@@ -69,11 +69,11 @@ const productController = {
     updateListProduct: (req, res) => {
         const listProduct = req.body.listProduct
         listProduct.map(async (product) => {
-            const pro = await Product.findOne({_id:product._id})
+            const pro = await Product.findOne({ _id: product._id })
             const variant = pro.variants.filter(vari => (vari.color === product.color && vari.size === product.size))
             var poc = pro.variants.indexOf(variant[0])
             pro.variants[poc].stock = Number(pro.variants[poc].stock) - product.cant
-            await Product.update({_id:pro._id}, pro)
+            await Product.update({ _id: pro._id }, pro)
         })
     },
     //Select product by "id"

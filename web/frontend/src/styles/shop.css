@@ -16,7 +16,7 @@
 }
 
 #todoShop{
-    padding: 2vh 4vw 2vh 0;
+    padding: 2vh 4vw 8vh 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -32,9 +32,7 @@
     height: 60px;
     width: 60%;
 }
- #size{
-    width: 28%!important;
-}
+
 .articulo{
     height: 410px;
     width: 330px;
@@ -75,7 +73,9 @@
     width: 100%;
     border: 1px solid white;
 }
-
+.MuiListItem-root.Mui-selected, .MuiListItem-root.Mui-selected:hover{
+    background: none!important;
+}
 
 .articulo p {
     margin-top: 0vh;
@@ -147,6 +147,12 @@ button.createAccount{
     position: relative;
     text-decoration: none;
   }
+.createAccount a {
+color: #ffffff ;
+}
+.createAccount a:hover{
+    color:#111111!important ;
+    }
 
 button.createAccount:hover{
     background: #ffffff;
@@ -172,7 +178,7 @@ button.createAccount:hover{
 .orderFilter{
     font-size: 1.2em;
     margin:2px 0;
-    font-weight: 200;
+    font-weight: 300;
 }
 
 @media (max-width: 650px) {

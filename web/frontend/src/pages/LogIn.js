@@ -49,7 +49,7 @@ const LogIn = props => {
                         <NavLink to="/register">  <h3>Register | </h3> </NavLink><h3 style={{ paddingLeft: '5px' }}>Log in </h3>
                     </div>
                     <GoogleLogin id="GoogleLogin"
-                        clientId="83311303903-d8eviki4j9rvmabuc0ceg0c5im70b2ab.apps.googleusercontent.com"
+                        clientId="83311303903-hdo87f3cuq80fnscbb96ru5g0kqkg5vh.apps.googleusercontent.com"
                         buttonText="Log in with google"
                         onSuccess={responseGoogle}
                         onFailure={responseGoogle}
@@ -57,10 +57,10 @@ const LogIn = props => {
                     />
 
                     <div id="divMail">
-                        <input onChange={leerImput} type="text" id="mail" name="mail" placeholder="Write your mail here" style={{border: '0', background:'none', borderBottom:'1px solid gray'}}></input>
+                        <input onChange={leerImput} type="text" id="mail" name="mail" placeholder="Write your mail here" style={{ border: '0', background: 'none', borderBottom: '1px solid gray' }}></input>
                     </div>
                     <div id="divContraseña">
-                        <input onChange={leerImput} type="password" id="pass" name="pass" placeholder="Write your password here" style={{border: '0', background:'none', borderBottom:'1px solid gray'}}></input>
+                        <input onChange={leerImput} type="password" id="pass" name="pass" placeholder="Write your password here" style={{ border: '0', background: 'none', borderBottom: '1px solid gray' }}></input>
                     </div>
                     <div id="HaveAccount" style={{ color: 'gray' }}>
                         <p>Don't have an account?<NavLink to="/register" style={{ color: 'gray' }}> Sign up</NavLink></p>

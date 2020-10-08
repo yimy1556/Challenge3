@@ -1,5 +1,5 @@
 import axios from 'axios'
-var path = `http://localhost:4000/api`
+var path = `https://pyral.herokuapp.com/api`
 
 const key1 = ['_id', 'size', 'color']
 const key2 = ['size', 'color']

@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import Swal from 'sweetalert2'
 
 
-var path = 'http://localhost:4000/api'
+var path = 'https://pyral.herokuapp.com/api'
 
 const authActions = {
 
@@ -41,7 +41,7 @@ const authActions = {
                     pauseOnHover: true,
                     draggable: true,
                     progress: undefined,
-                    })
+                })
                 dispatch({
                     type: 'LOG_USER',
                     payload: {
@@ -206,12 +206,12 @@ const authActions = {
                     Authorization: `Bearer ${token}`
                 }
             })
-                dispatch({
-                    type: 'GET_CONTACT',
-                    payload: { contact: response.data.contact }
-                    // {country: response.data.country, city: response.data.city, address: response.data.address, postalCode: response.data.postalCode, phoneNumber: response.data.phoneNumber}
-                })
-                return response  
+            dispatch({
+                type: 'GET_CONTACT',
+                payload: { contact: response.data.contact }
+                // {country: response.data.country, city: response.data.city, address: response.data.address, postalCode: response.data.postalCode, phoneNumber: response.data.phoneNumber}
+            })
+            return response
         }
     },
 

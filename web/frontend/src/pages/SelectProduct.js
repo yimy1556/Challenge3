@@ -127,7 +127,16 @@ const SelectProduct = (props) => {
     const handleClose = () => {
         setOpen(false);
     };
-
+    const BoxSize = (props) => {
+        const sizeStyle = (props.vari.size === props.size) ? { backgroundColor: 'black', color: 'whitesmoke' } :
+            { backgroundColor: 'whitesmoke' }
+        return (
+            <button style={{ border: '1px solid #BEBEBE', ...sizeStyle }}
+                onClick={(e) => props.setProd({ ...props.prod, size: e.target.value })}
+                value={props.vari.size} className='buttonSize'>
+                {props.vari.size}</button>
+        )
+    }
 
     if (product === {}) return <></>
     return (<>
@@ -139,7 +148,7 @@ const SelectProduct = (props) => {
                 </div>
                 <SideBySideMagnifier
                     className="input-position"
-                    style={{ width: '65vh' }}
+                    style={{ width: '75vh' }}
                     imageSrc={prod?.remeraActual}
                     overlayOpacity={0.4}
                     alwaysInPlace={true}
@@ -150,147 +159,154 @@ const SelectProduct = (props) => {
 
 
             </div>
-            <div className="aProduct2" style={{ justifyContent: 'center', alignItems: 'center', alignContent: 'center', margin: '7vh 0vh' }}>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', width: '54vh' }}>
-                    <h4>{product.title}</h4>
-                    <h4>${product.price}</h4>
-                </div>
+            <div className="aProduct2" style={{ margin: '7vh 0vh' }}>
                 <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', width: '54vh' }}>
+                        <h4>{product.title}</h4>
+                        <h4>${product.price}</h4>
+                    </div>
+                    <div>
 
-                    {!arrayFiltrado2 ?
-                        <div style={{ display: 'flex', margin: '2vh 0vh' }} onClick={handleOpen}>
-                            <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
-                            <Rating name="half-rating" onClick={handleOpen} defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
+                        {!arrayFiltrado2 ?
+                            <div style={{ display: 'flex', margin: '2vh 0vh', cursor: 'pointer' }} onClick={handleOpen}>
+                                <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
+                                <Rating name="half-rating" onClick={handleOpen} defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
+                                <p>{`(${arrayFiltrado[0].reviews})`}</p>
+                            </div>
+                            :
+                            <div style={{ display: 'flex', cursor: 'pointer' }} onClick={handleOpen}>
+                                <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
+                                <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                                <p>{`(${props.productRating.reviews})`}</p>
+                            </div>
+                        }
+
+                        <Modal
+                            aria-labelledby="transition-modal-title"
+                            aria-describedby="transition-modal-description"
+                            className={classes.modal}
+                            open={open}
+                            onClose={handleClose}
+                            closeAfterTransition
+                            BackdropComponent={Backdrop}
+                            BackdropProps={{
+                                timeout: 500,
+                            }}
+                        >
+                            <Fade in={open}>
+                                <div className={classes.paper}>
+                                    <div style={{ margin: '2vh auto', display: 'flex', flexDirection: 'column', margin: '5vh 10vh', }}>
+                                        {props.userlogged.token &&
+                                            <>
+                                                {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 ?
+                                                    <>
+                                                        <Box component="fieldset" borderColor="transparent">
+                                                            <p>Did you like the product? Rate it!</p>
+                                                            <Rating
+                                                                name="simple-controlled"
+                                                                value={value}
+                                                                onChange={(event, newValue) => {
+                                                                    setValue(newValue)
+
+                                                                }}
+                                                                style={{ color: '#111111' }}
+                                                            />
+
+                                                        </Box>
+
+                                                        <button className="addToCart" style={{ width: '15vh', height: '5vh', fontSize: '2vh' }} onClick={sendRating} >Send Rating</button> </> :
+                                                    <p>You already rated this product</p>}
+                                            </>}
+                                    </div>
+                                </div>
+                            </Fade>
+                        </Modal>
+                    </div>
+
+                    <p style={{ padding: '7px 0 20px 0', fontWeight: 'lighter', width: '55vh' }}>{product.description}</p>
+
+                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 10, width: '50%' }}>
+                        <div>
+                            <h6 style={{ margin: '1.5vh 0vh' }}>Colors:</h6>
+                            <div style={{ display: 'flex' }}>
+
+                                {borrarRepe(product.variants).map(variant => {
+                                    return (<div id="imagenShopChica2" onClick={() => setProd({
+                                        ...prod, remeraActual: variant.photo,
+                                        color: variant.color
+                                    })} style={{
+                                        border: ` ${variant.color === 'White' && '1px solid grey'}`,
+                                        backgroundColor: `${variant.color === 'Wine' ? '#44282D' :
+                                            variant.color === 'Black' ? '#111111' :
+                                                variant.color === 'Cream' ? '#FFF0C9' :
+                                                    variant.color === 'DarkGrey' ? '#34343D' :
+                                                        variant.color === 'White' ? 'whitesmoke' :
+                                                            variant.color === 'Blush' ? '##EFC6B4' :
+                                                                variant.color === 'Flint' ? '#C2B1C1' :
+                                                                    variant.color === 'Honeycomb' ? '#C98E2A' :
+                                                                        variant.color === 'Paloma' ? '#F2BBBE' :
+                                                                            variant.color === 'Salt' ? '#ECE9E2' :
+                                                                                variant.color === 'Sage' ? '#737B7D' :
+                                                                                    variant.color === 'Anchor' ? '#4B4545' :
+                                                                                        variant.color === 'Red Rum' ? '#774A47' :
+                                                                                            variant.color === 'Golden Harvest' ? '#E6B968' :
+                                                                                                variant.color === 'Military Moss' ? '#695530' :
+                                                                                                    variant.color === 'Egg Shell' ? '#E9DFD5' :
+                                                                                                        variant.color === 'Grey' ? '#303B4F' : ''}`
+                                    }} > </div>)
+                                })}
+                            </div>
                         </div>
-                        :
-                        <div style={{ display: 'flex' }} onClick={handleOpen}>
-                            <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
-                            <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                        </div>
-                    }
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column' }} >
 
-                    <Modal
-                        aria-labelledby="transition-modal-title"
-                        aria-describedby="transition-modal-description"
-                        className={classes.modal}
-                        open={open}
-                        onClose={handleClose}
-                        closeAfterTransition
-                        BackdropComponent={Backdrop}
-                        BackdropProps={{
-                            timeout: 500,
-                        }}
-                    >
-                        <Fade in={open}>
-                            <div className={classes.paper}>
-                                <div style={{ margin: '2vh auto', display: 'flex', flexDirection: 'column', margin: '5vh 10vh' }}>
-                                    {props.userlogged.token &&
-                                        <>
-                                            {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 ?
-                                                <>
-                                                    <Box component="fieldset" borderColor="transparent">
-                                                        <p>Did you like the product? Rate it!</p>
-                                                        <Rating
-                                                            name="simple-controlled"
-                                                            value={value}
-                                                            onChange={(event, newValue) => {
-                                                                setValue(newValue)
-
-                                                            }}
-                                                            style={{ color: '#111111' }}
-                                                        />
-
-                                                    </Box>
-                                                    <button className="addToCart" style={{ width: '15vh', height: '5vh', fontSize: '2vh' }} onClick={sendRating} onClick={handleClose}>Send Rating</button> </> :
-                                                <p>You already rated this product</p>}
-                                        </>}
+                        <div name="size" id="size" style={{ display: 'flex', flexDirection: 'column', width: '55vh' }}>
+                            <h6 style={{ margin: '1.5vh 0vh' }}>Size: {prod.size} </h6>
+                            <div style={{ display: 'flex', width: '30vw' }}>
+                                {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <BoxSize vari={vari}
+                                    size={prod.size} prod={prod} setProd={setProd} />)}
+                                <div>
+                                    {(prod.size !== '' || prod.size !== 'Choose the size') &&
+                                        <>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p style={{ margin: '1vh 1vh' }}>Last units</p>)}</>}
                                 </div>
                             </div>
-                        </Fade>
-                    </Modal>
-                </div>
 
-                <p style={{ padding: '7px 0 20px 0', fontWeight: 'lighter', width: '55vh' }}>{product.description}</p>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 10, width: '50%' }}>
-                    <div>
-                        <h6 style={{ margin: '1.5vh 0vh' }}>Colors:</h6>
-                        <div style={{ display: 'flex' }}>
-
-                            {borrarRepe(product.variants).map(variant => {
-                                return (<div id="imagenShopChica2" style={{
-
-                                    backgroundColor: `${variant.color === 'Wine' ? '#44282D' :
-                                        variant.color === 'Black' ? '#111111' :
-                                            variant.color === 'DarkGrey' ? '#34343D' :
-                                                variant.color === 'White' ? 'whitesmoke' :
-                                                    variant.color === 'Blush' ? '##EFC6B4' :
-                                                        variant.color === 'Flint' ? '#C2B1C1' :
-                                                            variant.color === 'Honeycomb' ? '#C98E2A' :
-                                                                variant.color === 'Paloma' ? '#F2BBBE' :
-                                                                    variant.color === 'Salt' ? '#ECE9E2' :
-                                                                        variant.color === 'Sage' ? '#737B7D' :
-                                                                            variant.color === 'Anchor' ? '#4B4545' :
-                                                                                variant.color === 'Red Rum' ? '#774A47' :
-                                                                                    variant.color === 'Golden Harvest' ? '#E6B968' :
-                                                                                        variant.color === 'Military Moss' ? '#695530' :
-                                                                                            variant.color === 'Grey' ? '#303B4F' : ''}`
-                                }} > </div>)
-                            })}
                         </div>
                     </div>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column' }} >
-
-                    <div name="size" id="size" style={{ display: 'flex', flexDirection: 'column', width: '55vh' }}>
-                        <h6 style={{ margin: '1.5vh 0vh' }}>Size: {prod.size} </h6>
-                        <div style={{ display: 'flex', width: '10vw' }}>
-                            {(product?.variants?.filter(vari => vari.color === prod.color))?.map(vari => <button id="buttonShop" style={{ border: '1px solid #BEBEBE' }} onClick={(e) => setProd({ ...prod, size: e.target.value })}
-                                value={vari.size} className='buttonSize'>
-                                {vari.size}</button>)}
-
-                        </div>
-                        <div>
-                            {(prod.size !== '' || prod.size !== 'Choose the size') &&
-                                <>{(product?.variants?.filter(vari => (vari.color === prod.color && vari.size === prod.size))[0]?.stock < 10 && <p style={{ margin: '1vh 1vh' }}>Last units</p>)}</>}
-                        </div>
-
+                    <div style={{ display: 'flex', alignItems: 'center', margin: '3vh 0vh', width: '55vh' }}>
+                        <h6 style={{}}>Share this product:</h6>
+                        <WhatsappShareButton style={{ margin: '0vh 1vh' }}
+                            url={`https://pyral.herokuapp.com/selectProduct/${props.match.params.id}`}
+                            quote={"Pyral - a new way of dressing"}
+                            hashtag={`Pyral`}
+                        >
+                            <WhatsappIcon size={35} round={true} />
+                        </WhatsappShareButton>
+                        <FacebookShareButton
+                            url={`https://pyral.herokuapp.com/selectProduct/${props.match.params.id}`}
+                            quote={"Pyral - a new way of dressing"}
+                            hashtag={`Pyral`}
+                        >
+                            <FacebookIcon size={35} round={true} />
+                        </FacebookShareButton>
+                        <TwitterShareButton style={{ margin: '0vh 1vh' }}
+                            url={`https://pyral.herokuapp.com/selectProduct/${props.match.params.id}`}
+                            quote={"Pyral - a new way of dressing"}
+                            hashtag="#Pyral"
+                        >
+                            <TwitterIcon size={35} round={true} />
+                        </TwitterShareButton>
+                        <TelegramShareButton
+                            url={`https://pyral.herokuapp.com/selectProduct/${props.match.params.id}`}
+                            quote={"Pyral - a new way of dressing"}
+                            hashtag="#Pyral"
+                        >
+                            <TelegramIcon size={35} round={true} />
+                        </TelegramShareButton>
                     </div>
+                    <button onClick={() => addProducts()} className="addToCart" style={{ width: '54vh' }}>Add to cart</button>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', margin: '3vh 0vh', width: '55vh' }}>
-                    <h6 style={{}}>Share this product:</h6>
-                    <WhatsappShareButton style={{ margin: '0vh 1vh' }}
-                        url={"https://scapeteamred.herokuapp.com/"}
-                        quote={"CampersTribe - World is yours to explore"}
-                        hashtag={`${product.title}`}
-                    >
-                        <WhatsappIcon size={35} round={true} />
-                    </WhatsappShareButton>
-                    <FacebookShareButton
-                        url={"https://scapeteamred.herokuapp.com/"}
-                        quote={"CampersTribe - World is yours to explore"}
-                        hashtag={`${product.title}`}
-                    >
-                        <FacebookIcon size={35} round={true} />
-                    </FacebookShareButton>
-                    <TwitterShareButton style={{ margin: '0vh 1vh' }}
-                        url={"https://scapeteamred.herokuapp.com/"}
-                        quote={"CampersTribe - World is yours to explore"}
-                        hashtag="#camperstribe"
-                    >
-                        <TwitterIcon size={35} round={true} />
-                    </TwitterShareButton>
-                    <TelegramShareButton
-                        url={"https://scapeteamred.herokuapp.com/"}
-                        quote={"CampersTribe - World is yours to explore"}
-                        hashtag="#camperstribe"
-                    >
-                        <TelegramIcon size={35} round={true} />
-                    </TelegramShareButton>
-                </div>
-                <button onClick={() => addProducts()} className="addToCart" style={{ width: '54vh' }}>Add to cart</button>
-
             </div>
         </div>
 

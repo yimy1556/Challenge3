@@ -156,7 +156,7 @@ const Register = (props) => {
                             <h3>Register | </h3><NavLink to="/login"> <h3 style={{ paddingLeft: '5px' }}> Log in</h3></NavLink>
                         </div>
                         <GoogleLogin id="GoogleLogin"
-                            clientId="83311303903-d8eviki4j9rvmabuc0ceg0c5im70b2ab.apps.googleusercontent.com"
+                            clientId="83311303903-hdo87f3cuq80fnscbb96ru5g0kqkg5vh.apps.googleusercontent.com"
                             buttonText="Sign up with Google"
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}

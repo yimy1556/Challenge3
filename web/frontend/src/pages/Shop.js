@@ -114,7 +114,7 @@ const Shop = (props) => {
             <div className="orderProducts" style={{ display: 'flex', justifyContent: 'space-around', verticalAlign: 'center' }}>
                 <div style={{ flex: '1', padding: '10vh 2vw 2vh 4vw', display: 'flex', flexDirection: 'column' }}>
                     <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid grey', justifyContent: 'space-between' }}>
-                        <h4 style={{ color: 'grey' }}>Filter</h4>
+                        <h4 style={{ color: '#1E1E1E' }}>Filter</h4>
                         <div>
                             <ViewListIcon onClick={viewList} />
                             <ViewModuleIcon onClick={viewModule} />
@@ -123,7 +123,7 @@ const Shop = (props) => {
                     <span onClick={mostRelevant} className="orderFilter">Most Relevant</span>
                     <span onClick={lessRelevant} className="orderFilter">Less Relevant</span>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <h4 style={{ borderBottom: '1px solid grey', color: 'grey' }}>Price</h4>
+                        <h4 style={{ borderBottom: '1px solid grey', color: '#1E1E1E' }}>Price</h4>
 
                         <span onClick={lowestPrice} className="orderFilter">Lowest Price</span>
                         <span onClick={highestPrice} className="orderFilter">Highest Price</span>
@@ -131,7 +131,7 @@ const Shop = (props) => {
                         <span onClick={moreThanEighty} className="orderFilter">More than $80</span>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <h4 style={{ borderBottom: '1px solid grey', color: 'grey' }}>Ranking</h4>
+                        <h4 style={{ borderBottom: '1px solid grey', color: '#1E1E1E' }}>Ranking</h4>
 
                         <span onClick={lowestPrice} className="orderFilter">Most value</span>
                         <span onClick={highestPrice} className="orderFilter">Less value</span>
