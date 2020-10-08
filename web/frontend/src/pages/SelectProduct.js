@@ -30,7 +30,10 @@ import {
 import ScrollProducts from '../components/ScrollProduts'
 import mens from '../images/mens.jpg'
 import ChatBotComponent from '../components/ChatBotComponent'
-
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 
 const SelectProduct = (props) => {
     const borrarRepe = (variants) => {
@@ -50,6 +53,20 @@ const SelectProduct = (props) => {
         _id: props.match.params.id,
         remeraActual: '', color: '', size: '', cant: 1
     })
+
+    const useStyles = makeStyles((theme) => ({
+        modal: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+        },
+        paper: {
+            backgroundColor: theme.palette.background.paper,
+            border: '2px solid #000',
+            boxShadow: theme.shadows[5],
+            padding: theme.spacing(2, 4, 3),
+        },
+    }));
 
     const [value, setValue] = useState(0)
 
@@ -100,7 +117,16 @@ const SelectProduct = (props) => {
         }
 
     }
+    const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
 
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
 
     if (product === {}) return <></>
@@ -130,7 +156,62 @@ const SelectProduct = (props) => {
                     <h4>{product.title}</h4>
                     <h4>${product.price}</h4>
                 </div>
-                <p style={{ padding: '20px 0', fontWeight: 'lighter', width: '55vh' }}>{product.description}</p>
+                <div>
+
+                    {!arrayFiltrado2 ?
+                        <div style={{ display: 'flex', margin: '2vh 0vh' }} onClick={handleOpen}>
+                            <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
+                            <Rating name="half-rating" onClick={handleOpen} defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
+                        </div>
+                        :
+                        <div style={{ display: 'flex' }} onClick={handleOpen}>
+                            <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
+                            <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
+                        </div>
+                    }
+
+                    <Modal
+                        aria-labelledby="transition-modal-title"
+                        aria-describedby="transition-modal-description"
+                        className={classes.modal}
+                        open={open}
+                        onClose={handleClose}
+                        closeAfterTransition
+                        BackdropComponent={Backdrop}
+                        BackdropProps={{
+                            timeout: 500,
+                        }}
+                    >
+                        <Fade in={open}>
+                            <div className={classes.paper}>
+                                <div style={{ margin: '2vh auto', display: 'flex', flexDirection: 'column', margin: '5vh 10vh' }}>
+                                    {props.userlogged.token &&
+                                        <>
+                                            {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 ?
+                                                <>
+                                                    <Box component="fieldset" borderColor="transparent">
+                                                        <p>Did you like the product? Rate it!</p>
+                                                        <Rating
+                                                            name="simple-controlled"
+                                                            value={value}
+                                                            onChange={(event, newValue) => {
+                                                                setValue(newValue)
+
+                                                            }}
+                                                            style={{ color: '#111111' }}
+                                                        />
+
+                                                    </Box>
+                                                    <button className="addToCart" style={{ width: '15vh', height: '5vh', fontSize: '2vh' }} onClick={sendRating} onClick={handleClose}>Send Rating</button> </> :
+                                                <p>Ya diste tu opinion</p>}
+                                        </>}
+                                </div>
+                            </div>
+                        </Fade>
+                    </Modal>
+                </div>
+
+                <p style={{ padding: '7px 0 20px 0', fontWeight: 'lighter', width: '55vh' }}>{product.description}</p>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 10, width: '50%' }}>
                     <div>
@@ -208,58 +289,10 @@ const SelectProduct = (props) => {
                     </TelegramShareButton>
                 </div>
                 <button onClick={() => addProducts()} className="addToCart" style={{ width: '54vh' }}>Add to cart</button>
-                {!arrayFiltrado2 ?
-                    <div style={{ display: 'flex', margin: '3vh 0vh' }}>
-                        <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
-                        <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
-                    </div>
-                    :
-                    <div style={{ display: 'flex' }}>
-                        <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
-                        <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                    </div>
-                }
 
             </div>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1em' }}>
-            <h3 >Reviews</h3>
-            {!arrayFiltrado2 ?
-                <div style={{ display: 'flex' }}>
-                    <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
-                    <Rating name="half-rating" defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
-                    <p>{arrayFiltrado[0].reviews} reviews</p>
-                </div>
-                :
-                <div style={{ display: 'flex' }}>
-                    <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
-                    <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
-                    <p>{props.productRating.reviews} reviews</p>
-                </div>
-            }
 
-        </div>
-        <div style={{ margin: '2vh auto', display: 'flex', flexDirection: 'column', margin: '5vh 10vh' }}>
-            {props.userlogged.token &&
-                <>
-                    {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 &&
-                        <>
-                            <Box component="fieldset" borderColor="transparent">
-                                <p>Did you like the product? Rate it!</p>
-                                <Rating
-                                    name="simple-controlled"
-                                    value={value}
-                                    onChange={(event, newValue) => {
-                                        setValue(newValue)
-
-                                    }}
-                                    style={{ color: '#111111' }}
-                                />
-
-                            </Box>
-                            <button className="addToCart" style={{ width: '15vh', height: '5vh', fontSize: '2vh' }} onClick={sendRating}>Send Rating</button>  </>}
-                </>}
-        </div>
         <ScrollProducts />
         <ChatBotComponent />
         <div>
