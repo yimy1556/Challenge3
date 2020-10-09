@@ -30,9 +30,9 @@ const AddItem = props => {
         if (item.title === '' || item.description === '' || item.photo === '' || item.price === '' || item.stock === '' || item.type === '') {
 
             swal({
-                title:'Pyral',
+                title: 'Pyral',
                 text: 'air can\'t be sold... yet',
-                icon:'error',
+                icon: 'error',
                 buttons: {
                     confirm: true,
                 }
@@ -58,9 +58,9 @@ const AddItem = props => {
         if (item.title === '' || item.photo === '' || item.stock === '' || item.color === '') {
 
             swal({
-                title:'Pyral',
+                title: 'Pyral',
                 text: 'air can\'t be sold... yet',
-                icon:'error',
+                icon: 'error',
                 buttons: {
                     confirm: true,
                 }
@@ -80,6 +80,10 @@ const AddItem = props => {
     }
     const sizes = [
         {
+            value: 'XS',
+            label: 'XS',
+        },
+        {
             value: 'S',
             label: 'S',
         },
@@ -92,76 +96,118 @@ const AddItem = props => {
             label: 'L',
         },
         {
-            value: 'L',
-            label: 'L',
+            value: 'XL',
+            label: 'XL',
         },
-        
+
     ];
     const colors = [
         {
-            value: 'White',
-            label: 'White',
+            value: 'Anchor',
+            label: 'Anchor'
         },
         {
             value: 'Black',
             label: 'Black',
         },
         {
-            value: 'Wine',
-            label: 'Wine',
-        },
-        {
-            value: 'DarkGrey',
-            label: 'DarkGrey',
-        },
-        {
-            value: 'Grey',
-            label: 'Grey',
+            value: 'Brown',
+            label: 'Brown',
         },
         {
             value: 'Blush',
             label: 'Blush'
         },
         {
+            value: 'Chateau',
+            label: 'Chateau'
+        },
+        {
+            value: 'DarkGrey',
+            label: 'DarkGrey',
+        },
+        {
+            value: 'Egg Shell',
+            label: 'Egg Shell'
+        },
+        {
             value: 'Flint',
             label: 'Flint'
-        },
-        {
-            value: 'Honeycomb',
-            label: 'Honeycomb'
-        },
-        {
-            value: 'Paloma',
-            label: 'Paloma'
-        },
-        {
-            value: 'Salt',
-            label: 'Salt'
-        },
-        {
-            value: 'Sage',
-            label: 'Sage'
-        },
-        {
-            value: 'Anchor',
-            label: 'Anchor'
-        },
-        {
-            value: 'Red Rum',
-            label: 'Red Rum'
         },
         {
             value: 'Golden Harvest',
             label: 'Golden Harvest'
         },
         {
+            value: 'Grey',
+            label: 'Grey',
+        },
+        {
+            value: 'Granite',
+            label: 'Granite'
+        },
+        {
+            value: 'Honeycomb',
+            label: 'Honeycomb'
+        },
+        {
+            value: 'Night Owl',
+            label: 'Night Owl'
+        },
+        {
             value: 'Military Moss',
             label: 'Military Moss'
         },
         {
-            value: 'Egg Shell',
-            label: 'Egg Shell'
-        }
+            value: 'Mountain Mist',
+            label: 'Mountain Mist'
+        },
+        {
+            value: 'Moonlight',
+            label: 'Moonlight'
+        },
+        {
+            value: 'Ocean Storm',
+            label: 'Ocean Storm'
+        },
+        {
+            value: 'Paloma',
+            label: 'Paloma'
+        },
+        {
+            value: 'Red Rum',
+            label: 'Red Rum'
+        },
+
+        {
+            value: 'Sage',
+            label: 'Sage'
+        },
+        {
+            value: 'Salt',
+            label: 'Salt'
+        },
+        {
+            value: 'Stone Grey',
+            label: 'Stone Grey'
+        },
+        {
+            value: 'Sweet Basil',
+            label: 'Sweet Basil'
+        },
+        {
+            value: 'Vintage',
+            label: 'Vintage'
+        },
+        {
+            value: 'White',
+            label: 'White',
+        },
+        {
+            value: 'Wine',
+            label: 'Wine',
+        },
+
 
     ];
 
@@ -169,25 +215,30 @@ const AddItem = props => {
         <>
             <HeaderAdmin />
             <main>
-                <h2 style={{ textAlign: 'center', marginTop:'2rem' }}>Add a new item</h2>
+                <h2 style={{ textAlign: 'center', marginTop: '2rem' }}>Add a new item</h2>
                 <div>
                     <form id='formProduct' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '35%', margin: '3vh auto' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                            <div> <input type="radio" onChange={readInput} id="newProduct" name="newProduct" value={true}></input>New Product</div>
-                            <div>  <input type="radio" onChange={readInput} id="newProduct" name="newProduct" value={false}></input>New Variant</div>
+                            <div> <input type="radio" onChange={readInput} id="newProduct" name="newProduct" value={true} style={{ marginRight: '0.5em' }}></input>New Product</div>
+                            <div>  <input type="radio" onChange={readInput} id="newProduct" name="newProduct" value={false} style={{ marginRight: '0.5em' }}></input>New Variant</div>
                         </div>
                         {item.newProduct == "false" ?
-                            <select name="title" id="title" onChange={readInput} className="text-center col-6"
+
+                            <TextField
+                                id="title"
+                                name="title"
+                                select
+                                label="Title"
+
+                                onChange={readInput}
                             >
-                                <option className="text-center">
-                                    Choose your article
-                         </option>
-                                {props.products.map(product => {
-                                    return (
-                                        <option>{product.title}</option>
-                                    )
-                                })}
-                            </select> :
+
+                                {props.products.map((product) =>
+                                    <MenuItem key={product.title} value={product.title}>
+                                        {product.title}
+                                    </MenuItem>
+                                )}
+                            </TextField > :
                             <TextField id="title" label="Title" name='title' onChange={readInput} />
 
                         }
@@ -232,7 +283,7 @@ const AddItem = props => {
                                 </MenuItem>
                             ))}
                         </TextField >
-                        {item.newProduct == "true" ? <button onClick={sendInfo} >Send item</button> : <button onClick={putVariant}>Send variant</button>}
+                        {item.newProduct == "true" ? <button onClick={sendInfo} className="createAccount" style={{ marginTop: '1em' }}>Send item</button> : <button style={{ marginTop: '1em' }} className="createAccount" onClick={putVariant}>Send variant</button>}
                     </form>
                 </div>
             </main>

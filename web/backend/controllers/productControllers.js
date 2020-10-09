@@ -9,7 +9,7 @@ const productController = {
         var photoTrimed = nombreArchivo.replace(/ /g,'')
 
         const serverURL = `uploads/${photoTrimed}`
-        const photo = `http://localhost:4000/uploads/${photoTrimed}`
+        const photo = `https://pyral.herokuapp.com/uploads/${photoTrimed}`
         
         archivo.mv(serverURL)
 
@@ -58,7 +58,7 @@ const productController = {
         var photoTrimed = nombreArchivo.replace(/ /g,'')
         const serverURL = `uploads/${photoTrimed}`
         
-        const photo = `http://localhost:4000/uploads/${photoTrimed}`
+        const photo = `https://pyral.herokuapp.com/uploads/${photoTrimed}`
 
         archivo.mv(serverURL)
 
