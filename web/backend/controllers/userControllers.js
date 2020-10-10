@@ -7,9 +7,6 @@ const message = "Mail or Password incorrect"
 const nodeMailer = require('nodemailer')
 const Newsletter = require("../models/Newsletter")
 
-
-
-
 var transport = nodeMailer.createTransport({
 	port: 465,
 	host: "smtp.gmail.com",
