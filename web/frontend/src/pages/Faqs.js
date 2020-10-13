@@ -13,7 +13,7 @@ import callCenter from '../images/callCenter.jpg'
 import shipping from '../images/ship.jpg'
 import costure from '../images/sewing-machine-square.webp'
 import { Card } from 'react-bootstrap'
-
+import ChatBotComponent from '../components/ChatBotComponent'
 
 
 export default function Faqs() {
@@ -197,7 +197,7 @@ export default function Faqs() {
             </Card.Body>
           </Card>
         </div>
-
+        <ChatBotComponent />
       </div>
 
 

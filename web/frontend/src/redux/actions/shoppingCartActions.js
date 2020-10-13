@@ -14,11 +14,11 @@ const sonIguales = (prod1, prod2, keyProc) => {
     return condicion
 }
 
-const updateLocal = (listProduct, carrito) => {
+const updateLocal = (listProduct, shopCart) => {
     localStorage.removeItem("listProduct")
-    localStorage.removeItem("carrito")
+    localStorage.removeItem("shopCart")
     localStorage.setItem("listProduct", JSON.stringify(listProduct))
-    localStorage.setItem("carito", JSON.stringify(carrito))
+    localStorage.setItem("shopCart", JSON.stringify(shopCart))
 }
 
 const modificarCant = (prodMo, listProduct, cant = 1) => {

@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux'
+
+// Actions
+import itemActions from '../redux/actions/itemActions'
+
+// Material UI
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,8 +18,6 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CreateSharpIcon from '@material-ui/icons/CreateSharp';
-import { connect } from 'react-redux'
-import itemActions from '../redux/actions/itemActions'
 
 const styleInput = (condicion) => {
     return ({
@@ -33,7 +37,6 @@ const RowInterno = (props) => {
     const [bloque, setBloque] = useState(true)
     const updateVariants = (condi) => {
         setBloque(!condi)
-        //if(!condi) return
     }
     const updateStock = (e) => {
         let key = e.target.name

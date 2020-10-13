@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
 import shoppingCartActions from '../redux/actions/shoppingCartActions'
+import { toast } from 'react-toastify';
 
 const PayPal = (props) => {
     const paypal = useRef()
@@ -30,10 +31,11 @@ const PayPal = (props) => {
             },
             onApprove: async (data, actions) => {
                 const order = await actions.order.capture()
+                toast.success("Thanks for purchase in Pyral!")
                 props.redirect('success')
                 props.finishBuying()
-                localStorage.removeItem("carito")
-                localStorage.setItem("carito", JSON.stringify([]))
+                localStorage.removeItem("shopCart")
+                localStorage.setItem("shopCart", JSON.stringify([]))
 
             },
             onError: (err) => {

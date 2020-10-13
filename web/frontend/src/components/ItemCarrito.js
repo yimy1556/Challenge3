@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
-import '../styles/carrito.css'
 import Tooltip from '@material-ui/core/Tooltip'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
 import Add from '@material-ui/icons/Add'
 import Remove from '@material-ui/icons/Remove'
 import shoppingCartActions from '../redux/actions/shoppingCartActions'
+
 const ItemCarrito = (props) => {
     const [button, setButton] = useState(true)
 
@@ -26,7 +26,7 @@ const ItemCarrito = (props) => {
             <div id="unelEmentoCarrito" >
                 <div className="imageAndSize">
                     <img src={`${props.product.remeraActual}`}></img>
-                    <div id="tituloCantidad">
+                    <div id="tituloCantidad" style={{ display: 'flex', justifyContent: 'center' }}>
                         <p>Size / {props.product.size}</p>
                         <p>{props.product.color} {props.product.title}</p>
 

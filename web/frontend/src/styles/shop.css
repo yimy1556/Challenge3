@@ -38,10 +38,10 @@
     width: 330px;
     background-color: white;
     color: #111111;
-    margin: 1vh auto!important;
+    margin: 3vh auto!important;
     display:flex;
     flex-direction: column;
-    padding: 2vh 1vw;
+    padding: 2vh 0vw;
 }
 
 .articulo h3 {

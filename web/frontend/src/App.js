@@ -1,4 +1,9 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { ToastContainer } from 'react-toastify';
+
+// Pages
 import Home from './pages/Home';
 import LogIn from './pages/LogIn';
 import Register from './pages/Register';
@@ -10,29 +15,35 @@ import Success from './pages/Success';
 import SelectProduct from './pages/SelectProduct'
 import ForgotPass from './pages/ForgotPass'
 import AddItem from './pages/AddItem'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import Faqs from './pages/Faqs';
+import Payments from './pages/Payments';
+import formAdmin from './pages/formAdmin'
+import LowNewsletter from './pages/LowNewsletter'
+
+// Components
+import Address from './components/Address'
+import LogOut from './components/LogOut';
+
+// Actions
 import authActions from './redux/actions/authActions'
 import shoppingCartActions from './redux/actions/shoppingCartActions'
 import itemActions from './redux/actions/itemActions'
-import { connect } from 'react-redux'
-import FormularioAdmi from './pages/formularioAdmi'
+
+// Styles
 import './styles/styles.css'
 import './styles/RegisterLogIn.css'
-import LogOut from './components/LogOut';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import LowNewsletter from './pages/LowNewsletter'
-import Address from './components/Address'
-import Faqs from './pages/Faqs';
-import Payments from './pages/Payments';
-
+import './styles/home.css'
+import './styles/footer.css'
+import './styles/shopCart.css'
+import './styles/selectProduct.css'
 
 function App(props) {
 
   if (localStorage.getItem("listProduct"))
     props.forcedPoducts(localStorage.getItem("listProduct"))
-  if (localStorage.getItem("carito"))
-    props.forcedCart(localStorage.getItem("carito"))
+  if (localStorage.getItem("shopCart"))
+    props.forcedCart(localStorage.getItem("shopCart"))
   if (localStorage.getItem('token') && props.token === "") {
     props.forcedLogIn(localStorage.getItem('token'))
   }
@@ -40,7 +51,7 @@ function App(props) {
     var myRoutes =
       (<Switch>
         <Route exact path="/new" component={AddItem} />
-        <Route path="/modify" component={FormularioAdmi} />
+        <Route path="/modify" component={formAdmin} />
         <Route path="/logOut" component={LogOut} />
         <Redirect to="/modify" />
       </Switch>

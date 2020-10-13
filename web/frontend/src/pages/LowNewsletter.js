@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import authActions from '../redux/actions/authActions'
 import { connect } from 'react-redux'
 import '../styles/lowNewsLetter.css'
 import { FormControlLabel, RadioGroup, Radio, Button, Checkbox, responsiveFontSizes, Link } from '@material-ui/core'
 import Swal from 'sweetalert2'
-import { Redirect } from 'react-router-dom'
 
 
 

@@ -1,8 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/shop.css'
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
-
 
 const Product = (props) => {
 
@@ -50,23 +48,32 @@ const Product = (props) => {
                                 {variantsAux.map(variant => {
                                     return (<div id="imagenShopChica2" onClick={e => cambiarFoto(variant.photo)} style={{
                                         border: ` ${variant.color === 'White' && '1px solid grey'}`,
-                                        backgroundColor: `${variant.color === 'Wine' ? '#44282D' :
+                                        backgroundColor: `${variant.color === 'Anchor' ? '#4B4545' :
                                             variant.color === 'Black' ? '#111111' :
-                                                variant.color === 'Cream' ? '#FFF0C9' :
-                                                    variant.color === 'DarkGrey' ? '#34343D' :
-                                                        variant.color === 'White' ? 'whitesmoke' :
-                                                            variant.color === 'Blush' ? '##EFC6B4' :
-                                                                variant.color === 'Flint' ? '#C2B1C1' :
-                                                                    variant.color === 'Honeycomb' ? '#C98E2A' :
-                                                                        variant.color === 'Paloma' ? '#F2BBBE' :
-                                                                            variant.color === 'Salt' ? '#ECE9E2' :
-                                                                                variant.color === 'Sage' ? '#737B7D' :
-                                                                                    variant.color === 'Anchor' ? '#4B4545' :
-                                                                                        variant.color === 'Red Rum' ? '#774A47' :
-                                                                                            variant.color === 'Golden Harvest' ? '#E6B968' :
-                                                                                                variant.color === 'Egg Shell' ? '#E9DFD5' :
-                                                                                                    variant.color === 'Military Moss' ? '#695530' :
-                                                                                                        variant.color === 'Grey' ? '#303B4F' : ''}`, marginTop: '1.5em'
+                                                variant.color === 'Blush' ? 'rgb(239, 193, 179)' :
+                                                    variant.color === 'Brown' ? 'rgb(134, 107, 87)' :
+                                                        variant.color === 'Cream' ? '#FFF0C9' :
+                                                            variant.color === 'Chateau' ? 'rgb(159, 103, 52)' :
+                                                                variant.color === 'DarkGrey' ? '#34343D' :
+                                                                    variant.color === 'Egg Shell' ? '#E9DFD5' :
+                                                                        variant.color === 'Flint' ? '#C2B1C1' :
+                                                                            variant.color === 'Golden Harvest' ? '#E6B968' :
+                                                                                variant.color === 'Stone Grey' ? 'rgb(200, 198, 198)' :
+                                                                                    variant.color === 'Granite' ? '#B4AFB1' :
+                                                                                        variant.color === 'Honeycomb' ? '#C98E2A' :
+                                                                                            variant.color === 'Moonlight' ? 'rgb(225, 212, 197)' :
+                                                                                                variant.color === 'Military Moss' ? '#695530' :
+                                                                                                    variant.color === 'Mountain Mist' ? 'rgb(169, 143, 135)' :
+                                                                                                        variant.color === 'Night Owl' ? 'rgb(48, 59, 79)' :
+                                                                                                            variant.color === 'Ocean Storm' ? 'rgb(93, 100, 121)' :
+                                                                                                                variant.color === 'Paloma' ? '#F2BBBE' :
+                                                                                                                    variant.color === 'Red Rum' ? '#774A47' :
+                                                                                                                        variant.color === 'Salt' ? '#ECE9E2' :
+                                                                                                                            variant.color === 'Sage' ? '#737B7D' :
+                                                                                                                                variant.color === 'Sweet Basil' ? 'rgb(128, 125, 94)' :
+                                                                                                                                    variant.color === 'Vintage' ? 'rgb(85, 99, 115)' :
+                                                                                                                                        variant.color === 'Wine' ? '#44282D' :
+                                                                                                                                            variant.color === 'White' ? 'whitesmoke' : ''}`, marginTop: '1.5em'
                                     }} > </div>)
                                 })}
                             </div>
@@ -87,23 +94,32 @@ const Product = (props) => {
                             {variantsAux.map(variant => {
                                 return (<div id="imagenShopChica" onClick={e => cambiarFoto(variant.photo)} style={{
                                     border: `${variant.color === 'White' ? '1px solid #111111' : ''}`,
-                                    backgroundColor: `${variant.color === 'Wine' ? '#44282D' :
+                                    backgroundColor: `${variant.color === 'Anchor' ? '#4B4545' :
                                         variant.color === 'Black' ? '#111111' :
-                                            variant.color === 'DarkGrey' ? '#34343D' :
-                                                variant.color === 'Cream' ? '#FFF0C9' :
-                                                    variant.color === 'White' ? 'whitesmoke' :
-                                                        variant.color === 'Blush' ? '##EFC6B4' :
-                                                            variant.color === 'Flint' ? '#C2B1C1' :
-                                                                variant.color === 'Honeycomb' ? '#C98E2A' :
-                                                                    variant.color === 'Paloma' ? '#F2BBBE' :
-                                                                        variant.color === 'Salt' ? '#ECE9E2' :
-                                                                            variant.color === 'Sage' ? '#737B7D' :
-                                                                                variant.color === 'Anchor' ? '#4B4545' :
-                                                                                    variant.color === 'Red Rum' ? '#774A47' :
-                                                                                        variant.color === 'Egg Shell' ? '#EBE5D7' :
-                                                                                            variant.color === 'Golden Harvest' ? '#E6B968' :
-                                                                                                variant.color === 'Military Moss' ? '#695530' :
-                                                                                                    variant.color === 'Grey' ? '#303B4F' : ''}`
+                                            variant.color === 'Blush' ? 'rgb(239, 193, 179)' :
+                                                variant.color === 'Brown' ? 'rgb(134, 107, 87)' :
+                                                    variant.color === 'Cream' ? '#FFF0C9' :
+                                                        variant.color === 'Chateau' ? 'rgb(159, 103, 52)' :
+                                                            variant.color === 'DarkGrey' ? '#34343D' :
+                                                                variant.color === 'Egg Shell' ? '#E9DFD5' :
+                                                                    variant.color === 'Flint' ? '#C2B1C1' :
+                                                                        variant.color === 'Golden Harvest' ? '#E6B968' :
+                                                                            variant.color === 'Stone Grey' ? 'rgb(200, 198, 198)' :
+                                                                                variant.color === 'Granite' ? '#B4AFB1' :
+                                                                                    variant.color === 'Honeycomb' ? '#C98E2A' :
+                                                                                        variant.color === 'Moonlight' ? 'rgb(225, 212, 197)' :
+                                                                                            variant.color === 'Military Moss' ? '#695530' :
+                                                                                                variant.color === 'Mountain Mist' ? 'rgb(169, 143, 135)' :
+                                                                                                    variant.color === 'Night Owl' ? 'rgb(48, 59, 79)' :
+                                                                                                        variant.color === 'Ocean Storm' ? 'rgb(93, 100, 121)' :
+                                                                                                            variant.color === 'Paloma' ? '#F2BBBE' :
+                                                                                                                variant.color === 'Red Rum' ? '#774A47' :
+                                                                                                                    variant.color === 'Salt' ? '#ECE9E2' :
+                                                                                                                        variant.color === 'Sage' ? '#737B7D' :
+                                                                                                                            variant.color === 'Sweet Basil' ? 'rgb(128, 125, 94)' :
+                                                                                                                                variant.color === 'Vintage' ? 'rgb(85, 99, 115)' :
+                                                                                                                                    variant.color === 'Wine' ? '#44282D' :
+                                                                                                                                        variant.color === 'White' ? 'whitesmoke' : ''}`
                                 }} > </div>)
                             })}
                         </div>

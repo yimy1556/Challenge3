@@ -2,16 +2,26 @@ main {
     min-height: 65vh !important;
 }
 
-#dosfotos{
-    margin: 15vh 6vw;
+.containerBanner{
     display: flex;
-    justify-content: space-around;
+    background-size: cover;
+    height: 80vh;
+    max-width: 100vw;
+    align-items: center;
+    justify-content: center;
+    align-content: center 
 }
 
-#dosfotos div:hover{
-    box-shadow: 0vw 0vw 0.4vw 0vw rgb(116, 116, 116);
-
+#newIn{
+    font-size: '6.5em';
+    color: '#111111';
+    font-weight: "600"
 }
+#containerThree{
+    margin: 10vh 6vw;
+    display: flex;
+    justify-content: space-between;
+} 
 
 .instaPhotos{
     margin: 1vh;
@@ -31,7 +41,7 @@ main {
     background-repeat: no-repeat;
 }
 
-.fotoHome{
+.photoHome{
     width: 20vw;
     height: 35vw;
     background-position: center;
@@ -42,11 +52,19 @@ main {
 .imgHomeText {
     display: flex;
     justify-content: center;
+    margin: 6vh auto;
+    width: 100%;
+    justify-content: center
 }
 
 .imgText{
     width: 40%;
     margin: 0vh 3vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center 
 }
 
 .imgHome{
@@ -55,32 +73,49 @@ main {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    justify-content: center 
+}
+
+
+
+.shopNowPhotos{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    margin: 10vh 0vh
+}
+
+.containerInsta{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100% ;
+    margin-bottom: 3vh
 }
 
 .hashtags {
     width: 30%;
+    margin: 2vh auto;
+    font-weight: lighter;
+    text-align: center
 }
-
- #tresfotos{
-    margin: 10vh 6vw;
-    display: flex;
-    justify-content: space-between;
-} 
-
-.shopnowPhotos{
-    display: flex;
-}
-
 .instaDiv{
     display: flex;
     flex-direction: row;
     width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    margin: 5vh 0vh
 }
 
 .oneDiv {
     display: flex;
 }
 
+
+/********** Responsive **********/
 @media (max-width: 800px) {
     #tresfotos{
         margin: 8vh 6vw;

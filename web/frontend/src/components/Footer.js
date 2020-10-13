@@ -1,12 +1,15 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import '../styles/footer.css'
+import { animateScroll as scroll } from 'react-scroll'
+
+// Components
 import Newsletter from '../components/Newsletter'
+
+// MaterialUI
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-import { animateScroll as scroll } from 'react-scroll'
 import GooglePlay from '../images/google-play-badge.svg'
 
 

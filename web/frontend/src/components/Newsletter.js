@@ -3,8 +3,6 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import authActions from '../redux/actions/authActions'
 import { connect } from 'react-redux'
 
-
-
 const Newsletter = (props) => {
 
     const [mail, setMail] = useState('')
@@ -28,14 +26,6 @@ const Newsletter = (props) => {
         } else {
             setErrorInput(errorResponse.info)
         }
-    }
-
-
-    const onKeyDownHandler = e => {
-        if (e.keyCode === 13) {
-            sendMail()
-        }
-
     }
 
     return (

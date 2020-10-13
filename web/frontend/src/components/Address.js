@@ -1,19 +1,23 @@
 import React from 'react'
-import Header from '../components/Header'
-import '../styles/about.css'
-import { animateScroll as scroll } from 'react-scroll'
-import ChatBotComponent from '../components/ChatBotComponent'
-import Footer from '../components/Footer'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import ChangePass from '../components/ChangePass'
-import authActions from '../redux/actions/authActions'
 import { toast } from 'react-toastify';
+import { animateScroll as scroll } from 'react-scroll'
+
+// Components
+import Header from '../components/Header'
+import ChatBotComponent from '../components/ChatBotComponent'
+import Footer from '../components/Footer'
+
+// Actions
+import authActions from '../redux/actions/authActions'
 import itemActions from '../redux/actions/itemActions'
+
+// materialUI
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import swal from 'sweetalert'
 
-
+// Styles
+import '../styles/about.css'
 
 class Address extends React.Component {
 
@@ -35,7 +39,6 @@ class Address extends React.Component {
     }
 
     readContact = e => {
-        let oneCountry = document.getElementById("country")
         this.setState({
             ...this.state,
             [e.target.name]: e.target.value
@@ -58,8 +61,8 @@ class Address extends React.Component {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                })
-            
+            })
+
         }
         this.setState({
             country: '',

@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 const CreditCard = (props) => {
 
     return (
         <>
-            <h2>credit card</h2>
+            <h2>Credit Card</h2>
         </>
     )
 }

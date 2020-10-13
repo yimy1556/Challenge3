@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
 import PayPal from '../components/PayPal'
-import ItemCarrito from '../components/ItemCarrito'
 import { connect } from 'react-redux'
-import { makeStyles } from '@material-ui/core/styles';
-import cloth from '../images/clothing2.jpg'
 import CreditCard from '../components/CreditCard'
 import logoPayPal from '../images/paypal.png'
 import logoCash from '../images/money.png'

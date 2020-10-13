@@ -5,11 +5,11 @@ import '../styles/shop.css'
 
 const ScrollProducts = (props) => {
     return (
-        <div  style={{display:'flex' ,justifyContent:'center'}} >
-            <div className="scrollProduts" style={{display: 'flex',overflowX: 'scroll',width:'100%', justifyContent:'center', height:'70vh'}} >
-                {props.products.map(product => <div><Product product={product} selectProduct={true}/></div>)}
-            </div>    
-        </div>            
+        <div style={{ display: 'flex', justifyContent: 'center' }} >
+            <div className="scrollProduts" style={{ display: 'flex', overflowX: 'scroll', width: '100%', justifyContent: 'center', height: '70vh', margin: '0 2em' }} >
+                {props.products.map(product => <div><Product product={product} selectProduct={true} /></div>)}
+            </div>
+        </div>
     );
 }
 

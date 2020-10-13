@@ -1,18 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import itemActions from '../redux/actions/itemActions'
 import { connect } from 'react-redux'
-import shoppingCartActions from '../redux/actions/shoppingCartActions'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import Rating from '@material-ui/lab/Rating';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import authActions from '../redux/actions/authActions'
-import { animateScroll as scroll } from 'react-scroll'
-import '../styles/selectProduct.css'
-import swal from 'sweetalert';
 import { toast } from 'react-toastify';
-
 import {
     SideBySideMagnifier,
     MOUSE_ACTIVATION,
@@ -27,9 +15,22 @@ import {
     WhatsappIcon,
     TelegramIcon
 } from "react-share";
+import { animateScroll as scroll } from 'react-scroll'
+
+// Components
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import ScrollProducts from '../components/ScrollProduts'
-import mens from '../images/mens.jpg'
 import ChatBotComponent from '../components/ChatBotComponent'
+
+// Actions
+import itemActions from '../redux/actions/itemActions'
+import shoppingCartActions from '../redux/actions/shoppingCartActions'
+
+// MaterialUI
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
+import authActions from '../redux/actions/authActions'
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -53,7 +54,7 @@ const SelectProduct = (props) => {
         _id: props.match.params.id,
         remeraActual: '', color: '', size: '', cant: 1
     })
-
+    const [render, setRender] = useState(true)
     const useStyles = makeStyles((theme) => ({
         modal: {
             display: 'flex',
@@ -69,7 +70,9 @@ const SelectProduct = (props) => {
     }));
 
     const [value, setValue] = useState(0)
-
+    const handleOpen = () => {
+        setOpen(true);
+    };
     useEffect(() => {
         scrollToTop()
         setStars()
@@ -86,22 +89,24 @@ const SelectProduct = (props) => {
                     price: prodc.price
                 })
             })
-    }, [props.match.params.id, props.productRating.stars])
+    }, [props.match.params.id, props.productRating.stars, render])
 
     var arrayFiltrado2 = props.productRating.productId === props.match.params.id
 
     const sendRating = () => {
         props.postRating(props.match.params.id, value, props.userlogged.token)
         props.mandarRating(props.match.params.id, value)
+        setRender(!render)
+        handleClose()
     }
 
     const addProducts = () => {
         if (prod.size === "") {
-            toast.error("Please complete size")
+            toast.error("Please choose one size")
         } else {
             props.addProduct(prod)
             setBottom(!bottom)
-            toast.success("you added a product to your cart")
+            toast.success("You added a product to your cart!")
 
         }
     }
@@ -120,9 +125,7 @@ const SelectProduct = (props) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
-    const handleOpen = () => {
-        setOpen(true);
-    };
+
 
     const handleClose = () => {
         setOpen(false);
@@ -138,6 +141,9 @@ const SelectProduct = (props) => {
         )
     }
 
+    var rating = (arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)
+
+    console.log(rating)
     if (product === {}) return <></>
     return (<>
         <Header bott={bottom} />
@@ -169,15 +175,15 @@ const SelectProduct = (props) => {
 
                         {!arrayFiltrado2 ?
                             <div style={{ display: 'flex', margin: '2vh 0vh', cursor: 'pointer' }} onClick={handleOpen}>
-                                <p>{(arrayFiltrado[0].stars / arrayFiltrado[0].reviews).toFixed(1)}</p>
+                                <p>{isNaN(rating) ? 0 : rating}</p>
                                 <Rating name="half-rating" onClick={handleOpen} defaultValue={arrayFiltrado[0].stars / arrayFiltrado[0].reviews} precision={0.1} readOnly style={{ color: '#111111' }} />
                                 <p>{`(${arrayFiltrado[0].reviews})`}</p>
                             </div>
                             :
                             <div style={{ display: 'flex', cursor: 'pointer' }} onClick={handleOpen}>
-                                <p>{(props.productRating.stars / props.productRating.reviews).toFixed(1)}</p>
+                                <p>{rating}</p>
                                 <Rating name="half-rating" defaultValue={props.productRating.stars / props.productRating.reviews} precision={0.1} readOnly style={{ color: 'black' }} />
-                                <p>{`(${props.productRating.reviews})`}</p>
+                                <p>{isNaN(rating) ? 0 : rating}</p>
                             </div>
                         }
 
@@ -196,7 +202,7 @@ const SelectProduct = (props) => {
                             <Fade in={open}>
                                 <div className={classes.paper}>
                                     <div style={{ margin: '2vh auto', display: 'flex', flexDirection: 'column', margin: '5vh 10vh', }}>
-                                        {props.userlogged.token &&
+                                        {props.userlogged.token ?
                                             <>
                                                 {!props.rating.filter(e => e.productId === props.match.params.id).length > 0 ?
                                                     <>
@@ -216,7 +222,7 @@ const SelectProduct = (props) => {
 
                                                         <button className="addToCart" style={{ width: '15vh', height: '5vh', fontSize: '2vh' }} onClick={sendRating} >Send Rating</button> </> :
                                                     <p>You already rated this product</p>}
-                                            </>}
+                                            </> : <h2>Log in to rate this product</h2>}
                                     </div>
                                 </div>
                             </Fade>
@@ -236,23 +242,32 @@ const SelectProduct = (props) => {
                                         color: variant.color
                                     })} style={{
                                         border: ` ${variant.color === 'White' && '1px solid grey'}`,
-                                        backgroundColor: `${variant.color === 'Wine' ? '#44282D' :
+                                        backgroundColor: `${variant.color === 'Anchor' ? '#4B4545' :
                                             variant.color === 'Black' ? '#111111' :
-                                                variant.color === 'Cream' ? '#FFF0C9' :
-                                                    variant.color === 'DarkGrey' ? '#34343D' :
-                                                        variant.color === 'White' ? 'whitesmoke' :
-                                                            variant.color === 'Blush' ? '##EFC6B4' :
-                                                                variant.color === 'Flint' ? '#C2B1C1' :
-                                                                    variant.color === 'Honeycomb' ? '#C98E2A' :
-                                                                        variant.color === 'Paloma' ? '#F2BBBE' :
-                                                                            variant.color === 'Salt' ? '#ECE9E2' :
-                                                                                variant.color === 'Sage' ? '#737B7D' :
-                                                                                    variant.color === 'Anchor' ? '#4B4545' :
-                                                                                        variant.color === 'Red Rum' ? '#774A47' :
-                                                                                            variant.color === 'Golden Harvest' ? '#E6B968' :
+                                                variant.color === 'Blush' ? 'rgb(239, 193, 179)' :
+                                                    variant.color === 'Brown' ? 'rgb(134, 107, 87)' :
+                                                        variant.color === 'Cream' ? '#FFF0C9' :
+                                                            variant.color === 'Chateau' ? 'rgb(159, 103, 52)' :
+                                                                variant.color === 'DarkGrey' ? '#34343D' :
+                                                                    variant.color === 'Egg Shell' ? '#E9DFD5' :
+                                                                        variant.color === 'Flint' ? '#C2B1C1' :
+                                                                            variant.color === 'Golden Harvest' ? '#E6B968' :
+                                                                                variant.color === 'Stone Grey' ? 'rgb(200, 198, 198)' :
+                                                                                    variant.color === 'Granite' ? '#B4AFB1' :
+                                                                                        variant.color === 'Honeycomb' ? '#C98E2A' :
+                                                                                            variant.color === 'Moonlight' ? 'rgb(225, 212, 197)' :
                                                                                                 variant.color === 'Military Moss' ? '#695530' :
-                                                                                                    variant.color === 'Egg Shell' ? '#E9DFD5' :
-                                                                                                        variant.color === 'Grey' ? '#303B4F' : ''}`
+                                                                                                    variant.color === 'Mountain Mist' ? 'rgb(169, 143, 135)' :
+                                                                                                        variant.color === 'Night Owl' ? 'rgb(48, 59, 79)' :
+                                                                                                            variant.color === 'Ocean Storm' ? 'rgb(93, 100, 121)' :
+                                                                                                                variant.color === 'Paloma' ? '#F2BBBE' :
+                                                                                                                    variant.color === 'Red Rum' ? '#774A47' :
+                                                                                                                        variant.color === 'Salt' ? '#ECE9E2' :
+                                                                                                                            variant.color === 'Sage' ? '#737B7D' :
+                                                                                                                                variant.color === 'Sweet Basil' ? 'rgb(128, 125, 94)' :
+                                                                                                                                    variant.color === 'Vintage' ? 'rgb(85, 99, 115)' :
+                                                                                                                                        variant.color === 'Wine' ? '#44282D' :
+                                                                                                                                            variant.color === 'White' ? 'whitesmoke' : ''}`
                                     }} > </div>)
                                 })}
                             </div>
@@ -316,7 +331,6 @@ const SelectProduct = (props) => {
 
 
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
-                {/* <div style={{ backgroundImage: `url(https://cdn-yotpo-images-production.yotpo.com/instagram/30/17842593536342330/standard_resolution.jpg)`, height:'60vh',backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></div> */}
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginBottom: '3vh' }}>
                     <h3 style={{ margin: '2vh auto' }}>#wemakeit</h3>
                     <h5 className="hashtags" style={{ margin: '2vh auto', fontWeight: 'lighter', textAlign: 'center' }}>Demand versatile performance. Follow the journey for originality and expression at @pyral</h5>

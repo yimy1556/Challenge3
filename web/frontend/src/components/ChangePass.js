@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { useState } from 'react'
-import authActions from '../redux/actions/authActions'
 import swal from 'sweetalert'
+
+// Actions
+import authActions from '../redux/actions/authActions'
 
 
 
@@ -34,7 +36,7 @@ const ChangePass = (props) => {
     return (
         <>
             <h5>Change your password.</h5>
-            <input onChange={readInput} name="password" type="password" value={dataNewPass.password} placeholder="Enter your new password" style={{padding:'.5rem', margin:'.5rem'}}></input>
+            <input onChange={readInput} name="password" type="password" value={dataNewPass.password} placeholder="Enter your new password" style={{ padding: '.5rem', margin: '.5rem' }}></input>
             <button onClick={sendNewPass} className="createAccount button" style={{ width: '60%', margin: '2vh auto' }}>Change Pass</button>
         </>
     )

@@ -1,7 +1,5 @@
 import axios from 'axios'
 import { toast } from 'react-toastify';
-import Swal from 'sweetalert2'
-
 
 var path = 'https://pyral.herokuapp.com/api'
 

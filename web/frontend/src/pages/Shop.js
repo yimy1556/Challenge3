@@ -30,6 +30,13 @@ const Shop = (props) => {
         scroll.scrollToTop();
     }
 
+    const allProducts = () => {
+        setRender(!render)
+        setState({
+            list: props.products
+        })
+    }
+
     // Muestra productos de menor precio
     const lowestPrice = () => {
         var lowestPrice = props.products.sort(function (a, b) {
@@ -78,13 +85,34 @@ const Shop = (props) => {
             list: filterEighty
         })
     }
-    // Mas de 50 dolares
+    // Hasta 70 dolares
     const untilSeventy = () => {
         var untilSeventy = props.products.filter(product => product.price < 70)
         setRender(!render)
         setState({
             list: untilSeventy
         })
+    }
+    // Mas de estrellas recibidas
+    const moreStars = (params) => {
+        var moreStars = props.products.sort(function (a, b) {
+            return (b.stars - a.stars)
+        })
+        setRender(!render)
+        setState({
+            list: moreStars
+        })
+    }
+    // Menos estrellas recibidas
+    const lessStars = () => {
+        var lessStars = props.products.sort(function (a, b) {
+            return (a.stars - b.stars)
+        })
+        setRender(!render)
+        setState({
+            list: lessStars
+        })
+
     }
 
     // Muestra productos en forma de lista
@@ -120,6 +148,7 @@ const Shop = (props) => {
                             <ViewModuleIcon onClick={viewModule} />
                         </div>
                     </div>
+                    <span onClick={allProducts} className="orderFilter">All products</span>
                     <span onClick={mostRelevant} className="orderFilter">Most Relevant</span>
                     <span onClick={lessRelevant} className="orderFilter">Less Relevant</span>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -133,8 +162,8 @@ const Shop = (props) => {
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <h4 style={{ borderBottom: '1px solid grey', color: '#1E1E1E' }}>Ranking</h4>
 
-                        <span onClick={lowestPrice} className="orderFilter">Most value</span>
-                        <span onClick={highestPrice} className="orderFilter">Less value</span>
+                        <span onClick={moreStars} className="orderFilter">Most valued</span>
+                        <span onClick={lessStars} className="orderFilter">Least valued</span>
                     </div>
                     <div>
                         <img className="imgShop" src={shopNow} style={{ width: '100%', paddingTop: '3em' }}>

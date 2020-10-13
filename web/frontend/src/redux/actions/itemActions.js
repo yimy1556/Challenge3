@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { toast } from 'react-toastify';
 import swal from 'sweetalert';
 var path = `https://pyral.herokuapp.com/api`
 
@@ -12,7 +13,6 @@ const itemActions = {
                     'Content-Type': 'multipart/form-data'
                 }
             })
-            // const item = response.data
             if (!response.data.success) {
                 alert('Something went wrong')
             } else {
@@ -23,10 +23,6 @@ const itemActions = {
                         confirm: true,
                     }
                 })
-                // dispatch({
-                //     type: 'ADD_ITEM',
-                //     payload: { title: item.title, description: item.description, photo: item.photo, price: item.price, stock: item.stock, type: item.type }
-                // })
             }
         }
     },
@@ -41,7 +37,7 @@ const itemActions = {
             var info = response.data;
 
             localStorage.setItem("listProduct", JSON.stringify(info.product))
-            localStorage.setItem("carito", JSON.stringify([]))
+            localStorage.setItem("shopCart", JSON.stringify([]))
             dispatch({
                 type: 'ADD_ITEM',
                 payload: info.product
@@ -114,7 +110,11 @@ const itemActions = {
                     type: 'RATING',
                     payload: { rating: response.data.rating }
                 })
-                swal('Rating mandado')
+                toast.dark(
+                    'Rating sent',
+                    { autoClose: 4000, }
+
+                )
             }
         }
     },
