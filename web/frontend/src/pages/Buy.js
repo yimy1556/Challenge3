@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import ItemCarrito from '../components/ItemCarrito'
 import { connect } from 'react-redux'
-import cloth from '../images/clothing2.jpg'
 import { NavLink } from 'react-router-dom'
+
+// MaterialUI
 import CreateIcon from '@material-ui/icons/Create';
-import payment from '../images/payment.jpg'
 import Badge from '@material-ui/core/Badge'
+
+// Images
+import clothing from "../images/clothing.jpg"
 
 const Buy = (props) => {
     const [render, setRender] = useState(true)
@@ -25,7 +25,7 @@ const Buy = (props) => {
     console.log(props.listProduct);
     return (
         <>
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(https://cdn-yotpo-images-production.yotpo.com/instagram/85/17967839827327785/standard_resolution.jpg)`, width: '100%', height: '40vh', backgroundPosition: 'center 45%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+            <div className="buyBanner" style={{ backgroundImage: `url(${clothing})` }}>
                 <h1 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>INFORMATION</h1>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', width: '80%', margin: '2vh auto' }}>

@@ -37,6 +37,7 @@ import './styles/home.css'
 import './styles/footer.css'
 import './styles/shopCart.css'
 import './styles/selectProduct.css'
+import './styles/buy.css'
 
 function App(props) {
 

@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import swal from 'sweetalert';
+
+// Components
 import HeaderAdmin from '../components/HeaderAdmin';
+
+// Actions
 import itemActions from '../redux/actions/itemActions'
+
+// MaterialUI
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem'
-import swal from 'sweetalert';
+
 
 
 const AddItem = props => {
@@ -76,6 +83,8 @@ const AddItem = props => {
             await props.putVariant(formItem)
         }
     }
+
+    // Clothing size
     const sizes = [
         {
             value: 'XS',
@@ -99,6 +108,8 @@ const AddItem = props => {
         },
 
     ];
+
+    // Clothing color
     const colors = [
         {
             value: 'Anchor',
@@ -287,7 +298,6 @@ const AddItem = props => {
             </main>
         </>
     )
-    // input select(limited types)
 }
 
 const mapStateToProps = (state) => {
@@ -303,5 +313,3 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddItem)
-
-// export default AddItem
