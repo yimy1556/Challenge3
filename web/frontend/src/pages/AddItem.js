@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import HeaderAdmin from '../components/HeaderAdmin';
-import itemActions from '../redux/actions/itemActions'
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem'
 import swal from 'sweetalert';
 
+// Actions
+import itemActions from '../redux/actions/itemActions'
+
+// Components
+import HeaderAdmin from '../components/HeaderAdmin';
+
+// Material UI
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem'
 
 const AddItem = props => {
 
@@ -287,7 +292,6 @@ const AddItem = props => {
             </main>
         </>
     )
-    // input select(limited types)
 }
 
 const mapStateToProps = (state) => {
@@ -303,5 +307,3 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddItem)
-
-// export default AddItem

@@ -6,8 +6,6 @@ import swal from 'sweetalert'
 // Actions
 import authActions from '../redux/actions/authActions'
 
-
-
 const ChangePass = (props) => {
 
     const [dataNewPass, setDatanewPass] = useState({ mail: '', password: '' })
@@ -52,7 +50,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     changePassword: authActions.changePassword
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChangePass)
 

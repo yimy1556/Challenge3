@@ -1,20 +1,27 @@
 import React from 'react';
+import { animateScroll as scroll } from 'react-scroll'
+import { useEffect } from 'react'
+import { Card } from 'react-bootstrap'
+
+// Styles
+import '../styles/faqs.css'
+
+// Components
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import ChatBotComponent from '../components/ChatBotComponent'
+
+// Images
+import callCenter from '../images/callCenter.jpg'
+import shipping from '../images/ship.jpg'
+import costure from '../images/sewing-machine-square.webp'
+
+// Material UI
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import '../styles/faqs.css'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import { animateScroll as scroll } from 'react-scroll'
-import { useEffect } from 'react'
-import callCenter from '../images/callCenter.jpg'
-import shipping from '../images/ship.jpg'
-import costure from '../images/sewing-machine-square.webp'
-import { Card } from 'react-bootstrap'
-import ChatBotComponent from '../components/ChatBotComponent'
-
 
 export default function Faqs() {
 
@@ -199,8 +206,6 @@ export default function Faqs() {
         </div>
         <ChatBotComponent />
       </div>
-
-
       <Footer></Footer>
     </>
   )

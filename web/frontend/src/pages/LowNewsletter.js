@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
-import authActions from '../redux/actions/authActions'
-import { connect } from 'react-redux'
-import '../styles/lowNewsLetter.css'
-import { FormControlLabel, RadioGroup, Radio, Button, Checkbox, responsiveFontSizes, Link } from '@material-ui/core'
 import Swal from 'sweetalert2'
+import { connect } from 'react-redux'
 
+// Actions
+import authActions from '../redux/actions/authActions'
 
+// Material UI
+import { FormControlLabel, Button, Checkbox } from '@material-ui/core'
+
+// Styles
+import '../styles/lowNewsLetter.css'
 
 const LowNewsletter = (props) => {
 
@@ -41,7 +45,6 @@ const LowNewsletter = (props) => {
                 </div>
                 <Button variant="contained" color="primary" onClick={sendMail}>unsubscribe</Button>
             </div>
-
         </>
     )
 }

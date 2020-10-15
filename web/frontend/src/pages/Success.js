@@ -1,21 +1,23 @@
 import React, { useEffect } from 'react'
-import Header from '../components/Header'
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { connect } from 'react-redux'
+
+// Components
+import Header from '../components/Header'
+
+// Actions
 import shoppingCartActions from '../redux/actions/shoppingCartActions'
+
+// Material UI
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+
+// Images
 import photoBanner2 from '../images/bannerShip2.jpg'
 
 const Success = (props) => {
 
-    function sumarDias(fecha, dias) {
-        fecha.setDate(fecha.getDate() + dias);
-        return fecha;
-    }
     useEffect(() => {
         props.removeListProduct()
     }, [])
-
-    var d = new Date();
 
     return (
         <>
@@ -37,13 +39,12 @@ const Success = (props) => {
                             Email us at customer@pyral.com
                         </p>
                     </div>
-
                 </div>
             </div>
-
         </>
     )
 }
+
 const mapDispatchToProps = {
     removeListProduct: shoppingCartActions.removeListProduct
 }

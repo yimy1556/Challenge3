@@ -66,8 +66,6 @@ const RowInterno = (props) => {
     )
 }
 
-
-
 const Row = (props) => {
     const [product, setProduct] = useState({ ...props.row })
     const headerRowIterno = ['Phote', 'Stock', 'Size', 'Color', 'Delate / Update']
@@ -130,10 +128,9 @@ const Row = (props) => {
         </React.Fragment>);
 }
 
-
 const mapDispatchToProps = {
     deleteItem: itemActions.deleteItem,
     modifyProduct: itemActions.modifyProduct
-
 }
+
 export default connect(null, mapDispatchToProps)(Row)

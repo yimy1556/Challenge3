@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import PayPal from '../components/PayPal'
+import { animateScroll as scroll } from 'react-scroll'
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+
+// Components
+import PayPal from '../components/PayPal'
 import CreditCard from '../components/CreditCard'
+
+// Images
 import logoPayPal from '../images/paypal.png'
 import logoCash from '../images/money.png'
 import logoCards from '../images/cards.png'
-import { animateScroll as scroll } from 'react-scroll'
+
+// Material UI
 import Badge from '@material-ui/core/Badge'
-import { NavLink } from 'react-router-dom'
 
 const Shipping = (props) => {
 
@@ -37,7 +43,6 @@ const Shipping = (props) => {
                 <h1 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>PAYMENT</h1>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', width: '80%', margin: '2vh auto' }}>
-                {/* <div className="payLogoContainer" style={{ display: 'flex', width:'55%%'}}> */}
                 <div style={{ borderRight: '1px solid #DFDFDF', padding: '0vh 7vh', margin: '0vh 7vh', width: '95vh' }}>
                     <div>
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -125,12 +130,10 @@ const Shipping = (props) => {
                             </div>
                         </>
                     }
-
                 </div>
             </div>
         </>
     )
-
 }
 
 const mapStateToProps = state => {
@@ -138,6 +141,5 @@ const mapStateToProps = state => {
         listProduct: state.shoppingCartReducer.listProduct,
     }
 }
-const mapDispatchToProps = {
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Shipping)
+
+export default connect(mapStateToProps)(Shipping)

@@ -143,7 +143,6 @@ class ChatBotComponent extends React.Component {
                         ]}
                     />
                     </ThemeProvider>
-
                 </div>
             </>
         )

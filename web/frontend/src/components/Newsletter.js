@@ -8,8 +8,6 @@ const Newsletter = (props) => {
     const [mail, setMail] = useState('')
     const [errorInput, setErrorInput] = useState(null)
 
-
-
     const readInput = e => {
         const dataMail = e.target.value
         setMail(dataMail)

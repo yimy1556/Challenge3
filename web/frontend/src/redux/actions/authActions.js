@@ -24,7 +24,6 @@ const authActions = {
             }
         }
     },
-
     logUser: logUser => {
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/login`, logUser)
@@ -56,7 +55,6 @@ const authActions = {
             }
         }
     },
-
     newUserGoogle: newUser => {
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/register`, newUser)
@@ -79,7 +77,6 @@ const authActions = {
             }
         }
     },
-
     forcedLogIn: tokenLS => {
         return async (dispatch, getState) => {
             const response = await axios.get(path + `/user/login`, {
@@ -99,8 +96,6 @@ const authActions = {
                     contact: response.data.contact
                 }
             })
-
-
         }
     },
     forcedRol: () => {
@@ -118,7 +113,6 @@ const authActions = {
             })
         }
     },
-
     sendMail: (mail) => {
 
         return async (dispatch, getState) => {
@@ -130,7 +124,6 @@ const authActions = {
             return response.data.success
         }
     },
-
     addNewsletter: mail => {
         return async (dispatch, getState) => {
             const response = await axios.post(path + '/newsletter', { mail })
@@ -148,7 +141,6 @@ const authActions = {
             return errorResponse
         }
     },
-
     lowNewsletter: mail => {
         return async (dispatch, getState) => {
             const response = await axios.delete(path + '/newsletter', { mail })
@@ -157,7 +149,6 @@ const authActions = {
             })
         }
     },
-
     rating: (productId, rating, token) => {
 
         return async (dispatch, getState) => {
@@ -196,7 +187,6 @@ const authActions = {
             }
         }
     },
-
     postContact: (country, city, address, postalCode, phoneNumber, token) => {
         return async (dispatch, getState) => {
             const response = await axios.post(path + `/user/direction`, { country, city, address, postalCode, phoneNumber }, {
@@ -207,12 +197,10 @@ const authActions = {
             dispatch({
                 type: 'GET_CONTACT',
                 payload: { contact: response.data.contact }
-                // {country: response.data.country, city: response.data.city, address: response.data.address, postalCode: response.data.postalCode, phoneNumber: response.data.phoneNumber}
             })
             return response
         }
     },
-
     changePassword: (mail, password) => {
         return async (dispatch, getState) => {
             const response = await axios.put(path + '/changePassword', { mail, password })
@@ -222,7 +210,6 @@ const authActions = {
             return response.data
         }
     }
-
 }
 
 export default authActions

@@ -44,7 +44,6 @@ const itemActions = {
             })
         }
     },
-
     getCountries: () => {
         return async (dispatch, getState) => {
             const response = await axios.get('https://ancient-brushlands-16914.herokuapp.com/api/countries')
@@ -117,8 +116,7 @@ const itemActions = {
                 )
             }
         }
-    },
+    }
 }
 
 export default itemActions
-//Up views by product

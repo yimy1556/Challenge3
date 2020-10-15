@@ -1,9 +1,12 @@
 import { GoogleLogin } from 'react-google-login';
-import React, { useState, useEffect } from 'react';
-import authActions from '../redux/actions/authActions'
+import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { toast } from 'react-toastify';
+
+// Actions
+import authActions from '../redux/actions/authActions'
+
+// Images
 import mens from '../images/mens.jpg'
 
 const LogIn = props => {
@@ -27,8 +30,6 @@ const LogIn = props => {
         await props.logUser(ingresoUsuario)
 
     }
-
-
 
     const responseGoogle = response => {
         props.logUser({

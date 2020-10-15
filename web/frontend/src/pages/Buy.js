@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import ItemCarrito from '../components/ItemCarrito'
 import { connect } from 'react-redux'
-import cloth from '../images/clothing2.jpg'
 import { NavLink } from 'react-router-dom'
+
+// Material UI
 import CreateIcon from '@material-ui/icons/Create';
-import payment from '../images/payment.jpg'
 import Badge from '@material-ui/core/Badge'
 
 const Buy = (props) => {
@@ -22,7 +19,6 @@ const Buy = (props) => {
         return total
     }
 
-    console.log(props.listProduct);
     return (
         <>
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', backgroundImage: `url(https://cdn-yotpo-images-production.yotpo.com/instagram/85/17967839827327785/standard_resolution.jpg)`, width: '100%', height: '40vh', backgroundPosition: 'center 45%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
@@ -59,14 +55,6 @@ const Buy = (props) => {
                                 }
                             </div>
                         </div>
-                        {/* <div style={{ width: '40vw' }}>
-                            <h3>Your products</h3>
-                            {props.listProduct.map(prod => <ItemCarrito product={prod} render={render} setRender={setRender} />)}
-                            <div id="totalPrecio">  
-                                <p>Total</p>
-                                <p>${compraTotal(props.listProduct)}</p>
-                            </div>
-                        </div> */}
                         <NavLink to="/payments"> <button className="continue">Continue</button></NavLink>
                     </div>
                 </div>
@@ -89,7 +77,6 @@ const Buy = (props) => {
                             </div>
                         </div>)}
                     </div>
-
                     {compraTotal(props.listProduct) > 250 ?
                         <>
                             <hr style={{ border: '0.5px solid #DFDFDF' }}></hr>
@@ -115,7 +102,6 @@ const Buy = (props) => {
                             </div>
                         </>
                     }
-
                 </div>
             </div>
         </>

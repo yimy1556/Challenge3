@@ -1,10 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import authActions from '../redux/actions/authActions'
 import { animateScroll as scroll } from 'react-scroll'
 import Swal from 'sweetalert2'
+
+// Actions
+import authActions from '../redux/actions/authActions'
+
+// Components
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+
+// Styles
 import '../styles/forgotPass.css'
 
 class ForgotPass extends React.Component {

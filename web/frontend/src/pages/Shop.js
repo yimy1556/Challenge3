@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import itemActions from '../redux/actions/itemActions'
-import '../styles/shop.css'
+import { animateScroll as scroll } from 'react-scroll'
+
+// Components
 import Header from '../components/Header'
-import banner from '../images/bannerShop.jpg'
 import Product from '../pages/Product'
 import Footer from '../components/Footer'
-import { animateScroll as scroll } from 'react-scroll'
 import ChatBotComponent from '../components/ChatBotComponent'
+
+// Actions
+import itemActions from '../redux/actions/itemActions'
+
+// Styles
+import '../styles/shop.css'
+
+// Material UI
 import ViewListIcon from '@material-ui/icons/ViewList';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
+
+// Images
 import shopNow from '../images/shopNow.jpg'
 
 const Shop = (props) => {
@@ -131,8 +140,6 @@ const Shop = (props) => {
         })
     }
 
-
-
     return (
         <>
             <Header />
@@ -170,11 +177,8 @@ const Shop = (props) => {
                         </img>
                     </div>
                 </div>
-
                 <div id="paginaShop" style={{ flex: '5', paddingTop: '15vh 0' }}>
                     <div id={!state.viewList && "todoShop"} >
-
-
                         {state.list.map(product => {
                             return (
                                 <>
@@ -183,8 +187,6 @@ const Shop = (props) => {
                             )
                         })
                         }
-
-
                     </div>
                 </div>
             </div>

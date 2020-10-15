@@ -1,19 +1,25 @@
 import React from 'react'
-import Header from '../components/Header'
-import '../styles/about.css'
-import { animateScroll as scroll } from 'react-scroll'
-import ChatBotComponent from '../components/ChatBotComponent'
-import Footer from '../components/Footer'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { animateScroll as scroll } from 'react-scroll'
+
+// Components
+import Header from '../components/Header'
+import ChatBotComponent from '../components/ChatBotComponent'
+import Footer from '../components/Footer'
 import ChangePass from '../components/ChangePass'
+
+// Actions
 import authActions from '../redux/actions/authActions'
 import itemActions from '../redux/actions/itemActions'
+
+// Styles
+import '../styles/about.css'
+
+// Material UI
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 class Profile extends React.Component {
-
-
 
     componentDidMount() {
         this.scrollToTop()
@@ -28,7 +34,6 @@ class Profile extends React.Component {
 
         return (
             <>
-
                 <Header />
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: '100vw', height: '20vh', background: '#111111', color: 'white', textAlign: 'center', fontSize: '60px', fontWeight: 'bold' }}>
                     <p>My Account</p>
@@ -52,8 +57,6 @@ class Profile extends React.Component {
                                 <ChangePass />
                             </div>
                         </div>
-
-
                     </div>
                 </div>
                 <ChatBotComponent />
@@ -73,7 +76,6 @@ const mapDispatchToProps = {
     contact: authActions.postContact,
     getCountries: itemActions.getCountries,
     getUser: authActions.logUser,
-    // getContact: authActions.getContact
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

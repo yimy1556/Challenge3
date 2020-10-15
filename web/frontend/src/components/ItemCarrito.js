@@ -48,7 +48,6 @@ const ItemCarrito = (props) => {
             </div>
         </>
     )
-
 }
 
 const mapDispatchToProps = {

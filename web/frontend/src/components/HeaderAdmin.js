@@ -5,12 +5,9 @@ import { connect } from 'react-redux'
 // MaterialUI
 import PersonIcon from '@material-ui/icons/Person';
 
-
-
 const HeaderAdmin = (props) => {
     return (
         <>
-
             <header>
                 <NavLink to="/" className="brand"><h1>Pyral.admin</h1></NavLink>
                 <nav>

@@ -7,7 +7,6 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Badge from '@material-ui/core/Badge'
 import shopNow from '../images/shopNow.jpg'
 
-
 const compraTotal = (list) => {
     let total = 0
     list.forEach(prod => total += prod.cant * prod.price)
@@ -33,12 +32,11 @@ const Carrito = (props) => {
         })
     }
 
-
     if (props.listProduct === null) return <></>
+
     return (
         <>
             <div className='DivCerrarCarrito' onClick={menuHamburguesa} style={!menuShow.show ? { display: 'none', opacity: 0 } : { display: 'block' }}></div>
-
             <div id="menuCostado" style={menuShow.show ? { right: 0, boxShadow: '0.5vw 0vw 0vw 0vw black' } : {}} >
                 <div onClick={menuHamburguesa} id="botonCarrito" style={{ border: `none` }} style={menuShow.show ? { display: 'none' } : { display: 'block' }}>
                     <div id="carrito">
@@ -47,13 +45,11 @@ const Carrito = (props) => {
                         </Badge>
                     </div>
                 </div>
-
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid grey' }}>
                     <button onClick={menuHamburguesa} style={{ backgroundColor: 'transparent', border: 'none' }} ><ArrowBackIcon style={{ color: "#111111", fontSize: 40 }}></ArrowBackIcon></button>
                     <h3 style={{ color: '#111111', margin: '2vh' }}>Your Shopping Cart</h3>
                 </div>
                 {props.listProduct.length == 0 ?
-
                     <>
                         <div className="cartEmpty" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', }}>
                             <h4 style={{ color: '#111111' }} >Your cart is empty</h4>
@@ -80,17 +76,9 @@ const Carrito = (props) => {
                             : <button id="buyButton"><NavLink to="/login" >Login and buy</NavLink></button>}
                     </>
                 }
-
-
-
             </div>
-
         </>
     )
-
-
-
-
 }
 
 const mapStateToProps = state => {
@@ -98,9 +86,7 @@ const mapStateToProps = state => {
         listProduct: state.shoppingCartReducer.listProduct,
         ddd: state.shoppingCartReducer,
         userlogged: state.authReducer
-
     }
 }
-const mapDispatchToProps = {
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Carrito)
+
+export default connect(mapStateToProps)(Carrito)

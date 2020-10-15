@@ -1,12 +1,19 @@
 import { connect } from 'react-redux'
 import { GoogleLogin } from 'react-google-login';
-import React, { useState } from 'react';
-import authActions from '../redux/actions/authActions'
-import '../styles/RegisterLogIn.css'
 import { NavLink } from 'react-router-dom'
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { TextareaAutosize } from '@material-ui/core';
+
+// Actions
+import authActions from '../redux/actions/authActions'
+
+// Styles
+import '../styles/RegisterLogIn.css'
+
+// Material UI
 import TextField from '@material-ui/core/TextField';
+
+// Images
 import mens from '../images/mens.jpg'
 
 const Register = (props) => {
@@ -38,17 +45,11 @@ const Register = (props) => {
         pass2: false,
     })
 
-
-
-
-
     const enviarInfo = async e => {
         e.preventDefault()
         const uname = RegExp(/^[a-zA-Z0-9._]+$/)
         const reMail = RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
         const rePass = RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[!{}[\]@#$%\^&*)(+=._-]).{5,}/)
-
-
 
         mensajes.firstName1 = false
         mensajes.firstName2 = false
@@ -143,8 +144,6 @@ const Register = (props) => {
 
     }
 
-
-
     return (
         <>
             <div style={{ display: 'flex' }}>
@@ -162,7 +161,6 @@ const Register = (props) => {
                             onFailure={responseGoogle}
                             cookiePolicy={'single_host_origin'}
                         />
-
                         <div id="divNombre" style={{ color: "red" }}>
                             {mensajes.firstName1 ? <p>*Your name must contain at least 3 characters</p> : mensajes.firstName2 ? <p>*Your name must contain only uppercase letter, lowercase letter, numbers, numbers, '_' and '.'</p> : <p></p>}
                             <TextField onChange={leerImput} type="text" id="firstName" name="firstName" placeholder="Write your name here"></TextField>
@@ -189,9 +187,6 @@ const Register = (props) => {
         </>
     )
 }
-
-
-
 
 const mapDispatchToProps = {
     newUser: authActions.newUser,

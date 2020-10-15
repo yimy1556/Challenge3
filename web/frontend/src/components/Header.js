@@ -1,18 +1,13 @@
-
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import ShopCart from './ShopCart'
 import PersonIcon from '@material-ui/icons/Person';
 
-
-
-
 const Header = (props) => {
     console.log(props)
     return (
         <>
-
             <header>
                 <NavLink to="/" className="brand"><h1>Pyral</h1></NavLink>
                 <nav>
@@ -39,7 +34,6 @@ const Header = (props) => {
                             <ShopCart bott={props.bott} />
                         </>}
                 </nav>
-
             </header>
         </>
     )

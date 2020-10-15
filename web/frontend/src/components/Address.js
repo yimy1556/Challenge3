@@ -62,7 +62,6 @@ class Address extends React.Component {
                 draggable: true,
                 progress: undefined,
             })
-
         }
         this.setState({
             country: '',
@@ -159,7 +158,6 @@ const mapDispatchToProps = {
     contact: authActions.postContact,
     getCountries: itemActions.getCountries,
     getUser: authActions.logUser,
-    // getContact: authActions.getContact
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Address)

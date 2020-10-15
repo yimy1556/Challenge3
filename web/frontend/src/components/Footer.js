@@ -59,7 +59,6 @@ class Footer extends React.Component {
                         <span>© Pyral, A mindhub Company  -  All rights reserved</span>
                     </div>
                 </footer>
-
             </>
         )
     }

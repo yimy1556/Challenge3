@@ -1,8 +1,14 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { animateScroll as scroll } from 'react-scroll'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Components
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import ChatBotComponent from '../components/ChatBotComponent'
-import { NavLink } from 'react-router-dom'
+
+// Images
 import Photo1 from '../images/1.jpg'
 import Photo2 from '../images/2.jpg'
 import Photo3 from '../images/3.jpg'
@@ -11,10 +17,9 @@ import bannerHome from '../images/bannerHome.jpg'
 import hoodies from '../images/hoodies.jpg'
 import threeGuys from '../images/threeGuys.jpg'
 import clothing from '../images/clothing.jpg'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/home.css'
-import { animateScroll as scroll } from 'react-scroll'
 
+// Styles
+import '../styles/home.css'
 
 class Home extends React.Component {
 
@@ -32,22 +37,18 @@ class Home extends React.Component {
         return (
             <>
                 <Header />
-
                 <div className="containerBanner" style={{ backgroundImage: `url(${bannerHome})` }}>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <h1 id="newIn">NEW IN</h1>
                         <button id="buttonShop2"><NavLink to="/shop">Shop Now</NavLink></button>
                     </div>
                 </div>
-
-
                 <div id="containerThree">
                     <div className="photoHome" style={{ backgroundImage: `url(${Photo1})` }}></div>
                     <div className="photoHome" style={{ backgroundImage: `url(${Photo2})` }}></div>
                     <div className="photoHome" style={{ backgroundImage: `url(${Photo3})` }}></div>
                     <div className="photoHome" style={{ backgroundImage: `url(${Photo4})` }}></div>
                 </div>
-
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <div className="imgHomeText" >
                         <div className="imgHome" style={{ backgroundImage: `url(${hoodies})` }}></div>
@@ -57,8 +58,6 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-
-
                 <div className="shopNowPhotos">
                     <div className="anotherPhotos" style={{ backgroundImage: `url(${threeGuys})` }}>
                         <button style={{ display: 'flex', justifyContent: 'end', margin: '65vh 5vh' }} className="buttonShop"><NavLink to="/shop">Shop Now</NavLink></button>
@@ -67,8 +66,6 @@ class Home extends React.Component {
                         <button style={{ display: 'flex', justifyContent: 'end', margin: '65vh 5vh' }} className="buttonShop"><NavLink to="/shop">Shop Now</NavLink></button>
                     </div>
                 </div>
-
-
                 <div className="containerInsta">
                     <h3 style={{ margin: '2vh auto' }}>#wemakeit</h3>
                     <h5 className="hashtags">Demand versatile performance. Follow the journey for originality and expression at @pyral</h5>
@@ -83,10 +80,6 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-
-
-
-
                 <ChatBotComponent />
                 <Footer />
             </>
