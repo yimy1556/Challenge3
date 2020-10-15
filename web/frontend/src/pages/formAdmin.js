@@ -1,6 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
+
+// Components
 import Row from '../components/Row'
+import HeaderAdmin from '../components/HeaderAdmin'
+
+// Actions
+import itemActions from '../redux/actions/itemActions'
+
+// MaterialUI
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -8,8 +16,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import HeaderAdmin from '../components/HeaderAdmin'
-import itemActions from '../redux/actions/itemActions'
+
+
 
 
 

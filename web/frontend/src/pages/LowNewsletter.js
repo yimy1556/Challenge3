@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
-import authActions from '../redux/actions/authActions'
-import { connect } from 'react-redux'
-import '../styles/lowNewsLetter.css'
-import { FormControlLabel, RadioGroup, Radio, Button, Checkbox, responsiveFontSizes, Link } from '@material-ui/core'
 import Swal from 'sweetalert2'
+import { connect } from 'react-redux'
 
+// Actions
+import authActions from '../redux/actions/authActions'
+
+// MaterialUI
+import { FormControlLabel, Button, Checkbox } from '@material-ui/core'
+
+import '../styles/lowNewsLetter.css'
 
 
 const LowNewsletter = (props) => {

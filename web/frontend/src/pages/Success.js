@@ -1,9 +1,18 @@
 import React, { useEffect } from 'react'
-import Header from '../components/Header'
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { connect } from 'react-redux'
+
+// Components
+import Header from '../components/Header'
+
+// Actions
 import shoppingCartActions from '../redux/actions/shoppingCartActions'
+
+// Images
 import photoBanner2 from '../images/bannerShip2.jpg'
+
+// MaterialUI
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+
 
 const Success = (props) => {
 

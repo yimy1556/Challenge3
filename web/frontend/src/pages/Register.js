@@ -1,13 +1,19 @@
 import { connect } from 'react-redux'
 import { GoogleLogin } from 'react-google-login';
 import React, { useState } from 'react';
-import authActions from '../redux/actions/authActions'
-import '../styles/RegisterLogIn.css'
 import { NavLink } from 'react-router-dom'
 import { toast } from 'react-toastify';
-import { TextareaAutosize } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
+
+// Actions
+import authActions from '../redux/actions/authActions'
+
+// Images
 import mens from '../images/mens.jpg'
+
+// MaterialUI
+import TextField from '@material-ui/core/TextField';
+
+import '../styles/RegisterLogIn.css'
 
 const Register = (props) => {
 

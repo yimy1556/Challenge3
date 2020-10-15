@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import itemActions from '../redux/actions/itemActions'
-import '../styles/shop.css'
-import Header from '../components/Header'
-import banner from '../images/bannerShop.jpg'
-import Product from '../pages/Product'
-import Footer from '../components/Footer'
 import { animateScroll as scroll } from 'react-scroll'
+
+// Pages
+import Product from '../pages/Product'
+
+// Components
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+
+// Actions
+import itemActions from '../redux/actions/itemActions'
 import ChatBotComponent from '../components/ChatBotComponent'
-import ViewListIcon from '@material-ui/icons/ViewList';
-import ViewModuleIcon from '@material-ui/icons/ViewModule';
+
+// Images
 import shopNow from '../images/shopNow.jpg'
 
+// MaterialUI
+import ViewListIcon from '@material-ui/icons/ViewList';
+import ViewModuleIcon from '@material-ui/icons/ViewModule';
+
+import '../styles/shop.css'
 const Shop = (props) => {
 
     const [state, setState] = useState(

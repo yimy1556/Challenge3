@@ -9,3 +9,16 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.informationText{
+    color: white;
+    text-align: center;
+    font-size: bold
+}
+
+.buyContainer{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: 2vh auto
+}

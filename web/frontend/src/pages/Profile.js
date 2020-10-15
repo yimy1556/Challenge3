@@ -1,15 +1,22 @@
 import React from 'react'
-import Header from '../components/Header'
-import '../styles/about.css'
-import { animateScroll as scroll } from 'react-scroll'
-import ChatBotComponent from '../components/ChatBotComponent'
-import Footer from '../components/Footer'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { animateScroll as scroll } from 'react-scroll'
+
+// Components
+import Header from '../components/Header'
+import ChatBotComponent from '../components/ChatBotComponent'
+import Footer from '../components/Footer'
 import ChangePass from '../components/ChangePass'
+
+// Actions
 import authActions from '../redux/actions/authActions'
 import itemActions from '../redux/actions/itemActions'
+
+// MaterialUI
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+
+import '../styles/about.css'
 
 class Profile extends React.Component {
 

@@ -1,8 +1,13 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { animateScroll as scroll } from 'react-scroll'
+
+// Components
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import ChatBotComponent from '../components/ChatBotComponent'
-import { NavLink } from 'react-router-dom'
+
+// Images
 import Photo1 from '../images/1.jpg'
 import Photo2 from '../images/2.jpg'
 import Photo3 from '../images/3.jpg'
@@ -11,9 +16,10 @@ import bannerHome from '../images/bannerHome.jpg'
 import hoodies from '../images/hoodies.jpg'
 import threeGuys from '../images/threeGuys.jpg'
 import clothing from '../images/clothing.jpg'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/home.css'
-import { animateScroll as scroll } from 'react-scroll'
+
 
 
 class Home extends React.Component {

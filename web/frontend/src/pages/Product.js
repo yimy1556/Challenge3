@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
-import '../styles/shop.css'
 import React, { useEffect, useState } from 'react';
+
+import '../styles/shop.css'
 
 const Product = (props) => {
 

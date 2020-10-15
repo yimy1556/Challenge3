@@ -26,9 +26,9 @@ const Buy = (props) => {
     return (
         <>
             <div className="buyBanner" style={{ backgroundImage: `url(${clothing})` }}>
-                <h1 style={{ color: 'white', textAlign: 'center', fontSize: 'bold' }}>INFORMATION</h1>
+                <h1 className="informationText">INFORMATION</h1>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', width: '80%', margin: '2vh auto' }}>
+            <div className="buyContainer">
                 <div style={{ borderRight: '1px solid #DFDFDF', padding: '0vh 7vh', margin: '0vh 7vh', width: '60%' }}>
                     <div >
                         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
@@ -59,14 +59,7 @@ const Buy = (props) => {
                                 }
                             </div>
                         </div>
-                        {/* <div style={{ width: '40vw' }}>
-                            <h3>Your products</h3>
-                            {props.listProduct.map(prod => <ItemCarrito product={prod} render={render} setRender={setRender} />)}
-                            <div id="totalPrecio">  
-                                <p>Total</p>
-                                <p>${compraTotal(props.listProduct)}</p>
-                            </div>
-                        </div> */}
+
                         <NavLink to="/payments"> <button className="continue">Continue</button></NavLink>
                     </div>
                 </div>

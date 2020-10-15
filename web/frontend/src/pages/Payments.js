@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import PayPal from '../components/PayPal'
 import { connect } from 'react-redux'
+import { animateScroll as scroll } from 'react-scroll'
+import { NavLink } from 'react-router-dom'
+
+// Components
+import PayPal from '../components/PayPal'
 import CreditCard from '../components/CreditCard'
+
+// Images
 import logoPayPal from '../images/paypal.png'
 import logoCash from '../images/money.png'
 import logoCards from '../images/cards.png'
-import { animateScroll as scroll } from 'react-scroll'
+
+// MaterialUI
 import Badge from '@material-ui/core/Badge'
-import { NavLink } from 'react-router-dom'
+
 
 const Shipping = (props) => {
 
